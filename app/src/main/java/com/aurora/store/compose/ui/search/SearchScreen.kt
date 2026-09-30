@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.clearText
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
@@ -49,8 +50,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
@@ -74,6 +82,8 @@ import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.SearchSuggestionListItem
 import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.composition.LocalUI
+import com.aurora.store.compose.composition.UI
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
@@ -115,6 +125,8 @@ private fun ScreenContent(
     isAnonymous: Boolean = true
 ) {
     val activity = LocalActivity.current as? ComponentActivity
+    val focusManager = LocalFocusManager.current
+    val isTv = LocalUI.current == UI.TV
     val textFieldState = rememberTextFieldState()
     val searchBarState = rememberSearchBarState(initialValue = SearchBarValue.Expanded)
     var isSearching by rememberSaveable { mutableStateOf(false) }
@@ -147,13 +159,50 @@ private fun ScreenContent(
     fun SearchBar() {
         val inputField = @Composable {
             SearchBarDefaults.InputField(
+                // On TV the collapsed field is reachable with the D-pad (see below), so the
+                // keyboard must not come along: it would sit on top of the results. The center
+                // key opens the docked bar instead, which is expanded and thus allowed to ask
+                // for the keyboard.
+                keyboardOptions = KeyboardOptions(
+                    showKeyboardOnFocus = !isTv ||
+                        searchBarState.targetValue == SearchBarValue.Expanded
+                ),
                 // Only allow focus while expanded. Otherwise the collapsed field
                 // grabs focus whenever it is restored (returning from details,
                 // dismissing the popup on Android 8, ...) and the search bar
                 // reopens on its own. Tapping still expands via click detection.
-                modifier = Modifier.focusProperties {
-                    canFocus = searchBarState.targetValue == SearchBarValue.Expanded
-                },
+                // TV is the exception: a remote reaches the field with the D-pad, and M3 only
+                // expands on focus in touch mode, so focus alone leaves the bar collapsed.
+                modifier = Modifier
+                    .focusProperties {
+                        canFocus = isTv ||
+                            searchBarState.targetValue == SearchBarValue.Expanded
+                    }
+                    .onPreviewKeyEvent { event ->
+                        if (!isTv ||
+                            event.type != KeyEventType.KeyDown ||
+                            searchBarState.currentValue != SearchBarValue.Collapsed
+                        ) {
+                            return@onPreviewKeyEvent false
+                        }
+                        when (event.key) {
+                            // Down on a collapsed bar means "results". M3 would expand it
+                            // again and take the focus (and the keyboard) back to the field.
+                            Key.DirectionDown, Key.NumPadDirectionDown -> {
+                                focusManager.moveFocus(FocusDirection.Down)
+                                true
+                            }
+
+                            // The docked copy takes the focus and, being expanded, is the one
+                            // allowed to ask for the keyboard.
+                            Key.DirectionCenter -> {
+                                coroutineScope.launch { searchBarState.animateToExpanded() }
+                                true
+                            }
+
+                            else -> false
+                        }
+                    },
                 searchBarState = searchBarState,
                 textFieldState = textFieldState,
                 onSearch = { query -> onRequestSearch(query) },

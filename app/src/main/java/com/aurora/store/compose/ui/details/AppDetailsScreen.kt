@@ -41,6 +41,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -76,6 +77,8 @@ import com.aurora.store.compose.composable.ShimmerCarouselSection
 import com.aurora.store.compose.composable.StreamCarousel
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.TrackerUpdateWarningDialog
+import com.aurora.store.compose.composition.LocalUI
+import com.aurora.store.compose.composition.UI
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.navigation.Screen
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -355,6 +358,11 @@ private fun ScreenContentApp(
         )
     )
     val coroutineScope = rememberCoroutineScope()
+    val isTv = LocalUI.current == UI.TV
+    // Without this the first D-pad press lands on the back button in the top bar instead of
+    // the action the user came here for.
+    val actionFocusRequester = remember { FocusRequester() }
+    val actionFocusRequested = remember { mutableStateOf(false) }
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
     var showRestartDialog by remember { mutableStateOf(false) }
@@ -523,7 +531,8 @@ private fun ScreenContentApp(
                 primaryActionDisplayName = stringResource(R.string.action_open),
                 secondaryActionDisplayName = stringResource(R.string.action_cancel),
                 isPrimaryActionEnabled = false,
-                onSecondaryAction = ::onCancelCheck
+                onSecondaryAction = ::onCancelCheck,
+                primaryActionFocusRequester = actionFocusRequester
             )
             return
         }
@@ -541,7 +550,8 @@ private fun ScreenContentApp(
                         primaryActionDisplayName = stringResource(R.string.action_open),
                         secondaryActionDisplayName = stringResource(R.string.action_cancel),
                         isPrimaryActionEnabled = false,
-                        onSecondaryAction = onCancelDownload
+                        onSecondaryAction = onCancelDownload,
+                        primaryActionFocusRequester = actionFocusRequester
                     )
                 }
 
@@ -551,7 +561,8 @@ private fun ScreenContentApp(
                         primaryActionDisplayName = stringResource(R.string.action_open),
                         secondaryActionDisplayName = stringResource(R.string.action_cancel),
                         isPrimaryActionEnabled = false,
-                        isSecondaryActionEnabled = false
+                        isSecondaryActionEnabled = false,
+                        primaryActionFocusRequester = actionFocusRequester
                     )
                 }
 
@@ -560,7 +571,8 @@ private fun ScreenContentApp(
                         primaryActionDisplayName = stringResource(R.string.action_update),
                         secondaryActionDisplayName = stringResource(R.string.action_uninstall),
                         onPrimaryAction = ::onUpdateClicked,
-                        onSecondaryAction = onUninstall
+                        onSecondaryAction = onUninstall,
+                        primaryActionFocusRequester = actionFocusRequester
                     )
                 }
 
@@ -573,7 +585,8 @@ private fun ScreenContentApp(
                         secondaryActionDisplayName = stringResource(R.string.action_uninstall),
                         onPrimaryAction = onOpen,
                         onSecondaryAction = onUninstall,
-                        isPrimaryActionEnabled = canOpen
+                        isPrimaryActionEnabled = canOpen,
+                        primaryActionFocusRequester = actionFocusRequester
                     )
                 }
 
@@ -592,7 +605,8 @@ private fun ScreenContentApp(
                         isPrimaryActionEnabled = canAcquire,
                         isSecondaryActionEnabled = canAcquire,
                         onPrimaryAction = ::onInstall,
-                        onSecondaryAction = { showExtraPane(ExtraScreen.ManualDownload) }
+                        onSecondaryAction = { showExtraPane(ExtraScreen.ManualDownload) },
+                        primaryActionFocusRequester = actionFocusRequester
                     )
                 }
             }
@@ -631,6 +645,15 @@ private fun ScreenContentApp(
                     }
 
                     item {
+                        // Requested from inside the item: a FocusRequester can't be used before
+                        // the button it points at has been composed. The flag keeps a scroll
+                        // back to the top from stealing focus again.
+                        LaunchedEffect(Unit) {
+                            if (isTv && !actionFocusRequested.value) {
+                                actionFocusRequested.value = true
+                                actionFocusRequester.requestFocus()
+                            }
+                        }
                         SetupActions()
                     }
 

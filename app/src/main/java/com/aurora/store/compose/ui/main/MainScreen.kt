@@ -7,10 +7,14 @@ package com.aurora.store.compose.ui.main
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Badge
@@ -30,8 +34,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -43,6 +56,8 @@ import com.aurora.store.compose.composable.InsufficientStorageDialog
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.TrackerUpdateWarningDialog
 import com.aurora.store.compose.composition.LocalNetworkStatus
+import com.aurora.store.compose.composition.LocalUI
+import com.aurora.store.compose.composition.UI
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.ui.apps.AppsGamesScreen
 import com.aurora.store.compose.ui.commons.MoreSheet
@@ -83,6 +98,7 @@ fun MainScreen(
 ) {
     val context = LocalContext.current
     val networkStatus = LocalNetworkStatus.current
+    val isTv = LocalUI.current == UI.TV
     val updates by mainViewModel.updateHelper.updates.collectAsStateWithLifecycle(
         initialValue = null
     )
@@ -151,6 +167,14 @@ fun MainScreen(
         return
     }
 
+    // The first focusable in the tree would be an arbitrary top bar action, so on TV the home
+    // screen starts on the selected tab: LEFT/RIGHT switches tabs, UP walks into the content.
+    val tabFocusRequester = remember { FocusRequester() }
+    val railFocusRequester = remember { FocusRequester() }
+    LaunchedEffect(Unit) {
+        if (isTv) tabFocusRequester.requestFocus()
+    }
+
     if (showMoreSheet) {
         MoreSheet(
             onDismiss = { showMoreSheet = false },
@@ -178,48 +202,56 @@ fun MainScreen(
                 title = stringResource(MainTab.entries[pagerState.currentPage].labelRes),
                 showNavigationIcon = false,
                 actions = {
-                    IconButton(onClick = { onNavigateTo(Destination.Notifications) }) {
-                        BadgedBox(
-                            badge = {
-                                if (notificationCount > 0) Badge { Text("$notificationCount") }
-                            }
-                        ) {
-                            Icon(
-                                painter = painterResource(R.drawable.ic_notifications),
-                                contentDescription = stringResource(R.string.title_notifications)
-                            )
-                        }
-                    }
-                    IconButton(onClick = { onNavigateTo(Destination.Downloads) }) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_download_manager),
-                            contentDescription = stringResource(R.string.title_download_manager)
-                        )
-                    }
-                    IconButton(onClick = { showMoreSheet = true }) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_settings_account),
-                            contentDescription = stringResource(R.string.title_more)
+                    // On TV these live in the side rail instead, so the top bar is just the title.
+                    if (!isTv) {
+                        MainActions(
+                            notificationCount = notificationCount,
+                            onSearch = { onNavigateTo(Destination.Search) },
+                            onNotifications = { onNavigateTo(Destination.Notifications) },
+                            onDownloads = { onNavigateTo(Destination.Downloads) },
+                            onMore = { showMoreSheet = true }
                         )
                     }
                 }
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { onNavigateTo(Destination.Search) }) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_round_search),
-                    contentDescription = stringResource(R.string.action_search)
-                )
+            if (!isTv) {
+                FloatingActionButton(onClick = { onNavigateTo(Destination.Search) }) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_round_search),
+                        contentDescription = stringResource(R.string.action_search)
+                    )
+                }
             }
         },
         bottomBar = {
-            NavigationBar {
+            NavigationBar(
+                modifier = Modifier.onPreviewKeyEvent {
+                    // There is nothing to the left of the first tab, so LEFT hands the focus back
+                    // to the rail instead of falling out of the bottom bar.
+                    if (isTv &&
+                        it.type == KeyEventType.KeyDown &&
+                        it.key == Key.DirectionLeft &&
+                        pagerState.currentPage == 0
+                    ) {
+                        railFocusRequester.requestFocus()
+                        true
+                    } else {
+                        false
+                    }
+                }
+            ) {
                 MainTab.entries.forEachIndexed { index, tab ->
                     NavigationBarItem(
                         selected = pagerState.currentPage == index,
                         onClick = {
                             coroutineScope.launch { pagerState.animateScrollToPage(index) }
+                        },
+                        modifier = if (pagerState.currentPage == index) {
+                            Modifier.focusRequester(tabFocusRequester)
+                        } else {
+                            Modifier
                         },
                         icon = {
                             if (tab == MainTab.UPDATES && updateCount > 0) {
@@ -242,17 +274,41 @@ fun MainScreen(
             }
         }
     ) { paddingValues ->
-        Box(
+        Row(
             modifier = Modifier
                 .padding(paddingValues)
                 .consumeWindowInsets(paddingValues)
                 .fillMaxSize()
         ) {
+            if (isTv) {
+                Column(
+                    modifier = Modifier
+                        .width(dimensionResource(R.dimen.width_navrail))
+                        .fillMaxHeight()
+                        .padding(vertical = dimensionResource(R.dimen.spacing_medium)),
+                    verticalArrangement = Arrangement.spacedBy(
+                        dimensionResource(R.dimen.spacing_small)
+                    ),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    MainActions(
+                        notificationCount = notificationCount,
+                        onSearch = { onNavigateTo(Destination.Search) },
+                        onNotifications = { onNavigateTo(Destination.Notifications) },
+                        onDownloads = { onNavigateTo(Destination.Downloads) },
+                        onMore = { showMoreSheet = true },
+                        moreFocusRequester = railFocusRequester
+                    )
+                }
+            }
+
             HorizontalPager(
                 state = pagerState,
                 userScrollEnabled = false,
                 beyondViewportPageCount = MainTab.entries.size - 1,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
             ) { page ->
                 when (MainTab.entries[page]) {
                     MainTab.APPS -> AppsGamesScreen(
@@ -353,6 +409,54 @@ fun MainScreen(
                 StorageUtil.openFreeUpSpace(context)
             },
             onDismiss = { storageWarning = null }
+        )
+    }
+}
+
+@Composable
+private fun MainActions(
+    notificationCount: Int,
+    onSearch: () -> Unit,
+    onNotifications: () -> Unit,
+    onDownloads: () -> Unit,
+    onMore: () -> Unit,
+    moreFocusRequester: FocusRequester? = null
+) {
+    IconButton(onClick = onSearch) {
+        Icon(
+            painter = painterResource(R.drawable.ic_round_search),
+            contentDescription = stringResource(R.string.action_search)
+        )
+    }
+    IconButton(onClick = onNotifications) {
+        BadgedBox(
+            badge = {
+                if (notificationCount > 0) Badge { Text("$notificationCount") }
+            }
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_notifications),
+                contentDescription = stringResource(R.string.title_notifications)
+            )
+        }
+    }
+    IconButton(onClick = onDownloads) {
+        Icon(
+            painter = painterResource(R.drawable.ic_download_manager),
+            contentDescription = stringResource(R.string.title_download_manager)
+        )
+    }
+    IconButton(
+        onClick = onMore,
+        modifier = if (moreFocusRequester != null) {
+            Modifier.focusRequester(moreFocusRequester)
+        } else {
+            Modifier
+        }
+    ) {
+        Icon(
+            painter = painterResource(R.drawable.ic_settings_account),
+            contentDescription = stringResource(R.string.title_more)
         )
     }
 }

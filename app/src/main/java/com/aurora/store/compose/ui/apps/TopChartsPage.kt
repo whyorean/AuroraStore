@@ -42,6 +42,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ShimmerAppRow
 import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.composable.focusHighlight
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.ViewState
@@ -128,6 +129,7 @@ private fun TopChartsBody(
                 Tab(
                     selected = selectedIndex == index,
                     onClick = { onTabSelected(index) },
+                    modifier = Modifier.focusHighlight(),
                     text = { Text(stringResource(titleRes)) }
                 )
             }

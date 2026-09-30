@@ -25,6 +25,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.aurora.gplayapi.helpers.contracts.StreamContract
 import com.aurora.gplayapi.helpers.contracts.TopChartsContract
 import com.aurora.store.R
+import com.aurora.store.compose.composable.focusHighlight
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.util.Preferences
 import com.aurora.store.viewmodel.category.CategoryViewModel
@@ -83,6 +84,7 @@ fun AppsGamesScreen(
                             pagerState.animateScrollToPage(index)
                         }
                     },
+                    modifier = Modifier.focusHighlight(),
                     text = { Text(stringResource(tab.titleRes)) }
                 )
             }

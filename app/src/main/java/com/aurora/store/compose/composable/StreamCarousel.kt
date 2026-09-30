@@ -20,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,6 +32,8 @@ import com.aurora.gplayapi.data.models.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.compose.composable.app.AppListItem
 import com.aurora.store.compose.composable.app.LargeAppListItem
+import com.aurora.store.compose.composition.LocalUI
+import com.aurora.store.compose.composition.UI
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import kotlinx.coroutines.flow.distinctUntilChanged
 
@@ -88,6 +91,11 @@ fun StreamCarousel(
         return
     }
 
+    // A focusable header sits between two rows, so on TV it would swallow every DOWN/UP press
+    // meant for the next/previous row. Rows are the only D-pad stops there; the header keeps
+    // working for anyone driving this with a pointer.
+    val isTv = LocalUI.current == UI.TV
+
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         state = lazyListState,
@@ -113,6 +121,11 @@ fun StreamCarousel(
             clusters.forEach { cluster ->
                 item(key = "header_${cluster.id}") {
                     SectionHeader(
+                        modifier = if (isTv) {
+                            Modifier.focusProperties { canFocus = false }
+                        } else {
+                            Modifier
+                        },
                         title = cluster.clusterTitle,
                         onClick = if (cluster.clusterBrowseUrl.isNotBlank()) {
                             { onHeaderClick(cluster) }

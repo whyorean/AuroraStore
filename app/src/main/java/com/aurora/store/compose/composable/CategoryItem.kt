@@ -38,6 +38,7 @@ fun CategoryItem(modifier: Modifier = Modifier, category: Category, onClick: () 
         modifier = modifier
             .fillMaxWidth()
             .clickable(onClick = onClick)
+            .focusHighlight()
             .padding(
                 horizontal = dimensionResource(R.dimen.spacing_medium),
                 vertical = dimensionResource(R.dimen.spacing_small)
