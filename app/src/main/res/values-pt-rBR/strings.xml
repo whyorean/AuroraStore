@@ -434,14 +434,14 @@
     <string name="app_info_min_android">Versão do Android mínima</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> permissões</string>
     <string name="action_install_microG">Instalar o conjunto do microG</string>
-    <string name="onboarding_title_gsf">Compatibilidade de apps</string>
+    <string name="onboarding_title_gsf">Compatibilidade de aplicativo</string>
     <string name="onboarding_title_gsf_desc">Dependências ausentes</string>
-    <string name="onboarding_gms_agreement">Eu li e concordo com os termos de serviço e a política de privacidade do microG</string>
-    <string name="onboarding_gms_missing">Não foi possível encontrar o Google Play Services no seu dispositivo, muitos apps populares requerem ele para funcionar corretamente!</string>
-    <string name="onboarding_gms_microg">O microG é uma implementação de código aberto e livre que fornece funcionalidade similar para a execução de apps que dependem no Google Play Services em dispositivos Android, através da reimplementação.\n\nO microG permite que apps acessem essas APIs do Google, melhorando a compatibilidade para os usuários enquanto melhora oferece benefícios à privacidade.\n\nO microG é executado automaticamente em segundo plano ao abrir aplicativos que dependem do Google Mobile Services.</string>
-    <string name="microg_privacy_policy">Ler a política de privacidade do microG</string>
-    <string name="microg_license_agreement">Ler a licença do microG</string>
-    <string name="microg_website">Visitar o site do projeto do microG</string>
+    <string name="onboarding_gms_agreement">Eu li e concordo com os Termos de Serviço e a Política de Privacidade do microG</string>
+    <string name="onboarding_gms_missing">Não foi possível encontrar o Google Play Services no seu dispositivo, muitos apps populares o exigem para funcionar corretamente!</string>
+    <string name="onboarding_gms_microg">O microG é uma implementação de código aberto e livre que fornece funcionalidade similar para a execução de apps que dependem no Google Play Services em dispositivos Android, através da reimplementação.\n\nO microG permite que apps acessem essas APIs do Google, melhorando a compatibilidade para os usuários enquanto oferece benefícios à privacidade.\n\nO microG será executado automaticamente em segundo plano ao abrir aplicativos que dependem do Google Mobile Services.</string>
+    <string name="microg_privacy_policy">Ler a Política de Privacidade do microG</string>
+    <string name="microg_license_agreement">Ler a Licença do microG</string>
+    <string name="microg_website">Visitar o Site do Projeto do microG</string>
     <string name="details_data_safety_collect">Dados que este app pode coletar</string>
     <string name="details_data_safety_collect_none">O desenvolvedor diz que este app não coleta dados do usuário.</string>
     <string name="details_data_safety_shared">Dados que este app pode compartilhar</string>
@@ -460,7 +460,7 @@
     <string name="preparing_to_install">Preparando para instalar</string>
     <plurals name="permissions_required">
         <item quantity="one">Permissão necessária</item>
-        <item quantity="many">Permissões necessárias</item>
+        <item quantity="many">de permissões necessárias</item>
         <item quantity="other">Permissões necessárias</item>
     </plurals>
     <string name="installer_microg_misconfigured">O instalador do microG falhou ao instalar o app, provavelmente devido a má configuração.</string>
@@ -632,4 +632,19 @@
     <string name="manual_download_no_versions">Nenhuma versão conhecida encontrada</string>
     <string name="manual_download_availability_warning">Algumas versões podem estar indisponíveis para baixar ou ser incompatíveis com seu dispositivo.</string>
     <string name="details_more_certificate_hash">Hash do certificado</string>
+    <string name="action_free_up_space">Libere espaço</string>
+    <string name="installer_provider">%1$s · Fornecido por %2$s</string>
+    <string name="insufficient_storage_title">Não há espaço suficiente</string>
+    <string name="insufficient_storage_desc">%1$s precisa de %2$s, mas apenas %3$s está disponível.</string>
+    <string name="insufficient_storage_hint">Libere %1$s e tente novamente.</string>
+    <string name="status_awaiting_install">Aguardando por confirmação</string>
+    <string name="notification_install_prompt_pending">Toque para finalizar a instalação</string>
+    <string name="notification_none">Nada para ver aqui</string>
+    <string name="details_more_files">Arquivos</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d aplicativo precisa de %2$s, mas apenas %3$s está disponível.</item>
+        <item quantity="many">%1$d de aplicativos precisam de %2$s, mas apenas %3$s está disponível.</item>
+        <item quantity="other">%1$d aplicativos precisam de %2$s, mas apenas %3$s está disponível.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Data de download</string>
 </resources>

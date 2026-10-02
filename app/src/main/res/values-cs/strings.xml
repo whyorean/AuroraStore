@@ -312,7 +312,7 @@
     <string name="session_installer_desc">Doporučený, vestavěný a podporuje všechny verze systému Android</string>
     <string name="services_installer_desc">Vyžaduje instalaci Služeb Aurora jako privilegované systémové aplikace</string>
     <string name="am_installer_subtitle">Plnohodnotný správce balíčků s otevřeným zdrojovým kódem</string>
-    <string name="am_installer_desc">Vyžaduje aplikaci App Manager, při povolené Optimalizaci MIUI potřebuje režim adb/root</string>
+    <string name="am_installer_desc">Vyžaduje aplikaci App Manager, při povolené optimalizaci MIUI potřebuje režim adb/root</string>
     <string name="shizuku_installer_subtitle">Používá přímá systémová API s právy adb/root</string>
     <string name="root_installer_desc">Vyžaduje oprávnění root/superuser, podporuje všechny verze systému Android.</string>
     <string name="root_installer_subtitle">Instalátor založený na relacích, používá oprávnění root</string>
@@ -638,4 +638,20 @@
     <string name="manual_download_no_versions">Nenalezeny žádné známé verze</string>
     <string name="manual_download_availability_warning">Některé verze nemusejí být dostupné ke stažení nebo mohou být nekompatibilní s vaším zařízením.</string>
     <string name="details_more_certificate_hash">Hash certifikátu</string>
+    <string name="action_free_up_space">Uvolněte místo</string>
+    <string name="installer_provider">%1$s · Obsluhoval %2$s</string>
+    <string name="insufficient_storage_title">Nedostatek místa</string>
+    <string name="insufficient_storage_desc">%1$s potřebuje %2$s, ale k dispozici je pouze %3$s.</string>
+    <string name="insufficient_storage_hint">Uvolněte %1$s a zkuste to znovu.</string>
+    <string name="status_awaiting_install">Čekání na potvrzení</string>
+    <string name="notification_install_prompt_pending">Klepnutím dokončíte instalaci</string>
+    <string name="notification_none">Nic k vidění</string>
+    <string name="details_more_files">Soubory</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d aplikace potřebuje %2$s, ale pouze %3$s je k dispozici.</item>
+        <item quantity="few">%1$d aplikace potřebují %2$s, ale pouze %3$s je k dispozici.</item>
+        <item quantity="many">%1$d aplikace potřebují %2$s, ale pouze %3$s je k dispozici.</item>
+        <item quantity="other">%1$d aplikace potřebují %2$s, ale pouze %3$s je k dispozici.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Datum stažení</string>
 </resources>

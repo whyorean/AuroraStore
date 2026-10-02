@@ -620,4 +620,17 @@
     <string name="manual_download_no_versions">未找到已知版本</string>
     <string name="manual_download_availability_warning">部分版本可能無法下載，或與您的裝置不相容。</string>
     <string name="details_more_certificate_hash">憑証雜湊值</string>
+    <string name="action_free_up_space">釋放空間</string>
+    <string name="installer_provider">%1$s · 由 %2$s 提供</string>
+    <string name="insufficient_storage_title">儲存空間不足</string>
+    <string name="insufficient_storage_desc">%1$s 需要 %2$s，但只有 %3$s 可用。</string>
+    <string name="insufficient_storage_hint">請釋放 %1$s 後再試一次。</string>
+    <string name="status_awaiting_install">等待確認</string>
+    <string name="notification_install_prompt_pending">點選以完成安裝</string>
+    <string name="notification_none">這裡沒有任何內容</string>
+    <string name="details_more_files">檔案</string>
+    <string name="download_sort_date_downloaded">下載日期</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="other">%1$d 個應用程式需要 %2$s，但只有 %3$s 可用。</item>
+    </plurals>
 </resources>

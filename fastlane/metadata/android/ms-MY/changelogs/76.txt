@@ -1,0 +1,9 @@
+• Membina semula antara muka menggunakan Jetpack Compose yang moden
+• Sokongan untuk berbilang akaun Google
+• Ulasan pengguna pada skrin butiran aplikasi
+• Pilihan kunci aplikasi menggunakan biometrik atau kelayakan peranti
+• Pemasangan sekali klik untuk aplikasi kegemaran dan aliran pembelian untuk aplikasi berbayar
+• Penambahbaikan sistem pemberitahuan dengan ringkasan berkumpulan dan tetapan
+• Skrin kemas kini yang dirombak; kemas kini kendiri kini dipaparkan dalam senarai
+• Muat turun/pemasangan yang lebih stabil dan sokongan pemasang microG
+• Pembaikan pepijat dan kemas kini terjemahan

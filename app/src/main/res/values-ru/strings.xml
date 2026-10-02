@@ -638,4 +638,20 @@
     <string name="manual_download_no_versions">Известных версий не найдено</string>
     <string name="manual_download_availability_warning">Некоторые версии могут быть недоступны для скачивания или несовместимы с вашим устройством.</string>
     <string name="details_more_certificate_hash">Хэш сертификата</string>
+    <string name="action_free_up_space">Освободить место</string>
+    <string name="installer_provider">%1$s · Предоставляется %2$s</string>
+    <string name="insufficient_storage_title">Не хватает места</string>
+    <string name="insufficient_storage_desc">%1$s требуется %2$s, но доступно только %3$s.</string>
+    <string name="insufficient_storage_hint">Освободите %1$s и попробуйте еще раз.</string>
+    <string name="status_awaiting_install">Ожидание подтверждения</string>
+    <string name="notification_install_prompt_pending">Нажмите, чтобы завершить установку</string>
+    <string name="notification_none">Здесь ничего нет</string>
+    <string name="details_more_files">Файлы</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">Приложению %1$d требуется %2$s, но доступно только %3$s.</item>
+        <item quantity="few">%1$d приложениям требуется %2$s, но доступно только %3$s.</item>
+        <item quantity="many">%1$d приложениям требуется %2$s, но доступно только %3$s.</item>
+        <item quantity="other">%1$d приложениям требуется %2$s, но доступно только %3$s.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Дата загрузки</string>
 </resources>

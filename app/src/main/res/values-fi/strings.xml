@@ -625,5 +625,19 @@
     <string name="manual_download_select_version">Valitse versio</string>
     <string name="manual_download_no_versions">Ei tunnettuja versioita löydetty</string>
     <string name="manual_download_availability_warning">Jotkut versiot eivät saata olla saatavilla latausta varten tai sopimattomia laitteesi kanssa.</string>
-    <string name="details_more_certificate_hash">Varmenteen sormenjälki</string>
+    <string name="details_more_certificate_hash">Varmenteen tarkiste</string>
+    <string name="action_free_up_space">Vapauta tilaa</string>
+    <string name="installer_provider">%1$s · Toimittajana %2$s</string>
+    <string name="insufficient_storage_title">Ei tarpeeksi tilaa</string>
+    <string name="insufficient_storage_desc">%1$s tarvitsee %2$sn, mutta vain %3$s on saatavilla.</string>
+    <string name="insufficient_storage_hint">Vapauta %1$s ja yritä uudelleen.</string>
+    <string name="status_awaiting_install">Odotetaan hyväksyntää</string>
+    <string name="notification_install_prompt_pending">Napauta viimeistelläksesi asennuksen</string>
+    <string name="notification_none">Ei mitään nähtävää täällä</string>
+    <string name="details_more_files">Tiedostot</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d tarvitsee %2$sn, mutta vain %3$s on saatavilla.</item>
+        <item quantity="other">%1$d tarvitsevat %2$sn, mutta vain %3$s on saatavilla.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Latauksen päivämäärä</string>
 </resources>

@@ -620,4 +620,17 @@
     <string name="manual_download_no_versions">Tiada versi yang diketahui ditemui</string>
     <string name="manual_download_availability_warning">Sesetengah versi mungkin tidak tersedia untuk dimuat turun atau tidak serasi dengan peranti anda.</string>
     <string name="details_more_certificate_hash">Hash sijil</string>
+    <string name="action_free_up_space">Kosongkan ruang</string>
+    <string name="installer_provider">%1$s · Dilayan oleh %2$s</string>
+    <string name="insufficient_storage_title">Ruang tidak mencukupi</string>
+    <string name="insufficient_storage_desc">%1$s memerlukan %2$s, tetapi hanya %3$s yang tersedia.</string>
+    <string name="insufficient_storage_hint">Kosongkan %1$s dan cuba lagi.</string>
+    <string name="status_awaiting_install">Menunggu pengesahan</string>
+    <string name="notification_install_prompt_pending">Ketik untuk menyelesaikan pemasangan</string>
+    <string name="notification_none">Tiada apa yang boleh dilihat di sini</string>
+    <string name="details_more_files">Fail</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="other">%1$d aplikasi memerlukan %2$s, tetapi hanya %3$s yang tersedia.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Tarikh dimuat turun</string>
 </resources>

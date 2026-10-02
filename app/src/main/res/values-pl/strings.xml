@@ -359,7 +359,7 @@
     <string name="action_logout_confirmation_message">Czy na pewno chcesz się wylogować?</string>
     <string name="action_logout_confirmation_title">Wylogować się?</string>
     <string name="toast_fav_import_failed">Nie udało się zaimportować ulubionych!</string>
-    <string name="pref_network_proxy_url_message">Wprowadź prawidłowy adres URL serwera proxy, aby przekazać wszystkie dane przez serwer proxy.</string>
+    <string name="pref_network_proxy_url_message">Wprowadź adres URL serwera proxy, aby przekazać wszystkie dane przez serwer proxy.</string>
     <string name="export_app_summary_success">Wyeksportowano pakiet aplikacji</string>
     <string name="export_app_summary_fail">Nie udało się wyeksportować pakietu aplikacji</string>
     <string name="check_updates">Sprawdź aktualizacje</string>
@@ -544,7 +544,7 @@
     <string name="pref_notification_progress">Pokaż postęp pobierania</string>
     <string name="pref_notification_categories">Kategorie</string>
     <string name="pref_notification_disabled">Powiadomienia są wyłączone</string>
-    <string name="pref_notification_disabled_desc">Dotknij, aby włączyć powiadomienia dla Aurora Store</string>
+    <string name="pref_notification_disabled_desc">Dotknij tutaj, aby włączyć powiadomienia dla Aurora Store</string>
     <string name="updates_self_header">Samoaktualizacja</string>
     <string name="status_installing">Instalowanie</string>
     <string name="status_installed">Zainstalowano</string>
@@ -563,7 +563,7 @@
     <string name="pref_notification_categories_desc">Dostosuj dźwięk i priorytet dla każdego typu powiadomień</string>
     <string name="notification_group_activity">Pobieranie i aktualizacje</string>
     <string name="pref_self_update_desc">Pokaż nowe wersje Aurora Store w zakładce Aktualizacje.</string>
-    <string name="pref_notification_progress_desc">Pokaż szczegółowy postęp podczas pobierania i aktualizacji aplikacji. Gdy wyłączone, jedno ciche powiadomienie utrzymuje pobieranie w tle.</string>
+    <string name="pref_notification_progress_desc">Pokaż szczegółowy postęp podczas pobierania i aktualizacji aplikacji. Gdy wyłączysz, jedno ciche powiadomienie utrzyma pobieranie w tle.</string>
     <string name="action_buy">Kup @ %1$s</string>
     <string name="action_install_all">Zainstaluj wszystkie</string>
     <string name="details_review_comment_hint">Opisz swoje doświadczenie (opcjonalnie)</string>
@@ -629,7 +629,7 @@
     <string name="exodus_history_version">%1$s (%2$s)</string>
     <string name="exodus_history_subtitle">%1$s • %2$d moduły śledzące</string>
     <string name="exodus_latest">Najnowszy</string>
-    <string name="pref_updates_warn_trackers">Ostrzegaj o nowych modułach śledzących w aktualizacjach aplikacji</string>
+    <string name="pref_updates_warn_trackers">Ostrzegaj o nowych modułach śledzących w aktualizowanych aplikacjach</string>
     <string name="pref_updates_warn_trackers_desc">Pokaż ostrzeżenie przed aktualizacją, gdy nowa wersja doda moduły śledzące, których nie było w zainstalowanej wersji</string>
     <string name="tracker_warning_title">Wykryto nowe moduły śledzące</string>
     <string name="tracker_warning_desc">Ta aktualizacja dodaje moduły śledzące, których nie było w zainstalowanej wersji:</string>
@@ -638,4 +638,20 @@
     <string name="manual_download_lookup">Zobacz dostępne wersje</string>
     <string name="manual_download_availability_warning">Niektóre wersje mogą być niedostępne do pobrania lub mogą nie działać na Twoim urządzeniu.</string>
     <string name="details_more_certificate_hash">Hash certyfikatu</string>
+    <string name="details_more_files">Pliki</string>
+    <string name="download_sort_date_downloaded">Daty pobrania</string>
+    <string name="action_free_up_space">Zwolnij miejsce</string>
+    <string name="installer_provider">%1$s · Obsługiwane przez %2$s</string>
+    <string name="insufficient_storage_title">Za mało miejsca</string>
+    <string name="insufficient_storage_desc">%1$s potrzebuje %2$s, ale dostępne jest tylko %3$s.</string>
+    <string name="insufficient_storage_hint">Zwolnij %1$s i spróbuj ponownie.</string>
+    <string name="status_awaiting_install">Czekam na potwierdzenie</string>
+    <string name="notification_install_prompt_pending">Dotknij, aby zakończyć instalację</string>
+    <string name="notification_none">Nie ma tu nic do oglądania</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d aplikacja wymaga %2$s, ale dostępne jest tylko %3$s.</item>
+        <item quantity="few">%1$d aplikacje wymagają %2$s, ale dostępne jest tylko %3$s.</item>
+        <item quantity="many">%1$d aplikacji wymaga %2$s, ale dostępne jest tylko %3$s.</item>
+        <item quantity="other">%1$d aplikacji wymaga %2$s, ale dostępne jest tylko %3$s.</item>
+    </plurals>
 </resources>

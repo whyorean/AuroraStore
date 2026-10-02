@@ -85,7 +85,7 @@
     <string name="details_changelog">Journal des changements</string>
     <string name="details_dev_email">Adresse courriel</string>
     <string name="details_beta_available">Participer au programme bêta ?</string>
-    <string name="details_beta_subscribed">Vous essayez la version bêta</string>
+    <string name="details_beta_subscribed">Tu es bêta-testeur</string>
     <string name="details_beta">Programme bêta</string>
     <string name="action_whitelist">Liste d’inclusion</string>
     <string name="action_update_all">Tout mettre à jour</string>
@@ -155,12 +155,12 @@
     <string name="about_fdroid_summary">Télécharger Aurora Store via F-Droid.</string>
     <string name="about_fdroid">F-Droid</string>
     <string name="download_none">Aucun téléchargement</string>
-    <string name="download_metadata">Obtention des métadonnées</string>
+    <string name="download_metadata">Récupération des métadonnées</string>
     <string name="download_force_clear_all">Tout effacer de force</string>
-    <string name="download_failed">Échec de téléchargement</string>
+    <string name="download_failed">Échec du téléchargement</string>
     <string name="download_eta_calculating">Calcul</string>
-    <string name="details_beta_delay">L’inscription peut prendre du temps. Vous pouvez vérifier l’état plus tard.</string>
-    <string name="details_beta_description">Vous verrez de nouvelles fonctions et bogues avant le public. Donnez votre avis aux développeurs afin d’alimenter les améliorations.</string>
+    <string name="details_beta_delay">L’inscription peut prendre du temps. Vous pourrez vérifier l’état de l’inscription plus tard.</string>
+    <string name="details_beta_description">Vous découvrirez les nouvelles fonctions et les bogues avant le grand public. Faites part de vos commentaires aux développeurs pour aider à améliorer l’appli.</string>
     <string name="action_granted">Accordée</string>
     <string name="action_grant">Accorder</string>
     <string name="toast_permission_granted">L’autorisation a été accordée</string>
@@ -188,13 +188,13 @@
     <string name="onboarding_title_permissions">Autorisations</string>
     <string name="onboarding_permission_select">Aurora Store a besoin des autorisations suivantes</string>
     <string name="dialog_title_self_update">Une nouvelle mise à jour est proposée</string>
-    <string name="installer_service_misconfigured">Configurez d’abord les services Aurora et accordez toutes les autorisations.</string>
-    <string name="installer_service_unavailable">Installez les services Aurora 1.0.9 ou version ultérieure, ou changez de programme d’installation.</string>
-    <string name="installer_service_available">Les services Aurora sont proposés et prêts à être installés.</string>
+    <string name="installer_service_misconfigured">Commencez par configurer Aurora Services et attribuez toutes les autorisations.</string>
+    <string name="installer_service_unavailable">Installez Aurora Services 1.0.9 ou une version ultérieure, ou modifiez le programme d\'installation.</string>
+    <string name="installer_service_available">Aurora Services est disponible et prêt à être installé.</string>
     <string name="installer_root_unavailable">L’accès superutilisateur manque. Accordez-le ou changez le programme d’installation.</string>
     <string name="filter_review_all">Tout</string>
     <string name="exodus_view_report">Afficher le rapport</string>
-    <string name="exodus_substring">traqueurs connus trouvés dans</string>
+    <string name="exodus_substring">tracker(s) connu(s) trouvé(s) dans</string>
     <string name="exodus_progress">Recherche de traqueurs…</string>
     <string name="exodus_powered">Analyse propulsée par Exodus Privacy</string>
     <string name="exodus_no_tracker">Ne comprend aucun traqueur connu</string>
@@ -214,7 +214,7 @@
     <string name="pref_ui_layout_tab">Choisir l’onglet par défaut</string>
     <string name="pref_ui_layout">Disposition</string>
     <string name="pref_common_extra">Autres options</string>
-    <string name="details_no_app_match">Aucune appli correspondante trouvée</string>
+    <string name="details_no_app_match">Aucune appli correspondante n’a été trouvée</string>
     <string name="toast_manual_available">Félicitations, le code de version demandé est proposé ; le téléchargement est en cours.</string>
     <string name="toast_manual_unavailable">Le code de version que vous demandez n’est pas proposé.</string>
     <string name="title_manual_download">Téléchargement manuel</string>
@@ -262,7 +262,7 @@
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> et <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> et <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> mises à jour sont proposées</string>
-    <string name="installer_shizuku_unavailable">Shizuku n’est pas installée ou configurée correctement.</string>
+    <string name="installer_shizuku_unavailable">Shizuku n’est pas installé ou configuré correctement.</string>
     <string name="pref_install_mode_shizuku">Programme d’installation Shizuku</string>
     <string name="notification_channel_updates">Notifications de mise à jour</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> mise à jour est proposée</string>
@@ -367,7 +367,7 @@
     <string name="toast_permission_installer_required">Vous devez d’abord accorder l’autorisation au programme d’installation</string>
     <string name="item_required">Requis</string>
     <string name="item_optional">Optionnel</string>
-    <string name="details_data_safety_subtitle">Pratiques de sécurité et de protection des données déclarées par le développeur</string>
+    <string name="details_data_safety_subtitle">Pratiques en matière de confidentialité et de sécurité des données déclarées par le développeur</string>
     <string name="force_restart_title">Redémarrer Aurora Store</string>
     <string name="force_restart_summary">Aurora Store doit être redémarrée pour appliquer les changements de paramètres</string>
     <string name="export_app_summary_success">Le paquet logiciel a été exporté</string>
@@ -442,12 +442,12 @@
     <string name="microg_privacy_policy">Lire la Politique de confidentialité de microG</string>
     <string name="microg_license_agreement">Lire la licence et l’entente de microG</string>
     <string name="microg_website">Consulter le site Web du projet microG</string>
-    <string name="details_data_safety_collect">Données que cette appli peut recueillir</string>
-    <string name="details_data_safety_collect_none">Le développeur affirme que cette appli ne collecte pas les données des utilisateurs.</string>
+    <string name="details_data_safety_collect">Données susceptibles d’être collectées par cette appli</string>
+    <string name="details_data_safety_collect_none">Selon le développeur, cette appli ne collecte pas les données des utilisateurs.</string>
     <string name="details_data_safety_shared">Données que cette appli peut partager</string>
-    <string name="details_data_safety_share_none">Le développeur affirme que cette appli ne partage pas les données des utilisateurs avec d’autres entreprises ou organisations.</string>
+    <string name="details_data_safety_share_none">Selon le développeur, cette appli ne partage pas les données des utilisateurs avec d’autres entreprises ou organisations.</string>
     <string name="exodus_tracker_desc">Cette version de l\'appli peut encore contenir d\'autres traceurs qui ne figurent pas encore dans la base de données d\'Exodus Privacy.</string>
-    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> traceurs connus ont été trouvés dans <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> traceurs connus ont été détectés dans <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="no_description">Aucune description n’est proposée</string>
     <string name="details_more_info">Plus de précisions</string>
     <string name="details_more_target_api">Cibles</string>
@@ -526,15 +526,15 @@
     <string name="action_check">Vérifier</string>
     <string name="pref_theme_style_system">Thème du système</string>
     <string name="download_failed_storage">L’espace de stockage est insuffisant pour télécharger cette appli</string>
-    <string name="installer_fallback_session">Le programme d’installation choisi est inaccessible. Le programme d’installation par défaut sera utilisé à la place.</string>
+    <string name="installer_fallback_session">Le programme d’installation choisi est inaccessible. Le programme d’installation par défaut sera utilisé.</string>
     <string name="title_security">Sécurité</string>
     <string name="app_lock_title">Verrouillage d\'appli</string>
-    <string name="app_lock_summary">Nécessite une authentification par biométrie ou par verrouillage d\'écran pour ouvrir Aurora Store.</string>
+    <string name="app_lock_summary">Exige une authentification par biométrie ou par code d’accès pour ouvrir Aurora Store.</string>
     <string name="app_lock_no_credential">Définissez d’abord un verrouillage d’écran (code, schéma, mot de passe ou biométrie) sur votre appareil.</string>
     <string name="app_lock_locked_message">L’authentification est nécessaire pour accéder à Aurora Store</string>
     <string name="app_lock_unlock">Déverrouiller</string>
     <string name="app_lock_prompt_title">Déverrouiller Aurora Store</string>
-    <string name="app_lock_prompt_subtitle">Renseignez le verrouillage d\'écran du téléphone (schéma, PIN, mot de passe ou empreinte digitale)</string>
+    <string name="app_lock_prompt_subtitle">Saisissez le schéma de verrouillage de l\'écran, le code d’accès, le mot de passe ou votre empreinte digitale</string>
     <string name="notification_channel_alerts">Erreurs &amp; alertes</string>
     <string name="notification_group_activity">Téléchargements et mises à jour</string>
     <string name="notification_group_alerts">Alertes</string>
@@ -570,8 +570,8 @@
     <string name="details_review_delete_message">Votre note et votre avis seront supprimés de Google Play.</string>
     <string name="details_your_review">Votre avis</string>
     <string name="confirm_deeplink_title">Vérifier les liens externes</string>
-    <string name="confirm_deeplink_summary">Demandez confirmation avant d\'ouvrir la fiche d\'une appli à partir d\'un lien, afin d\'empêcher les publicités de lancer l\'Aurora Store sans votre consentement.</string>
-    <string name="confirm_deeplink_sheet_title">Poursuivre vers le magasin Aurora Store ?</string>
+    <string name="confirm_deeplink_summary">Demandez confirmation avant d’ouvrir la fiche d’une appli à partir d’un lien, afin d’empêcher le lancement par des publicités d’Aurora Store sans votre consentement.</string>
+    <string name="confirm_deeplink_sheet_title">Poursuivre vers Aurora Store ?</string>
     <string name="confirm_deeplink_sheet_message">Une appli externe veut ouvrir Aurora Store</string>
     <string name="confirm_deeplink_sheet_source">Ouvert à partir de %1$s</string>
     <string name="title_install_favourites">Installer les favoris ?</string>
@@ -632,4 +632,19 @@
     <string name="manual_download_no_versions">Aucune version connue n\'a été trouvée</string>
     <string name="manual_download_availability_warning">Certaines versions peuvent ne pas être disponibles au téléchargement ou être incompatibles avec votre appareil.</string>
     <string name="details_more_certificate_hash">Empreinte numérique du certificat</string>
+    <string name="action_free_up_space">Libérer de l’espace</string>
+    <string name="insufficient_storage_title">L’espace est insuffisant</string>
+    <string name="insufficient_storage_desc">%1$s demande %2$s, mais l’espace libre est %3$s.</string>
+    <string name="insufficient_storage_hint">Libérez %1$s et réessayez.</string>
+    <string name="status_awaiting_install">En attente de confirmation</string>
+    <string name="notification_install_prompt_pending">Touchez pour finir l’installation</string>
+    <string name="details_more_files">Fichiers</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d appli demande %2$s, mais l’espace libre est insuffisant : %3$s.</item>
+        <item quantity="many">%1$d applis demandent %2$s, mais l’espace libre est insuffisant : %3$s.</item>
+        <item quantity="other">%1$d applis demandent %2$s, mais l’espace libre est insuffisant : %3$s.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Date de téléchargement</string>
+    <string name="notification_none">Il n’y a rien ici</string>
+    <string name="installer_provider">%1$s · Servi par %2$s</string>
 </resources>
