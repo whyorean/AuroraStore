@@ -48,7 +48,9 @@ fun AuroraListItem(
             .fillMaxWidth()
             .then(
                 if (onClick != null) {
-                    Modifier.clickable(enabled = enabled, onClick = onClick)
+                    Modifier
+                        .clickable(enabled = enabled, onClick = onClick)
+                        .focusHighlight()
                 } else {
                     Modifier
                 }

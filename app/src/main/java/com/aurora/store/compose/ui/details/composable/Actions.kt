@@ -20,6 +20,8 @@ import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -39,6 +41,8 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * @param onPrimaryAction Callback when the primary action is clicked
  * @param onSecondaryAction Callback when the secondary action is clicked
  * @param windowAdaptiveInfo Adaptive window information
+ * @param primaryActionFocusRequester Focus requester for the primary action, so the initial
+ * focus can be landed on it (D-pad only)
  */
 @Composable
 fun Actions(
@@ -48,7 +52,8 @@ fun Actions(
     isSecondaryActionEnabled: Boolean = true,
     onPrimaryAction: () -> Unit = {},
     onSecondaryAction: () -> Unit = {},
-    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
+    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2(),
+    primaryActionFocusRequester: FocusRequester? = null
 ) {
     Row(
         modifier = Modifier
@@ -74,7 +79,11 @@ fun Actions(
         }
 
         Button(
-            modifier = buttonWidthModifier,
+            modifier = if (primaryActionFocusRequester != null) {
+                buttonWidthModifier.focusRequester(primaryActionFocusRequester)
+            } else {
+                buttonWidthModifier
+            },
             onClick = onPrimaryAction,
             enabled = isPrimaryActionEnabled
         ) {

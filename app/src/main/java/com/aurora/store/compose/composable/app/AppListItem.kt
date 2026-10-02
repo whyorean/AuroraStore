@@ -32,6 +32,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
+import com.aurora.store.compose.composable.focusHighlight
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -48,6 +49,7 @@ fun AppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Unit = {
         modifier = modifier
             .width(dimensionResource(R.dimen.icon_size_cluster))
             .clickable(onClick = onClick)
+            .focusHighlight()
             .padding(all = dimensionResource(R.dimen.spacing_xsmall)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(

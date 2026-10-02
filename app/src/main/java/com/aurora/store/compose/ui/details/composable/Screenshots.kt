@@ -25,6 +25,7 @@ import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.Artwork
 import com.aurora.store.R
 import com.aurora.store.compose.composable.details.ScreenshotListItem
+import com.aurora.store.compose.composable.focusHighlight
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -49,7 +50,8 @@ fun Screenshots(screenshots: List<Artwork>, onNavigateToScreenshot: (index: Int)
                 modifier = Modifier
                     .height(dimensionResource(R.dimen.screenshot_height))
                     .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))
-                    .clickable { onNavigateToScreenshot(distinctScreenshots.indexOf(artwork)) },
+                    .clickable { onNavigateToScreenshot(distinctScreenshots.indexOf(artwork)) }
+                    .focusHighlight(),
                 url = "${artwork.url}=rw-w480-v1-e15"
             )
         }
