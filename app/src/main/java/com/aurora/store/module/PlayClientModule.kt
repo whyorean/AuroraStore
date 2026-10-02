@@ -48,6 +48,7 @@ object PlayClientModule {
         engine = engine,
         device = { spoofProvider.deviceProfile() },
         locale = { spoofProvider.locale },
+        additionalLocales = { spoofProvider.additionalLocales },
         authenticated = authSessionSource,
         logger = AndroidLogger
     )
@@ -73,6 +74,7 @@ object PlayClientModule {
         engine = engine,
         device = { spoofProvider.deviceProfile() },
         locale = { spoofProvider.locale },
+        additionalLocales = { spoofProvider.additionalLocales },
         authenticated = null,
         logger = AndroidLogger
     )

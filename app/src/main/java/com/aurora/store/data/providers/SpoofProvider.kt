@@ -16,11 +16,13 @@ import com.aurora.gplayapi.device.DeviceProfile
 import com.aurora.gplayapi.device.DeviceRegistry
 import com.aurora.store.R
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_SYSTEM_LANGUAGES
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Locale
 import java.util.Properties
 import javax.inject.Inject
+import androidx.core.app.LocaleManagerCompat
 import javax.inject.Singleton
 import kotlinx.serialization.json.Json
 
@@ -100,6 +102,39 @@ class SpoofProvider @Inject constructor(
         } else {
             Locale.getDefault()
         }.withPlayRegion()
+
+    /**
+     * The languages to fetch split APKs for beyond [locale], which gplayapi sends as
+     * `X-DFE-UserLanguages` - Play answers with one `config.<lang>.apk` per entry.
+     *
+     * Sourced from the languages the user has actually configured in Android settings
+     * rather than a picker of our own: someone who reads English and German has already
+     * said so there, and the Play Store itself reads the same list. [locale] is dropped
+     * from it, since Play always sends that one and naming it twice would ask for a
+     * duplicate split.
+     *
+     * [LocaleManagerCompat.getSystemLocales], not the app's own
+     * `resources.configuration.locales`: that one is resolved against the languages Aurora
+     * itself ships translations for, so a user who reads a language Aurora has not been
+     * translated into would never be offered its split.
+     *
+     * Off by default, and a toggle rather than always-on, because every extra language is
+     * a bigger download - Google Maps grows about 5 MB across four of them - and that is
+     * the user's call to make, not ours.
+     */
+    val additionalLocales: List<Locale>
+        get() {
+            if (!Preferences.getBoolean(context, PREFERENCE_DOWNLOAD_SYSTEM_LANGUAGES)) {
+                return emptyList()
+            }
+
+            val primary = locale.language
+            val configured = LocaleManagerCompat.getSystemLocales(context)
+            return (0 until configured.size())
+                .mapNotNull { configured[it] }
+                .filter { it.language.isNotBlank() && it.language != primary }
+                .distinctBy { it.language }
+        }
 
     /**
      * [deviceProperties] as a v4 [DeviceProfile] - what `PlayClientModule`'s `SessionProvider`

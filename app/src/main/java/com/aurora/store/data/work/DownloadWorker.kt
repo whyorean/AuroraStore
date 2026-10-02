@@ -439,11 +439,7 @@ class DownloadWorker @AssistedInject constructor(
      * requires.
      *
      * Android 9.0+ supports signing-key rotation, so an update of an already-installed app
-     * carries the installed certificate's hash. `requireCertificateHash` marks that hash
-     * load-bearing only for an app that actually rotated: the anonymous delivery endpoint
-     * accepts no hash at all, and gplayapi then refuses rather than answering with files that
-     * would fail to install over the installed key
-     * ([PlayException.RequiresAccount], surfaced by [onFailure]).
+     * carries the installed certificate's hash; both delivery endpoints take it as `ch`.
      *
      * The installed-app check reads [download]'s package rather than [packageName], so a shared
      * library is asked for with the parent app's certificate hash. That is v3's behaviour kept
@@ -462,15 +458,12 @@ class DownloadWorker @AssistedInject constructor(
         } else {
             null
         }
-        val requireCertificateHash = updatingInstalled &&
-            CertUtil.hasRotatedSigningKey(context, download.packageName)
 
         suspend fun resolveWith(client: PlayClient) = client.delivery.resolve(
             packageName = packageName,
             versionCode = versionCode,
             offerType = offerType,
-            certificateHash = certificateHash,
-            requireCertificateHash = requireCertificateHash
+            certificateHash = certificateHash
         )
 
         // With no signed-in account the fallback below has nothing better to offer - its
@@ -480,12 +473,10 @@ class DownloadWorker @AssistedInject constructor(
             return resolveWith(deliveryClient)
         }
 
-        // Three things the account-less endpoint cannot serve: a paid app, anything Play
-        // scopes to a library, and an app whose signing key rotated (it accepts no
-        // certificate hash, so gplayapi refuses rather than hand back files that would fail
-        // to install over the installed key). Each is a refusal, not a transport error, and
-        // each is exactly what the signed-in account is still here for - so retry once on it
-        // and pin the rest of this download to it.
+        // Two things the account-less endpoint cannot serve: a paid app, and anything Play
+        // scopes to a library. Each is a refusal, not a transport error, and each is exactly
+        // what the signed-in account is still here for - so retry once on it and pin the rest
+        // of this download to it.
         return try {
             resolveWith(noAuthPlayClient)
         } catch (exception: PlayException) {

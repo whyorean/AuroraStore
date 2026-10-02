@@ -33,6 +33,7 @@ import java.io.IOException
 import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -68,13 +69,24 @@ class AuthProvider @Inject constructor(
     @Volatile
     private var cacheWarm = false
 
+    /**
+     * Completed by the [init] collector's first emission, or when that collector fails, so
+     * [currentSession] can tell "not loaded yet" from "no account".
+     */
+    private val firstLoad = CompletableDeferred<Unit>()
+
     init {
         AuroraApp.scope.launch {
-            importLegacyAccountIfNeeded()
-            accountRepository.defaultAccount.collect { account ->
-                cachedDefault = account
-                cachedAuthData = decodeAuthData(account)
-                cacheWarm = true
+            try {
+                importLegacyAccountIfNeeded()
+                accountRepository.defaultAccount.collect { account ->
+                    cachedDefault = account
+                    cachedAuthData = decodeAuthData(account)
+                    cacheWarm = true
+                    firstLoad.complete(Unit)
+                }
+            } finally {
+                firstLoad.complete(Unit)
             }
         }
     }
@@ -97,12 +109,16 @@ class AuthProvider @Inject constructor(
      * The default account mapped onto a v4 [AuthenticatedSession], for gplayapi v4's
      * [com.aurora.gplayapi.session.AuthSessionSource] contract - resolved several times per API
      * call and documented there as needing to be cheap: no disk, no network, on every
-     * invocation. Reads only the [init] collector's warm cache; `null` before it is warm or
-     * when the default account has no usable session yet, rather than [defaultAccountSnapshot]'s
-     * blocking query - either case is exactly what "no signed-in account" already means to
-     * [com.aurora.gplayapi.session.DefaultSessionProvider], which falls back to anonymous.
+     * invocation. Reads only the [init] collector's cache, suspending until its first emission:
+     * `null` means the default account has no usable session, which
+     * [com.aurora.gplayapi.session.DefaultSessionProvider] answers by minting an anonymous one.
+     * Answering `null` while the cache is still loading would mint one on every cold start that
+     * reaches Play before the account database does, such as a deep link into app details.
      */
-    internal fun currentSession(): AuthenticatedSession? = if (cacheWarm) cachedAuthData else null
+    internal suspend fun currentSession(): AuthenticatedSession? {
+        firstLoad.await()
+        return cachedAuthData
+    }
 
     /**
      * The default account: from the in-memory cache when warm, otherwise a one-off blocking query
