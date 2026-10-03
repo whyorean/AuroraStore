@@ -9,8 +9,8 @@ import com.aurora.gplayapi.PlayClient
 import com.aurora.gplayapi.android.AndroidLogger
 import com.aurora.gplayapi.engine.OkHttpEngine
 import com.aurora.gplayapi.net.HttpEngine
-import com.aurora.gplayapi.session.DefaultSessionProvider
-import com.aurora.gplayapi.session.SessionProvider
+import com.aurora.gplayapi.session.DefaultPlaySessions
+import com.aurora.gplayapi.session.PlaySessions
 import com.aurora.gplayapi.web.WebPlayClient
 import com.aurora.store.data.providers.AuroraAuthSessionSource
 import com.aurora.store.data.providers.SpoofProvider
@@ -22,7 +22,7 @@ import javax.inject.Singleton
 import okhttp3.OkHttpClient
 
 /**
- * Wires the gplayapi v4 object graph: one [PlayClient] whose [SessionProvider] resolves per
+ * Wires the gplayapi v4 object graph: one [PlayClient] whose [PlaySessions] resolves per
  * call, replacing what v3 needed twelve captured-`AuthData` helpers for (spec defect #1).
  */
 @Module
@@ -40,11 +40,11 @@ object PlayClientModule {
      */
     @Singleton
     @Provides
-    fun providesPlaySessionProvider(
+    fun providesPlaySessions(
         engine: HttpEngine,
         spoofProvider: SpoofProvider,
         authSessionSource: AuroraAuthSessionSource
-    ): SessionProvider = DefaultSessionProvider(
+    ): PlaySessions = DefaultPlaySessions(
         engine = engine,
         device = { spoofProvider.deviceProfile() },
         locale = { spoofProvider.locale },
@@ -55,7 +55,7 @@ object PlayClientModule {
 
     @Singleton
     @Provides
-    fun providesPlayClient(engine: HttpEngine, sessions: SessionProvider): PlayClient =
+    fun providesPlayClient(engine: HttpEngine, sessions: PlaySessions): PlayClient =
         PlayClient(engine, sessions, AndroidLogger)
 
     /**
@@ -67,10 +67,10 @@ object PlayClientModule {
     @NoAuth
     @Singleton
     @Provides
-    fun providesNoAuthSessionProvider(
+    fun providesNoAuthPlaySessions(
         engine: HttpEngine,
         spoofProvider: SpoofProvider
-    ): SessionProvider = DefaultSessionProvider(
+    ): PlaySessions = DefaultPlaySessions(
         engine = engine,
         device = { spoofProvider.deviceProfile() },
         locale = { spoofProvider.locale },
@@ -84,7 +84,7 @@ object PlayClientModule {
     @Provides
     fun providesNoAuthPlayClient(
         engine: HttpEngine,
-        @NoAuth sessions: SessionProvider
+        @NoAuth sessions: PlaySessions
     ): PlayClient = PlayClient(engine, sessions, AndroidLogger)
 
     /**

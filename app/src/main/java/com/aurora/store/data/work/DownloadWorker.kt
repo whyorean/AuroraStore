@@ -32,7 +32,7 @@ import com.aurora.gplayapi.PlayException
 import com.aurora.gplayapi.android.AndroidLogger
 import com.aurora.gplayapi.model.AppFile
 import com.aurora.gplayapi.net.HttpEngine
-import com.aurora.gplayapi.session.SessionProvider
+import com.aurora.gplayapi.session.PlaySessions
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.AccountRepository
@@ -430,7 +430,7 @@ class DownloadWorker @AssistedInject constructor(
         val boundAccountId = accountRepository.boundAccountId(packageName)
             ?: return noAuthPlayClient
         val session = authProvider.sessionFor(boundAccountId)
-        return PlayClient(httpEngine, SessionProvider { session }, AndroidLogger)
+        return PlayClient(httpEngine, PlaySessions { session }, AndroidLogger)
     }
 
     /**

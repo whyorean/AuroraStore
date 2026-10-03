@@ -111,7 +111,7 @@ class AuthProvider @Inject constructor(
      * call and documented there as needing to be cheap: no disk, no network, on every
      * invocation. Reads only the [init] collector's cache, suspending until its first emission:
      * `null` means the default account has no usable session, which
-     * [com.aurora.gplayapi.session.DefaultSessionProvider] answers by minting an anonymous one.
+     * [com.aurora.gplayapi.session.DefaultPlaySessions] answers by minting an anonymous one.
      * Answering `null` while the cache is still loading would mint one on every cold start that
      * reaches Play before the account database does, such as a deep link into app details.
      */

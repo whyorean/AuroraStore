@@ -137,7 +137,7 @@ class SpoofProvider @Inject constructor(
         }
 
     /**
-     * [deviceProperties] as a v4 [DeviceProfile] - what `PlayClientModule`'s `SessionProvider`
+     * [deviceProperties] as a v4 [DeviceProfile] - what `PlayClientModule`'s `PlaySessions`
      * and `AuthProvider` build sessions against.
      *
      * A device config selected before gplayapi v4 validated (33 required keys, 11 numeric)

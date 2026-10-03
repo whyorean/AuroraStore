@@ -8,7 +8,7 @@ package com.aurora.store.viewmodel.topchart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.gplayapi.api.Chart
+import com.aurora.gplayapi.api.TopChartType
 import com.aurora.gplayapi.model.ContentType
 import com.aurora.gplayapi.model.StreamCluster
 import com.aurora.gplayapi.web.WebPlayClient
@@ -39,7 +39,7 @@ class TopChartViewModel @Inject constructor(
     private val _state = MutableStateFlow<ViewState>(ViewState.Loading)
     val state: StateFlow<ViewState> = _state.asStateFlow()
 
-    fun getStreamCluster(type: ContentType, chart: Chart) {
+    fun getStreamCluster(type: ContentType, chart: TopChartType) {
         viewModelScope.launch(Dispatchers.IO) {
             if (targetCluster(type, chart).apps.isNotEmpty()) {
                 _state.value = ViewState.Success(targetCluster(type, chart))
@@ -58,6 +58,6 @@ class TopChartViewModel @Inject constructor(
         }
     }
 
-    private fun targetCluster(type: ContentType, chart: Chart): StreamCluster =
+    private fun targetCluster(type: ContentType, chart: TopChartType): StreamCluster =
         stash.getOrPut(type) { mutableMapOf() }.getOrPut(chart) { StreamCluster.EMPTY }
 }

@@ -29,7 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.aurora.gplayapi.api.Chart
+import com.aurora.gplayapi.api.TopChartType
 import com.aurora.gplayapi.model.App
 import com.aurora.gplayapi.model.ContentType
 import com.aurora.gplayapi.model.StreamCluster
@@ -50,10 +50,10 @@ internal fun TopChartsContent(
     onAppClick: (App) -> Unit
 ) {
     val charts = listOf(
-        Chart.TOP_SELLING_FREE,
-        Chart.TOP_GROSSING,
-        Chart.MOVERS_SHAKERS,
-        Chart.TOP_SELLING_PAID
+        TopChartType.TOP_SELLING_FREE,
+        TopChartType.TOP_GROSSING,
+        TopChartType.MOVERS_SHAKERS,
+        TopChartType.TOP_SELLING_PAID
     )
     val chartTitles = listOf(
         R.string.tab_top_free,

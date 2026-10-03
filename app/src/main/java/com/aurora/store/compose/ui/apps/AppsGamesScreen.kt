@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.aurora.gplayapi.api.Chart
+import com.aurora.gplayapi.api.TopChartType
 import com.aurora.gplayapi.model.ContentType
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Destination
@@ -52,7 +52,7 @@ fun AppsGamesScreen(
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
-        topChartViewModel.getStreamCluster(category(pageType), Chart.TOP_SELLING_FREE)
+        topChartViewModel.getStreamCluster(category(pageType), TopChartType.TOP_SELLING_FREE)
     }
 
     val isForYouEnabled = Preferences.getBoolean(context, Preferences.PREFERENCE_FOR_YOU)

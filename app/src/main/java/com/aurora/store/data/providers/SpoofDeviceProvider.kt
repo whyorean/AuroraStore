@@ -39,7 +39,7 @@ open class SpoofDeviceProvider(private val context: Context) {
         }
 
     private val spoofDevicesFromLibrary: List<Properties>
-        get() = DeviceRegistry.available().map { it.properties }
+        get() = DeviceRegistry.available().map { it.toProperties() }
 
     /**
      * A user-imported `.properties` file predates gplayapi v4's validation (33 required keys,
@@ -69,7 +69,7 @@ open class SpoofDeviceProvider(private val context: Context) {
         return try {
             BufferedInputStream(FileInputStream(file)).use { raw.load(it) }
             val profile = DeviceRegistry.parse(file.name, raw)
-            profile.properties.apply { setProperty("CONFIG_NAME", file.name) }
+            profile.toProperties().apply { setProperty("CONFIG_NAME", file.name) }
         } catch (exception: IOException) {
             Log.e(TAG, "Could not read ${file.name}", exception)
             null
