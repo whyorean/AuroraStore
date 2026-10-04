@@ -58,6 +58,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 fun DevProfileScreen(
     developerId: String,
     onNavigateTo: (Destination) -> Unit,
+    fallbackTitle: String = developerId,
     viewModel: DevProfileViewModel = hiltViewModel()
 ) {
     val state by viewModel.liveData.observeAsState()
@@ -67,7 +68,8 @@ fun DevProfileScreen(
     val devStream = (state as? ViewState.Success<*>)?.data as? DeveloperStream
 
     DevStreamContent(
-        title = devStream?.title?.takeIf { it.isNotBlank() } ?: developerId,
+        // Play sends some device profiles the page's apps without its header
+        title = devStream?.title?.takeIf { it.isNotBlank() } ?: fallbackTitle,
         streamBundle = devStream?.streamBundle,
         isError = state is ViewState.Error,
         onRetry = { viewModel.getStreamBundle(developerId) },

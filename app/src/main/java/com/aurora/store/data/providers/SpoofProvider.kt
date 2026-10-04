@@ -86,15 +86,31 @@ class SpoofProvider @Inject constructor(
      * [PINNED_GSF_VERSION]) and, on Huawei hardware, the Pixel 7a substitution
      * ([stripHuaweiProperties]), which depends on Aurora's own [isHuawei] and chooses which
      * device to present rather than reading the one actually running.
+     *
+     * Returns a fresh copy of [cachedNativeDeviceProperties] each time, since callers such as
+     * [setVendingVersion] write into it.
      */
     val nativeDeviceProperties: Properties
-        get() {
-            val properties = NativeDeviceProperties.read(context)
-            properties.setProperty("GSF.version", PINNED_GSF_VERSION)
-            properties.setProperty("Vending.version", PINNED_VENDING_VERSION)
-            properties.setProperty("Vending.versionString", PINNED_VENDING_VERSION_STRING)
-            return if (isHuawei) stripHuaweiProperties(properties) else properties
-        }
+        get() = Properties().apply { putAll(cachedNativeDeviceProperties) }
+
+    /**
+     * Read once per process. [deviceProfile] backs every Play call through gplayapi's session
+     * supplier, and [NativeDeviceProperties.read] enumerates every EGL config, so reading it
+     * per call cost GPU-driver work on each request.
+     *
+     * Deliberately never refreshed mid-process: gplayapi only uses the signed-in session while
+     * its device fingerprint matches this profile, so a profile that moved under a running
+     * process (a display-size change, a keyboard plugged in) would silently drop every call to
+     * an anonymous session until restart. Frozen, the session keeps matching; the next cold
+     * start sees the new profile and AuthProvider re-authenticates against it.
+     */
+    private val cachedNativeDeviceProperties: Properties by lazy {
+        val properties = NativeDeviceProperties.read(context)
+        properties.setProperty("GSF.version", PINNED_GSF_VERSION)
+        properties.setProperty("Vending.version", PINNED_VENDING_VERSION)
+        properties.setProperty("Vending.versionString", PINNED_VENDING_VERSION_STRING)
+        if (isHuawei) stripHuaweiProperties(properties) else properties
+    }
 
     val locale: Locale
         get() = if (isLocaleSpoofEnabled) {

@@ -815,10 +815,20 @@ private fun ScreenContentApp(
             onProceed = { onInstall(ignoreMicroG = true) }
         )
 
-        is Screen.DevProfile -> DevProfileScreen(
-            publisherId = app.developerName,
-            onNavigateTo = onNavigateTo
-        )
+        // Play gives a developer id only to developers with a developer page; the rest are
+        // reached through a pub: search on their name
+        is Screen.DevProfile -> if (app.developerId.isNotBlank()) {
+            DevProfileScreen(
+                developerId = app.developerId,
+                onNavigateTo = onNavigateTo,
+                fallbackTitle = app.developerName
+            )
+        } else {
+            DevProfileScreen(
+                publisherId = app.developerName,
+                onNavigateTo = onNavigateTo
+            )
+        }
 
         is Screen.PermissionRationale -> PermissionRationaleScreen(
             requiredPermissions = screen.requiredPermissions,
