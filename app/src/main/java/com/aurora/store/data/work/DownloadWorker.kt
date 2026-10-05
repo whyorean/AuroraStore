@@ -30,7 +30,9 @@ import com.aurora.extensions.requiresObbDir
 import com.aurora.gplayapi.PlayClient
 import com.aurora.gplayapi.PlayException
 import com.aurora.gplayapi.android.AndroidLogger
+import com.aurora.gplayapi.android.InstalledPatchBase
 import com.aurora.gplayapi.model.AppFile
+import com.aurora.gplayapi.model.PatchFormat
 import com.aurora.gplayapi.net.HttpEngine
 import com.aurora.gplayapi.session.PlaySessions
 import com.aurora.store.AuroraApp
@@ -48,6 +50,7 @@ import com.aurora.store.data.providers.GoogleAccountTokenProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.module.NoAuth
+import com.aurora.store.util.BsPatch
 import com.aurora.store.util.CertUtil
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
@@ -126,6 +129,10 @@ class DownloadWorker @AssistedInject constructor(
     // verification gate doesn't hash large APKs a second time.
     private val verifiedFiles = mutableSetOf<String>()
 
+    // The installed copy this run asked Play for patches against, whose base APK hashes
+    // planPatches reuses instead of hashing that file a second time.
+    private var patchBase: InstalledPatchBase? = null
+
     inner class NoNetworkException : Exception(context.getString(R.string.title_no_network))
     inner class NothingToDownloadException : Exception(context.getString(R.string.purchase_no_file))
     inner class DownloadFailedException : Exception(context.getString(R.string.download_failed))
@@ -136,6 +143,10 @@ class DownloadWorker @AssistedInject constructor(
         Exception(context.getString(R.string.verification_failed))
 
     inner class ExpiredUrlException : Exception(context.getString(R.string.download_failed))
+
+    inner class PatchTooLargeException : Exception("Patch exceeds its declared maximum size")
+
+    inner class PatchVerificationException : Exception("Patched file failed verification")
 
     inner class InsufficientStorageException :
         Exception(context.getString(R.string.download_failed_storage))
@@ -224,9 +235,23 @@ class DownloadWorker @AssistedInject constructor(
         }
         files.addAll(download.fileList)
 
+        // Files Play patched against the installed copy are fetched as patches, which progress
+        // counts by the patch's bytes rather than the whole file's.
+        val patchSources = try {
+            planPatches().toMutableMap()
+        } catch (exception: CancellationException) {
+            throw exception
+        } catch (exception: Exception) {
+            Log.w(TAG, "Failed to plan patches for ${download.packageName}", exception)
+            mutableMapOf()
+        } catch (error: LinkageError) {
+            Log.w(TAG, "Failed to plan patches for ${download.packageName}", error)
+            mutableMapOf()
+        }
+
         // Update data for notification
         download.totalFiles = files.size
-        totalBytes = files.sumOf { it.size }
+        totalBytes = files.sumOf { if (it in patchSources) patchEstimate(it) else it.size }
 
         // Update database with all latest purchases
         downloadDao.updateFiles(download.packageName, download.fileList)
@@ -235,8 +260,24 @@ class DownloadWorker @AssistedInject constructor(
         // Fail fast (and let the system free its cache) if there isn't room for the download,
         // instead of dying mid-write with a partial file. Only the not-yet-downloaded bytes
         // need to fit.
+        // A patched file needs room for its patch and for the file rebuilt from it.
         try {
-            ensureStorageAvailable(totalBytes - downloadedBytesOnDisk(files))
+            val onDisk = downloadedBytesOnDisk(files)
+            val fullBytes = files.sumOf { it.size }
+            try {
+                ensureStorageAvailable(
+                    fullBytes + patchSources.keys.sumOf { patchEstimate(it) } - onDisk
+                )
+            } catch (exception: InsufficientStorageException) {
+                if (patchSources.isEmpty()) throw exception
+                Log.i(TAG, "No room to apply patches for ${download.packageName} -> full download")
+                patchSources.keys.forEach {
+                    deletePatchFiles(PathUtil.getLocalFile(context, it, download))
+                }
+                patchSources.clear()
+                totalBytes = fullBytes
+                ensureStorageAvailable(fullBytes - downloadedBytesOnDisk(files))
+            }
         } catch (exception: Exception) {
             return onFailure(exception)
         }
@@ -248,7 +289,10 @@ class DownloadWorker @AssistedInject constructor(
                     throw DownloadCancelledException()
                 }
 
-                downloadFile(download.packageName, file)
+                val installed = patchSources[file]
+                if (installed == null || !downloadPatched(download.packageName, file, installed)) {
+                    downloadFile(download.packageName, file)
+                }
                 download.downloadedFiles++
             }
         } catch (exception: Exception) {
@@ -445,6 +489,10 @@ class DownloadWorker @AssistedInject constructor(
      * library is asked for with the parent app's certificate hash. That is v3's behaviour kept
      * as found; nothing here can establish what Play does with a hash that belongs to a
      * different package.
+     *
+     * An update of [download]'s own app also describes the installed copy (`bvc`, `bda`, `bf`)
+     * so Play can attach a patch to each file it can patch; a shared library never does, since
+     * the installed copy described is the parent app's.
      */
     private suspend fun resolveFiles(
         packageName: String,
@@ -459,11 +507,25 @@ class DownloadWorker @AssistedInject constructor(
             null
         }
 
+        val base = if (packageName == download.packageName) readPatchBase() else null
+        if (base != null) {
+            patchBase = base
+            Log.i(
+                TAG,
+                "Patch requested for $packageName against installed ${base.versionCode} " +
+                    "(derived APK id ${if (base.derivedApkId != null) "present" else "absent"})"
+            )
+        }
+
         suspend fun resolveWith(client: PlayClient) = client.delivery.resolve(
             packageName = packageName,
             versionCode = versionCode,
             offerType = offerType,
-            certificateHash = certificateHash
+            certificateHash = certificateHash,
+            installedVersionCode = base?.versionCode,
+            patchFormats = listOf(PatchFormat.GZIPPED_BSDIFF),
+            installedDerivedApkId = base?.derivedApkId,
+            installedFrostingId = base?.frostingId
         )
 
         // With no signed-in account the fallback below has nothing better to offer - its
@@ -491,6 +553,117 @@ class DownloadWorker @AssistedInject constructor(
                 else -> throw exception
             }
         }
+    }
+
+    /**
+     * The installed copy of [download]'s app to ask Play for patches against, or `null` when this
+     * is not an update of it: the app is not installed, is already at or past the target
+     * version, or its signing certificate cannot be read. Hashes the whole installed base APK.
+     */
+    private suspend fun readPatchBase(): InstalledPatchBase? {
+        val packageName = download.packageName
+        if (!PackageUtil.isInstalled(context, packageName)) return null
+        if (PackageUtil.isInstalled(context, packageName, download.versionCode)) return null
+        if (CertUtil.getEncodedCertificateHashes(context, packageName).isEmpty()) return null
+        return withContext(Dispatchers.IO) {
+            try {
+                InstalledPatchBase.read(context, packageName)
+            } catch (exception: Exception) {
+                Log.w(TAG, "Failed to read the installed copy of $packageName", exception)
+                null
+            }
+        }
+    }
+
+    /**
+     * Picks which of [download]'s files to fetch as a patch, keyed to the installed file each
+     * patch applies to. A file qualifies only when Play served a `GZIPPED_BSDIFF` patch and the
+     * installed counterpart's hash is the patch's base: SHA-256 when Play sends one, else SHA-1.
+     */
+    private suspend fun planPatches(): Map<AppFile, File> = withContext(Dispatchers.IO) {
+        val plan = mutableMapOf<AppFile, File>()
+        for (file in download.fileList) {
+            val patch = file.patch ?: continue
+            if (file.type != AppFile.Type.BASE && file.type != AppFile.Type.SPLIT) continue
+            if (patch.format != PatchFormat.GZIPPED_BSDIFF.value || patch.url.isBlank()) {
+                Log.i(TAG, "Patch for ${file.name} is format ${patch.format}, using full download")
+                continue
+            }
+
+            val installed = installedCounterpart(file)
+            if (installed == null) {
+                Log.i(TAG, "Patch base missing for ${file.name} -> full download")
+                continue
+            }
+
+            val matches = try {
+                if (patch.baseSha256.isNotBlank()) {
+                    patch.baseSha256.equals(installedHash(installed, Algorithm.SHA256), true)
+                } else {
+                    patch.baseSha1.isNotBlank() &&
+                        patch.baseSha1.equals(installedHash(installed, Algorithm.SHA1), true)
+                }
+            } catch (exception: Exception) {
+                Log.w(TAG, "Failed to hash the installed ${file.name}", exception)
+                false
+            }
+
+            if (matches) {
+                plan[file] = installed
+            } else {
+                Log.i(TAG, "Patch base mismatch for ${file.name} -> full download")
+            }
+        }
+        plan
+    }
+
+    /**
+     * The installed file [file]'s patch applies to: the base APK, or the installed split of the
+     * same name. Split files are named `<split name>.apk`, and `PackageInfo.splitNames` lines up
+     * with `ApplicationInfo.splitSourceDirs` index for index; `ApplicationInfo.splitNames` is
+     * API 26, so it is not the one read.
+     */
+    private fun installedCounterpart(file: AppFile): File? {
+        val packageInfo = try {
+            PackageUtil.getPackageInfo(context, download.packageName)
+        } catch (_: Exception) {
+            null
+        } ?: return null
+        val applicationInfo = packageInfo.applicationInfo ?: return null
+
+        val path = if (file.type == AppFile.Type.BASE) {
+            applicationInfo.sourceDir
+        } else {
+            val splitName = file.name.removeSuffix(".apk")
+            // Null, not empty, when the app has no splits.
+            val splitNames: Array<String>? = packageInfo.splitNames
+            val index = splitNames?.indexOf(splitName) ?: -1
+            if (index >= 0) applicationInfo.splitSourceDirs?.getOrNull(index) else null
+        }
+        return path?.let { File(it) }?.takeIf { it.isFile }
+    }
+
+    @OptIn(ExperimentalStdlibApi::class)
+    private fun installedHash(file: File, algorithm: Algorithm): String {
+        patchBase?.takeIf { it.baseApkPath == file.absolutePath }?.let {
+            return if (algorithm == Algorithm.SHA256) it.baseApkSha256 else it.baseApkSha1
+        }
+        val digest = MessageDigest.getInstance(algorithm.value)
+        file.inputStream().use { input ->
+            val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+            while (true) {
+                val read = input.read(buffer)
+                if (read < 0) break
+                digest.update(buffer, 0, read)
+            }
+        }
+        return digest.digest().toHexString()
+    }
+
+    /** The bytes a patch is expected to take, for progress and storage before its size is known. */
+    private fun patchEstimate(file: AppFile): Long {
+        val maxSize = file.patch?.maxSize ?: 0L
+        return if (maxSize > 0) minOf(maxSize, file.size) else file.size
     }
 
     /**
@@ -524,6 +697,110 @@ class DownloadWorker @AssistedInject constructor(
                 return@withContext true
             }
 
+            transfer(gFile.url, file, gFile.size)
+            return@withContext true
+        }
+    }
+
+    /**
+     * Fetches [gFile] as its patch applied to [installed], and verifies the result against
+     * [gFile]'s own hash before it takes the path a full download would use.
+     *
+     * Returns `false`, having removed everything it wrote, when the patch cannot be fetched,
+     * applied or verified; the caller then downloads the whole file. Lost connectivity, a stop
+     * and an expired URL propagate instead, since a full download would meet them too.
+     */
+    private suspend fun downloadPatched(
+        packageName: String,
+        gFile: AppFile,
+        installed: File
+    ): Boolean {
+        val patch = gFile.patch ?: return false
+        val file = PathUtil.getLocalFile(context, gFile, download)
+        var accounted = patchEstimate(gFile)
+
+        if (file.exists() && verifyFile(gFile)) {
+            Log.i(TAG, "$file is already downloaded!")
+            downloadedBytes += accounted
+            verifiedFiles.add(file.absolutePath)
+            return true
+        }
+
+        val patchFile = File(file.absolutePath + ".patch")
+        val patchedFile = File(file.absolutePath + ".patched")
+        val countedBefore = downloadedBytes
+        Log.i(TAG, "Downloading $packageName @ ${gFile.name} as a patch")
+
+        try {
+            if (patchFile.exists() && (patch.maxSize <= 0 || patchFile.length() <= patch.maxSize)) {
+                downloadedBytes += patchFile.length()
+                totalBytes += patchFile.length() - accounted
+                accounted = patchFile.length()
+            } else {
+                transfer(patch.url, patchFile, accounted, patch.maxSize) { length ->
+                    totalBytes += length - accounted
+                    accounted = length
+                }
+            }
+
+            withContext(Dispatchers.IO) {
+                BsPatch.applyFile(installed, patchFile, patchedFile, gFile.size) {
+                    if (isStopped) throw CancellationException("Download stopped")
+                }
+            }
+
+            if (!verifyFile(gFile, patchedFile)) throw PatchVerificationException()
+            if (!patchedFile.renameTo(file)) throw IOException("Failed to rename $patchedFile")
+            verifiedFiles.add(file.absolutePath)
+            patchFile.delete()
+            File(file.absolutePath + ".tmp").delete()
+            Log.i(TAG, "Patch applied & verified for $packageName @ ${gFile.name}")
+            return true
+        } catch (exception: Exception) {
+            patchedFile.delete()
+            when (exception) {
+                is NoNetworkException,
+                is ExpiredUrlException,
+                is DownloadCancelledException -> throw exception
+
+                is CancellationException -> throw DownloadCancelledException()
+
+                else -> {}
+            }
+
+            // A stop mid-apply must stay a stop, never turn into a full download.
+            if (isStopped) throw DownloadCancelledException()
+
+            // Exception messages are left out: a transport error can carry the patch's URL.
+            val reason = if (exception is BsPatch.MalformedPatchException) {
+                exception.message
+            } else {
+                exception.javaClass.simpleName
+            }
+            Log.i(TAG, "Patch failed for $packageName @ ${gFile.name} ($reason) -> full download")
+            deletePatchFiles(file)
+            file.delete()
+            totalBytes += gFile.size - accounted + (downloadedBytes - countedBefore)
+            return false
+        }
+    }
+
+    /**
+     * Streams [url] into [file] through `<file>.tmp`, resuming a partial `.tmp` when the server
+     * honours the range, and counting every byte towards the download's progress.
+     *
+     * @param expectedSize the bytes [file] should come to, for per-file progress.
+     * @param maxSize when positive, the transfer fails with [PatchTooLargeException] past it.
+     * @param onLength called with the bytes [file] will come to, when the server says.
+     */
+    private suspend fun transfer(
+        url: String,
+        file: File,
+        expectedSize: Long,
+        maxSize: Long = 0L,
+        onLength: (Long) -> Unit = {}
+    ) {
+        withContext(Dispatchers.IO) {
             try {
                 // Download as a temporary file to avoid installing corrupted files
                 val tmpFile = File(file.absolutePath + ".tmp")
@@ -535,7 +812,7 @@ class DownloadWorker @AssistedInject constructor(
                     headers["Range"] = "bytes=$existingBytes-"
                 }
 
-                val response = get(gFile.url, headers)
+                val response = get(url, headers)
                 if (!response.isSuccessful) {
                     val code = response.code
                     response.close()
@@ -568,12 +845,20 @@ class DownloadWorker @AssistedInject constructor(
                     )
                 }
 
+                var written = if (resuming) existingBytes else 0L
+                val contentLength = response.body.contentLength()
+                if (contentLength >= 0) onLength(written + contentLength)
+
                 response.body.byteStream().use { input ->
                     FileOutputStream(tmpFile, resuming).use {
-                        input.copyTo(it, gFile.size).collect { info ->
+                        input.copyTo(it, expectedSize.coerceAtLeast(1L)).collect { info ->
                             // Abort promptly mid-file when stopped, instead of only checking
                             // between files (a single split can be hundreds of MB).
                             if (isStopped) throw CancellationException("Download stopped")
+                            written += info.bytesCopied
+                            if (maxSize > 0 && written > maxSize) {
+                                throw PatchTooLargeException()
+                            }
                             onProgress(info)
                         }
                     }
@@ -582,8 +867,6 @@ class DownloadWorker @AssistedInject constructor(
                 if (!tmpFile.renameTo(file)) {
                     throw Exception("Failed to remove .tmp extension from $tmpFile")
                 }
-
-                return@withContext true
             } catch (exception: Exception) {
                 when (exception) {
                     is SocketException,
@@ -732,10 +1015,13 @@ class DownloadWorker @AssistedInject constructor(
     /**
      * Verifies integrity of a downloaded [AppFile].
      * @param gFile [AppFile] to verify
+     * @param file the bytes to check against [gFile]'s hash, by default its download path
      */
     @OptIn(ExperimentalStdlibApi::class)
-    private suspend fun verifyFile(gFile: AppFile): Boolean {
-        val file = PathUtil.getLocalFile(context, gFile, download)
+    private suspend fun verifyFile(
+        gFile: AppFile,
+        file: File = PathUtil.getLocalFile(context, gFile, download)
+    ): Boolean {
         Log.i(TAG, "Verifying $file")
 
         val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
@@ -781,18 +1067,35 @@ class DownloadWorker @AssistedInject constructor(
             tmpFile.delete()
             Log.i(TAG, "Deleted Temp: $tmpFile")
         }
+
+        deletePatchFiles(apkFile)
+    }
+
+    /** Removes the patch, its partial download and any half-applied output kept beside [file]. */
+    private fun deletePatchFiles(file: File) {
+        listOf(".patch", ".patch.tmp", ".patched").forEach { suffix ->
+            val patchFile = File(file.absolutePath + suffix)
+            if (patchFile.exists()) {
+                patchFile.delete()
+                Log.i(TAG, "Deleted patch file: $patchFile")
+            }
+        }
     }
 
     /**
-     * Bytes already present on disk (final or partial .tmp) for [files], so the storage check
-     * only requires room for what's still left to fetch.
+     * Bytes already present on disk (final or partial .tmp, or a patch's) for [files], so the
+     * storage check only requires room for what's still left to fetch.
      */
     private fun downloadedBytesOnDisk(files: List<AppFile>): Long = files.sumOf { gFile ->
         val file = PathUtil.getLocalFile(context, gFile, download)
         val tmpFile = File(file.absolutePath + ".tmp")
+        val patchFile = File(file.absolutePath + ".patch")
+        val patchTmpFile = File(file.absolutePath + ".patch.tmp")
         when {
             file.exists() -> file.length()
             tmpFile.exists() -> tmpFile.length()
+            patchFile.exists() -> patchFile.length()
+            patchTmpFile.exists() -> patchTmpFile.length()
             else -> 0L
         }
     }
