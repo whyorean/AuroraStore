@@ -649,10 +649,8 @@
     <string name="preparing_to_install">Preparing to install</string>
     <string name="preparing_to_download">Preparing to download</string>
     <string name="verifying_downloads">Verifying downloads</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permission required</item>
-        <item quantity="other">Permissions required</item>
-    </plurals>
+    <string name="permission_required">Permission required</string>
+    <string name="permissions_required">Permissions required</string>
     <plurals name="insufficient_storage_desc_multiple">
         <item quantity="one">%1$d app needs %2$s, but only %3$s is available.</item>
         <item quantity="other">%1$d apps need %2$s, but only %3$s is available.</item>

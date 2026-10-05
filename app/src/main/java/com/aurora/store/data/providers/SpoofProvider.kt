@@ -7,6 +7,7 @@ package com.aurora.store.data.providers
 
 import android.content.Context
 import android.util.Log
+import androidx.core.app.LocaleManagerCompat
 import com.aurora.extensions.TAG
 import com.aurora.extensions.isHuawei
 import com.aurora.extensions.toast
@@ -22,7 +23,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Locale
 import java.util.Properties
 import javax.inject.Inject
-import androidx.core.app.LocaleManagerCompat
 import javax.inject.Singleton
 import kotlinx.serialization.json.Json
 

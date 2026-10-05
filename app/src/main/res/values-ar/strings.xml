@@ -457,14 +457,8 @@
     <string name="action_filter_no_gms">لا توجد خدمات play</string>
     <string name="manual_download_version_error">يجب أن يحتوي رمز الإصدار على أرقام فقط</string>
     <string name="preparing_to_install">يجهز للتثبيت</string>
-    <plurals name="permissions_required">
-        <item quantity="zero">لا أذونات مطلوبة</item>
-        <item quantity="one">إذن مطلوب</item>
-        <item quantity="two">مطلوب إذنان</item>
-        <item quantity="few">الأذونات مطلوبة</item>
-        <item quantity="many">الأذونات مطلوبة</item>
-        <item quantity="other">إذن مطلوب</item>
-    </plurals>
+    <string name="permission_required">إذن مطلوب</string>
+    <string name="permissions_required">الأذونات مطلوبة</string>
     <string name="installer_microg_misconfigured">فشل مثبت MicroG في تثبيت التطبيق، ويرجع ذلك على الأرجح إلى سوء التضبيط.</string>
     <string name="pref_install_mode_microg">مثبت MicroG</string>
     <string name="microg_installer_subtitle">يتطلب تثبيت تطبيق microG المصاحب</string>

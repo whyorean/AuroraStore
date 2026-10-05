@@ -457,10 +457,8 @@
     <string name="action_filter_no_gms">Ohne Play-Dienste</string>
     <string name="manual_download_version_error">Der Versionscode darf nur Ziffern enthalten</string>
     <string name="preparing_to_install">Vorbereiten zur Installation</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Berechtigung erforderlich</item>
-        <item quantity="other">Berechtigungen erforderlich</item>
-    </plurals>
+    <string name="permission_required">Berechtigung erforderlich</string>
+    <string name="permissions_required">Berechtigungen erforderlich</string>
     <string name="installer_microg_misconfigured">Der MicroG-Installer konnte die App nicht installieren, wahrscheinlich aufgrund einer Fehlkonfiguration.</string>
     <string name="pref_install_mode_microg">MicroG-Installer</string>
     <string name="microg_installer_subtitle">Erfordert die Installation der microG-Companion-App</string>

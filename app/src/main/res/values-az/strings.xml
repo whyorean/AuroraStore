@@ -571,10 +571,8 @@
     <string name="preparing_to_install">Quraşdırmağa hazırlaşır</string>
     <string name="preparing_to_download">Yükləməyə hazırlaşır</string>
     <string name="verifying_downloads">Yükləmələr təsdiqlənir</string>
-    <plurals name="permissions_required">
-        <item quantity="one">İcazə tələb olunur</item>
-        <item quantity="other">İcazələr tələb olunur</item>
-    </plurals>
+    <string name="permission_required">İcazə tələb olunur</string>
+    <string name="permissions_required">İcazələr tələb olunur</string>
     <plurals name="favourites_count">
         <item quantity="one">%1$d sevimli</item>
         <item quantity="other">%1$d sevimlilər</item>

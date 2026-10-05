@@ -563,10 +563,8 @@
     <string name="preparing_to_install">நிறுவ தயாராகிறது</string>
     <string name="preparing_to_download">பதிவிறக்க தயாராகிறது</string>
     <string name="verifying_downloads">பதிவிறக்கங்களைச் சரிபார்க்கிறது</string>
-    <plurals name="permissions_required">
-        <item quantity="one">இசைவு தேவை</item>
-        <item quantity="other">அனுமதிகள் தேவை</item>
-    </plurals>
+    <string name="permission_required">இசைவு தேவை</string>
+    <string name="permissions_required">அனுமதிகள் தேவை</string>
     <plurals name="favourites_count">
         <item quantity="one">%1$d பிடித்தது</item>
         <item quantity="other">%1$d பிடித்தவை</item>

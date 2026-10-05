@@ -42,6 +42,7 @@ import com.aurora.store.data.room.download.Download
 import com.aurora.store.util.PackageUtil.isSharedLibraryInstalled
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
+import java.util.Collections
 import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -56,7 +57,8 @@ class SessionInstaller @Inject constructor(
 
     private val packageInstaller = context.packageManager.packageInstaller
     private val enqueuedSessions = mutableListOf<MutableSet<SessionInfo>>()
-    private val committedSessions = ConcurrentHashMap.newKeySet<Int>()
+    private val committedSessions: MutableSet<Int> =
+        Collections.newSetFromMap(ConcurrentHashMap())
 
     val callback = object : PackageInstaller.SessionCallback() {
         override fun onCreated(sessionId: Int) {}

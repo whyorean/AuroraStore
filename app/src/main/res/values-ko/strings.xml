@@ -440,9 +440,8 @@
     <string name="details_compatibility_status_unsupported">지원되지 않음: 작동하지 않음</string>
     <string name="details_compatibility_status_unknown">알 수 없음: 아직 확인되지 않음</string>
     <string name="preparing_to_install">설치 준비 중</string>
-    <plurals name="permissions_required">
-        <item quantity="other">필요한 권한</item>
-    </plurals>
+    <string name="permission_required">필요한 권한</string>
+    <string name="permissions_required">필요한 권한</string>
     <string name="installed_apps_size">앱 <xliff:g id="installed_apps_size">%1$d</xliff:g>개 설치됨</string>
     <string name="pref_network_microg_login_title">microG를 사용하여 계정에 로그인하기</string>
     <string name="pref_network_microg_login_desc">Google 계정에 로그인 시 microG를 사용하여 인증하면 로그인이 더 간편함</string>

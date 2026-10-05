@@ -36,7 +36,6 @@ import rikka.shizuku.ShizukuProvider
  * [RootInstaller] installs.
  */
 @Singleton
-@RequiresApi(Build.VERSION_CODES.O)
 class ShizukuInstaller @Inject constructor(
     @ApplicationContext private val context: Context
 ) : InstallerBase(context) {
@@ -73,6 +72,7 @@ class ShizukuInstaller @Inject constructor(
             Regex("""\[(\d+)]""").find(output)?.groupValues?.get(1)?.toIntOrNull()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun install(download: Download) {
         super.install(download)
 

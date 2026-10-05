@@ -29,6 +29,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.util.fastForEachIndexed
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -60,6 +61,7 @@ private fun ScreenContent(
     onDeviceSpoofExport: (uri: Uri) -> Unit = {}
 ) {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val pagerState = rememberPagerState { pages.size }
     val coroutineScope = rememberCoroutineScope()
     val snackBarHostState = remember { SnackbarHostState() }
@@ -88,8 +90,8 @@ private fun ScreenContent(
     fun onRequestNavigateToSplash() {
         coroutineScope.launch {
             val result = snackBarHostState.showSnackbar(
-                message = context.getString(R.string.force_restart_snack),
-                actionLabel = context.getString(R.string.action_restart),
+                message = resources.getString(R.string.force_restart_snack),
+                actionLabel = resources.getString(R.string.action_restart),
                 duration = SnackbarDuration.Indefinite
             )
             when (result) {

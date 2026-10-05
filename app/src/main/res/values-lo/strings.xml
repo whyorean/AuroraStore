@@ -445,9 +445,8 @@
     <string name="details_compatibility_status_unsupported">ບໍ່ຮອງຮັບ: ບໍ່ສາມາດໃຊ້ງານໄດ້</string>
     <string name="details_compatibility_status_unknown">ບໍ່ລະບຸ: ຍັງບໍ່ໄດ້ກວດສອບ</string>
     <string name="preparing_to_install">ກຳລັງກະກຽມການຕິດຕັ້ງ</string>
-    <plurals name="permissions_required">
-        <item quantity="other">ຕ້ອງມີການອະນຸຍາດ</item>
-    </plurals>
+    <string name="permission_required">ຕ້ອງມີການອະນຸຍາດ</string>
+    <string name="permissions_required">ຕ້ອງມີການອະນຸຍາດ</string>
     <string name="installed_apps_size">ຕິດຕັ້ງແລ້ວ <xliff:g id="installed_apps_size">%1$d</xliff:g> ແອັບ</string>
     <string name="pref_network_microg_login_title">ໃຊ້ microG ເພື່ອເຂົ້າສູ່ລະບົບບັນຊີ</string>
     <string name="pref_network_microg_login_desc">ໃຊ້ microG ໃນການຢືນຢັນຕົວຕົນເມື່ອເຂົ້າສູ່ລະບົບ Google ເພື່ອໃຫ້ຂັ້ນຕອນງ່າຍຂຶ້ນ</string>

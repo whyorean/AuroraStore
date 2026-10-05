@@ -457,10 +457,8 @@
     <string name="action_filter_no_gms">Nincsenek Google Play-szolgáltatások</string>
     <string name="manual_download_version_error">A verziókód csak számokat tartalmazhat</string>
     <string name="preparing_to_install">Telepítés előkészítése</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Engedély szükséges</item>
-        <item quantity="other">Engedélyek szükségesek</item>
-    </plurals>
+    <string name="permission_required">Engedély szükséges</string>
+    <string name="permissions_required">Engedélyek szükségesek</string>
     <string name="installer_microg_misconfigured">A MicroG telepítője nem tudta telepíteni az alkalmazást, valószínűleg helytelen beállítás miatt.</string>
     <string name="pref_install_mode_microg">MicroG-telepítő</string>
     <string name="microg_installer_subtitle">A microG kiegészítő alkalmazás telepítése szükséges</string>

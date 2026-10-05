@@ -457,12 +457,8 @@
     <string name="action_filter_no_gms">Bez Služeb Play</string>
     <string name="manual_download_version_error">Kód verze může obsahovat pouze čísla</string>
     <string name="preparing_to_install">Příprava na instalaci</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Vyžadováno oprávnění</item>
-        <item quantity="few">Vyžadována oprávnění</item>
-        <item quantity="many">Vyžadována oprávnění</item>
-        <item quantity="other">Vyžadována oprávnění</item>
-    </plurals>
+    <string name="permission_required">Vyžadováno oprávnění</string>
+    <string name="permissions_required">Vyžadována oprávnění</string>
     <string name="installer_microg_misconfigured">Instalátoru microG se nepodařilo nainstalovat aplikaci, nejspíše z důvodu chybné konfigurace.</string>
     <string name="pref_install_mode_microg">Instalátor microG</string>
     <string name="microg_installer_subtitle">Vyžaduje nainstalovanou Doprovodnou aplikaci microG</string>

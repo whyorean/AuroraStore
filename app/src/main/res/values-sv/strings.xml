@@ -447,10 +447,8 @@
     <string name="details_compatibility_status_unsupported">Stöds ej: Ej fungerande</string>
     <string name="details_compatibility_status_unknown">Okänt: Inte kontrollerad ännu</string>
     <string name="preparing_to_install">Förbereder för att installera</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Tillstånd krävs</item>
-        <item quantity="other">Tillstånd krävs</item>
-    </plurals>
+    <string name="permission_required">Tillstånd krävs</string>
+    <string name="permissions_required">Tillstånd krävs</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> appar installerade</string>
     <string name="pref_network_microg_login_title">Använd microG för att logga in på konton</string>
     <string name="pref_network_microg_login_desc">Autentisera med mikroG när du loggar in på Google konton för ett enklare inloggningsflöde</string>

@@ -457,10 +457,8 @@
     <string name="action_filter_no_gms">Play zerbitzurik ez</string>
     <string name="manual_download_version_error">Bertsio-kodeak digituak bakarrik izan ditzake</string>
     <string name="preparing_to_install">Instalatzeko prestatzen</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Baimena beharrezkoa da</item>
-        <item quantity="other">Baimenak beharrezkoak dira</item>
-    </plurals>
+    <string name="permission_required">Baimena beharrezkoa da</string>
+    <string name="permissions_required">Baimenak beharrezkoak dira</string>
     <string name="installer_microg_misconfigured">MicroG instalatzaileak huts egin du aplikazioa instalatzeko, ziurrenik konfigurazio oker baten ondorioz.</string>
     <string name="pref_install_mode_microg">MicroG instalatzailea</string>
     <string name="microg_installer_subtitle">microG aplikazio osagarria instalatuta edukitzea eskatzen du</string>

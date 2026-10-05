@@ -460,11 +460,8 @@
     <string name="details_more_package_name">Nome pacchetto</string>
     <string name="details_more_content_rating">Valutazione contenuti</string>
     <string name="preparing_to_install">Preparazione per l\'installazione</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Autorizzazione richiesta</item>
-        <item quantity="many">Autorizzazioni richieste</item>
-        <item quantity="other">Autorizzazioni richieste</item>
-    </plurals>
+    <string name="permission_required">Autorizzazione richiesta</string>
+    <string name="permissions_required">Autorizzazioni richieste</string>
     <string name="select_app_for_details">Seleziona un\'app per maggiori dettagli</string>
     <string name="action_filter_no_ads">Nessuna pubblicità</string>
     <string name="action_filter_no_gms">Senza Play Services</string>

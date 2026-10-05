@@ -462,11 +462,8 @@
     <string name="details_more_package_name">Nome do pacote</string>
     <string name="details_more_content_rating">Classificação de conteúdo</string>
     <string name="preparing_to_install">Preparando para instalar</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permissão requerida</item>
-        <item quantity="many">Permissões requeridas</item>
-        <item quantity="other">Permissãos requeridas</item>
-    </plurals>
+    <string name="permission_required">Permissão requerida</string>
+    <string name="permissions_required">Permissões requeridas</string>
     <string name="select_app_for_details">Selecione um aplicativo para obter mais detalhes</string>
     <string name="action_filter_no_ads">Sem anúncios</string>
     <string name="action_filter_no_gms">Sem serviços de reprodução</string>

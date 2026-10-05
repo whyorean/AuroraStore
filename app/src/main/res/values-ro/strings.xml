@@ -457,11 +457,8 @@
     <string name="action_filter_no_gms">Fără serviciile Play</string>
     <string name="manual_download_version_error">Codul versiunii poate conține doar cifre</string>
     <string name="preparing_to_install">Se pregătește instalarea</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permisiune necesară</item>
-        <item quantity="few">Permisiuni necesare</item>
-        <item quantity="other">Permisiuni necesare</item>
-    </plurals>
+    <string name="permission_required">Permisiune necesară</string>
+    <string name="permissions_required">Permisiuni necesare</string>
     <string name="installer_microg_misconfigured">Programul de instalare microG nu a reușit să instaleze aplicația, probabil din cauza unei configurări greșite.</string>
     <string name="pref_install_mode_microg">Instalator microG</string>
     <string name="microg_installer_subtitle">Necesită instalarea aplicației companion microG</string>

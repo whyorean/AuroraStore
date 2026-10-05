@@ -449,9 +449,8 @@
     <string name="details_compatibility_status_unsupported">サポート対象外: 動作しません</string>
     <string name="details_compatibility_status_unknown">不明: まだチェックされていません</string>
     <string name="preparing_to_install">インストール準備中</string>
-    <plurals name="permissions_required">
-        <item quantity="other">権限が必要です</item>
-    </plurals>
+    <string name="permission_required">権限が必要です</string>
+    <string name="permissions_required">権限が必要です</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> 個のアプリがインストールされています</string>
     <string name="pref_network_microg_login_title">アカウントのログインにmicroGを使用する</string>
     <string name="set">設定</string>

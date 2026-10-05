@@ -574,10 +574,8 @@
     <string name="preparing_to_install">Aprontende s\'installatzione</string>
     <string name="preparing_to_download">Aprontende s\'iscarrigamentu</string>
     <string name="verifying_downloads">Verifichende sos iscarrigamentos</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permissu netzessàriu</item>
-        <item quantity="other">Permissos netzessàrios</item>
-    </plurals>
+    <string name="permission_required">Permissu netzessàriu</string>
+    <string name="permissions_required">Permissos netzessàrios</string>
     <plurals name="insufficient_storage_desc_multiple">
         <item quantity="one">%1$d aplicatzione tenet bisòngiu de %2$s, ma b\'at a disponimentu petzi %3$s.</item>
         <item quantity="other">%1$d aplicatziones tenent bisòngiu de %2$s, ma b\'at a disponimentu petzi %3$s.</item>

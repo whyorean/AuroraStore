@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -58,6 +59,7 @@ fun GoogleLoginScreen(
     viewModel: AuthViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val authState by viewModel.authState.collectAsStateWithLifecycle()
     var progress by remember { mutableFloatStateOf(0f) }
     var isIndeterminate by remember { mutableStateOf(true) }
@@ -79,7 +81,7 @@ fun GoogleLoginScreen(
                 } else {
                     Toast.makeText(
                         context,
-                        event.error ?: context.getString(R.string.toast_aas_token_failed),
+                        event.error ?: resources.getString(R.string.toast_aas_token_failed),
                         Toast.LENGTH_LONG
                     ).show()
                     onNavigateTo(if (addAccount) Destination.Accounts else Destination.Splash())

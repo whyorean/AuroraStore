@@ -457,9 +457,8 @@
     <string name="action_filter_no_gms">Tidak ada layanan google play</string>
     <string name="manual_download_version_error">Kode versi hanya dapat berisi angka</string>
     <string name="preparing_to_install">Mempersiapkan pemasangan</string>
-    <plurals name="permissions_required">
-        <item quantity="other">Izin yang diperlukan</item>
-    </plurals>
+    <string name="permission_required">Izin yang diperlukan</string>
+    <string name="permissions_required">Izin yang diperlukan</string>
     <string name="installer_microg_misconfigured">Pemasang MicroG gagal memasang aplikasi, kemungkinan disebabkan oleh konfigurasi yang salah.</string>
     <string name="pref_install_mode_microg">Pemasang MicroG</string>
     <string name="microg_installer_subtitle">Membutuhkan aplikasi pendamping microG untuk dipasang</string>

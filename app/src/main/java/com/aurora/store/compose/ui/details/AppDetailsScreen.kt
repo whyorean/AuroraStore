@@ -60,10 +60,10 @@ import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.share
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.DataSafetyReport
 import com.aurora.gplayapi.model.Review
 import com.aurora.gplayapi.model.StreamBundle
 import com.aurora.gplayapi.model.StreamCluster
-import com.aurora.gplayapi.model.DataSafetyReport
 import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ClusterRow

@@ -459,10 +459,8 @@
     <string name="force_restart_snack">Επανεκκίνηση για εφαρμογή αλλαγών;</string>
     <string name="no_description">Δεν υπάρχει διαθέσιμη περιγραφή</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> δικαιώματα</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Απαιτείται δικαίωμα</item>
-        <item quantity="other">Απαιτούνται δικαιώματα</item>
-    </plurals>
+    <string name="permission_required">Απαιτείται δικαίωμα</string>
+    <string name="permissions_required">Απαιτούνται δικαιώματα</string>
     <string name="details_more_content_rating">Αξιολόγηση περιεχομένου</string>
     <string name="preparing_to_install">Προετοιμασία για εγκατάσταση</string>
     <string name="pref_common_advanced">Προχωρημένες</string>

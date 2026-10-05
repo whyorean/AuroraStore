@@ -458,12 +458,8 @@
     <string name="details_more_package_name">Назва пакета</string>
     <string name="details_more_content_rating">Рэйтынг змесціва</string>
     <string name="preparing_to_install">Падрыхтоўка да ўсталявання</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Патрэбны дазвол</item>
-        <item quantity="few">Патрэбныя дазволы</item>
-        <item quantity="many">Патрэбныя дазволы</item>
-        <item quantity="other">Патрэбныя дазволы</item>
-    </plurals>
+    <string name="permission_required">Патрэбны дазвол</string>
+    <string name="permissions_required">Патрэбныя дазволы</string>
     <string name="select_app_for_details">Выберыце праграму для атрымання дадатковых звестак</string>
     <string name="action_filter_no_ads">Без рэкламы</string>
     <string name="action_filter_no_gms">Без сэрвісаў Google Play</string>

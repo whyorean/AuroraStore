@@ -17,13 +17,13 @@ import com.aurora.extensions.requiresGMS
 import com.aurora.gplayapi.PlayClient
 import com.aurora.gplayapi.PlayException
 import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.DataSafetyReport
 import com.aurora.gplayapi.model.Review
 import com.aurora.gplayapi.model.StreamBundle
 import com.aurora.gplayapi.model.StreamCluster
 import com.aurora.gplayapi.model.TestingProgramStatus
 import com.aurora.gplayapi.session.Capability
 import com.aurora.gplayapi.web.WebPlayClient
-import com.aurora.gplayapi.model.DataSafetyReport
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.AccountRepository
 import com.aurora.store.data.ExodusRepository

@@ -123,7 +123,9 @@ class UpdateWorker @AssistedInject constructor(
             return Result.failure()
         }
 
-        if (authResult !is Result.Success) {
+        // Result.Success is restricted to androidx.work; Result compares by type and output
+        // data, and AuthWorker only ever succeeds with an empty Result.success().
+        if (authResult != Result.success()) {
             Log.i(TAG, "AuthData is not valid, retrying later!")
             return Result.retry()
         }

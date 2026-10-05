@@ -420,7 +420,6 @@
     <string name="details_more_target_api">Mục tiêu</string>
     <string name="details_more_content_rating">Xếp hạng nội dung</string>
     <string name="preparing_to_install">Chuẩn bị cài đặt</string>
-    <plurals name="permissions_required">
-        <item quantity="other">Cần có sự cho phép</item>
-    </plurals>
+    <string name="permission_required">Cần có sự cho phép</string>
+    <string name="permissions_required">Cần có sự cho phép</string>
 </resources>

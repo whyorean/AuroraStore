@@ -457,11 +457,8 @@
     <string name="action_filter_no_gms">Pas de Services Play</string>
     <string name="manual_download_version_error">La version du code ne peut comporter que des chiffres</string>
     <string name="preparing_to_install">Préparation de l’installation</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Une autorisation est nécessaire</item>
-        <item quantity="many">Des autorisations sont nécessaires</item>
-        <item quantity="other">Des autorisations sont nécessaires</item>
-    </plurals>
+    <string name="permission_required">Une autorisation est nécessaire</string>
+    <string name="permissions_required">Des autorisations sont nécessaires</string>
     <string name="installer_microg_misconfigured">Le programme d\'installation de MicroG n\'a pas réussi à installer l\'appli, probablement en raison d\'une erreur de configuration.</string>
     <string name="pref_install_mode_microg">Programme d’installation de MicroG</string>
     <string name="microg_installer_subtitle">L’appli compagnon microG doit être installée</string>

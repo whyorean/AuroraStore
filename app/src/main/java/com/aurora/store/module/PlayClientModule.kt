@@ -67,25 +67,21 @@ object PlayClientModule {
     @NoAuth
     @Singleton
     @Provides
-    fun providesNoAuthPlaySessions(
-        engine: HttpEngine,
-        spoofProvider: SpoofProvider
-    ): PlaySessions = DefaultPlaySessions(
-        engine = engine,
-        device = { spoofProvider.deviceProfile() },
-        locale = { spoofProvider.locale },
-        additionalLocales = { spoofProvider.additionalLocales },
-        authenticated = null,
-        logger = AndroidLogger
-    )
+    fun providesNoAuthPlaySessions(engine: HttpEngine, spoofProvider: SpoofProvider): PlaySessions =
+        DefaultPlaySessions(
+            engine = engine,
+            device = { spoofProvider.deviceProfile() },
+            locale = { spoofProvider.locale },
+            additionalLocales = { spoofProvider.additionalLocales },
+            authenticated = null,
+            logger = AndroidLogger
+        )
 
     @NoAuth
     @Singleton
     @Provides
-    fun providesNoAuthPlayClient(
-        engine: HttpEngine,
-        @NoAuth sessions: PlaySessions
-    ): PlayClient = PlayClient(engine, sessions, AndroidLogger)
+    fun providesNoAuthPlayClient(engine: HttpEngine, @NoAuth sessions: PlaySessions): PlayClient =
+        PlayClient(engine, sessions, AndroidLogger)
 
     /**
      * `locale` is a supplier now that [WebPlayClient] exposes one, for the same reason

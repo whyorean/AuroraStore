@@ -457,12 +457,8 @@
     <string name="action_filter_no_gms">Без сервисов Google Play</string>
     <string name="manual_download_version_error">Код версии может содержать только цифры</string>
     <string name="preparing_to_install">Подготовка к установке</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Требуется разрешение</item>
-        <item quantity="few">Требуются разрешения</item>
-        <item quantity="many">Требуются разрешения</item>
-        <item quantity="other">Требуются разрешения</item>
-    </plurals>
+    <string name="permission_required">Требуется разрешение</string>
+    <string name="permissions_required">Требуются разрешения</string>
     <string name="loading">Загрузка в прогрессе</string>
     <string name="page">Страница <xliff:g id="number">%1$d</xliff:g></string>
     <string name="installer_microg_misconfigured">Установщик MicroG не смог установить приложение, вероятнее всего, из-за проблем с конфигурацией.</string>

@@ -457,12 +457,8 @@
     <string name="onboarding_gms_microg">microG je bezplatná implementácia s otvoreným zdrojovým kódom, ktorá poskytuje podobné funkcie na spúšťanie aplikácií závislých od služieb Google Play pre zariadenia so systémom Android prostredníctvom reimplementácie.\n\nmicroG umožňuje aplikáciám prístup k týmto rozhraniam API spoločnosti Google, čím zvyšuje kompatibilitu pre používateľov a zároveň ponúka výhody v oblasti ochrany osobných údajov. \n\nmicroG sa automaticky spustí na pozadí pri otvorení aplikácií závislých od mobilných služieb Google.</string>
     <string name="manual_download_version_error">Kód verzie môže obsahovať iba číslice</string>
     <string name="preparing_to_install">Príprava na inštaláciu</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Potrebné povolenie</item>
-        <item quantity="few">Potrebných povolení</item>
-        <item quantity="many">Potrebné povolenia</item>
-        <item quantity="other">Potrebné povolenia</item>
-    </plurals>
+    <string name="permission_required">Potrebné povolenie</string>
+    <string name="permissions_required">Potrebné povolenia</string>
     <string name="installer_microg_misconfigured">MIcroG inštalátor zlyhal pri inštalácií aplikácie, pravdepodobne z dôvodu miskonfigurácie.</string>
     <string name="pref_install_mode_microg">MicroG inštalátor</string>
     <string name="microg_installer_subtitle">Vyžaduje doplnkovú MicroG aplikáciu na správne fungovanie</string>

@@ -457,12 +457,8 @@
     <string name="action_filter_no_gms">Немає ігрових сервісів</string>
     <string name="manual_download_version_error">Код версії може містити лише цифри</string>
     <string name="preparing_to_install">Підготовка до встановлення</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Потрібен дозвіл</item>
-        <item quantity="few">Потрібні дозволи</item>
-        <item quantity="many">Потрібні дозволи</item>
-        <item quantity="other">Потрібні дозволи</item>
-    </plurals>
+    <string name="permission_required">Потрібен дозвіл</string>
+    <string name="permissions_required">Потрібні дозволи</string>
     <string name="installer_microg_misconfigured">Встановлювач MicroG не зміг встановити застосунок, ймовірно, через неправильну конфігурацію.</string>
     <string name="pref_install_mode_microg">Встановлювач MicroG</string>
     <string name="microg_installer_subtitle">Необхідно встановити супутній застосунок microG</string>
