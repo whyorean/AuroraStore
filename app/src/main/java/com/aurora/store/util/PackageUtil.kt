@@ -144,6 +144,13 @@ object PackageUtil {
         false
     }
 
+    /**
+     * Whether the shared library [packageName] is installed at exactly [versionCode]. Exact,
+     * not at-least: a static shared library is resolved by name and exact version, several
+     * versions coexist, and a dependent app does not install against a newer one. Always false
+     * below API 26, where the installed libraries cannot be listed, and when the platform hides
+     * static libraries from a caller that cannot request installs.
+     */
     fun isSharedLibraryInstalled(
         context: Context,
         packageName: String,

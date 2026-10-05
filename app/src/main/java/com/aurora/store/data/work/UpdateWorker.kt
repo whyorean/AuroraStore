@@ -20,7 +20,9 @@ import com.aurora.extensions.isHyperOS
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.gplayapi.PlayClient
 import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.android.InstalledPatchBase
 import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.InstalledApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
@@ -256,7 +258,10 @@ class UpdateWorker @AssistedInject constructor(
                 emptySet()
             }
 
-            val updates = playClient.apps.details(filteredPackages)
+            val updates = playClient.apps.details(
+                filteredPackages,
+                installed = installedApps(filteredPackages)
+            )
                 .filter { it.displayName.isNotEmpty() }
                 .filter { PackageUtil.isUpdatable(context, it.packageName, it.versionCode) }
                 .toMutableList()
@@ -283,6 +288,21 @@ class UpdateWorker @AssistedInject constructor(
             }.sortedBy { it.displayName.lowercase(Locale.getDefault()) }
         }
     }
+
+    /**
+     * The installed copy of each of [packageNames], sent with the update check so Play prices
+     * each update as a patch against it; a package whose copy cannot be read is checked without
+     * one. Reads each base APK's manifest and signing block, so call it off the main thread.
+     */
+    private fun installedApps(packageNames: List<String>): List<InstalledApp> =
+        packageNames.distinct().mapNotNull { packageName ->
+            try {
+                InstalledPatchBase.installedApp(context, packageName)
+            } catch (exception: Exception) {
+                Log.w(TAG, "Failed to read the installed copy of $packageName", exception)
+                null
+            }
+        }
 
     /**
      * Fetches Aurora Store's own update from the bundled release/nightly feed and maps

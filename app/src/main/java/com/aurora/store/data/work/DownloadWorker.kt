@@ -211,7 +211,15 @@ class DownloadWorker @AssistedInject constructor(
 
         val files = mutableListOf<AppFile>()
 
-        // Check if shared libs are present, if yes, handle them first
+        // A static shared library resolves by exact version and is never updated in place, so one
+        // already installed at the required version is neither fetched nor handed to the
+        // installer. Below API 26 the installed set cannot be read and every library is fetched.
+        download = download.copy(
+            sharedLibs = download.sharedLibs.filterNot {
+                PackageUtil.isSharedLibraryInstalled(context, it.packageName, it.versionCode)
+            }
+        )
+
         if (download.sharedLibs.isNotEmpty()) {
             try {
                 download.sharedLibs.forEach {
