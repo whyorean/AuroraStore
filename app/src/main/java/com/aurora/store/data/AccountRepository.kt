@@ -40,12 +40,9 @@ class AccountRepository @Inject constructor(
 
     /**
      * Removes an account and its bindings. If it was the default, promotes a new default
-     * (anonymous preferred, else the oldest remaining). The default promotion is atomic; the
-     * binding cleanup runs first as a separate statement (FK cascade is not enabled).
+     * (anonymous preferred, else the oldest remaining). The default promotion is atomic.
      */
     suspend fun removeAccount(id: String) {
-        // SQLite only cascades FK deletes when `PRAGMA foreign_keys = ON`, which this project
-        // does not enable, so this explicit delete is the actual enforcer of the binding cleanup.
         bindingDao.deleteByAccountId(id)
         accountDao.deleteAndEnsureDefault(id)
     }
