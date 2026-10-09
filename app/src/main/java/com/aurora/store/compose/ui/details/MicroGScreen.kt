@@ -103,7 +103,7 @@ private fun ScreenContent(
                     modifier = Modifier
                         .fillMaxWidth()
                         .navigationBarsPadding()
-                        .padding(horizontal = dimensionResource(R.dimen.spacing_medium))
+                        .padding(horizontal = dimensionResource(R.dimen.spacing_large))
                         .padding(vertical = dimensionResource(R.dimen.spacing_small)),
                     horizontalArrangement = Arrangement.spacedBy(
                         dimensionResource(R.dimen.spacing_medium)
@@ -145,9 +145,7 @@ private fun ScreenContent(
                 .padding(paddingValues)
         ) {
             LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
+                modifier = Modifier.fillMaxSize(),
                 state = listState
             ) {
                 item {

@@ -22,7 +22,7 @@ sealed class Destination {
     data class DevProfile(val devId: String) : Destination()
     data class AppUpdate(val update: Update) : Destination()
 
-    data object Search : Destination()
+    data class Search(val query: String? = null) : Destination()
     data object Downloads : Destination()
     data object Notifications : Destination()
 

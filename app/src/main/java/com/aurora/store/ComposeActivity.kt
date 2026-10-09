@@ -5,6 +5,7 @@
 
 package com.aurora.store
 
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.compose.setContent
@@ -55,6 +56,7 @@ class ComposeActivity : FragmentActivity() {
         MigrationReceiver.runMigrationsIfRequired(this)
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        requestPreferredRefreshRate()
 
         intent.setExtrasClassLoader(Screen::class.java.classLoader)
 
@@ -133,6 +135,24 @@ class ComposeActivity : FragmentActivity() {
                     )
                 }
             }
+        }
+    }
+
+    /** Ask Android for its 120 Hz display mode while allowing unsupported devices to fall back. */
+    private fun requestPreferredRefreshRate() {
+        val preferredRate = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            120f
+        } else {
+            @Suppress("DEPRECATION")
+            windowManager.defaultDisplay.supportedModes
+                .asSequence()
+                .map { it.refreshRate }
+                .filter { it <= 120f }
+                .maxOrNull()
+        } ?: return
+
+        window.attributes = window.attributes.apply {
+            preferredRefreshRate = preferredRate
         }
     }
 

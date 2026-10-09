@@ -6,9 +6,11 @@
 package com.aurora.store.compose.composable.details
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -32,30 +34,42 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * @param url URL of the screenshot
  */
 @Composable
-fun ScreenshotListItem(modifier: Modifier = Modifier, url: String) {
+fun ScreenshotListItem(
+    modifier: Modifier = Modifier,
+    url: String,
+    contentScale: ContentScale = ContentScale.Fit,
+    crossfade: Boolean = true,
+    showLoadingShimmer: Boolean = true
+) {
     // See https://coil-kt.github.io/coil/compose/#rememberasyncimagepainter
     val sizeResolver = rememberConstraintsSizeResolver()
-    val painter = rememberAsyncImagePainter(
-        model = ImageRequest.Builder(LocalContext.current)
+    val context = LocalContext.current
+    val request = remember(context, url, sizeResolver, crossfade) {
+        ImageRequest.Builder(context)
             .data(url)
             .size(sizeResolver)
-            .crossfade(true)
+            .let { builder -> if (crossfade) builder.crossfade(true) else builder }
             .build()
-    )
-    val state by painter.state.collectAsStateWithLifecycle()
-    val aspectRatioModifier = state.painter?.intrinsicSize?.let { intrinsicSize ->
-        val ratio = intrinsicSize.width / intrinsicSize.height
-        if (ratio.isNaN()) null else Modifier.aspectRatio(ratio = ratio)
     }
-
+    val painter = rememberAsyncImagePainter(model = request)
+    val isLoading = if (showLoadingShimmer) {
+        painter.state.collectAsStateWithLifecycle().value is AsyncImagePainter.State.Loading
+    } else {
+        false
+    }
     Image(
         painter = painter,
         contentDescription = null,
-        contentScale = ContentScale.Fit,
+        contentScale = contentScale,
         modifier = modifier
-            .shimmer(state is AsyncImagePainter.State.Loading)
+            .then(
+                if (showLoadingShimmer) {
+                    Modifier.shimmer(isLoading)
+                } else {
+                    Modifier.background(MaterialTheme.colorScheme.surfaceContainerLow)
+                }
+            )
             .then(sizeResolver)
-            .then(aspectRatioModifier ?: Modifier)
     )
 }
 

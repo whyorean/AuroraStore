@@ -21,8 +21,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.ListItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -50,6 +48,9 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.aurora.extensions.isIgnoringBatteryOptimizations
 import com.aurora.extensions.isTAndAbove
 import com.aurora.store.R
+import com.aurora.store.compose.ui.preferences.PreferenceListItem
+import com.aurora.store.compose.ui.preferences.PreferenceRowPosition
+import com.aurora.store.compose.ui.preferences.PreferenceSectionHeader
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.ThemePreviewProvider
@@ -248,7 +249,12 @@ private fun ScreenContent(
                 .fillMaxSize()
         ) {
             item {
-                ListItem(
+                PreferenceListItem(
+                    position = if (autoEnabled) {
+                        PreferenceRowPosition.First
+                    } else {
+                        PreferenceRowPosition.Single
+                    },
                     modifier = Modifier.clickable { showAutoDialog = true },
                     headlineContent = { Text(stringResource(R.string.pref_updates_auto)) },
                     supportingContent = { Text(autoEntries.getOrElse(autoMode) { "" }) }
@@ -256,7 +262,8 @@ private fun ScreenContent(
             }
             if (autoEnabled) {
                 item {
-                    ListItem(
+                    PreferenceListItem(
+                        position = PreferenceRowPosition.Middle,
                         modifier = Modifier.clickable { showFrequencyDialog = true },
                         headlineContent = {
                             Text(stringResource(R.string.pref_updates_check_frequency))
@@ -267,7 +274,8 @@ private fun ScreenContent(
                     )
                 }
                 item {
-                    ListItem(
+                    PreferenceListItem(
+                        position = PreferenceRowPosition.Last,
                         modifier = Modifier.clickable { showRestrictionsDialog = true },
                         headlineContent = {
                             Text(stringResource(R.string.pref_updates_restrictions_title))
@@ -278,14 +286,10 @@ private fun ScreenContent(
                     )
                 }
             }
-            item { HorizontalDivider() }
+            item { PreferenceSectionHeader(stringResource(R.string.pref_updates_app_source)) }
             item {
-                ListItem(headlineContent = {
-                    Text(stringResource(R.string.pref_updates_app_source))
-                })
-            }
-            item {
-                ListItem(
+                PreferenceListItem(
+                    position = PreferenceRowPosition.Single,
                     modifier = Modifier.clickable {
                         onNavigateTo(Destination.SourceFilters)
                     },
@@ -297,12 +301,10 @@ private fun ScreenContent(
                     }
                 )
             }
-            item { HorizontalDivider() }
+            item { PreferenceSectionHeader(stringResource(R.string.pref_common_advanced)) }
             item {
-                ListItem(headlineContent = { Text(stringResource(R.string.pref_common_advanced)) })
-            }
-            item {
-                ListItem(
+                PreferenceListItem(
+                    position = PreferenceRowPosition.First,
                     modifier = Modifier.clickable {
                         filterFDroid = !filterFDroid
                         context.save(PREFERENCE_FILTER_FDROID, filterFDroid)
@@ -325,7 +327,8 @@ private fun ScreenContent(
                 )
             }
             item {
-                ListItem(
+                PreferenceListItem(
+                    position = PreferenceRowPosition.Middle,
                     modifier = Modifier.clickable {
                         updatesExtended = !updatesExtended
                         context.save(PREFERENCE_UPDATES_EXTENDED, updatesExtended)
@@ -348,7 +351,12 @@ private fun ScreenContent(
                 )
             }
             item {
-                ListItem(
+                PreferenceListItem(
+                    position = if (selfUpdateSupported) {
+                        PreferenceRowPosition.Middle
+                    } else {
+                        PreferenceRowPosition.Last
+                    },
                     modifier = Modifier.clickable {
                         warnTrackers = !warnTrackers
                         context.save(PREFERENCE_UPDATES_WARN_TRACKERS, warnTrackers)
@@ -377,7 +385,8 @@ private fun ScreenContent(
                         context.save(PREFERENCE_SELF_UPDATE_ENABLED, enabled)
                         if (enabled) onCheckUpdatesNow() else onDeleteSelfUpdate()
                     }
-                    ListItem(
+                    PreferenceListItem(
+                        position = PreferenceRowPosition.Last,
                         modifier = Modifier.clickable {
                             onSelfUpdateChanged(!selfUpdateEnabled)
                         },

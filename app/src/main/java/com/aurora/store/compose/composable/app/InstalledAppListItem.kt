@@ -13,17 +13,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import coil3.compose.AsyncImage
-import coil3.request.ImageRequest
-import coil3.request.crossfade
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
+import com.aurora.store.compose.composable.rememberStoreImageRequest
 import com.aurora.store.compose.composable.AuroraListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
@@ -57,11 +55,8 @@ fun InstalledAppListItem(
             AsyncImage(
                 modifier = Modifier
                     .requiredSize(dimensionResource(R.dimen.icon_size_medium))
-                    .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_medium))),
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(app.iconArtwork.url)
-                    .crossfade(true)
-                    .build(),
+                    .clip(RoundedCornerShape(dimensionResource(R.dimen.app_icon_radius))),
+                model = rememberStoreImageRequest(app.iconArtwork.url),
                 contentDescription = null,
                 contentScale = ContentScale.Crop
             )

@@ -45,11 +45,7 @@ val colorRed: Color
     @Composable @ReadOnlyComposable
     get() = if (isAppInDarkTheme()) Color(0xFFE57373) else Color(0xFFD32F2F)
 
-/**
- * Brand color schemes seeded from Aurora's accent (#6C63FF), used on devices that don't support
- * dynamic color (Android 11 and below) so the full palette stays on-brand instead of falling back
- * to Material's default purple baseline.
- */
+/** Aurora's original brand palette, used when dynamic colors are disabled or unsupported. */
 val BrandLightColorScheme = lightColorScheme(
     primary = Color(0xFF6C63FF),
     onPrimary = Color(0xFFFFFFFF),

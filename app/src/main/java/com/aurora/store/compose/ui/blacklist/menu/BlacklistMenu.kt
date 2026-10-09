@@ -6,8 +6,6 @@
 package com.aurora.store.compose.ui.blacklist.menu
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -22,6 +20,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
+import com.aurora.store.compose.composable.ExpressiveMenuGroup
+import com.aurora.store.compose.composable.ExpressiveMenuIcon
+import com.aurora.store.compose.composable.ExpressiveMenuItem
+import com.aurora.store.compose.composable.ExpressiveMenuPopup
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
@@ -49,23 +51,45 @@ fun BlacklistMenu(
                 contentDescription = stringResource(R.string.menu)
             )
         }
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.action_select_all)) },
-                onClick = { onClick(MenuItem.SELECT_ALL) }
-            )
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.action_remove_all)) },
-                onClick = { onClick(MenuItem.REMOVE_ALL) }
-            )
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.action_import)) },
-                onClick = { onClick(MenuItem.IMPORT) }
-            )
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.action_export)) },
-                onClick = { onClick(MenuItem.EXPORT) }
-            )
+        ExpressiveMenuPopup(expanded = expanded, onDismissRequest = { expanded = false }) {
+            ExpressiveMenuGroup(index = 0, count = 1) {
+                ExpressiveMenuItem(
+                    index = 0,
+                    count = 4,
+                    text = { Text(text = stringResource(R.string.action_select_all)) },
+                    onClick = { onClick(MenuItem.SELECT_ALL) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_list_check))
+                    }
+                )
+                ExpressiveMenuItem(
+                    index = 1,
+                    count = 4,
+                    text = { Text(text = stringResource(R.string.action_remove_all)) },
+                    onClick = { onClick(MenuItem.REMOVE_ALL) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_delete_forever))
+                    }
+                )
+                ExpressiveMenuItem(
+                    index = 2,
+                    count = 4,
+                    text = { Text(text = stringResource(R.string.action_import)) },
+                    onClick = { onClick(MenuItem.IMPORT) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_file_copy))
+                    }
+                )
+                ExpressiveMenuItem(
+                    index = 3,
+                    count = 4,
+                    text = { Text(text = stringResource(R.string.action_export)) },
+                    onClick = { onClick(MenuItem.EXPORT) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_cloud_upload))
+                    }
+                )
+            }
         }
     }
 }

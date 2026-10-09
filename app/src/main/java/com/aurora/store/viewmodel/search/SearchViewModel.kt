@@ -30,6 +30,8 @@ import com.aurora.store.data.providers.AuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -51,6 +53,7 @@ class SearchViewModel @Inject constructor(
 
     private val _suggestions = MutableStateFlow<List<SearchSuggestEntry>>(emptyList())
     val suggestions = _suggestions.asStateFlow()
+    private var suggestionsJob: Job? = null
 
     private val searchFilter = MutableStateFlow(SearchFilter())
     private val _apps = MutableStateFlow<PagingData<App>>(PagingData.empty())
@@ -122,10 +125,19 @@ class SearchViewModel @Inject constructor(
     }
 
     fun fetchSuggestions(query: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            _suggestions.value = contract.searchSuggestions(query)
+        val normalizedQuery = query.trim()
+        suggestionsJob?.cancel()
+        if (normalizedQuery.isBlank()) {
+            _suggestions.value = emptyList()
+            return
+        }
+
+        suggestionsJob = viewModelScope.launch(Dispatchers.IO) {
+            val latestSuggestions = contract.searchSuggestions(normalizedQuery)
                 .filter { it.title.isNotBlank() }
                 .take(5)
+            ensureActive()
+            _suggestions.value = latestSuggestions
         }
     }
 }

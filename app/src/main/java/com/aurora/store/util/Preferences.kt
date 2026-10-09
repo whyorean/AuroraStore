@@ -18,8 +18,8 @@ object Preferences {
     const val PREFERENCE_DEFAULT = "PREFERENCE_DEFAULT"
 
     /**
-     * Default for [PREFERENCE_DYNAMIC_COLORS]. Dynamic color is opt-out everywhere except One UI,
-     * where Samsung's palette extraction tends to look off, so it defaults off and users can opt in.
+     * Dynamic color is opt-out everywhere except One UI, where Samsung's palette extraction
+     * defaults to off but can be enabled by the user.
      */
     val dynamicColorsDefault: Boolean
         get() = !isOneUI

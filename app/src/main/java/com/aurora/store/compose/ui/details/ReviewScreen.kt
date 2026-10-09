@@ -10,9 +10,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -47,18 +53,32 @@ import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.emptyPagingItems
 import com.aurora.extensions.isWindowCompact
 import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.data.models.Rating
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.details.ReviewListItem
+import com.aurora.store.compose.ui.details.composable.RatingAndReviews
 import com.aurora.store.compose.preview.ReviewPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import com.aurora.store.viewmodel.details.ReviewViewModel
 import kotlin.random.Random
 import kotlinx.coroutines.flow.MutableStateFlow
+
+private val REVIEW_FILTER_LABELS = listOf(
+    Review.Filter.ALL to R.string.filter_review_all,
+    Review.Filter.NEWEST to R.string.filter_latest,
+    Review.Filter.CRITICAL to R.string.filter_review_critical,
+    Review.Filter.POSITIVE to R.string.filter_review_positive,
+    Review.Filter.FIVE to R.string.filter_review_five,
+    Review.Filter.FOUR to R.string.filter_review_four,
+    Review.Filter.THREE to R.string.filter_review_three,
+    Review.Filter.TWO to R.string.filter_review_two,
+    Review.Filter.ONE to R.string.filter_review_one
+)
 
 @Composable
 fun ReviewScreen(
@@ -73,6 +93,7 @@ fun ReviewScreen(
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
+    val featuredReviews by appDetailsViewModel.featuredReviews.collectAsStateWithLifecycle()
     val reviews = reviewViewModel.reviews.collectAsLazyPagingItems()
 
     val topAppBarTitle = when {
@@ -82,6 +103,8 @@ fun ReviewScreen(
 
     ScreenContent(
         topAppBarTitle = topAppBarTitle,
+        rating = app!!.rating,
+        featuredReviews = featuredReviews,
         reviews = reviews,
         onFilter = { filter -> reviewViewModel.fetchReviews(filter) }
     )
@@ -90,6 +113,8 @@ fun ReviewScreen(
 @Composable
 private fun ScreenContent(
     topAppBarTitle: String? = null,
+    rating: Rating? = null,
+    featuredReviews: List<Review> = emptyList(),
     reviews: LazyPagingItems<Review> = emptyPagingItems(),
     onFilter: (filter: Review.Filter) -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
@@ -99,11 +124,13 @@ private fun ScreenContent(
             Column {
                 TopAppBar(
                     title = topAppBarTitle,
-                    navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
+                    navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon,
+                    boxedNavigationIcon = true
                 )
                 FilterHeader { filter -> onFilter(filter) }
             }
-        }
+        },
+        contentWindowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal)
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -128,8 +155,22 @@ private fun ScreenContent(
                     Box(modifier = Modifier.fillMaxSize()) {
                         LazyColumn(
                             modifier = Modifier.fillMaxSize(),
-                            state = listState
+                            state = listState,
+                            contentPadding = PaddingValues(
+                                bottom = WindowInsets.navigationBars.asPaddingValues()
+                                    .calculateBottomPadding() + dimensionResource(R.dimen.spacing_large)
+                            )
                         ) {
+                            if (rating != null) {
+                                item(key = "rating-summary") {
+                                    RatingAndReviews(
+                                        rating = rating,
+                                        featuredReviews = featuredReviews,
+                                        showPortal = false
+                                    )
+                                }
+                            }
+
                             items(
                                 count = reviews.itemCount,
                                 key = reviews.itemKey { it.commentId }
@@ -155,37 +196,25 @@ private fun ScreenContent(
 private fun FilterHeader(onClick: (filter: Review.Filter) -> Unit) {
     var activeFilter by rememberSaveable { mutableStateOf(Review.Filter.ALL) }
 
-    val filters = mapOf(
-        Review.Filter.ALL to R.string.filter_review_all,
-        Review.Filter.NEWEST to R.string.filter_latest,
-        Review.Filter.CRITICAL to R.string.filter_review_critical,
-        Review.Filter.POSITIVE to R.string.filter_review_positive,
-        Review.Filter.FIVE to R.string.filter_review_five,
-        Review.Filter.FOUR to R.string.filter_review_four,
-        Review.Filter.THREE to R.string.filter_review_three,
-        Review.Filter.TWO to R.string.filter_review_two,
-        Review.Filter.ONE to R.string.filter_review_one
-    )
-
     LazyRow(
         modifier = Modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_medium)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
+        contentPadding = PaddingValues(horizontal = dimensionResource(R.dimen.spacing_large)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
-        items(items = filters.keys.toList(), key = { item -> item }) { filter ->
+        items(items = REVIEW_FILTER_LABELS, key = { it.first }) { (filter, labelRes) ->
             val selected = activeFilter == filter
             FilterChip(
                 onClick = {
                     activeFilter = filter
                     onClick(filter)
                 },
-                label = { Text(text = stringResource(filters.getValue(filter))) },
+                label = { Text(text = stringResource(labelRes)) },
                 selected = selected,
                 leadingIcon = {
                     if (selected) {
                         Icon(
                             painter = painterResource(R.drawable.ic_check),
-                            contentDescription = stringResource(filters.getValue(filter))
+                            contentDescription = stringResource(labelRes)
                         )
                     }
                 }

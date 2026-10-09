@@ -11,8 +11,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.ListItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -32,6 +30,8 @@ import com.aurora.Constants
 import com.aurora.extensions.areNotificationsEnabled
 import com.aurora.extensions.isOAndAbove
 import com.aurora.store.R
+import com.aurora.store.compose.ui.preferences.PreferenceRowPosition
+import com.aurora.store.compose.ui.preferences.preferenceRowPosition
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.util.Preferences
@@ -82,7 +82,7 @@ private fun ScreenContent() {
         ) {
             if (!notificationsEnabled) {
                 item {
-                    ListItem(
+                    PreferenceListItem(
                         modifier = Modifier.clickable { openAppNotificationSettings(context) },
                         headlineContent = {
                             Text(stringResource(R.string.pref_notification_disabled))
@@ -92,11 +92,10 @@ private fun ScreenContent() {
                         }
                     )
                 }
-                item { HorizontalDivider() }
             }
 
             item {
-                ListItem(
+                PreferenceListItem(
                     modifier = Modifier.clickable {
                         showProgress = !showProgress
                         context.save(PREFERENCE_NOTIFICATION_PROGRESS, showProgress)
@@ -122,9 +121,9 @@ private fun ScreenContent() {
             // Per-channel system settings are only meaningful on Android O+ where channels
             // exist; on older versions the app-level toggle above is the only control.
             if (isOAndAbove) {
-                item { HorizontalDivider() }
                 item {
-                    ListItem(
+                    PreferenceListItem(
+                        position = PreferenceRowPosition.First,
                         headlineContent = {
                             Text(stringResource(R.string.pref_notification_categories))
                         },
@@ -133,9 +132,10 @@ private fun ScreenContent() {
                         }
                     )
                 }
-                channels.forEach { (channelId, nameRes) ->
+                channels.forEachIndexed { index, (channelId, nameRes) ->
                     item {
-                        ListItem(
+                        PreferenceListItem(
+                            position = preferenceRowPosition(index + 1, channels.size + 1),
                             modifier = Modifier.clickable {
                                 openChannelSettings(context, channelId)
                             },

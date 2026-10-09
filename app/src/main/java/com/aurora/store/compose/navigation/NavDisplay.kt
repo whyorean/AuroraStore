@@ -7,6 +7,7 @@
 package com.aurora.store.compose.navigation
 
 import android.content.Intent
+import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VisibilityThreshold
@@ -14,6 +15,7 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
@@ -62,6 +64,7 @@ import com.aurora.store.compose.ui.preferences.security.SecurityPreferenceScreen
 import com.aurora.store.compose.ui.preferences.updates.SourceFiltersScreen
 import com.aurora.store.compose.ui.preferences.updates.UpdatesPreferenceScreen
 import com.aurora.store.compose.ui.search.SearchScreen
+import com.aurora.store.compose.ui.search.searchPanelMotionSpec
 import com.aurora.store.compose.ui.splash.SplashScreen
 import com.aurora.store.compose.ui.spoof.SpoofScreen
 import com.aurora.store.data.event.AuthEvent
@@ -188,7 +191,7 @@ fun NavDisplay(startDestination: NavKey) {
             is Destination.StreamBrowse -> backstack.add(Screen.StreamBrowse(destination.cluster))
             is Destination.GoogleLogin -> backstack.add(Screen.GoogleLogin(destination.addAccount))
 
-            Destination.Search -> backstack.add(Screen.Search)
+            is Destination.Search -> backstack.add(Screen.Search(destination.query))
             Destination.Downloads -> backstack.add(Screen.Downloads)
             Destination.Notifications -> backstack.add(Screen.Notifications)
             Destination.Accounts -> backstack.add(Screen.Accounts)
@@ -294,19 +297,22 @@ fun NavDisplay(startDestination: NavKey) {
             entry<Screen.Search>(
                 metadata = metadata {
                     put(NavDisplay.TransitionKey) {
-                        fadeIn(navFadeSpec) togetherWith
-                            ExitTransition.KeepUntilTransitionsFinished
+                        slideInVertically(searchPanelMotionSpec) { it } togetherWith ExitTransition.None
                     }
                     put(NavDisplay.PopTransitionKey) {
-                        fadeIn(navFadeSpec) togetherWith
-                            slideOutVertically(navSlideSpec) { it }
+                        EnterTransition.None togetherWith slideOutVertically(searchPanelMotionSpec) { it }
                     }
                     put(NavDisplay.PredictivePopTransitionKey) {
-                        fadeIn(navFadeSpec) togetherWith
-                            slideOutVertically(navSlideSpec) { it }
+                        EnterTransition.None togetherWith slideOutVertically(searchPanelMotionSpec) { it }
                     }
                 }
-            ) { SearchScreen() }
+            ) { screen ->
+                SearchScreen(
+                    initialQuery = screen.query,
+                    onNavigateBack = { backstack.removeLastOrNull() },
+                    onNavigateTo = ::navigate
+                )
+            }
 
             entry<Screen.Splash> { screen ->
                 SplashScreen(

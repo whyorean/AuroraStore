@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,6 +24,7 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemKey
 import com.aurora.extensions.emptyPagingItems
 import com.aurora.gplayapi.data.models.App
 import com.aurora.gplayapi.data.models.StreamCluster
@@ -36,7 +38,6 @@ import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.viewmodel.browse.StreamBrowseViewModel
 import kotlin.random.Random
-import kotlin.uuid.Uuid
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
@@ -95,16 +96,21 @@ private fun ScreenContent(
                             .fillMaxSize()
                             .padding(paddingValues),
                         verticalArrangement = Arrangement.spacedBy(
-                            dimensionResource(R.dimen.spacing_medium)
+                            ListItemDefaults.SegmentedGap
                         )
                     ) {
                         items(
                             count = apps.itemCount,
-                            key = { Uuid.random().toString() }
+                            key = apps.itemKey { it.packageName }
                         ) { index ->
                             apps[index]?.let { app ->
                                 LargeAppListItem(
+                                    modifier = Modifier.padding(
+                                        horizontal = dimensionResource(R.dimen.spacing_large)
+                                    ),
                                     app = app,
+                                    itemIndex = index,
+                                    itemCount = apps.itemCount,
                                     onClick = {
                                         onNavigateTo(Destination.AppDetails(app.packageName))
                                     }

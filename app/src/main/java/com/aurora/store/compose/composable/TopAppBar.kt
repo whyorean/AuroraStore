@@ -8,7 +8,9 @@ package com.aurora.store.compose.composable
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -18,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
@@ -39,6 +42,7 @@ fun TopAppBar(
     navigationIcon: Painter = painterResource(R.drawable.ic_arrow_back),
     showNavigationIcon: Boolean = true,
     windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
+    boxedNavigationIcon: Boolean = true,
     actions: @Composable (RowScope.() -> Unit) = {}
 ) {
     val activity = LocalActivity.current as? ComponentActivity
@@ -47,16 +51,33 @@ fun TopAppBar(
         title = { if (title != null) Text(text = title) },
         navigationIcon = {
             if (showNavigationIcon) {
-                IconButton(onClick = { activity?.onBackPressedDispatcher?.onBackPressed() }) {
-                    Icon(
+                if (boxedNavigationIcon) {
+                    RoundedIconButton(
+                        onClick = { activity?.onBackPressedDispatcher?.onBackPressed() },
                         painter = navigationIcon,
-                        contentDescription = stringResource(R.string.action_back)
+                        contentDescription = stringResource(R.string.action_back),
+                        modifier = Modifier.padding(
+                            start = dimensionResource(R.dimen.spacing_medium)
+                        )
                     )
+                } else {
+                    IconButton(
+                        onClick = { activity?.onBackPressedDispatcher?.onBackPressed() }
+                    ) {
+                        Icon(
+                            painter = navigationIcon,
+                            contentDescription = stringResource(R.string.action_back)
+                        )
+                    }
                 }
             }
         },
         windowInsets = windowInsets,
-        actions = actions
+        actions = {
+            Row(modifier = Modifier.padding(end = dimensionResource(R.dimen.spacing_medium))) {
+                actions()
+            }
+        }
     )
 }
 

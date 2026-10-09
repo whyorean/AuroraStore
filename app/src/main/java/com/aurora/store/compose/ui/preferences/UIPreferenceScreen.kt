@@ -11,8 +11,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.ListItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -54,15 +52,9 @@ private fun ScreenContent() {
     val context = LocalContext.current
 
     val themeEntries = stringArrayResource(R.array.pref_theme_style)
+    val tabEntries = stringArrayResource(R.array.pref_default_tab)
     var themeStyle by remember {
         mutableIntStateOf(Preferences.getInteger(context, PREFERENCE_THEME_STYLE))
-    }
-    val tabEntries = stringArrayResource(R.array.pref_default_tab)
-    var selectedTab by remember {
-        mutableIntStateOf(Preferences.getInteger(context, PREFERENCE_DEFAULT_SELECTED_TAB))
-    }
-    var forYou by remember {
-        mutableStateOf(Preferences.getBoolean(context, PREFERENCE_FOR_YOU, true))
     }
     var dynamicColors by remember {
         mutableStateOf(
@@ -72,6 +64,12 @@ private fun ScreenContent() {
                 Preferences.dynamicColorsDefault
             )
         )
+    }
+    var selectedTab by remember {
+        mutableIntStateOf(Preferences.getInteger(context, PREFERENCE_DEFAULT_SELECTED_TAB))
+    }
+    var forYou by remember {
+        mutableStateOf(Preferences.getBoolean(context, PREFERENCE_FOR_YOU, true))
     }
     var showThemeDialog by remember { mutableStateOf(false) }
     var showTabDialog by remember { mutableStateOf(false) }
@@ -119,7 +117,7 @@ private fun ScreenContent() {
         ) {
             if (isTAndAbove) {
                 item {
-                    ListItem(
+                    PreferenceListItem(
                         modifier = Modifier.clickable {
                             context.startActivity(
                                 Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
@@ -132,20 +130,19 @@ private fun ScreenContent() {
                     )
                 }
             }
-            item { HorizontalDivider() }
+            item { PreferenceSectionHeader(stringResource(R.string.pref_ui_theme)) }
             item {
-                ListItem(headlineContent = { Text(stringResource(R.string.pref_ui_theme)) })
-            }
-            item {
-                ListItem(
+                PreferenceListItem(
                     modifier = Modifier.clickable { showThemeDialog = true },
                     headlineContent = { Text(stringResource(R.string.pref_ui_theme)) },
-                    supportingContent = { Text(themeEntries.getOrElse(themeStyle) { "" }) }
+                    supportingContent = {
+                        Text(themeEntries.getOrElse(themeStyle) { "" })
+                    }
                 )
             }
             if (isSAndAbove) {
                 item {
-                    ListItem(
+                    PreferenceListItem(
                         modifier = Modifier.clickable {
                             dynamicColors = !dynamicColors
                             context.save(PREFERENCE_DYNAMIC_COLORS, dynamicColors)
@@ -166,23 +163,17 @@ private fun ScreenContent() {
                     )
                 }
             }
-            item { HorizontalDivider() }
+            item { PreferenceSectionHeader(stringResource(R.string.pref_ui_layout)) }
             item {
-                ListItem(headlineContent = { Text(stringResource(R.string.pref_ui_layout)) })
-            }
-            item {
-                ListItem(
+                PreferenceListItem(
                     modifier = Modifier.clickable { showTabDialog = true },
                     headlineContent = { Text(stringResource(R.string.pref_ui_layout_tab)) },
                     supportingContent = { Text(tabEntries.getOrElse(selectedTab) { "" }) }
                 )
             }
-            item { HorizontalDivider() }
+            item { PreferenceSectionHeader(stringResource(R.string.pref_common_extra)) }
             item {
-                ListItem(headlineContent = { Text(stringResource(R.string.pref_common_extra)) })
-            }
-            item {
-                ListItem(
+                PreferenceListItem(
                     modifier = Modifier.clickable {
                         forYou = !forYou
                         context.save(PREFERENCE_FOR_YOU, forYou)

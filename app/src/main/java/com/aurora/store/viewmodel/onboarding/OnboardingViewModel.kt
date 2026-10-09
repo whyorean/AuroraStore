@@ -35,7 +35,6 @@ import com.aurora.store.util.Preferences.PREFERENCE_FILTER_FDROID
 import com.aurora.store.util.Preferences.PREFERENCE_FOR_YOU
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
 import com.aurora.store.util.Preferences.PREFERENCE_INTRO
-import com.aurora.store.util.Preferences.PREFERENCE_THEME_STYLE
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_CHECK_INTERVAL
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
@@ -123,7 +122,6 @@ class OnboardingViewModel @Inject constructor(
         save(PREFERENCE_VENDING_VERSION, 0)
 
         /*Customization*/
-        save(PREFERENCE_THEME_STYLE, 0)
         save(PREFERENCE_DEFAULT_SELECTED_TAB, 0)
         save(PREFERENCE_FOR_YOU, true)
 

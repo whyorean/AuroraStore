@@ -151,8 +151,7 @@ private fun ScreenContentReport(
         ) {
             LazyColumn(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
+                    .fillMaxSize(),
                 state = listState
             ) {
                 item(key = "history_header") {

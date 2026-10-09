@@ -5,18 +5,21 @@
 
 package com.aurora.store.compose.composable.details
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
@@ -38,14 +41,37 @@ import com.aurora.store.data.model.ExodusTracker
 @Composable
 fun ExodusListItem(modifier: Modifier = Modifier, tracker: ExodusTracker) {
     val context = LocalContext.current
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable(
-                onClick = { context.browse(tracker.url) },
-                enabled = tracker.url.isNotBlank()
-            )
-            .padding(dimensionResource(R.dimen.spacing_small))
+    ListItem(
+        onClick = { context.browse(tracker.url) },
+        modifier = modifier.fillMaxWidth(),
+        enabled = tracker.url.isNotBlank(),
+        shapes = com.aurora.store.compose.composable.auroraListItemShapes(),
+        supportingContent = {
+            Column {
+                if (tracker.categories.isNotEmpty()) {
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                        modifier = Modifier.padding(top = dimensionResource(R.dimen.spacing_xsmall))
+                    ) {
+                        tracker.categories.forEach { category -> CategoryChip(category) }
+                    }
+                }
+                Text(
+                    text = tracker.signature,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.padding(top = dimensionResource(R.dimen.spacing_xsmall))
+                )
+            }
+        },
+        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+        contentPadding = PaddingValues(
+            horizontal = dimensionResource(R.dimen.spacing_large),
+            vertical = dimensionResource(R.dimen.spacing_small)
+        )
     ) {
         Text(
             text = tracker.name,
@@ -53,22 +79,6 @@ fun ExodusListItem(modifier: Modifier = Modifier, tracker: ExodusTracker) {
             fontWeight = FontWeight.W400,
             color = MaterialTheme.colorScheme.onSurface,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-        )
-        if (tracker.categories.isNotEmpty()) {
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = Modifier.padding(vertical = 4.dp)
-            ) {
-                tracker.categories.forEach { category -> CategoryChip(category) }
-            }
-        }
-        Text(
-            text = tracker.signature,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            maxLines = 2,
             overflow = TextOverflow.Ellipsis
         )
     }

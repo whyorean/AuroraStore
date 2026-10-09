@@ -5,9 +5,15 @@
 
 package com.aurora.store.compose.composable
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
@@ -24,9 +30,16 @@ fun InstallerListItem(
     onClick: () -> Unit = {}
 ) {
     val description = stringResource(installerInfo.description)
+    val itemShape = RoundedCornerShape(dimensionResource(R.dimen.radius_large))
 
     AuroraListItem(
-        modifier = modifier,
+        modifier = modifier
+            .padding(
+                horizontal = dimensionResource(R.dimen.spacing_large),
+                vertical = dimensionResource(R.dimen.spacing_xsmall)
+            )
+            .clip(itemShape)
+            .background(MaterialTheme.colorScheme.surfaceContainerLow, itemShape),
         headline = stringResource(installerInfo.title),
         supporting = stringResource(installerInfo.subtitle),
         // Name the app providing this installer, where several can serve the same one

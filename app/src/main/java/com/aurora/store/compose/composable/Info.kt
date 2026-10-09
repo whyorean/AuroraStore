@@ -6,14 +6,16 @@
 
 package com.aurora.store.compose.composable
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,19 +31,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.aurora.gplayapi.data.models.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
- * Composable to show some information
- * @param modifier The modifier to be applied to the composable
- * @param title Title of the information
- * @param description Information to show
- * @param painter Optional painter to draw the icon
- * @param titleColor Optional color for the title
- * @param onClick Callback when this composable is clicked
+ * Read-only or clickable information row rendered with the Material 3 ListItem component.
  */
 @Composable
 fun Info(
@@ -50,21 +48,56 @@ fun Info(
     description: AnnotatedString? = null,
     painter: Painter? = null,
     titleColor: Color = Color.Unspecified,
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
+    horizontalPadding: Dp = 0.dp
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable(onClick = { if (onClick != null) onClick() }, enabled = onClick != null)
-            .padding(
-                horizontal = dimensionResource(R.dimen.spacing_medium),
-                vertical = dimensionResource(R.dimen.spacing_xsmall)
-            ),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small)),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        if (painter != null) Icon(painter = painter, contentDescription = null)
-        Column(modifier = Modifier.weight(1F)) {
+    val itemModifier = modifier
+        .padding(horizontal = horizontalPadding)
+    val leadingContent: (@Composable () -> Unit)? = painter?.let { icon ->
+        {
+            Surface(
+                modifier = Modifier.size(dimensionResource(R.dimen.icon_size_small)),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.app_icon_radius)),
+                color = MaterialTheme.colorScheme.secondaryContainer
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(
+                        painter = icon,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                        modifier = Modifier.size(dimensionResource(R.dimen.icon_size_category))
+                    )
+                }
+            }
+        }
+    }
+    val supportingContent: (@Composable () -> Unit)? = description
+        ?.takeIf { it.isNotBlank() }
+        ?.let { content ->
+            {
+                Text(
+                    text = content,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+    val itemColors = ListItemDefaults.colors(containerColor = Color.Transparent)
+    val contentPadding = PaddingValues(
+        horizontal = dimensionResource(R.dimen.spacing_large),
+        vertical = dimensionResource(R.dimen.spacing_small)
+    )
+
+    if (onClick != null) {
+        ListItem(
+            onClick = onClick,
+            modifier = itemModifier,
+            shapes = auroraListItemShapes(),
+            supportingContent = supportingContent,
+            leadingContent = leadingContent,
+            colors = itemColors,
+            contentPadding = contentPadding
+        ) {
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodyMedium,
@@ -72,13 +105,24 @@ fun Info(
                 overflow = TextOverflow.Ellipsis,
                 color = titleColor
             )
-            if (!description.isNullOrBlank()) {
-                Text(
-                    text = description,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+        }
+    } else {
+        ListItem(
+            modifier = itemModifier,
+            enabled = true,
+            shapes = auroraListItemShapes(),
+            supportingContent = supportingContent,
+            leadingContent = leadingContent,
+            colors = itemColors,
+            contentPadding = contentPadding
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyMedium,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                color = titleColor
+            )
         }
     }
 }

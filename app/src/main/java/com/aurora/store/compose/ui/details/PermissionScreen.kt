@@ -93,8 +93,7 @@ private fun ScreenContent(
         ) {
             LazyColumn(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = dimensionResource(R.dimen.spacing_medium)),
+                    .fillMaxSize(),
                 state = listState,
                 verticalArrangement = Arrangement.spacedBy(
                     dimensionResource(R.dimen.spacing_medium)

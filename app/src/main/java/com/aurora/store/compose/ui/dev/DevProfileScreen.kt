@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.compose.runtime.Composable
@@ -173,13 +174,18 @@ private fun ScreenContent(
                         .fillMaxSize()
                         .padding(vertical = dimensionResource(R.dimen.spacing_medium)),
                     verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.spacing_medium)
+                        ListItemDefaults.SegmentedGap
                     )
                 ) {
                     items(count = apps.itemCount, key = apps.itemKey { it.id }) { index ->
                         apps[index]?.let { app ->
                             LargeAppListItem(
+                                modifier = Modifier.padding(
+                                    horizontal = dimensionResource(R.dimen.spacing_large)
+                                ),
                                 app = app,
+                                itemIndex = index,
+                                itemCount = apps.itemCount,
                                 onClick = { onNavigateTo(Destination.AppDetails(app.packageName)) }
                             )
                         }

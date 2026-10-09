@@ -39,7 +39,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
 @Composable
-fun shimmerBrush(): Brush {
+internal fun rememberShimmerBrush(): Brush {
     val base = MaterialTheme.colorScheme.onSurface
     val colors = listOf(
         base.copy(alpha = 0.08f),
@@ -65,16 +65,24 @@ fun shimmerBrush(): Brush {
 }
 
 @Composable
-private fun ShimmerBlock(modifier: Modifier, radiusRes: Int = R.dimen.radius_small) {
+private fun ShimmerBlock(
+    modifier: Modifier,
+    brush: Brush,
+    radiusRes: Int = R.dimen.radius_small
+) {
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(dimensionResource(radiusRes)))
-            .background(shimmerBrush())
+            .background(brush)
     )
 }
 
 @Composable
-private fun ShimmerTextStack(modifier: Modifier = Modifier, widthFractions: List<Float>) {
+private fun ShimmerTextStack(
+    modifier: Modifier = Modifier,
+    widthFractions: List<Float>,
+    brush: Brush
+) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_xsmall))
@@ -83,36 +91,41 @@ private fun ShimmerTextStack(modifier: Modifier = Modifier, widthFractions: List
             ShimmerBlock(
                 modifier = Modifier
                     .fillMaxWidth(fraction)
-                    .height(14.dp)
+                    .height(14.dp),
+                brush = brush
             )
         }
     }
 }
 
 @Composable
-private fun ShimmerListRow(showTrailing: Boolean) {
+private fun ShimmerListRow(showTrailing: Boolean, sharedBrush: Brush? = null) {
+    val brush = sharedBrush ?: rememberShimmerBrush()
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                horizontal = dimensionResource(R.dimen.spacing_small),
+                horizontal = dimensionResource(R.dimen.spacing_large),
                 vertical = dimensionResource(R.dimen.spacing_xsmall)
             ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
         ShimmerBlock(
-            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium))
+            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),
+            brush = brush
         )
         ShimmerTextStack(
             modifier = Modifier.weight(1f),
-            widthFractions = listOf(0.7f, 0.5f, 0.5f)
+            widthFractions = listOf(0.7f, 0.5f, 0.5f),
+            brush = brush
         )
         if (showTrailing) {
             ShimmerBlock(
                 modifier = Modifier
                     .width(80.dp)
                     .height(36.dp),
+                brush = brush,
                 radiusRes = R.dimen.radius_large
             )
         }
@@ -120,89 +133,106 @@ private fun ShimmerListRow(showTrailing: Boolean) {
 }
 
 @Composable
-internal fun ShimmerAppRow() {
-    ShimmerListRow(showTrailing = false)
+internal fun ShimmerAppRow(sharedBrush: Brush? = null) {
+    ShimmerListRow(showTrailing = false, sharedBrush = sharedBrush)
 }
 
 @Composable
-internal fun ShimmerUpdateItem() {
-    ShimmerListRow(showTrailing = true)
+internal fun ShimmerUpdateItem(sharedBrush: Brush? = null) {
+    ShimmerListRow(showTrailing = true, sharedBrush = sharedBrush)
 }
 
 @Composable
-internal fun ShimmerCategoryRow() {
+internal fun ShimmerCategoryRow(sharedBrush: Brush? = null) {
+    val brush = sharedBrush ?: rememberShimmerBrush()
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                horizontal = dimensionResource(R.dimen.spacing_medium),
+                horizontal = dimensionResource(R.dimen.spacing_large),
                 vertical = dimensionResource(R.dimen.spacing_small)
             ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_large))
     ) {
         ShimmerBlock(
-            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_category))
+            modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_category)),
+            brush = brush
         )
         ShimmerBlock(
             modifier = Modifier
                 .weight(1f)
-                .height(24.dp)
+                .height(24.dp),
+            brush = brush
         )
     }
 }
 
 @Composable
-internal fun ShimmerCarouselSection() {
+internal fun ShimmerCarouselSection(sharedBrush: Brush? = null) {
+    val brush = sharedBrush ?: rememberShimmerBrush()
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = dimensionResource(R.dimen.spacing_small)),
+            .padding(
+                horizontal = dimensionResource(R.dimen.spacing_large),
+                vertical = dimensionResource(R.dimen.spacing_small)
+            ),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
         ShimmerBlock(
             modifier = Modifier
                 .fillMaxWidth(0.42f)
-                .height(16.dp)
+                .height(16.dp),
+            brush = brush
         )
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
         ) {
-            repeat(5) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.spacing_xsmall)
-                    )
-                ) {
-                    ShimmerBlock(
-                        modifier = Modifier.size(dimensionResource(R.dimen.icon_size_cluster)),
-                        radiusRes = R.dimen.radius_medium
-                    )
-                    ShimmerBlock(
-                        modifier = Modifier
-                            .width(dimensionResource(R.dimen.icon_size_cluster) * 0.75f)
-                            .height(11.dp)
-                    )
-                    ShimmerBlock(
-                        modifier = Modifier
-                            .width(dimensionResource(R.dimen.icon_size_cluster) * 0.5f)
-                            .height(11.dp)
-                    )
-                }
+            repeat(3) {
+                ShimmerAppListItem(brush)
             }
         }
     }
 }
 
 @Composable
-internal fun ShimmerAppListItem() {
-    ShimmerBlock(
+internal fun ShimmerAppListItem(sharedBrush: Brush? = null) {
+    val brush = sharedBrush ?: rememberShimmerBrush()
+    Column(
         modifier = Modifier
-            .padding(dimensionResource(R.dimen.spacing_xsmall))
-            .size(dimensionResource(R.dimen.icon_size_cluster)),
-        radiusRes = R.dimen.radius_medium
-    )
+            .width(164.dp)
+            .height(184.dp)
+            .clip(RoundedCornerShape(28.dp))
+            .background(brush)
+            .padding(14.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        ShimmerBlock(
+            modifier = Modifier.size(56.dp),
+            brush = brush,
+            radiusRes = R.dimen.radius_large
+        )
+        ShimmerBlock(
+            modifier = Modifier
+                .fillMaxWidth(0.84f)
+                .height(14.dp),
+            brush = brush
+        )
+        ShimmerBlock(
+            modifier = Modifier
+                .fillMaxWidth(0.6f)
+                .height(11.dp),
+            brush = brush
+        )
+        ShimmerBlock(
+            modifier = Modifier
+                .fillMaxWidth(0.4f)
+                .height(11.dp),
+            brush = brush
+        )
+    }
 }
 
 @PreviewWrapper(ThemePreviewProvider::class)

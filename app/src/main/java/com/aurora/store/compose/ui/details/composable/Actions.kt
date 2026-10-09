@@ -6,27 +6,29 @@
 
 package com.aurora.store.compose.ui.details.composable
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonGroup
+import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.adaptive.WindowAdaptiveInfo
-import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import com.aurora.extensions.isWindowCompact
 import com.aurora.store.R
+import com.aurora.store.compose.composable.ExpressiveMenuItem
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
@@ -41,49 +43,99 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * @param windowAdaptiveInfo Adaptive window information
  */
 @Composable
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 fun Actions(
     primaryActionDisplayName: String,
     secondaryActionDisplayName: String,
     isPrimaryActionEnabled: Boolean = true,
     isSecondaryActionEnabled: Boolean = true,
     onPrimaryAction: () -> Unit = {},
-    onSecondaryAction: () -> Unit = {},
-    windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
+    onSecondaryAction: () -> Unit = {}
 ) {
-    Row(
+    val interactionSources = remember { List(2) { MutableInteractionSource() } }
+    val leadingShapes = ButtonGroupDefaults.connectedLeadingButtonShapes()
+    val trailingShapes = ButtonGroupDefaults.connectedTrailingButtonShapes()
+
+    ButtonGroup(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(PaddingValues(horizontal = dimensionResource(R.dimen.spacing_medium))),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_medium))
+            .widthIn(max = dimensionResource(R.dimen.width_button) * 2)
+            .padding(horizontal = dimensionResource(R.dimen.spacing_large)),
+        overflowIndicator = { menuState ->
+            ButtonGroupDefaults.OverflowIndicator(menuState = menuState)
+        },
+        horizontalArrangement = Arrangement.spacedBy(
+            ButtonGroupDefaults.ConnectedSpaceBetween
+        )
     ) {
-        val buttonWidthModifier = when {
-            windowAdaptiveInfo.isWindowCompact -> Modifier.weight(1F)
-            else -> Modifier.widthIn(min = dimensionResource(R.dimen.width_button))
-        }
+        val secondaryModifier = Modifier.weight(0.95f).animateWidth(interactionSources[0])
+        val primaryModifier = Modifier.weight(1.05f).animateWidth(interactionSources[1])
 
-        FilledTonalButton(
-            modifier = buttonWidthModifier,
-            onClick = onSecondaryAction,
-            enabled = isSecondaryActionEnabled
-        ) {
-            Text(
-                text = secondaryActionDisplayName,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
+        customItem(
+            buttonGroupContent = {
+                FilledTonalButton(
+                    modifier = secondaryModifier,
+                    onClick = onSecondaryAction,
+                    enabled = isSecondaryActionEnabled,
+                    interactionSource = interactionSources[0],
+                    shapes = ButtonDefaults.shapes(
+                        shape = leadingShapes.shape,
+                        pressedShape = leadingShapes.pressedShape
+                    )
+                ) {
+                    Text(
+                        text = secondaryActionDisplayName,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            },
+            menuContent = { menuState ->
+                ExpressiveMenuItem(
+                    index = 0,
+                    count = 2,
+                    text = { Text(text = secondaryActionDisplayName) },
+                    enabled = isSecondaryActionEnabled,
+                    onClick = {
+                        menuState.dismiss()
+                        onSecondaryAction()
+                    }
+                )
+            }
+        )
 
-        Button(
-            modifier = buttonWidthModifier,
-            onClick = onPrimaryAction,
-            enabled = isPrimaryActionEnabled
-        ) {
-            Text(
-                text = primaryActionDisplayName,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
+        customItem(
+            buttonGroupContent = {
+                Button(
+                    modifier = primaryModifier,
+                    onClick = onPrimaryAction,
+                    enabled = isPrimaryActionEnabled,
+                    interactionSource = interactionSources[1],
+                    shapes = ButtonDefaults.shapes(
+                        shape = trailingShapes.shape,
+                        pressedShape = trailingShapes.pressedShape
+                    )
+                ) {
+                    Text(
+                        text = primaryActionDisplayName,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            },
+            menuContent = { menuState ->
+                ExpressiveMenuItem(
+                    index = 1,
+                    count = 2,
+                    text = { Text(text = primaryActionDisplayName) },
+                    enabled = isPrimaryActionEnabled,
+                    onClick = {
+                        menuState.dismiss()
+                        onPrimaryAction()
+                    }
+                )
+            }
+        )
     }
 }
 

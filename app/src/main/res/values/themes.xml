@@ -4,15 +4,15 @@
   -->
 <resources>
 
-    <style name="AppTheme" parent="Theme.Material3.DynamicColors.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
         <item name="chipStyle">@style/Chip.Filter</item>
         <item name="bottomSheetStyle">@style/AppTheme.BottomSheetStyle</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <!-- Brand accent for devices without dynamic color (Android 11 and below) -->
+        <!-- Brand accent for legacy Android Views; Compose uses MaterialExpressiveTheme. -->
         <item name="colorPrimary">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.Translucent" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
+    <style name="AppTheme.Translucent" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>

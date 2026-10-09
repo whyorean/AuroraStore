@@ -5,20 +5,26 @@
 
 package com.aurora.store.compose.composable
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import coil3.compose.AsyncImage
-import coil3.request.ImageRequest
-import coil3.request.crossfade
 import com.aurora.gplayapi.SearchSuggestEntry
 import com.aurora.store.R
 import com.aurora.store.compose.preview.ThemePreviewProvider
@@ -30,37 +36,50 @@ fun SearchSuggestionListItem(
     onClick: (query: String) -> Unit = {},
     onAction: (query: String) -> Unit = {}
 ) {
-    AuroraListItem(
-        modifier = modifier,
-        headline = searchSuggestEntry.title,
+    ListItem(
         onClick = { onClick(searchSuggestEntry.title) },
-        leading = {
+        modifier = modifier,
+        shapes = auroraListItemShapes(),
+        leadingContent = {
             AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(
-                        if (searchSuggestEntry.hasImageContainer()) {
-                            searchSuggestEntry.imageContainer.imageUrl
-                        } else {
-                            R.drawable.ic_search_suggestion
-                        }
-                    )
-                    .crossfade(true)
-                    .build(),
+                model = rememberStoreImageRequest(
+                    if (searchSuggestEntry.hasImageContainer()) {
+                        searchSuggestEntry.imageContainer.imageUrl
+                    } else {
+                        R.drawable.ic_search_suggestion
+                    }
+                ),
                 contentDescription = null,
                 placeholder = painterResource(R.drawable.ic_search_suggestion),
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_default))
+                modifier = Modifier
+                    .requiredSize(dimensionResource(R.dimen.icon_size_default))
+                    .clip(RoundedCornerShape(dimensionResource(R.dimen.app_icon_radius)))
             )
         },
-        trailing = {
+        trailingContent = {
             IconButton(onClick = { onAction(searchSuggestEntry.title) }) {
                 Icon(
                     painter = painterResource(R.drawable.ic_search_append),
                     contentDescription = null
                 )
             }
-        }
-    )
+        },
+        colors = ListItemDefaults.colors(
+            containerColor = Color.Transparent
+        ),
+        verticalAlignment = Alignment.CenterVertically,
+        contentPadding = PaddingValues(
+            horizontal = dimensionResource(R.dimen.spacing_large),
+            vertical = dimensionResource(R.dimen.spacing_small)
+        )
+    ) {
+        Text(
+            text = searchSuggestEntry.title,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+    }
 }
 
 @PreviewWrapper(ThemePreviewProvider::class)

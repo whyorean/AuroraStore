@@ -6,5 +6,5 @@
 <resources>
     <!--Common Colors-->
     <color name="colorAccent">#6C63FF</color>
-    <color name="ic_launcher_background">#6C63FF</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
 </resources>

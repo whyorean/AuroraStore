@@ -6,8 +6,6 @@
 package com.aurora.store.compose.ui.downloads.menu
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -22,6 +20,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import com.aurora.store.R
+import com.aurora.store.compose.composable.ExpressiveMenuGroup
+import com.aurora.store.compose.composable.ExpressiveMenuIcon
+import com.aurora.store.compose.composable.ExpressiveMenuItem
+import com.aurora.store.compose.composable.ExpressiveMenuPopup
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
 /**
@@ -49,19 +51,36 @@ fun DownloadsMenu(
                 contentDescription = stringResource(R.string.menu)
             )
         }
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.download_cancel_all)) },
-                onClick = { onClick(MenuItem.CANCEL_ALL) }
-            )
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.download_clear_finished)) },
-                onClick = { onClick(MenuItem.CLEAR_FINISHED) }
-            )
-            DropdownMenuItem(
-                text = { Text(text = stringResource(R.string.download_force_clear_all)) },
-                onClick = { onClick(MenuItem.FORCE_CLEAR_ALL) }
-            )
+        ExpressiveMenuPopup(expanded = expanded, onDismissRequest = { expanded = false }) {
+            ExpressiveMenuGroup(index = 0, count = 1) {
+                ExpressiveMenuItem(
+                    index = 0,
+                    count = 3,
+                    text = { Text(text = stringResource(R.string.download_cancel_all)) },
+                    onClick = { onClick(MenuItem.CANCEL_ALL) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_cancel))
+                    }
+                )
+                ExpressiveMenuItem(
+                    index = 1,
+                    count = 3,
+                    text = { Text(text = stringResource(R.string.download_clear_finished)) },
+                    onClick = { onClick(MenuItem.CLEAR_FINISHED) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_check))
+                    }
+                )
+                ExpressiveMenuItem(
+                    index = 2,
+                    count = 3,
+                    text = { Text(text = stringResource(R.string.download_force_clear_all)) },
+                    onClick = { onClick(MenuItem.FORCE_CLEAR_ALL) },
+                    leadingIcon = {
+                        ExpressiveMenuIcon(painterResource(R.drawable.ic_delete_forever))
+                    }
+                )
+            }
         }
     }
 }
