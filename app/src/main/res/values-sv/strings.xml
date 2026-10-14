@@ -626,4 +626,18 @@
     <string name="manual_download_no_versions">Inga kända versioner hittades</string>
     <string name="manual_download_availability_warning">Vissa versioner kanske inte går att hämta eller är inkompatibla med enheten.</string>
     <string name="details_more_certificate_hash">Certifikathash</string>
+    <string name="action_free_up_space">Frigör utrymme</string>
+    <string name="installer_provider">%1$s · Betjänas av %2$s</string>
+    <string name="insufficient_storage_title">Inte tillräckligt med utrymme</string>
+    <string name="insufficient_storage_desc">%1$s behöver %2$s, men endast %3$s är tillgänglig.</string>
+    <string name="insufficient_storage_hint">Frigör %1$s och försök igen.</string>
+    <string name="status_awaiting_install">Väntar på bekräftelse</string>
+    <string name="notification_install_prompt_pending">Tryck för att slutföra installationen</string>
+    <string name="notification_none">Ingenting att se här</string>
+    <string name="details_more_files">Filer</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d app behöver %2$s, men endast %3$s är tillgänglig.</item>
+        <item quantity="other">%1$d appar behöver %2$s, men endast är %3$s tillgängligt.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Datum för nedladdning</string>
 </resources>
