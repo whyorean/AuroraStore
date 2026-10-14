@@ -276,7 +276,7 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> e <xliff:g id="apps_count">%4$d</xliff:g> máis</string>
     <string name="failed_generating_session">Fallo ao xerar a sesión, código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="about_wiki_title">Wiki</string>
-    <string name="about_wiki_summary">Atopar respostas a preguntas frequentes (FAQ), pasos para a solución de problemas e máis</string>
+    <string name="about_wiki_summary">Atopar respostas a preguntas frequentes (F.A.Q.), pasos para a solución de problemas e máis</string>
     <string name="action_favourite">Favorito</string>
     <string name="action_remove_all">Eliminar todo</string>
     <string name="action_request_analysis">Solicitar unha nova análise</string>
@@ -427,7 +427,7 @@
     <string name="pref_network_proxy_desc">Ver e xestionar a configuración do proxy</string>
     <string name="pref_common_advanced">Avanzado</string>
     <string name="pref_updates_restrictions_title">Restricións das actualizacións automáticas</string>
-    <string name="pref_updates_restrictions_desc">Configurar restricións para actualizacións automáticas.</string>
+    <string name="pref_updates_restrictions_desc">Configurar restricións do dispositivo para as actualizacións automáticas</string>
     <string name="pref_updates_restrictions_metered">Só en redes sen restrición de uso</string>
     <string name="pref_updates_restrictions_idle">Cando o dispositivo está inactivo</string>
     <string name="pref_updates_restrictions_battery">Cando a batería non está baixa</string>
@@ -571,4 +571,73 @@
     <string name="toast_fav_install_none">Non hai nada que instalar</string>
     <string name="toast_fav_install_failed">Non se puideron obter os detalles da aplicación</string>
     <string name="force_restart_snack">Reiniciar para aplicar os cambios?</string>
+    <string name="exodus_history_version">%1$s (%2$s)</string>
+    <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> known trackers(s) found in <xliff:g id="app_version_name">%2$s</xliff:g></string>
+    <string name="status_installing">Instalando</string>
+    <string name="status_installed">Instalado</string>
+    <string name="status_awaiting_install">Agardando confirmación</string>
+    <string name="notification_install_prompt_pending">Preme para finalizar a instalación</string>
+    <string name="notification_none">Nada que ver aquí</string>
+    <string name="header_blacklist_selected">Lista negra</string>
+    <string name="header_blacklist_others">Outros</string>
+    <string name="no_description">Non hai descrición dispoñible</string>
+    <string name="details_more_info">Máis información</string>
+    <string name="details_more_files">Ficheiros</string>
+    <string name="details_more_target_api">Obxectivos</string>
+    <string name="details_more_package_name">Nome do paquete</string>
+    <string name="details_more_content_rating">Clasificación de contido</string>
+    <string name="details_more_certificate_hash">Hash do certificado</string>
+    <string name="preparing_to_install">Preparándose para instalar</string>
+    <string name="preparing_to_download">Preparando a descarga</string>
+    <string name="verifying_downloads">A verificar as descargas</string>
+    <plurals name="permissions_required">
+        <item quantity="one">Requírese permiso</item>
+        <item quantity="other">Requírense permisos</item>
+    </plurals>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">A aplicación %1$d precisa %2$s, pero só hai %3$s dispoñible.</item>
+        <item quantity="other">As aplicacións %1$d precisan %2$s, pero só hai %3$s dispoñibles.</item>
+    </plurals>
+    <plurals name="favourites_count">
+        <item quantity="one">%1$d favorito</item>
+        <item quantity="other">%1$d favoritos</item>
+    </plurals>
+    <plurals name="account_count">
+        <item quantity="one">Total de %1$d conta</item>
+        <item quantity="other">Total de %1$d contas</item>
+    </plurals>
+    <plurals name="account_refresh_failed">
+        <item quantity="one">Non se puido actualizar a conta %1$d</item>
+        <item quantity="other">Non se puideron actualizar as contas %1$d</item>
+    </plurals>
+    <plurals name="notification_installed_summary">
+        <item quantity="one">%d aplicación instalada</item>
+        <item quantity="other">%d aplicacións instaladas</item>
+    </plurals>
+    <plurals name="notification_failed_summary">
+        <item quantity="one">%d aplicación fallou</item>
+        <item quantity="other">%d aplicacións fallaron</item>
+    </plurals>
+    <string name="installed_sort_filter">Ordenar e filtrar</string>
+    <string name="installed_sort_by">Ordenar por</string>
+    <string name="installed_sort_name">Nome</string>
+    <string name="installed_sort_date_installed">Data da instalación</string>
+    <string name="installed_sort_date_updated">Data da actualización</string>
+    <string name="installed_sort_package_name">Nome do paquete</string>
+    <string name="installed_sort_size">Tamaño</string>
+    <string name="installed_sort_ascending">Ascendente</string>
+    <string name="installed_sort_descending">Descendente</string>
+    <string name="installed_filter">Filtro</string>
+    <string name="download_sort_date_downloaded">Data de descarga</string>
+    <string name="installed_filter_user_apps">Aplicacións do usuario</string>
+    <string name="installed_filter_system_apps">Aplicacións do sistema</string>
+    <string name="installed_filter_installer">Instalado dende</string>
+    <string name="installed_filter_all">Todo</string>
+    <string name="installed_updated_at">Actualizado o <xliff:g id="when">%1$s</xliff:g></string>
+    <string name="select_app_for_details">Selecciona unha aplicación para obter máis detalles</string>
+    <string name="action_filter_no_ads">Sen anuncios</string>
+    <string name="action_filter_no_gms">Sen servizos de Play</string>
+    <string name="loading">Carga en curso</string>
+    <string name="page">Páxina <xliff:g id="number">%1$d</xliff:g></string>
+    <string name="action_check">Comprobar</string>
 </resources>
