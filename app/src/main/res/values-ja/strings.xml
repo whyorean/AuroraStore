@@ -537,4 +537,10 @@
     <plurals name="notification_installed_summary">
         <item quantity="other">%dアプリをインストールしました</item>
     </plurals>
+    <string name="pref_notification_progress">ダウンロードの進捗状況を表示する</string>
+    <string name="pref_notification_progress_desc">アプリをダウンロードしたりアップデートしたりしている間、詳細な進捗状況を表示します。オフの場合、目立たない通知によってバックグラウンドでダウンロードを続行します。</string>
+    <string name="pref_notification_disabled">通知はオフになっています</string>
+    <string name="pref_notification_disabled_desc">タップしてAurora Storeからの通知を許可</string>
+    <string name="pref_updates_warn_trackers">アップデートの際に新しいトラッカーについて警告する</string>
+    <string name="pref_updates_warn_trackers_desc">インストールされたバージョンのアプリになかったトラッカーが新しいバージョンで追加された場合、アップデートの前に警告する</string>
 </resources>
