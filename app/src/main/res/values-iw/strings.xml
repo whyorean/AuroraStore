@@ -517,4 +517,10 @@
     <string name="app_lock_unlock">פתח נעילה</string>
     <string name="app_lock_prompt_title">פתח נעילת Aurora Store</string>
     <string name="app_lock_prompt_subtitle">הכנס תבנית, קוד PIN, סיסמה או טביעת אצבע של נעילת המסך</string>
+    <string name="account_exists">החשבון כבר נוסף</string>
+    <string name="action_free_up_space">פינוי מקום</string>
+    <string name="action_update_anyway">לעדכן בכל זאת</string>
+    <string name="exodus_report_history">היסטוריית גרסאות</string>
+    <string name="exodus_latest">עדכני</string>
+    <string name="confirm_deeplink_title">אישור קישורים חיצוניים</string>
 </resources>
