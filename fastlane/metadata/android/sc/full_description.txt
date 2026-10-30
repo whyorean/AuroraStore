@@ -1,0 +1,11 @@
+Aurora Store est unu cliente FOSS e no ufitziale de Google Play cun unu disinnu elegante. Aurora Store permitit a sos impreadores de iscarrigare, agiornare e chircare aplicatziones comente in su Play Store. Funtzionat bene meda cun o chene sos Servìtzios de Google Play o microG.
+
+<b>Funtzionalidades:</b>
+
+• FOSS: tenet sa lissèntzia GPLv3
+• Disinnu bellu: fatu sighende sas diretivas prus reghentes de Material 3
+• Atzessu cun contu: podes intrare cun unu contu personale o cun unu contu anònimu
+• Simulatzione de dispositivu e de limba/regione: muda su dispositivu e/o sa limba/regione pro atzèdere a sas aplicatziones blocadas pro regione geogràfica
+• Integratzione cun Exodus Privacy: bide deretu sos arrastadores in s'aplicatzione
+• Integratzione cun Plexus: bide deretu sa cumpatibilidade de sas aplicatziones chene sos Servìtzios de Google Play o cun microG
+• Lista niedda de sos agiornamentos: ignora sos agiornamentos de aplicatziones ispetzìficas

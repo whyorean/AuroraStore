@@ -1,0 +1,9 @@
+• Interfache noa cun Jetpack Compose
+• Prus contos de Google
+• Retzensiones in sos detàllios de s'aplicatzione
+• Blocu de s'aplicatzione cun biometria o credentziales
+• Installatzione cun unu tocu de sas preferidas; còmpora de aplicatziones
+• Notìficas agrupadas cun riassuntos e impostatziones
+• Agiornamentos rinnovados, Aurora Store puru in sa lista
+• Iscarrigamentos e installatziones prus fidados; installadore microG
+• Curretziones de faddinas e tradutziones agiornadas
