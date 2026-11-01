@@ -134,7 +134,9 @@ private fun ScreenContent(
                                 count = reviews.itemCount,
                                 key = reviews.itemKey { it.commentId }
                             ) { index ->
-                                reviews[index]?.let { review -> ReviewListItem(review = review) }
+                                reviews[index]?.let { review ->
+                                    ReviewListItem(review = review, showReply = true)
+                                }
                             }
                         }
                         ScrollHint(

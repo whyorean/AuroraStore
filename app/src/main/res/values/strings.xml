@@ -379,6 +379,7 @@
     <string name="toast_rated_success">Rated, it may take a while to show</string>
     <string name="toast_rated_failed">Could not submit rating</string>
     <string name="permission_new">New</string>
+    <string name="review_developer_reply">Response from the developer</string>
     <string name="permission_group_system">Android system</string>
     <string name="permission_group_google">Google</string>
     <string name="permission_group_other">Other</string>
