@@ -36,7 +36,6 @@ import rikka.shizuku.ShizukuProvider
  * [RootInstaller] installs.
  */
 @Singleton
-@RequiresApi(Build.VERSION_CODES.O)
 class ShizukuInstaller @Inject constructor(
     @ApplicationContext private val context: Context
 ) : InstallerBase(context) {
@@ -73,6 +72,7 @@ class ShizukuInstaller @Inject constructor(
             Regex("""\[(\d+)]""").find(output)?.groupValues?.get(1)?.toIntOrNull()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun install(download: Download) {
         super.install(download)
 
@@ -146,7 +146,10 @@ class ShizukuInstaller @Inject constructor(
         exec(listOf("pm", "install-commit", sessionId.toString()))
             .onSuccess {
                 // Installation is not yet finished if this is a shared library
-                if (packageName == download?.packageName) onInstallationSuccess()
+                if (packageName == download?.packageName) {
+                    AppInstaller.recordPlayAttributedInstall(context, packageName)
+                    onInstallationSuccess()
+                }
             }
             .onFailure { error ->
                 fail(packageName, error.localizedMessage, error.stackTraceToString())

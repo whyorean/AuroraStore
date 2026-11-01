@@ -160,7 +160,6 @@
     <string name="purchase_session_expired">Sessione scaduta, accedi nuovamente per ottenere una nuova sessione.</string>
     <string name="pref_ui_title">Personalizzazione</string>
     <string name="pref_install_mode_title">Metodo di installazione</string>
-    <string name="pref_install_mode_summary">Seleziona la modalità di installazione degli APK</string>
     <string name="pref_install_mode_session">Installatore di sessione</string>
     <string name="pref_install_mode_services">Servizi Aurora (Deprecato)</string>
     <string name="pref_install_mode_root">Installatore Root</string>
@@ -183,7 +182,6 @@
     <string name="menu_terms">Termini di servizio</string>
     <string name="menu_license">Licenza</string>
     <string name="menu_disclaimer">Avvertenza</string>
-    <string name="installer_status_user_action">In attesa della conferma dell\'utente</string>
     <string name="installer_status_success">Installata con successo</string>
     <string name="installer_status_failure_storage">Spazio di memoria insufficiente</string>
     <string name="installer_status_failure_invalid">APK non valido o corrotto</string>
@@ -461,11 +459,8 @@
     <string name="details_more_package_name">Nome pacchetto</string>
     <string name="details_more_content_rating">Valutazione contenuti</string>
     <string name="preparing_to_install">Preparazione per l\'installazione</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Autorizzazione richiesta</item>
-        <item quantity="many">Autorizzazioni richieste</item>
-        <item quantity="other">Autorizzazioni richieste</item>
-    </plurals>
+    <string name="permission_required">Autorizzazione richiesta</string>
+    <string name="permissions_required">Autorizzazioni richieste</string>
     <string name="select_app_for_details">Seleziona un\'app per maggiori dettagli</string>
     <string name="action_filter_no_ads">Nessuna pubblicità</string>
     <string name="action_filter_no_gms">Senza Play Services</string>

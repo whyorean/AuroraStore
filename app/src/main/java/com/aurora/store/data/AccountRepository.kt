@@ -40,27 +40,22 @@ class AccountRepository @Inject constructor(
 
     /**
      * Removes an account and its bindings. If it was the default, promotes a new default
-     * (anonymous preferred, else the oldest remaining). The default promotion is atomic; the
-     * binding cleanup runs first as a separate statement (FK cascade is not enabled).
+     * (anonymous preferred, else the oldest remaining). The default promotion is atomic.
      */
     suspend fun removeAccount(id: String) {
-        // SQLite only cascades FK deletes when `PRAGMA foreign_keys = ON`, which this project
-        // does not enable, so this explicit delete is the actual enforcer of the binding cleanup.
         bindingDao.deleteByAccountId(id)
         accountDao.deleteAndEnsureDefault(id)
     }
 
     /**
-     * The account id to use for [packageName]: its binding if one exists, otherwise the current
-     * default account's id. Falls back to [Account.ANONYMOUS_ID] when no default is set yet
-     * (e.g. immediately after migration before login) — callers must treat this as "use the
-     * anonymous account", and the anonymous account is expected to exist by the time a download
-     * runs.
+     * The account [packageName] was explicitly bound to, or null when it simply uses whichever
+     * account is default — or no account at all, which gplayapi answers anonymously. This
+     * replaced a `resolveAccountId` that fell back to the default account's id (and to
+     * [Account.ANONYMOUS_ID] when there was none): a caller needs to know *whether* an app is
+     * pinned to a particular account, and that fallback could not say.
      */
-    suspend fun resolveAccountId(packageName: String): String {
-        bindingDao.getForPackage(packageName)?.let { return it.accountId }
-        return accountDao.getDefault()?.id ?: Account.ANONYMOUS_ID
-    }
+    suspend fun boundAccountId(packageName: String): String? =
+        bindingDao.getForPackage(packageName)?.accountId
 
     /**
      * Records the account an app was installed with. Binding to the current default clears any

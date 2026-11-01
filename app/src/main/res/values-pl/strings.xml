@@ -132,7 +132,6 @@
     <string name="purchase_unsupported">Aplikacja nie jest wspierana</string>
     <string name="purchase_invalid">Aplikacja nie została zakupiona</string>
     <string name="purchase_failed">Pobieranie nieudane</string>
-    <string name="pref_install_mode_summary">Wybierz tryb instalacji plików APK</string>
     <string name="pref_install_mode_session">Instalator sesji</string>
     <string name="pref_install_mode_services">Usługi Aurora (przestarzały)</string>
     <string name="pref_install_mode_root">Instalator root</string>
@@ -160,7 +159,6 @@
     <string name="menu_terms">Warunki świadczenia usługi</string>
     <string name="menu_license">Licencja</string>
     <string name="menu_disclaimer">Zrzeczenie się odpowiedzialności</string>
-    <string name="installer_status_user_action">Czekam na potwierdzenie użytkownika</string>
     <string name="installer_status_success">Zainstalowano pomyślnie</string>
     <string name="installer_status_failure_storage">Za mało pamięci</string>
     <string name="installer_status_failure_invalid">Nieprawidłowy lub uszkodzony APK</string>
@@ -458,12 +456,8 @@
     <string name="action_filter_no_gms">Bez usług Google Play</string>
     <string name="manual_download_version_error">Kod wersji może zawierać tylko cyfry</string>
     <string name="preparing_to_install">Przygotowywanie do instalacji</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Wymagane uprawnienie</item>
-        <item quantity="few">Wymagane uprawnienia</item>
-        <item quantity="many">Wymagane uprawnienia</item>
-        <item quantity="other">Wymagane uprawnienia</item>
-    </plurals>
+    <string name="permission_required">Wymagane uprawnienie</string>
+    <string name="permissions_required">Wymagane uprawnienia</string>
     <string name="page">Strona <xliff:g id="number">%1$d</xliff:g></string>
     <string name="installer_microg_misconfigured">Instalator MicroG nie mógł zainstalować aplikacji, prawdopodobnie z powodu nieprawidłowej konfiguracji.</string>
     <string name="pref_install_mode_microg">Instalator MicroG</string>

@@ -141,7 +141,6 @@
     <string name="installer_status_failure_incompatible">Aplicació incompatible</string>
     <string name="installer_status_failure_invalid">APK no vàlid o corrupte</string>
     <string name="installer_status_failure_storage">Espai de memòria insuficient</string>
-    <string name="installer_status_user_action">S\'està esperant la confirmació de l\'usuari</string>
     <string name="menu_disclaimer">Avís</string>
     <string name="menu_license">Llicència</string>
     <string name="menu_terms">Termes del servei</string>
@@ -167,7 +166,6 @@
     <string name="pref_install_mode_native">Instal·lador natiu (obsolet)</string>
     <string name="pref_install_mode_services">Serveis d\'Aurora (obsolet)</string>
     <string name="pref_install_mode_session">Instal·lador de sessió</string>
-    <string name="pref_install_mode_summary">Seleccionar el mode d\'instal·lació de l\'APK</string>
     <string name="pref_install_mode_title">Mètode d\'instal·lació</string>
     <string name="pref_ui_title">Personalització</string>
     <string name="pref_ui_layout">Disposició</string>
@@ -463,11 +461,8 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> i <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> i <xliff:g id="apps_count">%4$d</xliff:g> més</string>
     <string name="app_info_target_android">Nivell de l\'API objectiu</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permís requerit</item>
-        <item quantity="many">Permisos requerits</item>
-        <item quantity="other">Permisos requerits</item>
-    </plurals>
+    <string name="permission_required">Permís requerit</string>
+    <string name="permissions_required">Permisos requerits</string>
     <string name="session_scrapped">L\'última sessió s\'ha descartat</string>
     <string name="action_skip">Ometre</string>
     <string name="force_restart_snack">Reiniciar per tal d\'aplicar els canvis?</string>

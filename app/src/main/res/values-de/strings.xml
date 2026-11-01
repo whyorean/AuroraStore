@@ -98,7 +98,6 @@
     <string name="purchase_failed">Download fehlgeschlagen</string>
     <string name="pref_ui_title">Anpassung</string>
     <string name="pref_install_mode_title">Installationsmethode</string>
-    <string name="pref_install_mode_summary">Methode der APK-Installation auswählen</string>
     <string name="pref_install_mode_services">Mit Aurora Services (Veraltet)</string>
     <string name="about_libera_summary">Unterstützer auf Liberapay werden</string>
     <string name="pref_install_delete_title">APK-Datei nach Installation löschen</string>
@@ -118,7 +117,6 @@
     <string name="menu_terms">Nutzungsbedingungen</string>
     <string name="menu_license">Lizenz</string>
     <string name="menu_disclaimer">Haftungsausschluss</string>
-    <string name="installer_status_user_action">Es wird auf eine Benutzerbestätigung gewartet</string>
     <string name="installer_status_success">Erfolgreich installiert</string>
     <string name="installer_status_failure_storage">Zu wenig Speicherplatz</string>
     <string name="installer_status_failure_invalid">Ungültige oder beschädigte APK-Datei</string>
@@ -458,10 +456,8 @@
     <string name="action_filter_no_gms">Ohne Play-Dienste</string>
     <string name="manual_download_version_error">Der Versionscode darf nur Ziffern enthalten</string>
     <string name="preparing_to_install">Vorbereiten zur Installation</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Berechtigung erforderlich</item>
-        <item quantity="other">Berechtigungen erforderlich</item>
-    </plurals>
+    <string name="permission_required">Berechtigung erforderlich</string>
+    <string name="permissions_required">Berechtigungen erforderlich</string>
     <string name="installer_microg_misconfigured">Der MicroG-Installer konnte die App nicht installieren, wahrscheinlich aufgrund einer Fehlkonfiguration.</string>
     <string name="pref_install_mode_microg">MicroG-Installer</string>
     <string name="microg_installer_subtitle">Erfordert die Installation der microG-Companion-App</string>

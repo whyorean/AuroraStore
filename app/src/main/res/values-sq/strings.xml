@@ -136,7 +136,6 @@
     <string name="installer_status_failure_storage">Hapësirë e pamjaftueshme në kujtesë</string>
     <string name="installer_status_success">U instalua me sukses</string>
     <string name="device_miui_extra">Në daçi, mund të zgjidhni instaluesin e vetë pajisjes, por në këtë rast s’mund të instaloni APK-ra të paketuara (ta ndara), vendosni vetë.</string>
-    <string name="installer_status_user_action">Po pritet për ripohim nga përdoruesi</string>
     <string name="menu_disclaimer">Klauzolë</string>
     <string name="menu_license">Licencë</string>
     <string name="menu_terms">Kushte shërbimi</string>
@@ -164,7 +163,6 @@
     <string name="pref_install_mode_root">Instalues rrënjë</string>
     <string name="pref_install_mode_services">Shërbime Aurora (Nxjerrë nga përdorimi)</string>
     <string name="pref_install_mode_session">Instalues sesioni</string>
-    <string name="pref_install_mode_summary">Përzgjidhni mënyrë instalimi APK-je</string>
     <string name="pref_install_mode_title">Metodë instalimi</string>
     <string name="pref_network_title">Punim Në Rrjet</string>
     <string name="pref_ui_title">Përshtatje</string>
@@ -424,10 +422,8 @@
     <string name="app_info_downloads">Shkarkime</string>
     <string name="pref_common_advanced">Të mëtejshme</string>
     <string name="pref_updates_app_source">Burim aplikacioni</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Lyp leje</item>
-        <item quantity="other">Lyp leje</item>
-    </plurals>
+    <string name="permission_required">Lyp leje</string>
+    <string name="permissions_required">Lyp leje</string>
     <string name="set">Ujdiseni</string>
     <string name="force_restart_snack">Të riniset, që të aplikohen ndryshimet?</string>
     <string name="action_install_microG">Instalo Paketën microG</string>

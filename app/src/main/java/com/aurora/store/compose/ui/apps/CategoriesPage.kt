@@ -16,7 +16,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import com.aurora.gplayapi.data.models.Category
+import com.aurora.gplayapi.model.Category
+import com.aurora.gplayapi.model.ContentType
 import com.aurora.store.CategoryStash
 import com.aurora.store.R
 import com.aurora.store.compose.composable.CategoryItem
@@ -32,7 +33,7 @@ internal fun CategoriesContent(
     viewModel: CategoryViewModel,
     onCategoryClick: (Category) -> Unit
 ) {
-    val categoryType = if (pageType == 1) Category.Type.GAME else Category.Type.APPLICATION
+    val categoryType = if (pageType == 1) ContentType.GAME else ContentType.APPLICATION
     val state by viewModel.liveData.observeAsState()
 
     LaunchedEffect(categoryType) {

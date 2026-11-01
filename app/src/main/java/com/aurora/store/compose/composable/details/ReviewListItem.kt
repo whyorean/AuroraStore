@@ -7,6 +7,7 @@ package com.aurora.store.compose.composable.details
 
 import android.text.format.DateUtils
 import android.widget.RatingBar
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -29,7 +31,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.model.Review
 import com.aurora.store.R
 import com.aurora.store.compose.preview.ReviewPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
@@ -40,7 +42,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * @param review [Review] about an app
  */
 @Composable
-fun ReviewListItem(modifier: Modifier = Modifier, review: Review) {
+fun ReviewListItem(modifier: Modifier = Modifier, review: Review, showReply: Boolean = false) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -90,7 +92,45 @@ fun ReviewListItem(modifier: Modifier = Modifier, review: Review) {
                 style = MaterialTheme.typography.bodySmall,
                 overflow = TextOverflow.Ellipsis
             )
+            if (showReply && review.replyText.isNotBlank()) {
+                DeveloperReply(
+                    modifier = Modifier.padding(top = dimensionResource(R.dimen.spacing_small)),
+                    text = review.replyText,
+                    timeStamp = review.replyTimeStamp
+                )
+            }
         }
+    }
+}
+
+@Composable
+private fun DeveloperReply(modifier: Modifier = Modifier, text: String, timeStamp: Long) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(dimensionResource(R.dimen.radius_small)))
+            .background(MaterialTheme.colorScheme.surfaceContainer)
+            .padding(dimensionResource(R.dimen.spacing_small))
+    ) {
+        Text(
+            text = stringResource(R.string.review_developer_reply),
+            style = MaterialTheme.typography.labelMedium
+        )
+        if (timeStamp > 0) {
+            Text(
+                text = DateUtils.formatDateTime(
+                    LocalContext.current,
+                    timeStamp,
+                    DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_SHOW_YEAR
+                ),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodySmall
+        )
     }
 }
 

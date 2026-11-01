@@ -121,7 +121,6 @@
     <string name="onboarding_title_permissions">Perizinan</string>
     <string name="dialog_title_self_update">Pembaruan baru telah tersedia</string>
     <string name="device_miui_title">MIUI terdeteksi!</string>
-    <string name="installer_status_user_action">Menunggu persetujuan pengguna</string>
     <string name="installer_status_success">Berhasil dipasang</string>
     <string name="installer_status_failure_storage">Ruang memori tidak cukup</string>
     <string name="installer_status_failure_invalid">APK tidak sah atau rusak</string>
@@ -205,7 +204,6 @@
     <string name="pref_ui_layout">Tata letak</string>
     <string name="pref_ui_title">Kostumisasi</string>
     <string name="pref_network_title">Jaringan</string>
-    <string name="pref_install_mode_summary">Pilih mode pemasangan APK</string>
     <string name="pref_install_mode_session">Pemasang sesi</string>
     <string name="pref_install_mode_services">Layanan Aurora (Tidak digunakan lagi)</string>
     <string name="pref_install_mode_root">Pemasang root</string>
@@ -458,9 +456,8 @@
     <string name="action_filter_no_gms">Tidak ada layanan google play</string>
     <string name="manual_download_version_error">Kode versi hanya dapat berisi angka</string>
     <string name="preparing_to_install">Mempersiapkan pemasangan</string>
-    <plurals name="permissions_required">
-        <item quantity="other">Izin yang diperlukan</item>
-    </plurals>
+    <string name="permission_required">Izin yang diperlukan</string>
+    <string name="permissions_required">Izin yang diperlukan</string>
     <string name="installer_microg_misconfigured">Pemasang MicroG gagal memasang aplikasi, kemungkinan disebabkan oleh konfigurasi yang salah.</string>
     <string name="pref_install_mode_microg">Pemasang MicroG</string>
     <string name="microg_installer_subtitle">Membutuhkan aplikasi pendamping microG untuk dipasang</string>

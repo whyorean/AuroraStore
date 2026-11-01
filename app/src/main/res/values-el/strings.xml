@@ -130,7 +130,6 @@
     <string name="filter_review_four">Τέσσερις</string>
     <string name="filter_review_one">Ένα</string>
     <string name="filter_review_five">Πέντε</string>
-    <string name="installer_status_user_action">Αναμονή για επιβεβαίωση χρήστη</string>
     <string name="menu_disclaimer">Αποποίηση ευθυνών</string>
     <string name="device_miui_title">Εντοπίστηκε MIUI!</string>
     <string name="device_miui_subtitle">Το πρόγραμμα δεν μπορεί να εγκαταστήσει εφαρμογές λόγω βελτιστοποιήσεων της MIUI.</string>
@@ -189,7 +188,6 @@
     <string name="title_updates">Ενημερώσεις</string>
     <string name="pref_filter_fdroid_title">Φιλτράρετε εφαρμογές F-Droid</string>
     <string name="pref_ui_layout">Διάταξη</string>
-    <string name="pref_install_mode_summary">Επιλέξτε τον τρόπο εγκατάστασης του APK</string>
     <string name="pref_install_mode_title">Μέθοδος εγκατάστασης</string>
     <string name="title_language">Γλώσσα</string>
     <string name="title_apps">Εφαρμογές</string>
@@ -460,10 +458,8 @@
     <string name="force_restart_snack">Επανεκκίνηση για εφαρμογή αλλαγών;</string>
     <string name="no_description">Δεν υπάρχει διαθέσιμη περιγραφή</string>
     <string name="permissions_requested"><xliff:g id="number_of_permissions">%1$d</xliff:g> δικαιώματα</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Απαιτείται δικαίωμα</item>
-        <item quantity="other">Απαιτούνται δικαιώματα</item>
-    </plurals>
+    <string name="permission_required">Απαιτείται δικαίωμα</string>
+    <string name="permissions_required">Απαιτούνται δικαιώματα</string>
     <string name="details_more_content_rating">Αξιολόγηση περιεχομένου</string>
     <string name="preparing_to_install">Προετοιμασία για εγκατάσταση</string>
     <string name="pref_common_advanced">Προχωρημένες</string>

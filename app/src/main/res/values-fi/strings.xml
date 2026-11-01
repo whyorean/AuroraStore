@@ -54,7 +54,6 @@
     <string name="installer_status_success">Asennus onnistui</string>
     <string name="installer_status_failure_storage">Riittämätön muistitila</string>
     <string name="installer_status_failure_invalid">Virheellinen tai vioittunut APK</string>
-    <string name="installer_status_user_action">Käyttäjän vahvistusta odotetaan</string>
     <string name="menu_terms">Käyttöehdot</string>
     <string name="menu_license">Lisenssi</string>
     <string name="dialog_title_self_update">Uusi päivitys saatavilla</string>
@@ -193,7 +192,6 @@
     <string name="pref_ui_title">Mukauttaminen</string>
     <string name="pref_network_title">Verkkoyhteys</string>
     <string name="pref_install_mode_title">Asennustapa</string>
-    <string name="pref_install_mode_summary">Valitse APK-asennustapa</string>
     <string name="pref_install_mode_session">Sessioasentaja</string>
     <string name="pref_install_mode_services">Aurora-palvelut (Vanhentunut)</string>
     <string name="pref_install_mode_root">Root-asentaja</string>
@@ -458,10 +456,8 @@
     <string name="action_filter_no_gms">Ei Play-palveluita</string>
     <string name="no_description">Ei kuvausta saatavilla</string>
     <string name="preparing_to_install">Valmistaudutaan asentamaan</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Lupa tarvitaan</item>
-        <item quantity="other">Lupia tarvitaan</item>
-    </plurals>
+    <string name="permission_required">Lupa tarvitaan</string>
+    <string name="permissions_required">Lupia tarvitaan</string>
     <string name="installer_microg_misconfigured">MicroG-asentaja epäonnistui sovelluksen asennuksessa, todennäköisesti konfiguraatiovirheen johdosta.</string>
     <string name="pref_install_mode_microg">MicroG-asentaja</string>
     <string name="action_skip">Ohita</string>

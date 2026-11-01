@@ -5,13 +5,7 @@
 
 package com.aurora.store.compose.ui.splash
 
-import android.accounts.Account
 import android.accounts.AccountManager
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Base64
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -55,8 +49,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.aurora.Constants.PACKAGE_NAME_PLAY_STORE
-import com.aurora.gplayapi.helpers.AuthHelper
 import com.aurora.store.BuildConfig
 import com.aurora.store.R
 import com.aurora.store.compose.composition.LocalNetworkStatus
@@ -65,8 +57,6 @@ import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.model.NetworkStatus
 import com.aurora.store.data.work.ExodusTrackerWorker
 import com.aurora.store.util.CertUtil.GOOGLE_ACCOUNT_TYPE
-import com.aurora.store.util.CertUtil.GOOGLE_PLAY_AUTH_TOKEN_TYPE
-import com.aurora.store.util.CertUtil.GOOGLE_PLAY_CERT
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.viewmodel.auth.AuthViewModel
@@ -96,10 +86,8 @@ fun SplashScreen(
     ) { result ->
         val accountName = result.data?.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
         if (!accountName.isNullOrBlank()) {
-            requestAuthTokenForGoogle(
-                viewModel = viewModel,
-                context = context,
-                accountName = accountName,
+            viewModel.buildMicroGAuthData(
+                email = accountName,
                 oldToken = null,
                 activity = activity,
                 onError = { googleLoading = false }
@@ -108,6 +96,8 @@ fun SplashScreen(
             googleLoading = false
         }
     }
+
+    LaunchedEffect(Unit) { viewModel.checkSession() }
 
     LaunchedEffect(authState) {
         when (val state = authState) {
@@ -132,10 +122,8 @@ fun SplashScreen(
                     )
                 }
             }
-            is AuthState.PendingAccountManager -> requestAuthTokenForGoogle(
-                viewModel = viewModel,
-                context = context,
-                accountName = state.email,
+            is AuthState.PendingAccountManager -> viewModel.buildMicroGAuthData(
+                email = state.email,
                 oldToken = state.token,
                 activity = activity,
                 onError = { googleLoading = false }
@@ -323,42 +311,4 @@ private fun statusText(authState: AuthState): String = when (authState) {
     AuthState.Unavailable, AuthState.SignedOut -> stringResource(R.string.session_login)
     is AuthState.PendingAccountManager -> stringResource(R.string.requesting_new_session)
     is AuthState.Failed -> authState.status
-}
-
-private fun requestAuthTokenForGoogle(
-    viewModel: AuthViewModel,
-    context: android.content.Context,
-    accountName: String,
-    oldToken: String?,
-    activity: ComponentActivity?,
-    onError: () -> Unit
-) {
-    try {
-        val accountManager = AccountManager.get(context)
-        if (oldToken != null) {
-            accountManager.invalidateAuthToken(GOOGLE_ACCOUNT_TYPE, oldToken)
-        }
-        accountManager.getAuthToken(
-            Account(accountName, GOOGLE_ACCOUNT_TYPE),
-            GOOGLE_PLAY_AUTH_TOKEN_TYPE,
-            Bundle().apply {
-                putString("overridePackage", PACKAGE_NAME_PLAY_STORE)
-                putByteArray("overrideCertificate", Base64.decode(GOOGLE_PLAY_CERT, Base64.DEFAULT))
-            },
-            activity,
-            { result ->
-                val token = result.result.getString(AccountManager.KEY_AUTHTOKEN)
-                if (token != null) {
-                    viewModel.buildGoogleAuthData(accountName, token, AuthHelper.Token.AUTH)
-                } else {
-                    Log.e("SplashScreen", "AccountManager returned null auth token")
-                    onError()
-                }
-            },
-            Handler(Looper.getMainLooper())
-        )
-    } catch (_: Exception) {
-        Log.e("SplashScreen", "Failed to get authToken for Google login")
-        onError()
-    }
 }

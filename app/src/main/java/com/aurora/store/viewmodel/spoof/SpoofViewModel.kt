@@ -10,8 +10,11 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.aurora.extensions.TAG
-import com.aurora.store.data.providers.AuthProvider
-import com.aurora.store.data.providers.NativeDeviceInfoProvider
+import com.aurora.extensions.toast
+import com.aurora.extensions.withPlayRegion
+import com.aurora.gplayapi.android.NativeDeviceProperties
+import com.aurora.gplayapi.device.DeviceRegistry
+import com.aurora.store.R
 import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,15 +28,11 @@ import kotlinx.coroutines.flow.asStateFlow
 @HiltViewModel
 class SpoofViewModel @Inject constructor(
     private val spoofProvider: SpoofProvider,
-    private val authProvider: AuthProvider,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
-    /** Full sign-out, clearing both the account DB rows and the legacy prefs. */
-    fun logout() = authProvider.logout()
-
-    val defaultLocale: Locale = Locale.getDefault()
-    val defaultProperties = NativeDeviceInfoProvider.getNativeDeviceProperties(context)
+    val defaultLocale: Locale = Locale.getDefault().withPlayRegion()
+    val defaultProperties = spoofProvider.nativeDeviceProperties
 
     private val _currentLocale = MutableStateFlow(spoofProvider.locale)
     val currentLocale = _currentLocale.asStateFlow()
@@ -67,22 +66,36 @@ class SpoofViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Copies the picked file into the spoof directory, then validates it before accepting it -
+     * v3 imported anything unconditionally, so a config missing fields gplayapi v4 now requires
+     * (33 required keys, 11 numeric) would previously sit in the list unnoticed. An invalid
+     * config is deleted again rather than left on disk, and the user is told why.
+     */
     fun importDeviceSpoof(uri: Uri) {
+        val file = PathUtil.getNewEmptySpoofConfig(context)
         try {
             context.contentResolver?.openInputStream(uri)?.use { input ->
-                PathUtil.getNewEmptySpoofConfig(context).outputStream().use {
-                    input.copyTo(it)
-                }
+                file.outputStream().use { input.copyTo(it) }
             }
+
+            val properties = Properties().apply { file.inputStream().use { load(it) } }
+            DeviceRegistry.parse(file.name, properties)
+
             _availableDevices.value = spoofProvider.availableSpoofDeviceProperties
+        } catch (exception: IllegalArgumentException) {
+            Log.e(TAG, "Rejected invalid device config", exception)
+            file.delete()
+            context.toast(R.string.toast_spoof_import_invalid)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to import device config", exception)
+            file.delete()
         }
     }
 
     fun exportDeviceSpoof(uri: Uri) {
         try {
-            NativeDeviceInfoProvider.getNativeDeviceProperties(context, true)
+            NativeDeviceProperties.read(context)
                 .store(context.contentResolver?.openOutputStream(uri), "DEVICE_CONFIG")
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to export device config", exception)

@@ -138,7 +138,6 @@
     <string name="installer_status_failure_incompatible">Inkompatibel app</string>
     <string name="installer_status_failure_storage">Utilstrækkelig hukommelsesplads</string>
     <string name="installer_status_success">Installeret</string>
-    <string name="installer_status_user_action">Afventer brugerbekræftelse</string>
     <string name="menu_disclaimer">Ansvarsfraskrivelse</string>
     <string name="device_miui_subtitle">Session-installationsprogrammet kan ikke installere apps grundet MIUI-optimeringer.</string>
     <string name="device_miui_description">Deaktiver venligst MIUI-optimeringer for at tillade installationer. Ellers kan du vælge Root- eller Services-installationsprogrammet.</string>
@@ -160,7 +159,6 @@
     <string name="pref_install_mode_root">Root-installationsprogram</string>
     <string name="pref_install_mode_services">Aurora Services (forældet)</string>
     <string name="pref_install_mode_session">Session-installationsprogram</string>
-    <string name="pref_install_mode_summary">Vælg installationsmetode for APK</string>
     <string name="pref_install_mode_title">Installationsmetode</string>
     <string name="pref_network_title">Netværk</string>
     <string name="pref_ui_title">Tilpasning</string>

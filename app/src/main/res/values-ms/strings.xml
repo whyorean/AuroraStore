@@ -176,7 +176,6 @@
     <string name="installer_status_failure_invalid">APK tidak sah atau rosak</string>
     <string name="installer_status_failure_storage">Memori tidak mencukupi</string>
     <string name="installer_status_success">Pemasangan berjaya</string>
-    <string name="installer_status_user_action">Menunggu pengesahan pengguna</string>
     <string name="menu_disclaimer">Penafian</string>
     <string name="menu_license">Lesen</string>
     <string name="menu_terms">Terma perkhidmatan</string>
@@ -204,7 +203,6 @@
     <string name="pref_install_mode_services">Aurora Services (telah usang)</string>
     <string name="pref_install_mode_session">Pemasang sesi</string>
     <string name="pref_install_mode_microg">Pemasang microG</string>
-    <string name="pref_install_mode_summary">Pilih mod pemasangan APK</string>
     <string name="pref_install_mode_title">Cara pemasangan</string>
     <string name="pref_vending_version_title">Versi Google Play</string>
     <string name="pref_vending_version_device">Lalai (ikut tetapan peranti)</string>
@@ -510,9 +508,8 @@
     <string name="preparing_to_install">Menyediakan untuk memasang</string>
     <string name="preparing_to_download">Menyediakan untuk memuat turun</string>
     <string name="verifying_downloads">Mengesahkan muat turun</string>
-    <plurals name="permissions_required">
-        <item quantity="other">Kebenaran diperlukan</item>
-    </plurals>
+    <string name="permission_required">Kebenaran diperlukan</string>
+    <string name="permissions_required">Kebenaran diperlukan</string>
     <plurals name="notification_installed_summary">
         <item quantity="other">%d apl dipasang</item>
     </plurals>

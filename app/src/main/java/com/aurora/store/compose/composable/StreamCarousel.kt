@@ -25,9 +25,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.StreamBundle
-import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.StreamBundle
+import com.aurora.gplayapi.model.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.compose.composable.app.AppListItem
 import com.aurora.store.compose.composable.app.LargeAppListItem
@@ -69,14 +69,13 @@ fun StreamCarousel(
         return
     }
 
-    val clusters = streamBundle.streamClusters.values
-        .map { cluster ->
-            cluster.copy(clusterAppList = cluster.clusterAppList.distinctBy { it.packageName })
-        }
+    val clusters = streamBundle.clusters
+        .distinctBy { it.id }
+        .map { cluster -> cluster.copy(apps = cluster.apps.distinctBy { it.packageName }) }
         .filter { cluster ->
-            cluster.clusterAppList.isNotEmpty() &&
-                cluster.clusterTitle.isNotBlank() &&
-                (!filterSingleAppClusters || cluster.clusterAppList.size > 1)
+            cluster.apps.isNotEmpty() &&
+                cluster.title.isNotBlank() &&
+                (!filterSingleAppClusters || cluster.apps.size > 1)
         }
 
     if (clusters.isEmpty()) {
@@ -102,7 +101,7 @@ fun StreamCarousel(
         )
     ) {
         if (clusters.size == 1) {
-            val apps = clusters.first().clusterAppList
+            val apps = clusters.first().apps
             items(count = apps.size, key = { apps[it].id }) { index ->
                 LargeAppListItem(
                     app = apps[index],
@@ -113,8 +112,8 @@ fun StreamCarousel(
             clusters.forEach { cluster ->
                 item(key = "header_${cluster.id}") {
                     SectionHeader(
-                        title = cluster.clusterTitle,
-                        onClick = if (cluster.clusterBrowseUrl.isNotBlank()) {
+                        title = cluster.title,
+                        onClick = if (cluster.browseUrl.isNotBlank()) {
                             { onHeaderClick(cluster) }
                         } else {
                             null
@@ -162,7 +161,7 @@ internal fun ClusterRow(
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
         itemsIndexed(
-            items = cluster.clusterAppList,
+            items = cluster.apps.distinctBy { it.packageName },
             key = { _, app -> app.packageName }
         ) { _, app ->
             AppListItem(

@@ -192,7 +192,6 @@
     <string name="installer_status_failure_invalid">غلط یا خراب APK</string>
     <string name="installer_status_failure_storage">ناکافی میموری کی جگہ</string>
     <string name="dialog_desc_native_split">آپ آبائی انسٹالر کے ذریعہ بنڈل (اسپلٹ) ایپس انسٹال نہیں کرسکتے ہیں۔ اپنے انسٹالر کو سیشن ، خدمات یا جڑ میں تبدیل کریں۔</string>
-    <string name="installer_status_user_action">صارف کی تصدیق کا انتظار</string>
     <string name="menu_license">لائسنس</string>
     <string name="menu_terms">خدمت کی شرائط</string>
     <string name="device_miui_title">میوئی کا پتہ چلا!</string>
@@ -227,7 +226,6 @@
     <string name="pref_install_mode_root">روٹ انسٹالر</string>
     <string name="pref_install_mode_services">ارورہ سروسز (فرسودہ)</string>
     <string name="pref_install_mode_session">سیشن انسٹالر</string>
-    <string name="pref_install_mode_summary">اے پی کے کی تنصیب کا موڈ منتخب کریں</string>
     <string name="pref_install_mode_title">تنصیب کا طریقہ</string>
     <string name="pref_vending_version_title">گوگل پلے ورژن</string>
     <string name="pref_vending_version_device">ڈیفالٹ (ڈیوائس کنفیگ سے)</string>

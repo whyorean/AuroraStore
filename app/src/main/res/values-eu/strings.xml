@@ -48,7 +48,6 @@
     <string name="purchase_failed">Alferrikako deskarga</string>
     <string name="pref_ui_title">Personalizazioa</string>
     <string name="pref_install_mode_title">Instalazio modua</string>
-    <string name="pref_install_mode_summary">Aukeratu APK-ak instalatzeko modua</string>
     <string name="pref_install_mode_session">Saio instalatzailea</string>
     <string name="pref_install_mode_services">Aurora zerbitzuak (zaharkitua)</string>
     <string name="pref_install_mode_root">Root instalatzailea</string>
@@ -74,7 +73,6 @@
     <string name="menu_terms">Zerbitzuaren baldintzak</string>
     <string name="menu_license">Lizentzia</string>
     <string name="menu_disclaimer">Abisua</string>
-    <string name="installer_status_user_action">Erabiltzailearen konfirmazioaren zai</string>
     <string name="installer_status_success">Ondo instalatuta</string>
     <string name="installer_status_failure_storage">Es dago nahikoa memoria</string>
     <string name="installer_status_failure_invalid">APK baliogabe edo hondatuta</string>
@@ -458,10 +456,8 @@
     <string name="action_filter_no_gms">Play zerbitzurik ez</string>
     <string name="manual_download_version_error">Bertsio-kodeak digituak bakarrik izan ditzake</string>
     <string name="preparing_to_install">Instalatzeko prestatzen</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Baimena beharrezkoa da</item>
-        <item quantity="other">Baimenak beharrezkoak dira</item>
-    </plurals>
+    <string name="permission_required">Baimena beharrezkoa da</string>
+    <string name="permissions_required">Baimenak beharrezkoak dira</string>
     <string name="installer_microg_misconfigured">MicroG instalatzaileak huts egin du aplikazioa instalatzeko, ziurrenik konfigurazio oker baten ondorioz.</string>
     <string name="pref_install_mode_microg">MicroG instalatzailea</string>
     <string name="microg_installer_subtitle">microG aplikazio osagarria instalatuta edukitzea eskatzen du</string>

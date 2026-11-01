@@ -6,17 +6,20 @@
 package com.aurora.store.data.room.account
 
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Upsert
 import com.aurora.store.data.model.AccountType
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AccountDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    /**
+     * Inserts [account], or updates its row in place. Never REPLACE: SQLite carries that out as
+     * delete-then-insert, and the delete cascades to every app binding of the account.
+     */
+    @Upsert
     suspend fun upsert(account: Account)
 
     @Query("SELECT * FROM account ORDER BY addedAt ASC")

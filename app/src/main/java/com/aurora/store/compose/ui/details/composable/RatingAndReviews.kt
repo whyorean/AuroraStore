@@ -36,9 +36,9 @@ import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.util.fastForEach
 import com.aurora.extensions.isWindowCompact
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.Rating
-import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.Rating
+import com.aurora.gplayapi.model.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.composable.details.RatingListItem

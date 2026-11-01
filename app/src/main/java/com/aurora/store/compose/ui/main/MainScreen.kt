@@ -32,14 +32,17 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.requiresObbDir
+import com.aurora.extensions.toast
 import com.aurora.store.MainViewModel
 import com.aurora.store.R
 import com.aurora.store.compose.composable.InsufficientStorageDialog
+import com.aurora.store.compose.composable.PermissionUpdateWarningDialog
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.composable.TrackerUpdateWarningDialog
 import com.aurora.store.compose.composition.LocalNetworkStatus
@@ -57,6 +60,7 @@ import com.aurora.store.data.providers.PermissionProvider.Companion.isGranted
 import com.aurora.store.data.room.update.Update
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_WARN_PERMISSIONS
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_WARN_TRACKERS
 import com.aurora.store.util.StorageUtil
 import com.aurora.store.viewmodel.all.UpdatesViewModel
@@ -82,6 +86,7 @@ fun MainScreen(
     onNavigateTo: (Destination) -> Unit = {}
 ) {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val networkStatus = LocalNetworkStatus.current
     val updates by mainViewModel.updateHelper.updates.collectAsStateWithLifecycle(
         initialValue = null
@@ -101,10 +106,14 @@ fun MainScreen(
     }
 
     var showMoreSheet by remember { mutableStateOf(false) }
+    val warnPermissions = remember {
+        Preferences.getBoolean(context, PREFERENCE_UPDATES_WARN_PERMISSIONS, false)
+    }
     var appUpdateTarget by remember { mutableStateOf<Update?>(null) }
     var trackerWarning by remember {
         mutableStateOf<Pair<Update, List<ExodusTracker>>?>(null)
     }
+    var permissionWarning by remember { mutableStateOf<Update?>(null) }
     var storageWarning by remember { mutableStateOf<StorageRequirement?>(null) }
     val checkingJobs = remember { mutableStateMapOf<String, Job>() }
 
@@ -143,6 +152,22 @@ fun MainScreen(
             )
         } else {
             updatesViewModel.download(update)
+        }
+    }
+
+    fun checkTrackersThenUpdate(update: Update) {
+        if (!Preferences.getBoolean(context, PREFERENCE_UPDATES_WARN_TRACKERS, false)) {
+            performUpdate(update)
+            return
+        }
+        checkingJobs[update.packageName] = coroutineScope.launch {
+            val installedVc = PackageUtil.getInstalledVersionCode(context, update.packageName)
+            val trackers = updatesViewModel.getNewTrackers(update.packageName, installedVc)
+            if (trackers.isEmpty()) {
+                performUpdate(update)
+            } else {
+                trackerWarning = update to trackers
+            }
         }
     }
 
@@ -268,30 +293,10 @@ fun MainScreen(
                             viewModel = updatesViewModel,
                             onNavigateTo = ::handleNavigation,
                             onRequestUpdate = { update ->
-                                if (!Preferences.getBoolean(
-                                        context,
-                                        PREFERENCE_UPDATES_WARN_TRACKERS,
-                                        false
-                                    )
-                                ) {
-                                    performUpdate(update)
+                                if (warnPermissions && update.newPermissions.isNotEmpty()) {
+                                    permissionWarning = update
                                 } else {
-                                    val job = coroutineScope.launch {
-                                        val installedVc = PackageUtil.getInstalledVersionCode(
-                                            context,
-                                            update.packageName
-                                        )
-                                        val trackers = updatesViewModel.getNewTrackers(
-                                            update.packageName,
-                                            installedVc
-                                        )
-                                        if (trackers.isEmpty()) {
-                                            performUpdate(update)
-                                        } else {
-                                            trackerWarning = update to trackers
-                                        }
-                                    }
-                                    checkingJobs[update.packageName] = job
+                                    checkTrackersThenUpdate(update)
                                 }
                             },
                             onRequestUpdateAll = { selectedUpdates ->
@@ -307,7 +312,19 @@ fun MainScreen(
                                         )
                                     )
                                 } else {
-                                    updatesViewModel.downloadAll(selectedUpdates)
+                                    val (heldBack, toUpdate) = selectedUpdates.partition {
+                                        warnPermissions && it.newPermissions.isNotEmpty()
+                                    }
+                                    if (heldBack.isNotEmpty()) {
+                                        context.toast(
+                                            resources.getQuantityString(
+                                                R.plurals.updates_skipped_new_permissions,
+                                                heldBack.size,
+                                                heldBack.size
+                                            )
+                                        )
+                                    }
+                                    updatesViewModel.downloadAll(toUpdate)
                                 }
                             },
                             onCancelUpdate = { packageName ->
@@ -328,6 +345,17 @@ fun MainScreen(
                 }
             }
         }
+    }
+
+    permissionWarning?.let { update ->
+        PermissionUpdateWarningDialog(
+            permissions = update.newPermissions,
+            onConfirm = {
+                permissionWarning = null
+                checkTrackersThenUpdate(update)
+            },
+            onDismiss = { permissionWarning = null }
+        )
     }
 
     trackerWarning?.let { (update, trackers) ->

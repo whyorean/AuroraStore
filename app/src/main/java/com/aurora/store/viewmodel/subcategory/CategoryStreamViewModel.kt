@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
  * SPDX-FileCopyrightText: 2024 Aurora OSS
  * SPDX-FileCopyrightText: 2021 Rahul Kumar Patel <whyorean@gmail.com>
  * SPDX-License-Identifier: GPL-3.0-or-later
@@ -10,11 +11,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.StreamBundle
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.contracts.CategoryStreamContract
-import com.aurora.gplayapi.helpers.contracts.StreamContract
-import com.aurora.gplayapi.helpers.web.WebCategoryStreamHelper
+import com.aurora.gplayapi.model.StreamBundle
+import com.aurora.gplayapi.model.StreamCluster
+import com.aurora.gplayapi.web.WebPlayClient
 import com.aurora.store.data.model.ViewState
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -29,7 +28,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel(assistedFactory = CategoryStreamViewModel.Factory::class)
 class CategoryStreamViewModel @AssistedInject constructor(
     @Assisted val browseUrl: String,
-    private val webCategoryStreamHelper: WebCategoryStreamHelper
+    private val webPlayClient: WebPlayClient
 ) : ViewModel() {
 
     @AssistedFactory
@@ -40,9 +39,6 @@ class CategoryStreamViewModel @AssistedInject constructor(
     private val _viewState = MutableStateFlow<ViewState>(ViewState.Loading)
     val viewState: StateFlow<ViewState> = _viewState.asStateFlow()
 
-    private val categoryStreamContract: CategoryStreamContract
-        get() = webCategoryStreamHelper
-
     private var streamBundle = StreamBundle.EMPTY
 
     init {
@@ -52,20 +48,16 @@ class CategoryStreamViewModel @AssistedInject constructor(
     fun fetch() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                if (!streamBundle.hasCluster() || streamBundle.hasNext()) {
-                    val newBundle = if (streamBundle.streamClusters.isEmpty()) {
-                        categoryStreamContract.fetch(browseUrl)
+                if (!streamBundle.hasClusters() || streamBundle.hasNext()) {
+                    val newBundle = if (streamBundle.hasClusters()) {
+                        webPlayClient.streams.next(streamBundle.next!!)
                     } else {
-                        categoryStreamContract.nextStreamBundle(
-                            streamBundle.id,
-                            StreamContract.Category.NONE,
-                            streamBundle.streamNextPageUrl
-                        )
+                        webPlayClient.categories.stream(browseUrl)
                     }
 
                     streamBundle = streamBundle.copy(
-                        streamClusters = streamBundle.streamClusters + newBundle.streamClusters,
-                        streamNextPageUrl = newBundle.streamNextPageUrl
+                        clusters = streamBundle.clusters + newBundle.clusters,
+                        next = newBundle.next
                     )
 
                     _viewState.value = ViewState.Success(streamBundle)
@@ -82,20 +74,17 @@ class CategoryStreamViewModel @AssistedInject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 if (streamCluster.hasNext()) {
-                    val newCluster = categoryStreamContract.nextStreamCluster(
-                        streamCluster.id,
-                        streamCluster.clusterNextPageUrl
-                    )
+                    val newCluster = webPlayClient.streams.next(streamCluster.next!!)
                     val mergedCluster = streamCluster.copy(
-                        clusterNextPageUrl = newCluster.clusterNextPageUrl,
-                        clusterAppList =
-                        streamCluster.clusterAppList + newCluster.clusterAppList
+                        apps = streamCluster.apps + newCluster.apps,
+                        next = newCluster.next
                     )
 
-                    val newClusters = streamBundle.streamClusters.toMutableMap().apply {
-                        this[streamCluster.id] = mergedCluster
-                    }
-                    streamBundle = streamBundle.copy(streamClusters = newClusters)
+                    streamBundle = streamBundle.copy(
+                        clusters = streamBundle.clusters.map {
+                            if (it.id == streamCluster.id) mergedCluster else it
+                        }
+                    )
                     _viewState.value = ViewState.Success(streamBundle)
                 } else {
                     Log.i(TAG, "End of cluster")

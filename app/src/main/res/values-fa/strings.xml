@@ -168,7 +168,6 @@
     <string name="installer_status_failure_session">جلسه ایجاد نشد</string>
     <string name="exodus_substring">ردیاب(های) موجود در</string>
     <string name="filter_review_positive">مثبت</string>
-    <string name="installer_status_user_action">در انتظار تایید کاربر</string>
     <string name="pref_install_delete_summary">فایل های APKs به طور پیش فرض حذف خواهند شد</string>
     <string name="exodus_view_report">مشاهده گزارش</string>
     <string name="dialog_title_self_update">بروزرسانی جدید در دسترس</string>
@@ -181,7 +180,6 @@
     <string name="toast_export_failed">پیکربندی دستگاه صادر نشد</string>
     <string name="pref_network_title">شبکه سازی</string>
     <string name="insecure_anonymous_apply">مطمئن شوید که مجددا وارد سیستم شده اید و برنامه را مجددا راه اندازی کرده اید تا تغییرات اعمال شوند.</string>
-    <string name="pref_install_mode_summary">انتخاب حالت نصب APK</string>
     <string name="pref_install_mode_session">نصب کننده جلسه</string>
     <string name="purchase_not_found">برنامه پیدا نشد</string>
     <string name="about_xda_summary">برای بحث ها یا پیشنهادها به تاپیک XDA فروشگاه آرورا نگاه کنید.</string>

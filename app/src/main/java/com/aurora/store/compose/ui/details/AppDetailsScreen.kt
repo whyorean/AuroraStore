@@ -39,6 +39,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -59,16 +60,18 @@ import com.aurora.extensions.requiresGMS
 import com.aurora.extensions.requiresObbDir
 import com.aurora.extensions.share
 import com.aurora.extensions.toast
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.Review
-import com.aurora.gplayapi.data.models.StreamBundle
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.data.models.datasafety.Report as DataSafetyReport
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.DataSafetyReport
+import com.aurora.gplayapi.model.Review
+import com.aurora.gplayapi.model.StreamBundle
+import com.aurora.gplayapi.model.StreamCluster
+import com.aurora.gplayapi.model.TopChart
 import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ClusterRow
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.InsufficientStorageDialog
+import com.aurora.store.compose.composable.PermissionUpdateWarningDialog
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.SectionHeader
@@ -88,6 +91,7 @@ import com.aurora.store.compose.ui.details.composable.Compatibility
 import com.aurora.store.compose.ui.details.composable.DataSafety
 import com.aurora.store.compose.ui.details.composable.Details
 import com.aurora.store.compose.ui.details.composable.DeveloperDetails
+import com.aurora.store.compose.ui.details.composable.PlayListing
 import com.aurora.store.compose.ui.details.composable.Privacy
 import com.aurora.store.compose.ui.details.composable.RatingAndReviews
 import com.aurora.store.compose.ui.details.composable.Screenshots
@@ -113,6 +117,7 @@ import com.aurora.store.data.room.account.Account
 import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_WARN_PERMISSIONS
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_WARN_TRACKERS
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.util.StorageUtil
@@ -137,9 +142,14 @@ fun AppDetailsScreen(
     val favorite by viewModel.favourite.collectAsStateWithLifecycle()
     val exodusReport by viewModel.exodusReport.collectAsStateWithLifecycle()
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
+    val categoryIconUrl by viewModel.categoryIconUrl.collectAsStateWithLifecycle()
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
     val installError by viewModel.installError.collectAsStateWithLifecycle()
     val suggestionsBundle by viewModel.suggestionsBundle.collectAsStateWithLifecycle()
+    val canDownload by viewModel.canDownload.collectAsStateWithLifecycle()
+    val testingProgramUpdating by viewModel.testingProgramUpdating.collectAsStateWithLifecycle()
+    val testingProgramSubscribed by
+        viewModel.testingProgramSubscribed.collectAsStateWithLifecycle()
     val accounts by viewModel.accounts.collectAsStateWithLifecycle()
     var storageWarning by remember { mutableStateOf<StorageRequirement?>(null) }
 
@@ -195,9 +205,13 @@ fun AppDetailsScreen(
                     suggestionsBundle = suggestionsBundle,
                     isFavorite = favorite,
                     isAnonymous = viewModel.authProvider.isAnonymous,
+                    canDownload = canDownload,
+                    testingProgramUpdating = testingProgramUpdating,
+                    testingProgramSubscribed = testingProgramSubscribed,
                     state = currentState,
                     plexusScores = plexusScores,
                     dataSafetyReport = dataSafetyReport,
+                    categoryIconUrl = categoryIconUrl,
                     exodusReport = exodusReport,
                     onNavigateTo = onNavigateTo,
                     onLoadMoreCluster = { cluster -> viewModel.loadMoreCluster(cluster) },
@@ -227,7 +241,9 @@ fun AppDetailsScreen(
                         viewModel.postAppReview(
                             loadedApp.packageName,
                             Review(title = title, comment = comment, rating = rating),
-                            loadedApp.testingProgram?.isSubscribed ?: false
+                            testingProgramSubscribed
+                                ?: loadedApp.testingProgram?.isSubscribed
+                                ?: false
                         )
                     },
                     onDeleteReview = { viewModel.deleteAppReview(loadedApp) },
@@ -235,6 +251,7 @@ fun AppDetailsScreen(
                     onCheckNewTrackers = { pkg, installedVc ->
                         viewModel.getNewTrackers(pkg, installedVc)
                     },
+                    onFetchTopChart = viewModel::topChartCluster,
                     onForceRestart = {
                         val intent = Intent(context, ComposeActivity::class.java)
                             .putExtra("packageName", packageName)
@@ -309,9 +326,13 @@ private fun ScreenContentApp(
     suggestionsBundle: StreamBundle? = StreamBundle.EMPTY,
     isFavorite: Boolean = false,
     isAnonymous: Boolean = true,
+    canDownload: Boolean = false,
+    testingProgramUpdating: Boolean = false,
+    testingProgramSubscribed: Boolean? = null,
     state: AppState = AppState.Unavailable,
     plexusScores: Scores? = null,
     dataSafetyReport: DataSafetyReport? = null,
+    categoryIconUrl: String? = null,
     exodusReport: Report? = null,
     onNavigateTo: (Destination) -> Unit = {},
     onLoadMoreCluster: (cluster: StreamCluster) -> Unit = {},
@@ -329,6 +350,7 @@ private fun ScreenContentApp(
     onDeleteReview: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2(),
     forceSinglePane: Boolean = false,
+    onFetchTopChart: suspend (chart: TopChart, title: String) -> StreamCluster? = { _, _ -> null },
     onCheckNewTrackers: suspend (
         packageName: String,
         installedVersionCode: Long
@@ -338,13 +360,18 @@ private fun ScreenContentApp(
 ) {
     val context = LocalContext.current
 
-    // Anonymous accounts can't purchase, so a paid app can neither be installed nor manually
-    // downloaded (any version) by them. Free apps are always acquirable.
-    val canAcquire = app.isFree || !isAnonymous
+    // Gated decision 1 (phase-6 migration plan): gate on the session's DOWNLOAD capability
+    // rather than on account presence. Aurora's isAnonymous ("dispensed Play account") is a
+    // different concept from a gplayapi-v4 anonymous session, and every anonymously-fetched
+    // app's isFree is false (the V2 proto's Price is always empty), so gating on !isAnonymous
+    // the way v3 did would make Install vanish catalogue-wide for anonymous sessions. Free
+    // apps are always acquirable regardless.
+    val canAcquire = app.isFree || canDownload
 
     var scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
+    var isScreenshotOpen by remember { mutableStateOf(false) }
 
-    if (forceSinglePane) {
+    if (forceSinglePane || isScreenshotOpen) {
         scaffoldDirective = scaffoldDirective.copy(maxHorizontalPartitions = 1)
     }
 
@@ -354,7 +381,21 @@ private fun ScreenContentApp(
             supportingPaneAdaptStrategy = AdaptStrategy.Hide
         )
     )
+    val showsScreenshot =
+        scaffoldNavigator.currentDestination?.contentKey is ExtraScreen.Screenshot
+    LaunchedEffect(showsScreenshot) { if (!showsScreenshot) isScreenshotOpen = false }
     val coroutineScope = rememberCoroutineScope()
+
+    fun onTopChartClick(chart: TopChart, title: String) {
+        coroutineScope.launch {
+            val cluster = onFetchTopChart(chart, title)
+            if (cluster != null) {
+                onNavigateTo(Destination.StreamBrowse(cluster))
+            } else {
+                context.toast(R.string.no_apps_available)
+            }
+        }
+    }
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
     var showRestartDialog by remember { mutableStateOf(false) }
@@ -363,6 +404,10 @@ private fun ScreenContentApp(
         Preferences.getBoolean(context, PREFERENCE_UPDATES_WARN_TRACKERS, false)
     }
     var trackerWarning by remember { mutableStateOf<List<ExodusTracker>?>(null) }
+    val warnPermissions = remember {
+        Preferences.getBoolean(context, PREFERENCE_UPDATES_WARN_PERMISSIONS, false)
+    }
+    var permissionWarning by remember { mutableStateOf<List<String>?>(null) }
     var isChecking by remember { mutableStateOf(false) }
     var checkJob by remember { mutableStateOf<Job?>(null) }
 
@@ -389,6 +434,12 @@ private fun ScreenContentApp(
 
     fun showExtraPane(screen: NavKey) {
         coroutineScope.launch {
+            if (screen is ExtraScreen.Screenshot) {
+                isScreenshotOpen = true
+                // The scaffold only re-lays out on navigation; let the directive land first
+                withFrameNanos { }
+                withFrameNanos { }
+            }
             scaffoldNavigator.navigateTo(SupportingPaneScaffoldRole.Extra, screen)
         }
     }
@@ -430,7 +481,7 @@ private fun ScreenContentApp(
         isChecking = false
     }
 
-    fun onUpdateClicked() {
+    fun checkTrackersThenInstall() {
         if (!warnTrackers) {
             onInstall()
             return
@@ -446,6 +497,30 @@ private fun ScreenContentApp(
                 trackerWarning = trackers
             }
         }
+    }
+
+    fun onUpdateClicked() {
+        val newPermissions = if (warnPermissions) {
+            PackageUtil.getNewPermissions(context, app.packageName, app.permissions)
+        } else {
+            emptyList()
+        }
+        if (newPermissions.isEmpty()) {
+            checkTrackersThenInstall()
+        } else {
+            permissionWarning = newPermissions
+        }
+    }
+
+    permissionWarning?.let { permissions ->
+        PermissionUpdateWarningDialog(
+            permissions = permissions,
+            onConfirm = {
+                permissionWarning = null
+                checkTrackersThenInstall()
+            },
+            onDismiss = { permissionWarning = null }
+        )
     }
 
     trackerWarning?.let { trackers ->
@@ -551,7 +626,7 @@ private fun ScreenContentApp(
                         primaryActionDisplayName = stringResource(R.string.action_open),
                         secondaryActionDisplayName = stringResource(R.string.action_cancel),
                         isPrimaryActionEnabled = false,
-                        isSecondaryActionEnabled = false
+                        onSecondaryAction = onCancelDownload
                     )
                 }
 
@@ -639,6 +714,18 @@ private fun ScreenContentApp(
                     }
 
                     item {
+                        PlayListing(
+                            app = app,
+                            categoryIconUrl = categoryIconUrl,
+                            onCategoryClick = { onNavigateTo(Destination.CategoryBrowse(it)) },
+                            onTopChartClick = ::onTopChartClick,
+                            onBrowse = { title, browseUrl ->
+                                onNavigateTo(Destination.ExpandedStreamBrowse(title, browseUrl))
+                            }
+                        )
+                    }
+
+                    item {
                         Changelog(changelog = app.changes)
                     }
 
@@ -679,7 +766,9 @@ private fun ScreenContentApp(
                     item {
                         if (!isAnonymous && app.testingProgram?.isAvailable == true) {
                             Testing(
-                                isSubscribed = app.testingProgram!!.isSubscribed,
+                                isSubscribed = testingProgramSubscribed
+                                    ?: app.testingProgram!!.isSubscribed,
+                                isUpdating = testingProgramUpdating,
                                 onTestingSubscriptionChange = onTestingSubscriptionChange
                             )
                         }
@@ -761,8 +850,7 @@ private fun ScreenContentApp(
                 )
             }
         ) { paddingValues ->
-            val hasContent = suggestionsBundle == null ||
-                suggestionsBundle.streamClusters.isNotEmpty()
+            val hasContent = suggestionsBundle == null || suggestionsBundle.hasClusters()
             if (hasContent) {
                 StreamCarousel(
                     modifier = Modifier.padding(paddingValues),
@@ -809,10 +897,20 @@ private fun ScreenContentApp(
             onProceed = { onInstall(ignoreMicroG = true) }
         )
 
-        is Screen.DevProfile -> DevProfileScreen(
-            publisherId = app.developerName,
-            onNavigateTo = onNavigateTo
-        )
+        // Play gives a developer id only to developers with a developer page; the rest are
+        // reached through a pub: search on their name
+        is Screen.DevProfile -> if (app.developerId.isNotBlank()) {
+            DevProfileScreen(
+                developerId = app.developerId,
+                onNavigateTo = onNavigateTo,
+                fallbackTitle = app.developerName
+            )
+        } else {
+            DevProfileScreen(
+                publisherId = app.developerName,
+                onNavigateTo = onNavigateTo
+            )
+        }
 
         is Screen.PermissionRationale -> PermissionRationaleScreen(
             requiredPermissions = screen.requiredPermissions,
@@ -856,13 +954,13 @@ private fun LazyListScope.suggestionClusterItems(
         return
     }
 
-    val clusters = suggestionsBundle.streamClusters.values.filter {
-        it.clusterTitle.isNotBlank() && it.clusterAppList.isNotEmpty()
+    val clusters = suggestionsBundle.clusters.distinctBy { it.id }.filter {
+        it.title.isNotBlank() && it.apps.isNotEmpty()
     }
 
     clusters.forEach { cluster ->
         item(key = "cluster-header-${cluster.id}") {
-            SectionHeader(title = cluster.clusterTitle)
+            SectionHeader(title = cluster.title)
         }
         item(key = "cluster-row-${cluster.id}") {
             ClusterRow(
@@ -881,18 +979,19 @@ private fun AppDetailsScreenPreview(@PreviewParameter(AppPreviewProvider::class)
     ScreenContentApp(
         app = app,
         isAnonymous = false,
+        canDownload = true,
         suggestionsBundle = StreamBundle(
-            id = 1,
-            streamClusters = mapOf(
-                1 to StreamCluster(
-                    id = 1,
-                    clusterTitle = "Similar apps",
-                    clusterAppList = List(8) { app.copy(id = it) }
+            id = "suggestions",
+            clusters = listOf(
+                StreamCluster(
+                    id = "1",
+                    title = "Similar apps",
+                    apps = List(8) { app.copy(id = it) }
                 ),
-                2 to StreamCluster(
-                    id = 2,
-                    clusterTitle = "More by ${app.developerName}",
-                    clusterAppList = List(5) { app.copy(id = 100 + it) }
+                StreamCluster(
+                    id = "2",
+                    title = "More by ${app.developerName}",
+                    apps = List(5) { app.copy(id = 100 + it) }
                 )
             )
         )

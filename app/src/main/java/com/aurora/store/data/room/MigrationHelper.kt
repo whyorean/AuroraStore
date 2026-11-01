@@ -63,6 +63,14 @@ object MigrationHelper {
         override fun migrate(db: SupportSQLiteDatabase) = migrateFrom12To13(db)
     }
 
+    val MIGRATION_13_14 = object : Migration(13, 14) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom13To14(db)
+    }
+
+    val MIGRATION_14_15 = object : Migration(14, 15) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom14To15(db)
+    }
+
     private const val TAG = "MigrationHelper"
 
     private fun migrateFrom1To2(database: SupportSQLiteDatabase) {
@@ -328,6 +336,38 @@ object MigrationHelper {
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 12 to 13", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
+
+    /**
+     * Add downloadSize column to update table for showing what an update downloads, which for
+     * an app Play patches is far smaller than the full install size kept in `size`.
+     */
+    private fun migrateFrom13To14(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL(
+                "ALTER TABLE `update` ADD COLUMN downloadSize INTEGER NOT NULL DEFAULT 0"
+            )
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 13 to 14", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
+
+    private fun migrateFrom14To15(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL(
+                "ALTER TABLE `update` ADD COLUMN newPermissions TEXT NOT NULL DEFAULT '[]'"
+            )
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 14 to 15", exception)
         } finally {
             database.endTransaction()
         }

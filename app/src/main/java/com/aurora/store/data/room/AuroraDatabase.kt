@@ -41,7 +41,7 @@ import com.aurora.store.data.room.update.UpdateDao
         TrackerEntity::class,
         AppNotification::class
     ],
-    version = 13,
+    version = 15,
     exportSchema = true
 )
 @TypeConverters(DownloadConverter::class, AccountConverter::class)

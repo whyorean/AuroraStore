@@ -7,7 +7,7 @@ package com.aurora.store.compose.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
-import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.model.Review
 
 /**
  * Preview provider for composable working with [Review]

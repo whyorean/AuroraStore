@@ -18,8 +18,11 @@ import com.aurora.extensions.TAG
 import com.aurora.extensions.isGrapheneOS
 import com.aurora.extensions.isHyperOS
 import com.aurora.extensions.isIgnoringBatteryOptimizations
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.helpers.AppDetailsHelper
+import com.aurora.gplayapi.PlayClient
+import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.android.InstalledPatchBase
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.InstalledApp
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.helper.UpdateHelper
@@ -27,7 +30,6 @@ import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.model.BuildType
 import com.aurora.store.data.model.SelfUpdate
 import com.aurora.store.data.model.UpdateMode
-import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.BlacklistProvider
@@ -42,6 +44,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_SELF_UPDATE_ENABLED
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_AUTO
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_LAST_CHECKED
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.util.Locale
@@ -49,6 +52,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
 /**
  * A worker that drives periodic app-update checks. The repeat interval is configurable
@@ -64,7 +70,7 @@ import kotlinx.serialization.json.Json
  */
 @HiltWorker
 class UpdateWorker @AssistedInject constructor(
-    private val httpClient: HttpClient,
+    private val okHttpClient: OkHttpClient,
     private val json: Json,
     private val blacklistProvider: BlacklistProvider,
     private val updateDao: UpdateDao,
@@ -72,7 +78,7 @@ class UpdateWorker @AssistedInject constructor(
     private val downloadHelper: DownloadHelper,
     private val authProvider: AuthProvider,
     tokenProvider: GoogleAccountTokenProvider,
-    private val appDetailsHelper: AppDetailsHelper,
+    private val playClient: PlayClient,
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
 ) : AuthWorker(authProvider, tokenProvider, context, workerParams) {
@@ -93,6 +99,13 @@ class UpdateWorker @AssistedInject constructor(
     private val isAuroraOnlyFilterEnabled: Boolean
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
 
+    private val isWarnPermissionsEnabled: Boolean
+        get() = Preferences.getBoolean(
+            context,
+            Preferences.PREFERENCE_UPDATES_WARN_PERMISSIONS,
+            false
+        )
+
     private val isFDroidFilterEnabled: Boolean
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_FDROID)
 
@@ -100,7 +113,7 @@ class UpdateWorker @AssistedInject constructor(
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_UPDATES_EXTENDED)
 
     override suspend fun doWork(): Result {
-        super.doWork()
+        val authResult = super.doWork()
 
         Log.i(TAG, "Checking for app updates")
         val updateMode = UpdateMode.entries[
@@ -119,7 +132,9 @@ class UpdateWorker @AssistedInject constructor(
             return Result.failure()
         }
 
-        if (!authProvider.isSavedAuthDataValid()) {
+        // Result.Success is restricted to androidx.work; Result compares by type and output
+        // data, and AuthWorker only ever succeeds with an empty Result.success().
+        if (authResult != Result.success()) {
             Log.i(TAG, "AuthData is not valid, retrying later!")
             return Result.retry()
         }
@@ -133,7 +148,14 @@ class UpdateWorker @AssistedInject constructor(
             }
 
             val allUpdates = checkUpdates()
-                .also { updateDao.insertUpdates(it) }
+                .also {
+                    updateDao.insertUpdates(it)
+                    Preferences.putLong(
+                        context,
+                        PREFERENCE_UPDATES_LAST_CHECKED,
+                        System.currentTimeMillis()
+                    )
+                }
                 .filter { if (!isExtendedUpdateEnabled) it.hasValidCert else true }
                 .filterNot { it.isIgnoredBy(ignoreRules) }
 
@@ -161,7 +183,8 @@ class UpdateWorker @AssistedInject constructor(
                 .filter { it.hasValidCert }
                 .filterNot { it.isSelfUpdate(context) }
                 .partition {
-                    AppInstaller.canInstallSilently(context, it.packageName, it.targetSdk)
+                    AppInstaller.canInstallSilently(context, it.packageName, it.targetSdk) &&
+                        !(isWarnPermissionsEnabled && it.newPermissions.isNotEmpty())
                 }
 
             // Notify about apps that cannot be auto-updated
@@ -177,6 +200,16 @@ class UpdateWorker @AssistedInject constructor(
             filteredUpdates.first.forEach { downloadHelper.enqueueUpdate(it) }
 
             return Result.success()
+        } catch (exception: PlayException.RequiresAccount) {
+            // Gated decision 2 (phase-6 migration plan): the anonymous lane has no bulk
+            // details endpoint, so a session that degraded to anonymous (e.g. a stored
+            // session that failed its device/locale check) can't check for updates at all.
+            // Told to the user rather than left to look like updates silently stopped.
+            Log.i(TAG, "Update check needs a signed-in account; session is anonymous", exception)
+            with(context.getSystemService<NotificationManager>()!!) {
+                notify(NOTIFICATION_ID, NotificationUtil.getUpdateCheckAuthNotification(context))
+            }
+            return Result.failure()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to fetch updates", exception)
             return Result.failure()
@@ -233,7 +266,10 @@ class UpdateWorker @AssistedInject constructor(
                 emptySet()
             }
 
-            val updates = appDetailsHelper.getAppByPackageName(filteredPackages)
+            val updates = playClient.apps.details(
+                filteredPackages,
+                installed = installedApps(filteredPackages)
+            )
                 .filter { it.displayName.isNotEmpty() }
                 .filter { PackageUtil.isUpdatable(context, it.packageName, it.versionCode) }
                 .toMutableList()
@@ -262,6 +298,21 @@ class UpdateWorker @AssistedInject constructor(
     }
 
     /**
+     * The installed copy of each of [packageNames], sent with the update check so Play prices
+     * each update as a patch against it; a package whose copy cannot be read is checked without
+     * one. Reads each base APK's manifest and signing block, so call it off the main thread.
+     */
+    private fun installedApps(packageNames: List<String>): List<InstalledApp> =
+        packageNames.distinct().mapNotNull { packageName ->
+            try {
+                InstalledPatchBase.installedApp(context, packageName)
+            } catch (exception: Exception) {
+                Log.w(TAG, "Failed to read the installed copy of $packageName", exception)
+                null
+            }
+        }
+
+    /**
      * Fetches Aurora Store's own update from the bundled release/nightly feed and maps
      * it onto an [App] so it joins the regular update list. Nightly version codes never
      * bump, so newness is decided by the build timestamp there; release uses the version
@@ -278,7 +329,9 @@ class UpdateWorker @AssistedInject constructor(
         }
 
         try {
-            val selfUpdate = httpClient.call(updateUrl).use {
+            val selfUpdate = okHttpClient.newCall(
+                Request(url = updateUrl.toHttpUrl())
+            ).execute().use {
                 json.decodeFromString<SelfUpdate>(it.body.string())
             }
 

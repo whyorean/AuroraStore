@@ -67,7 +67,6 @@
     <string name="menu_terms">Termos de serviço</string>
     <string name="menu_license">Licença</string>
     <string name="menu_disclaimer">Isenção de responsabilidade</string>
-    <string name="installer_status_user_action">Aguardando confirmação do usuário</string>
     <string name="installer_status_success">Instalado com sucesso</string>
     <string name="installer_status_failure_storage">Espaço de armazenamento insuficiente</string>
     <string name="installer_status_failure_invalid">APK inválido ou corrompido</string>
@@ -198,7 +197,6 @@
     <string name="purchase_failed">Download falhou</string>
     <string name="pref_ui_title">Personalização</string>
     <string name="pref_install_mode_title">Método de instalação</string>
-    <string name="pref_install_mode_summary">Selecione o modo de instalação de APKs</string>
     <string name="pref_install_mode_session">Instalador de sessão</string>
     <string name="pref_install_mode_root">Instalador root</string>
     <string name="pref_install_mode_native">Instalador nativo (descontinuado)</string>
@@ -458,11 +456,8 @@
     <string name="action_filter_no_gms">Sem play services</string>
     <string name="manual_download_version_error">O código de versão pode conter apenas dígitos</string>
     <string name="preparing_to_install">Preparando para instalar</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permissão necessária</item>
-        <item quantity="many">de permissões necessárias</item>
-        <item quantity="other">Permissões necessárias</item>
-    </plurals>
+    <string name="permission_required">Permissão necessária</string>
+    <string name="permissions_required">Permissões necessárias</string>
     <string name="installer_microg_misconfigured">O instalador do microG falhou ao instalar o app, provavelmente devido a má configuração.</string>
     <string name="pref_install_mode_microg">Instalador do microG</string>
     <string name="microg_installer_subtitle">Requer que o app companheiro do microG esteja instalado</string>

@@ -27,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
@@ -73,6 +74,7 @@ fun FavouriteScreen(
     viewModel: FavouriteViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val favourites = viewModel.favourites.collectAsLazyPagingItems()
     val isEnqueuing by viewModel.isEnqueuing.collectAsStateWithLifecycle()
     val hasInstallableFavourites by viewModel.hasInstallableFavourites
@@ -89,7 +91,7 @@ fun FavouriteScreen(
         viewModel.enqueueResult.collect { count ->
             when {
                 count > 0 -> context.toast(
-                    context.getString(R.string.toast_fav_install_enqueued, count)
+                    resources.getString(R.string.toast_fav_install_enqueued, count)
                 )
 
                 count == 0 -> context.toast(R.string.toast_fav_install_none)

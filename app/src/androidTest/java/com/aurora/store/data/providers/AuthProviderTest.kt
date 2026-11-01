@@ -6,8 +6,8 @@
 package com.aurora.store.data.providers
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.aurora.gplayapi.data.models.AuthData
-import com.aurora.gplayapi.data.providers.DeviceInfoProvider
+import com.aurora.gplayapi.device.DeviceProfile
+import com.aurora.gplayapi.device.DeviceRegistry
 import com.google.common.truth.Truth.assertThat
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -50,36 +50,35 @@ class AuthProviderTest {
         spoofProvider.removeSpoofDeviceProperties()
     }
 
-    private fun sessionFor(properties: Properties, locale: Locale = Locale.getDefault()): AuthData =
-        AuthData(
-            email = "test@aurora",
-            locale = locale,
-            deviceInfoProvider = DeviceInfoProvider(properties, locale.toString())
-        )
+    private fun deviceFor(properties: Properties): DeviceProfile =
+        DeviceRegistry.parse(properties.getProperty("Build.PRODUCT", "test"), properties)
 
     @Test
     fun sessionBuiltForTheActiveSpoofIsAccepted() {
         spoofProvider.setSpoofDeviceProperties(devices.first())
 
-        assertThat(authProvider.matchesActiveSpoof(sessionFor(devices.first()))).isTrue()
+        assertThat(
+            authProvider.matchesActiveSpoof(deviceFor(devices.first()), Locale.getDefault())
+        ).isTrue()
     }
 
     @Test
     fun sessionBuiltForAnotherDeviceIsRejected() {
         spoofProvider.setSpoofDeviceProperties(devices.first())
 
-        assertThat(authProvider.matchesActiveSpoof(sessionFor(devices.last()))).isFalse()
+        assertThat(
+            authProvider.matchesActiveSpoof(deviceFor(devices.last()), Locale.getDefault())
+        ).isFalse()
     }
 
     @Test
     fun sessionBuiltBeforeTheSpoofWasEnabledIsRejected() {
-        val native = spoofProvider.deviceProperties
-        val session = sessionFor(native)
-        assertThat(authProvider.matchesActiveSpoof(session)).isTrue()
+        val native = deviceFor(spoofProvider.deviceProperties)
+        assertThat(authProvider.matchesActiveSpoof(native, Locale.getDefault())).isTrue()
 
         spoofProvider.setSpoofDeviceProperties(devices.first())
 
-        assertThat(authProvider.matchesActiveSpoof(session)).isFalse()
+        assertThat(authProvider.matchesActiveSpoof(native, Locale.getDefault())).isFalse()
     }
 
     @Test
@@ -87,14 +86,16 @@ class AuthProviderTest {
         spoofProvider.setSpoofDeviceProperties(devices.first())
         spoofProvider.setSpoofLocale(Locale.JAPAN)
 
-        assertThat(authProvider.matchesActiveSpoof(sessionFor(devices.first()))).isFalse()
         assertThat(
-            authProvider.matchesActiveSpoof(sessionFor(devices.first(), Locale.JAPAN))
+            authProvider.matchesActiveSpoof(deviceFor(devices.first()), Locale.getDefault())
+        ).isFalse()
+        assertThat(
+            authProvider.matchesActiveSpoof(deviceFor(devices.first()), Locale.JAPAN)
         ).isTrue()
     }
 
     @Test
     fun sessionWithoutDeviceInfoIsRejected() {
-        assertThat(authProvider.matchesActiveSpoof(AuthData("BOGUS"))).isFalse()
+        assertThat(authProvider.matchesActiveSpoof(null, Locale.getDefault())).isFalse()
     }
 }

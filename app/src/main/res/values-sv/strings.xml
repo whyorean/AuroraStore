@@ -49,7 +49,6 @@
     <string name="pref_ui_title">Anpassning</string>
     <string name="pref_network_title">Nätverk</string>
     <string name="pref_install_mode_title">Installationsmetod</string>
-    <string name="pref_install_mode_summary">Välj läge för installation av APK</string>
     <string name="pref_install_mode_session">Installationsprogrammet för Sessionen</string>
     <string name="pref_install_mode_services">Aurora-tjänster (Föråldrat)</string>
     <string name="pref_install_mode_root">Installationsprogrammet för Root</string>
@@ -67,7 +66,6 @@
     <string name="device_miui_title">MIUI upptäcktes!</string>
     <string name="menu_terms">Villkor för användning</string>
     <string name="menu_license">Licens</string>
-    <string name="installer_status_user_action">Väntar på användarens bekräftelse</string>
     <string name="installer_status_failure_storage">Otillräckligt minnesutrymme</string>
     <string name="installer_status_failure_invalid">Ej giltig eller skadad APK</string>
     <string name="installer_status_failure_incompatible">Ej kompatibel app</string>
@@ -448,10 +446,8 @@
     <string name="details_compatibility_status_unsupported">Stöds ej: Ej fungerande</string>
     <string name="details_compatibility_status_unknown">Okänt: Inte kontrollerad ännu</string>
     <string name="preparing_to_install">Förbereder för att installera</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Tillstånd krävs</item>
-        <item quantity="other">Tillstånd krävs</item>
-    </plurals>
+    <string name="permission_required">Tillstånd krävs</string>
+    <string name="permissions_required">Tillstånd krävs</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> appar installerade</string>
     <string name="pref_network_microg_login_title">Använd microG för att logga in på konton</string>
     <string name="pref_network_microg_login_desc">Autentisera med mikroG när du loggar in på Google konton för ett enklare inloggningsflöde</string>

@@ -16,7 +16,6 @@
     <string name="installer_status_failure_conflict">Conflit avec les paquets existants</string>
     <string name="installer_status_success">Installation réussie</string>
     <string name="menu_disclaimer">Avis</string>
-    <string name="installer_status_user_action">Attente de la confirmation de l’utilisateur</string>
     <string name="device_miui_title">MIUI a été détecté !</string>
     <string name="menu_terms">Conditions générales d’utilisation</string>
     <string name="menu_license">Licence</string>
@@ -172,7 +171,6 @@
     <string name="device_miui_extra">Facultativement, vous pouvez choisir le programme d’installation Natif, cependant vous ne pourrez pas installer les paquets APK (fractionnés). À vous de décider.</string>
     <string name="device_miui_description">Afin de permettre les installations, désactivez les optimisations MIUI. Sinon, vous pouvez choisir le programme d’installation Superutilisateur ou Services.</string>
     <string name="device_miui_subtitle">Les optimisations MIUI empêchent l’installation d’applis par le programme d’installation de session.</string>
-    <string name="pref_install_mode_summary">Choisir le mode d’installation des APK</string>
     <string name="pref_install_mode_session">Programme d’installation de session</string>
     <string name="pref_install_mode_services">Aurora Services (déconseillés)</string>
     <string name="pref_install_mode_root">Programme d’installation superutilisateur</string>
@@ -458,11 +456,8 @@
     <string name="action_filter_no_gms">Pas de Services Play</string>
     <string name="manual_download_version_error">La version du code ne peut comporter que des chiffres</string>
     <string name="preparing_to_install">Préparation de l’installation</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Une autorisation est nécessaire</item>
-        <item quantity="many">Des autorisations sont nécessaires</item>
-        <item quantity="other">Des autorisations sont nécessaires</item>
-    </plurals>
+    <string name="permission_required">Une autorisation est nécessaire</string>
+    <string name="permissions_required">Des autorisations sont nécessaires</string>
     <string name="installer_microg_misconfigured">Le programme d\'installation de MicroG n\'a pas réussi à installer l\'appli, probablement en raison d\'une erreur de configuration.</string>
     <string name="pref_install_mode_microg">Programme d’installation de MicroG</string>
     <string name="microg_installer_subtitle">L’appli compagnon microG doit être installée</string>

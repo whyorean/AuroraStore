@@ -40,7 +40,6 @@
     <string name="toast_anonymous_restriction">לא זמין בחשבונות אנונימיים</string>
     <string name="account_anonymous">בעילום שם</string>
     <string name="action_search">חיפוש</string>
-    <string name="installer_status_user_action">כעת בהמתנה לאישור המשתמש/ת</string>
     <string name="installer_status_success">ההתקנה צלחה</string>
     <string name="installer_status_failure_invalid">קובץ APK פגום</string>
     <string name="installer_status_failure_incompatible">היישום אינו תואם</string>
@@ -188,7 +187,6 @@
     <string name="installer_service_misconfigured">הגדרת שירותי אורורה ואישור כל ההרשאות תחילה.</string>
     <string name="spoof_apply">יש להתחבר מחדש בשביל שההתחזות תעבוד</string>
     <string name="onboarding_permission_installer_desc">אשר התקנת אפליקציות מחנות אורורה</string>
-    <string name="pref_install_mode_summary">בחר שיטה להתקנות APK</string>
     <string name="pref_install_mode_native">מתקין Native (לא עדכני)</string>
     <string name="device_miui_description">נא להשבית את מיטובי הביצועים של MIUI בשביל לאפשר התקנת יישומים, לחלופין ניתן לבחור להשתמש במתקין שורש (Root) או במתקין Services.</string>
     <string name="toast_manual_unavailable">קוד הגרסה שביקשת לא זמין.</string>
@@ -457,11 +455,8 @@
     <string name="preparing_to_install">בהכנות להתקנה</string>
     <string name="preparing_to_download">בהכנות להורדה</string>
     <string name="verifying_downloads">ההורדות עוברות אימות</string>
-    <plurals name="permissions_required">
-        <item quantity="one">נדרשת הרשאת גישה</item>
-        <item quantity="two">נדרשות הרשאות גישה</item>
-        <item quantity="other">נדרשות הרשאות גישה</item>
-    </plurals>
+    <string name="permission_required">נדרשת הרשאת גישה</string>
+    <string name="permissions_required">נדרשות הרשאות גישה</string>
     <string name="select_app_for_details">יש לבחור יישום כדי להציג פרטים נוספים</string>
     <string name="action_filter_no_ads">ללא פרסומות</string>
     <string name="action_filter_no_gms">ללא שירותי Google Play</string>

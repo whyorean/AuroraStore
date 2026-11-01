@@ -177,6 +177,10 @@ androidComponents {
     }
 }
 
+tasks.withType<Test>().configureEach {
+    providers.gradleProperty("frosted.apk").orNull?.let { systemProperty("frosted.apk", it) }
+}
+
 ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
 }

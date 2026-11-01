@@ -170,7 +170,6 @@
     <string name="pref_ui_title">Зовнішній вигляд</string>
     <string name="pref_network_title">Мережа</string>
     <string name="pref_install_mode_title">Спосіб установлення</string>
-    <string name="pref_install_mode_summary">Виберіть режим установлення APK</string>
     <string name="pref_install_mode_session">Установлювач Android</string>
     <string name="pref_install_mode_services">Сервіси Aurora (застарілі)</string>
     <string name="pref_install_mode_root">Root-установлювач</string>
@@ -196,7 +195,6 @@
     <string name="menu_terms">Умови використання</string>
     <string name="menu_license">Ліцензія</string>
     <string name="menu_disclaimer">Застереження</string>
-    <string name="installer_status_user_action">Очікується підтвердження</string>
     <string name="installer_status_success">Успішно встановлено</string>
     <string name="installer_status_failure_storage">Недостатньо вільної пам\'яті</string>
     <string name="installer_status_failure_invalid">Недійсний або пошкоджений APK</string>
@@ -458,12 +456,8 @@
     <string name="action_filter_no_gms">Немає ігрових сервісів</string>
     <string name="manual_download_version_error">Код версії може містити лише цифри</string>
     <string name="preparing_to_install">Підготовка до встановлення</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Потрібен дозвіл</item>
-        <item quantity="few">Потрібні дозволи</item>
-        <item quantity="many">Потрібні дозволи</item>
-        <item quantity="other">Потрібні дозволи</item>
-    </plurals>
+    <string name="permission_required">Потрібен дозвіл</string>
+    <string name="permissions_required">Потрібні дозволи</string>
     <string name="installer_microg_misconfigured">Встановлювач MicroG не зміг встановити застосунок, ймовірно, через неправильну конфігурацію.</string>
     <string name="pref_install_mode_microg">Встановлювач MicroG</string>
     <string name="microg_installer_subtitle">Необхідно встановити супутній застосунок microG</string>

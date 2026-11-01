@@ -169,7 +169,6 @@
     <string name="purchase_failed">Скачивание не удалось</string>
     <string name="pref_ui_title">Внешний вид</string>
     <string name="pref_install_mode_title">Способ установки</string>
-    <string name="pref_install_mode_summary">Выберите режим установки APK</string>
     <string name="pref_install_mode_services">Сервисы Aurora (Устарел)</string>
     <string name="pref_install_mode_root">Root-установщик</string>
     <string name="pref_install_mode_native">Системный установщик (Устарел)</string>
@@ -194,7 +193,6 @@
     <string name="device_miui_title">Обнаружен MIUI!</string>
     <string name="menu_license">Лицензия</string>
     <string name="menu_disclaimer">Отказ от ответственности</string>
-    <string name="installer_status_user_action">Ожидание подтверждения пользователя</string>
     <string name="installer_status_success">Успешно установлено</string>
     <string name="installer_status_failure_storage">Недостаточно памяти</string>
     <string name="installer_status_failure_invalid">Неправильный или поврежденный APK</string>
@@ -458,12 +456,8 @@
     <string name="action_filter_no_gms">Без сервисов Google Play</string>
     <string name="manual_download_version_error">Код версии может содержать только цифры</string>
     <string name="preparing_to_install">Подготовка к установке</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Требуется разрешение</item>
-        <item quantity="few">Требуются разрешения</item>
-        <item quantity="many">Требуются разрешения</item>
-        <item quantity="other">Требуются разрешения</item>
-    </plurals>
+    <string name="permission_required">Требуется разрешение</string>
+    <string name="permissions_required">Требуются разрешения</string>
     <string name="loading">Загрузка в прогрессе</string>
     <string name="page">Страница <xliff:g id="number">%1$d</xliff:g></string>
     <string name="installer_microg_misconfigured">Установщик MicroG не смог установить приложение, вероятнее всего, из-за проблем с конфигурацией.</string>

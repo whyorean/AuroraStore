@@ -9,11 +9,14 @@ import android.content.Context
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.model.AppFile
+import com.aurora.store.data.room.AppFileParceler
 import com.aurora.store.util.PackageUtil
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.TypeParceler
 
 @Parcelize
+@TypeParceler<AppFile, AppFileParceler>
 @Entity(tableName = "externalApk")
 data class ExternalApk(
     @PrimaryKey
@@ -23,7 +26,7 @@ data class ExternalApk(
     val displayName: String,
     val iconURL: String,
     val developerName: String,
-    var fileList: List<PlayFile>
+    var fileList: List<AppFile>
 ) : Parcelable {
 
     fun isInstalled(context: Context): Boolean = PackageUtil.isInstalled(context, packageName)

@@ -123,7 +123,6 @@
     <string name="filter_review_one">1점</string>
     <string name="filter_review_three">3점</string>
     <string name="installer_service_available">Aurora 서비스를 이용할 수 있으며 설치할 준비가 되었습니다.</string>
-    <string name="installer_status_user_action">사용자의 승인 대기 중</string>
     <string name="menu_disclaimer">면책 조항</string>
     <string name="installer_service_misconfigured">먼저 Aurora 서비스를 설정하고 모든 권한을 부여하세요.</string>
     <string name="installer_service_unavailable">1.0.9 이상의 Aurora 서비스를 설치하거나, 설치 프로그램을 변경하세요.</string>
@@ -199,7 +198,6 @@
     <string name="title_device">기기</string>
     <string name="session_good">좋습니다.</string>
     <string name="title_blacklist_manager">블랙리스트 관리자</string>
-    <string name="pref_install_mode_summary">APK 설치 모드 선택</string>
     <string name="title_download_manager">다운로드</string>
     <string name="pref_install_mode_am">AM 인스톨러</string>
     <string name="session_init">준비하는 중입니다…</string>
@@ -441,9 +439,8 @@
     <string name="details_compatibility_status_unsupported">지원되지 않음: 작동하지 않음</string>
     <string name="details_compatibility_status_unknown">알 수 없음: 아직 확인되지 않음</string>
     <string name="preparing_to_install">설치 준비 중</string>
-    <plurals name="permissions_required">
-        <item quantity="other">필요한 권한</item>
-    </plurals>
+    <string name="permission_required">필요한 권한</string>
+    <string name="permissions_required">필요한 권한</string>
     <string name="installed_apps_size">앱 <xliff:g id="installed_apps_size">%1$d</xliff:g>개 설치됨</string>
     <string name="pref_network_microg_login_title">microG를 사용하여 계정에 로그인하기</string>
     <string name="pref_network_microg_login_desc">Google 계정에 로그인 시 microG를 사용하여 인증하면 로그인이 더 간편함</string>

@@ -18,6 +18,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -59,6 +62,7 @@ fun PermissionList(
 ) {
     val context = LocalContext.current
     var permissionRequested by rememberSaveable { mutableStateOf<PermissionType?>(null) }
+    var linkOwner by rememberSaveable { mutableStateOf<String?>(null) }
 
     @SuppressLint("InlinedApi", "BatteryLife")
     val intentMap = mapOf(
@@ -120,6 +124,11 @@ fun PermissionList(
                     }
                 }
 
+                PermissionType.APP_LINKS -> {
+                    linkOwner = PackageUtil.getPlayLinkOwner(context)
+                    if (linkOwner == null) intentLauncher.launch(intentMap.getValue(type))
+                }
+
                 else -> {
                     val intent = intentMap[type] ?: return
                     intentLauncher.launch(intent)
@@ -129,6 +138,50 @@ fun PermissionList(
             Log.e(TAG, "Error requesting permission", exception)
             permissionRequested = null
         }
+    }
+
+    linkOwner?.let { owner ->
+        AlertDialog(
+            onDismissRequest = { linkOwner = null },
+            title = {
+                Text(
+                    stringResource(
+                        R.string.app_links_owned_title,
+                        PackageUtil.getPackageLabel(context, owner) ?: owner
+                    )
+                )
+            },
+            text = {
+                Text(
+                    stringResource(
+                        R.string.app_links_owned_desc,
+                        PackageUtil.getPackageLabel(context, owner) ?: owner
+                    )
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        linkOwner = null
+                        context.startActivity(
+                            Intent(ACTION_APP_OPEN_BY_DEFAULT_SETTINGS, "package:$owner".toUri())
+                        )
+                    }
+                ) {
+                    Text(stringResource(R.string.app_links_owned_open))
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        linkOwner = null
+                        intentLauncher.launch(intentMap.getValue(PermissionType.APP_LINKS))
+                    }
+                ) {
+                    Text(stringResource(R.string.action_continue))
+                }
+            }
+        )
     }
 
     LazyColumn(

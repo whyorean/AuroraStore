@@ -177,14 +177,12 @@
     <string name="filter_review_five">Viis</string>
     <string name="installer_service_available">Aurora teenused on saadaval ja paigaldamiseks valmis.</string>
     <string name="installer_service_misconfigured">Seadista esmalt Aurora teenused ja anna kõik load.</string>
-    <string name="installer_status_user_action">Kasutaja kinnituse ootel</string>
     <string name="onboarding_title_welcome">Tere tulemast</string>
     <string name="onboarding_permission_esa">Juurdepääs välisele salvestusruumile</string>
     <string name="onboarding_permission_esa_desc">APK laiendusfailide (OBB) salvestamiseks suurte rakenduste ja mängude jaoks.</string>
     <string name="pref_install_delete_summary">Allalaaditud APK-d kustutatakse kohe pärast paigaldamist</string>
     <string name="pref_install_mode_title">Paigaldusmeetod</string>
     <string name="pref_install_mode_services">Aurora teenused (aegunud)</string>
-    <string name="pref_install_mode_summary">Vali APK paigaldamise moodus</string>
     <string name="pref_install_delete_title">Kustuta APK pärast paigaldamist</string>
     <string name="pref_install_mode_am">AM paigaldusrakendus</string>
     <string name="pref_vending_version_title">Google Play versioon</string>
@@ -458,10 +456,8 @@
     <string name="action_filter_no_gms">Ei vaja Google Play teenuseid</string>
     <string name="manual_download_version_error">Versiooni koodis võib olla vaid numbreid</string>
     <string name="preparing_to_install">Paigaldamine on ettevalmistamisel</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Õigus on vajalik</item>
-        <item quantity="other">Õigused on vajalikud</item>
-    </plurals>
+    <string name="permission_required">Õigus on vajalik</string>
+    <string name="permissions_required">Õigused on vajalikud</string>
     <string name="installer_microg_misconfigured">MicroG paigaldaja ei suutnud rakendust paigaldada. Ilmselt juhtus see vale seadistuse tõttu.</string>
     <string name="pref_install_mode_microg">MicroG paigaldaja</string>
     <string name="microg_installer_subtitle">Eeldab, et kaasnev MicroG rakendus on paigaldatud</string>

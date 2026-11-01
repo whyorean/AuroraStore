@@ -40,7 +40,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.model.Review
 import com.aurora.store.R
 import com.aurora.store.compose.composable.SectionHeader
 import com.aurora.store.compose.preview.ThemePreviewProvider

@@ -45,6 +45,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
@@ -81,6 +82,7 @@ fun AccountsScreen(
     viewModel: AccountsViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val activity = LocalActivity.current
     val accounts by viewModel.accounts.collectAsStateWithLifecycle()
     var showAddSheet by remember { mutableStateOf(false) }
@@ -104,7 +106,7 @@ fun AccountsScreen(
                 isAddingAccount = false
                 Toast.makeText(
                     context,
-                    context.getString(R.string.account_exists),
+                    resources.getString(R.string.account_exists),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -120,7 +122,7 @@ fun AccountsScreen(
                 isSwitchingDefault = false
                 Toast.makeText(
                     context,
-                    context.getString(R.string.account_switch_failed),
+                    resources.getString(R.string.account_switch_failed),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -142,7 +144,7 @@ fun AccountsScreen(
             if (!added) {
                 Toast.makeText(
                     context,
-                    context.getString(R.string.account_add_failed),
+                    resources.getString(R.string.account_add_failed),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -153,9 +155,9 @@ fun AccountsScreen(
         viewModel.refreshResult.collect { failures ->
             isRefreshing = false
             val message = if (failures == 0) {
-                context.getString(R.string.account_refresh_done)
+                resources.getString(R.string.account_refresh_done)
             } else {
-                context.resources.getQuantityString(
+                resources.getQuantityString(
                     R.plurals.account_refresh_failed,
                     failures,
                     failures

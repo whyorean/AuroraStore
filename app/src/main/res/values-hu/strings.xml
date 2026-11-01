@@ -91,7 +91,6 @@
     <string name="menu_terms">Felhasználási feltételek</string>
     <string name="menu_license">Licenc</string>
     <string name="menu_disclaimer">Közlemény</string>
-    <string name="installer_status_user_action">Várakozás felhasználói megerősítésére</string>
     <string name="installer_status_success">Sikeresen telepítve</string>
     <string name="installer_status_failure_storage">Nincs elég memória</string>
     <string name="installer_status_failure_invalid">Érvénytelen vagy sérült APK</string>
@@ -191,7 +190,6 @@
     <string name="pref_ui_title">Testreszabás</string>
     <string name="pref_network_title">Hálózat</string>
     <string name="pref_install_mode_title">Telepítési mód</string>
-    <string name="pref_install_mode_summary">APK-fájlok telepítési módja</string>
     <string name="pref_install_mode_services">Aurora-szolgáltatások (elavult)</string>
     <string name="pref_install_mode_root">Root-telepítő</string>
     <string name="pref_install_mode_native">Natív telepítő (elavult)</string>
@@ -458,10 +456,8 @@
     <string name="action_filter_no_gms">Nincsenek Google Play-szolgáltatások</string>
     <string name="manual_download_version_error">A verziókód csak számokat tartalmazhat</string>
     <string name="preparing_to_install">Telepítés előkészítése</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Engedély szükséges</item>
-        <item quantity="other">Engedélyek szükségesek</item>
-    </plurals>
+    <string name="permission_required">Engedély szükséges</string>
+    <string name="permissions_required">Engedélyek szükségesek</string>
     <string name="installer_microg_misconfigured">A MicroG telepítője nem tudta telepíteni az alkalmazást, valószínűleg helytelen beállítás miatt.</string>
     <string name="pref_install_mode_microg">MicroG-telepítő</string>
     <string name="microg_installer_subtitle">A microG kiegészítő alkalmazás telepítése szükséges</string>

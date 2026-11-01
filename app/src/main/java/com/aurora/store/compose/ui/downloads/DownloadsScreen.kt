@@ -41,7 +41,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.aurora.extensions.emptyPagingItems
 import com.aurora.extensions.toast
-import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.model.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.DownloadListItem

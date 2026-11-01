@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
  * SPDX-FileCopyrightText: 2021 Aurora OSS
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -7,9 +8,10 @@ package com.aurora.store.viewmodel.topchart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.contracts.TopChartsContract
-import com.aurora.gplayapi.helpers.web.WebTopChartsHelper
+import com.aurora.gplayapi.api.TopChartType
+import com.aurora.gplayapi.model.ContentType
+import com.aurora.gplayapi.model.StreamCluster
+import com.aurora.gplayapi.web.WebPlayClient
 import com.aurora.store.TopChartStash
 import com.aurora.store.data.model.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,9 +22,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+/**
+ * `WebChartApi`/[com.aurora.gplayapi.api.ChartApi] has no continuation for a chart cluster
+ * - v3's own web helper had none either (`getNextStreamCluster` always answered
+ * `StreamCluster.EMPTY`, "irrelevant for web client as it doesn't support pagination", per
+ * its own comment), so unlike v3's Aurora view model this has no `nextCluster`: it would
+ * never have had anything to fetch.
+ */
 @HiltViewModel
 class TopChartViewModel @Inject constructor(
-    private val webTopChartsHelper: WebTopChartsHelper
+    private val webPlayClient: WebPlayClient
 ) : ViewModel() {
 
     private var stash: TopChartStash = mutableMapOf()
@@ -30,12 +39,9 @@ class TopChartViewModel @Inject constructor(
     private val _state = MutableStateFlow<ViewState>(ViewState.Loading)
     val state: StateFlow<ViewState> = _state.asStateFlow()
 
-    private val topChartsContract: TopChartsContract
-        get() = webTopChartsHelper
-
-    fun getStreamCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
+    fun getStreamCluster(type: ContentType, chart: TopChartType) {
         viewModelScope.launch(Dispatchers.IO) {
-            if (targetCluster(type, chart).clusterAppList.isNotEmpty()) {
+            if (targetCluster(type, chart).apps.isNotEmpty()) {
                 _state.value = ViewState.Success(targetCluster(type, chart))
                 return@launch
             }
@@ -43,8 +49,8 @@ class TopChartViewModel @Inject constructor(
             _state.value = ViewState.Loading
 
             try {
-                val cluster = topChartsContract.getCluster(type.value, chart.value)
-                updateCluster(type, chart, cluster)
+                val cluster = webPlayClient.charts.cluster(type.value, chart)
+                stash.getOrPut(type) { mutableMapOf() }[chart] = cluster
                 _state.value = ViewState.Success(targetCluster(type, chart))
             } catch (e: Exception) {
                 _state.value = ViewState.Error(e.message)
@@ -52,46 +58,6 @@ class TopChartViewModel @Inject constructor(
         }
     }
 
-    fun nextCluster(type: TopChartsContract.Type, chart: TopChartsContract.Chart) {
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val target = targetCluster(type, chart)
-                if (target.hasNext()) {
-                    val newCluster = topChartsContract.getNextStreamCluster(
-                        target.id,
-                        target.clusterNextPageUrl
-                    )
-
-                    updateCluster(type, chart, newCluster)
-
-                    _state.value = ViewState.Success(targetCluster(type, chart))
-                }
-            } catch (_: Exception) {
-            }
-        }
-    }
-
-    private fun updateCluster(
-        type: TopChartsContract.Type,
-        chart: TopChartsContract.Chart,
-        newCluster: StreamCluster
-    ) {
-        val streamCluster = targetCluster(type, chart)
-        val mergedCluster = streamCluster.copy(
-            clusterNextPageUrl = newCluster.clusterNextPageUrl,
-            clusterAppList = streamCluster.clusterAppList + newCluster.clusterAppList
-        )
-
-        stash[type]?.set(chart, mergedCluster)
-    }
-
-    private fun targetCluster(
-        type: TopChartsContract.Type,
-        chart: TopChartsContract.Chart
-    ): StreamCluster {
-        val cluster = stash
-            .getOrPut(type) { mutableMapOf() }
-            .getOrPut(chart) { StreamCluster.EMPTY }
-        return cluster
-    }
+    private fun targetCluster(type: ContentType, chart: TopChartType): StreamCluster =
+        stash.getOrPut(type) { mutableMapOf() }.getOrPut(chart) { StreamCluster.EMPTY }
 }

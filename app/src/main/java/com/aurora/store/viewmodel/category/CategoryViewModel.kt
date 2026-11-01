@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
  * SPDX-FileCopyrightText: 2021 Aurora OSS
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -10,10 +11,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.Category
-import com.aurora.gplayapi.exceptions.GooglePlayException
-import com.aurora.gplayapi.helpers.CategoryHelper
-import com.aurora.gplayapi.helpers.contracts.CategoryContract
+import com.aurora.gplayapi.PlayClient
+import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.model.Category
+import com.aurora.gplayapi.model.ContentType
 import com.aurora.store.AuroraApp
 import com.aurora.store.CategoryStash
 import com.aurora.store.data.event.AuthEvent
@@ -25,19 +26,17 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class CategoryViewModel @Inject constructor(
-    private val categoryHelper: CategoryHelper
+    private val playClient: PlayClient
 ) : ViewModel() {
 
     private var stash: CategoryStash = mutableMapOf(
-        Category.Type.APPLICATION to emptyList(),
-        Category.Type.GAME to emptyList()
+        ContentType.APPLICATION to emptyList(),
+        ContentType.GAME to emptyList()
     )
 
     val liveData = MutableLiveData<ViewState>()
 
-    private fun contract(): CategoryContract = categoryHelper
-
-    fun getCategoryList(type: Category.Type) {
+    fun getCategoryList(type: ContentType) {
         viewModelScope.launch(Dispatchers.IO) {
             val categories = getCategories(type)
 
@@ -49,9 +48,9 @@ class CategoryViewModel @Inject constructor(
             liveData.postValue(ViewState.Loading)
 
             try {
-                stash[type] = contract().getAllCategories(type)
+                stash[type] = playClient.categories.all(type)
                 liveData.postValue(ViewState.Success(stash))
-            } catch (exception: GooglePlayException.AuthException) {
+            } catch (exception: PlayException.Unauthorized) {
                 Log.w(TAG, "Categories fetch returned ${exception.code}, redirecting to Splash")
                 AuroraApp.events.send(AuthEvent.SessionExpired())
             } catch (exception: Exception) {
@@ -61,7 +60,7 @@ class CategoryViewModel @Inject constructor(
         }
     }
 
-    private fun getCategories(type: Category.Type): List<Category> = stash.getOrPut(type) {
+    private fun getCategories(type: ContentType): List<Category> = stash.getOrPut(type) {
         mutableListOf()
     }
 }

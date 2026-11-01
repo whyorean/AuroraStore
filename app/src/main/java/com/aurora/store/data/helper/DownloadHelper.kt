@@ -19,7 +19,7 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import androidx.work.WorkRequest
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.model.App
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.AccountRepository
 import com.aurora.store.data.event.InstallerEvent

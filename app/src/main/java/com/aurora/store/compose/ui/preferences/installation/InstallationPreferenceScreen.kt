@@ -6,6 +6,7 @@
 package com.aurora.store.compose.ui.preferences.installation
 
 import android.app.admin.DevicePolicyManager
+import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -28,12 +29,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.core.content.getSystemService
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.compose.preview.ThemePreviewProvider
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_AUTO_DELETE
+import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_SYSTEM_LANGUAGES
 import com.aurora.store.util.save
 
 @Composable
@@ -41,9 +45,16 @@ fun InstallationPreferenceScreen(onNavigateTo: (Destination) -> Unit) {
     val context = LocalContext.current
     val devicePolicyManager = context.getSystemService<DevicePolicyManager>()
     val isDeviceOwner = devicePolicyManager?.isDeviceOwnerApp(context.packageName) ?: false
+    var installer by remember { mutableStateOf(AppInstaller.getCurrentInstaller(context)) }
+
+    LifecycleResumeEffect(Unit) {
+        installer = AppInstaller.getCurrentInstaller(context)
+        onPauseOrDispose {}
+    }
 
     ScreenContent(
         onNavigateTo = onNavigateTo,
+        installerTitle = AppInstaller.getInstallerInfo(installer).title,
         isDeviceOwner = isDeviceOwner,
         onClearDeviceOwner = {
             @Suppress("DEPRECATION")
@@ -55,12 +66,16 @@ fun InstallationPreferenceScreen(onNavigateTo: (Destination) -> Unit) {
 @Composable
 private fun ScreenContent(
     onNavigateTo: (Destination) -> Unit = {},
+    @StringRes installerTitle: Int = R.string.pref_install_mode_session,
     isDeviceOwner: Boolean = false,
     onClearDeviceOwner: () -> Unit = {}
 ) {
     val context = LocalContext.current
     var autoDelete by remember {
         mutableStateOf(Preferences.getBoolean(context, PREFERENCE_AUTO_DELETE, true))
+    }
+    var downloadSystemLanguages by remember {
+        mutableStateOf(Preferences.getBoolean(context, PREFERENCE_DOWNLOAD_SYSTEM_LANGUAGES))
     }
     var showClearOwnerDialog by remember { mutableStateOf(false) }
 
@@ -101,7 +116,7 @@ private fun ScreenContent(
                 ListItem(
                     modifier = Modifier.clickable { onNavigateTo(Destination.Installer) },
                     headlineContent = { Text(stringResource(R.string.pref_install_mode_title)) },
-                    supportingContent = { Text(stringResource(R.string.pref_install_mode_summary)) }
+                    supportingContent = { Text(stringResource(installerTitle)) }
                 )
             }
             item { HorizontalDivider() }
@@ -126,6 +141,29 @@ private fun ScreenContent(
                             onCheckedChange = { checked ->
                                 autoDelete = checked
                                 context.save(PREFERENCE_AUTO_DELETE, checked)
+                            }
+                        )
+                    }
+                )
+            }
+            item {
+                ListItem(
+                    modifier = Modifier.clickable {
+                        downloadSystemLanguages = !downloadSystemLanguages
+                        context.save(PREFERENCE_DOWNLOAD_SYSTEM_LANGUAGES, downloadSystemLanguages)
+                    },
+                    headlineContent = {
+                        Text(stringResource(R.string.pref_download_languages_title))
+                    },
+                    supportingContent = {
+                        Text(stringResource(R.string.pref_download_languages_summary))
+                    },
+                    trailingContent = {
+                        Switch(
+                            checked = downloadSystemLanguages,
+                            onCheckedChange = { checked ->
+                                downloadSystemLanguages = checked
+                                context.save(PREFERENCE_DOWNLOAD_SYSTEM_LANGUAGES, checked)
                             }
                         )
                     }

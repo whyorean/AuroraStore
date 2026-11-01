@@ -29,6 +29,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.util.fastForEachIndexed
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -48,8 +49,7 @@ fun SpoofScreen(onNavigateTo: (Destination) -> Unit, viewModel: SpoofViewModel =
     ScreenContent(
         onNavigateTo = onNavigateTo,
         onDeviceSpoofImport = { uri -> viewModel.importDeviceSpoof(uri) },
-        onDeviceSpoofExport = { uri -> viewModel.exportDeviceSpoof(uri) },
-        onLogout = { viewModel.logout() }
+        onDeviceSpoofExport = { uri -> viewModel.exportDeviceSpoof(uri) }
     )
 }
 
@@ -58,10 +58,10 @@ private fun ScreenContent(
     pages: List<SpoofPage> = listOf(SpoofPage.DEVICE, SpoofPage.LOCALE),
     onNavigateTo: (Destination) -> Unit = {},
     onDeviceSpoofImport: (uri: Uri) -> Unit = {},
-    onDeviceSpoofExport: (uri: Uri) -> Unit = {},
-    onLogout: () -> Unit = {}
+    onDeviceSpoofExport: (uri: Uri) -> Unit = {}
 ) {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val pagerState = rememberPagerState { pages.size }
     val coroutineScope = rememberCoroutineScope()
     val snackBarHostState = remember { SnackbarHostState() }
@@ -90,15 +90,12 @@ private fun ScreenContent(
     fun onRequestNavigateToSplash() {
         coroutineScope.launch {
             val result = snackBarHostState.showSnackbar(
-                message = context.getString(R.string.force_restart_snack),
-                actionLabel = context.getString(R.string.action_restart),
+                message = resources.getString(R.string.force_restart_snack),
+                actionLabel = resources.getString(R.string.action_restart),
                 duration = SnackbarDuration.Indefinite
             )
             when (result) {
-                SnackbarResult.ActionPerformed -> {
-                    onLogout()
-                    onNavigateTo(Destination.Splash())
-                }
+                SnackbarResult.ActionPerformed -> onNavigateTo(Destination.Splash())
 
                 else -> Unit
             }

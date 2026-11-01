@@ -100,7 +100,6 @@
     <string name="installer_status_failure_incompatible">Neakordigebla apo</string>
     <string name="installer_status_failure_invalid">Nevalida aŭ rompita APK</string>
     <string name="installer_status_failure_storage">Malsufiĉe da memorspacon</string>
-    <string name="installer_status_user_action">Atendas uzantan konfirmon</string>
     <string name="menu_disclaimer">Malgarantio</string>
     <string name="menu_license">Permesilo</string>
     <string name="device_miui_title">MIUI detektata!</string>
@@ -114,7 +113,6 @@
     <string name="pref_install_delete_title">Forigi APK post instalado</string>
     <string name="pref_install_mode_native">Operaciuma instalilo (troantikva)</string>
     <string name="pref_install_mode_root">Ĉefuzanta instalilo</string>
-    <string name="pref_install_mode_summary">Elekti reĝimon de APK instalado</string>
     <string name="pref_install_mode_title">Instalada maniero</string>
     <string name="pref_ui_layout">Aranĝo</string>
     <string name="purchase_failed">Elŝuto malsukcesa</string>

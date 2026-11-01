@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,7 +26,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import com.aurora.gplayapi.data.models.App
+import androidx.compose.ui.unit.dp
+import com.aurora.gplayapi.model.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.SectionHeader
@@ -39,7 +42,11 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
  * @param onTestingSubscriptionChange Callback when the the subscription button is clicked
  */
 @Composable
-fun Testing(isSubscribed: Boolean, onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {}) {
+fun Testing(
+    isSubscribed: Boolean,
+    isUpdating: Boolean = false,
+    onTestingSubscriptionChange: (subscribe: Boolean) -> Unit = {}
+) {
     SectionHeader(title = stringResource(R.string.details_beta))
     Row(
         modifier = Modifier
@@ -60,16 +67,26 @@ fun Testing(isSubscribed: Boolean, onTestingSubscriptionChange: (subscribe: Bool
             ),
             description = AnnotatedString(text = stringResource(R.string.details_beta_description))
         )
-        FilledTonalButton(onClick = { onTestingSubscriptionChange(!isSubscribed) }) {
-            Text(
-                text = if (isSubscribed) {
-                    stringResource(R.string.action_leave)
-                } else {
-                    stringResource(R.string.action_join)
-                },
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+        FilledTonalButton(
+            enabled = !isUpdating,
+            onClick = { onTestingSubscriptionChange(!isSubscribed) }
+        ) {
+            if (isUpdating) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(18.dp),
+                    strokeWidth = 2.dp
+                )
+            } else {
+                Text(
+                    text = if (isSubscribed) {
+                        stringResource(R.string.action_leave)
+                    } else {
+                        stringResource(R.string.action_join)
+                    },
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
         }
     }
 }

@@ -579,6 +579,22 @@ object NotificationUtil {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .build()
 
+    /**
+     * Gated decision 2 (phase-6 migration plan): an anonymous session can't check for updates
+     * in bulk, so a check that hits [com.aurora.gplayapi.PlayException.RequiresAccount] tells
+     * the user why, rather than an update check that silently finds nothing every time.
+     */
+    fun getUpdateCheckAuthNotification(context: Context): Notification =
+        NotificationCompat.Builder(context, Constants.NOTIFICATION_CHANNEL_ALERTS)
+            .setSmallIcon(R.drawable.ic_account)
+            .setContentTitle(context.getString(R.string.authentication_required_title))
+            .setContentText(context.getString(R.string.authentication_required_update_check))
+            .setAutoCancel(true)
+            .setContentIntent(getContentIntentForMain(context, initialTab = 2))
+            .setCategory(NotificationCompat.CATEGORY_ERROR)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .build()
+
     fun getExportStatusNotification(
         context: Context,
         displayName: String,

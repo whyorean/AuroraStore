@@ -39,7 +39,6 @@
     <string name="menu_terms">利用規約</string>
     <string name="menu_license">ライセンス</string>
     <string name="menu_disclaimer">免責</string>
-    <string name="installer_status_user_action">ユーザーの確認待ち</string>
     <string name="installer_status_success">インストール成功</string>
     <string name="installer_status_failure_storage">メモリが不足しています</string>
     <string name="installer_status_failure_invalid">APK が無効か破損しています</string>
@@ -194,7 +193,6 @@
     <string name="purchase_failed">ダウンロード失敗</string>
     <string name="pref_ui_title">カスタマイズ</string>
     <string name="pref_install_mode_title">インストール方法</string>
-    <string name="pref_install_mode_summary">APK インストールモードを選択</string>
     <string name="pref_install_mode_session">セッションインストーラー</string>
     <string name="pref_install_mode_services">Aurora Services (非推奨)</string>
     <string name="pref_install_mode_root">Root インストーラー</string>
@@ -450,9 +448,8 @@
     <string name="details_compatibility_status_unsupported">サポート対象外: 動作しません</string>
     <string name="details_compatibility_status_unknown">不明: まだチェックされていません</string>
     <string name="preparing_to_install">インストール準備中</string>
-    <plurals name="permissions_required">
-        <item quantity="other">権限が必要です</item>
-    </plurals>
+    <string name="permission_required">権限が必要です</string>
+    <string name="permissions_required">権限が必要です</string>
     <string name="installed_apps_size"><xliff:g id="installed_apps_size">%1$d</xliff:g> 個のアプリがインストールされています</string>
     <string name="pref_network_microg_login_title">アカウントのログインにmicroGを使用する</string>
     <string name="set">設定</string>

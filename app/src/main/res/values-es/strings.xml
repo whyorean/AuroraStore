@@ -41,7 +41,6 @@
     <string name="purchase_failed">La descarga falló</string>
     <string name="pref_ui_title">Personalización</string>
     <string name="pref_install_mode_title">Método de instalación</string>
-    <string name="pref_install_mode_summary">Selecciona el modo de instalación del APK</string>
     <string name="pref_install_mode_session">Instalador de sesión</string>
     <string name="pref_install_mode_services">Servicios de Aurora (Obsoleto)</string>
     <string name="pref_install_mode_root">Instalador root</string>
@@ -68,7 +67,6 @@
     <string name="menu_terms">Términos del servicio</string>
     <string name="menu_license">Licencia</string>
     <string name="menu_disclaimer">Descargo de responsabilidad</string>
-    <string name="installer_status_user_action">Esperando la confirmación del usuario</string>
     <string name="installer_status_success">Instalado con éxito</string>
     <string name="installer_status_failure_storage">Espacio de memoria insuficiente</string>
     <string name="installer_status_failure_invalid">APK no válido o dañado</string>
@@ -462,11 +460,8 @@
     <string name="pref_install_mode_microg">Instalador de microG</string>
     <string name="microg_installer_subtitle">Requiere que la aplicación microG companion esté instalada</string>
     <string name="microg_installer_desc">Te ayuda a ignorar la comprobación de integridad de las aplicaciones (solo instalador)</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permiso requerido</item>
-        <item quantity="many">Permisos requeridos</item>
-        <item quantity="other">Permisos requeridos</item>
-    </plurals>
+    <string name="permission_required">Permiso requerido</string>
+    <string name="permissions_required">Permisos requeridos</string>
     <string name="loading">Se está cargando</string>
     <string name="page">Página <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_skip">Omitir</string>

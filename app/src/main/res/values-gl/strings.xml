@@ -25,7 +25,6 @@
     <string name="pref_ui_title">Personalización</string>
     <string name="pref_network_title">Rede</string>
     <string name="pref_install_mode_title">Método de instalación</string>
-    <string name="pref_install_mode_summary">Seleccione o modo de instalación do APK</string>
     <string name="pref_install_mode_session">Instalador de sesión</string>
     <string name="pref_install_mode_services">Servizos Aurora (Obsoleto)</string>
     <string name="pref_install_mode_root">Instalador root</string>
@@ -54,7 +53,6 @@
     <string name="menu_terms">Condicións do servizo</string>
     <string name="menu_license">Licenza</string>
     <string name="menu_disclaimer">Aviso</string>
-    <string name="installer_status_user_action">A esperar pola confirmación do usuario</string>
     <string name="installer_status_success">Instalación existosa</string>
     <string name="installer_status_failure_storage">Almacenamento insuficiente</string>
     <string name="installer_status_failure_invalid">APK inválido ou corrompido</string>
@@ -590,10 +588,8 @@
     <string name="preparing_to_install">Preparándose para instalar</string>
     <string name="preparing_to_download">Preparando a descarga</string>
     <string name="verifying_downloads">A verificar as descargas</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Requírese permiso</item>
-        <item quantity="other">Requírense permisos</item>
-    </plurals>
+    <string name="permission_required">Requírese permiso</string>
+    <string name="permissions_required">Requírense permisos</string>
     <plurals name="insufficient_storage_desc_multiple">
         <item quantity="one">A aplicación %1$d precisa %2$s, pero só hai %3$s dispoñible.</item>
         <item quantity="other">As aplicacións %1$d precisan %2$s, pero só hai %3$s dispoñibles.</item>

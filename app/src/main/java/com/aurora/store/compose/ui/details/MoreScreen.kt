@@ -41,8 +41,8 @@ import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.copyToClipBoard
 import com.aurora.extensions.isWindowCompact
 import com.aurora.extensions.toast
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.AppFile
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.ScrollHint
@@ -176,7 +176,7 @@ private fun AppDependencies(dependencies: List<App>, onNavigateTo: (Destination)
 }
 
 @Composable
-private fun AppFiles(files: List<PlayFile>) {
+private fun AppFiles(files: List<AppFile>) {
     val context = LocalContext.current
     SectionHeader(title = stringResource(R.string.details_more_files))
     files.forEach { file ->

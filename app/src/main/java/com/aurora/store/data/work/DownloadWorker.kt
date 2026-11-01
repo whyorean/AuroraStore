@@ -27,10 +27,14 @@ import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isQAndAbove
 import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.requiresObbDir
-import com.aurora.gplayapi.data.models.PlayFile
-import com.aurora.gplayapi.helpers.AuthHelper
-import com.aurora.gplayapi.helpers.PurchaseHelper
-import com.aurora.gplayapi.network.IHttpClient
+import com.aurora.gplayapi.PlayClient
+import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.android.AndroidLogger
+import com.aurora.gplayapi.android.InstalledPatchBase
+import com.aurora.gplayapi.model.AppFile
+import com.aurora.gplayapi.model.PatchFormat
+import com.aurora.gplayapi.net.HttpEngine
+import com.aurora.gplayapi.session.PlaySessions
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.data.AccountRepository
@@ -41,12 +45,14 @@ import com.aurora.store.data.model.Algorithm
 import com.aurora.store.data.model.DownloadInfo
 import com.aurora.store.data.model.DownloadStatus
 import com.aurora.store.data.model.DownloadStatus.Companion.installerStates
-import com.aurora.store.data.network.HttpClient
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.providers.GoogleAccountTokenProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.download.DownloadDao
+import com.aurora.store.module.NoAuth
+import com.aurora.store.util.BsPatch
 import com.aurora.store.util.CertUtil
+import com.aurora.store.util.FrostingVerifier
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
@@ -70,6 +76,11 @@ import kotlin.properties.Delegates
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.withContext
+import okhttp3.Headers.Companion.toHeaders
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 
 /**
  * An expedited long-running worker to download and trigger installation for given apps.
@@ -82,7 +93,10 @@ class DownloadWorker @AssistedInject constructor(
     tokenProvider: GoogleAccountTokenProvider,
     private val downloadDao: DownloadDao,
     private val appInstaller: AppInstaller,
-    private val httpClient: IHttpClient,
+    private val okHttpClient: OkHttpClient,
+    private val httpEngine: HttpEngine,
+    private val playClient: PlayClient,
+    @NoAuth private val noAuthPlayClient: PlayClient,
     private val accountRepository: AccountRepository,
     @Assisted private val context: Context,
     @Assisted workerParams: WorkerParameters
@@ -97,7 +111,7 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     private lateinit var download: Download
-    private lateinit var purchaseHelper: PurchaseHelper
+    private lateinit var deliveryClient: PlayClient
 
     private val notificationManager = context.getSystemService<NotificationManager>()!!
 
@@ -116,6 +130,10 @@ class DownloadWorker @AssistedInject constructor(
     // verification gate doesn't hash large APKs a second time.
     private val verifiedFiles = mutableSetOf<String>()
 
+    // The installed copy this run asked Play for patches against, whose base APK hashes
+    // planPatches reuses instead of hashing that file a second time.
+    private var patchBase: InstalledPatchBase? = null
+
     inner class NoNetworkException : Exception(context.getString(R.string.title_no_network))
     inner class NothingToDownloadException : Exception(context.getString(R.string.purchase_no_file))
     inner class DownloadFailedException : Exception(context.getString(R.string.download_failed))
@@ -127,6 +145,10 @@ class DownloadWorker @AssistedInject constructor(
 
     inner class ExpiredUrlException : Exception(context.getString(R.string.download_failed))
 
+    inner class PatchTooLargeException : Exception("Patch exceeds its declared maximum size")
+
+    inner class PatchVerificationException : Exception("Patched file failed verification")
+
     inner class InsufficientStorageException :
         Exception(context.getString(R.string.download_failed_storage))
 
@@ -136,7 +158,7 @@ class DownloadWorker @AssistedInject constructor(
         // Fetch required data for download
         try {
             download = downloadDao.getDownload(inputData.getString(DownloadHelper.PACKAGE_NAME)!!)
-            purchaseHelper = resolvePurchaseHelper(download.packageName)
+            deliveryClient = playClientFor(download.packageName)
         } catch (exception: Exception) {
             return onFailure(exception)
         }
@@ -153,7 +175,7 @@ class DownloadWorker @AssistedInject constructor(
         // failure (unreachable/pinned host, non-HTTP url, undecodable image) must never abort
         // the download itself.
         try {
-            val response = (httpClient as HttpClient).call(download.iconURL).body
+            val response = get(download.iconURL).body
             val bitmap = BitmapFactory.decodeStream(
                 withContext(Dispatchers.IO) { response.byteStream() }
             )
@@ -165,13 +187,13 @@ class DownloadWorker @AssistedInject constructor(
         // Set work/service to foreground on < Android 12.0
         setForeground(getForegroundInfo())
 
-        // Try to purchase the app if file list is empty. Surface any GPlayApi error
+        // Resolve download URLs if the file list is empty. Surface any gplayapi error
         // (e.g. AppNotPurchased, AppNotSupported, AppRemoved) as the failure cause so
         // the user sees the real reason instead of a generic "files not available".
         notifyStatus(DownloadStatus.PURCHASING)
         try {
             download.fileList = download.fileList.ifEmpty {
-                purchase(download.packageName, download.versionCode, download.offerType)
+                resolveFiles(download.packageName, download.versionCode, download.offerType)
             }
         } catch (exception: Exception) {
             return onFailure(exception)
@@ -188,9 +210,17 @@ class DownloadWorker @AssistedInject constructor(
             PathUtil.getObbDownloadDir(download.packageName).mkdirs()
         }
 
-        val files = mutableListOf<PlayFile>()
+        val files = mutableListOf<AppFile>()
 
-        // Check if shared libs are present, if yes, handle them first
+        // A static shared library resolves by exact version and is never updated in place, so one
+        // already installed at the required version is neither fetched nor handed to the
+        // installer. Below API 26 the installed set cannot be read and every library is fetched.
+        download = download.copy(
+            sharedLibs = download.sharedLibs.filterNot {
+                PackageUtil.isSharedLibraryInstalled(context, it.packageName, it.versionCode)
+            }
+        )
+
         if (download.sharedLibs.isNotEmpty()) {
             try {
                 download.sharedLibs.forEach {
@@ -202,9 +232,9 @@ class DownloadWorker @AssistedInject constructor(
                         it.packageName
                     ).mkdirs()
 
-                    // Purchase shared lib if file list is empty
+                    // Resolve the shared lib's own files if its list is empty
                     it.fileList = it.fileList.ifEmpty {
-                        purchase(it.packageName, it.versionCode, 0)
+                        resolveFiles(it.packageName, it.versionCode, 0)
                     }
                     files.addAll(it.fileList)
                 }
@@ -214,9 +244,23 @@ class DownloadWorker @AssistedInject constructor(
         }
         files.addAll(download.fileList)
 
+        // Files Play patched against the installed copy are fetched as patches, which progress
+        // counts by the patch's bytes rather than the whole file's.
+        val patchSources = try {
+            planPatches().toMutableMap()
+        } catch (exception: CancellationException) {
+            throw exception
+        } catch (exception: Exception) {
+            Log.w(TAG, "Failed to plan patches for ${download.packageName}", exception)
+            mutableMapOf()
+        } catch (error: LinkageError) {
+            Log.w(TAG, "Failed to plan patches for ${download.packageName}", error)
+            mutableMapOf()
+        }
+
         // Update data for notification
         download.totalFiles = files.size
-        totalBytes = files.sumOf { it.size }
+        totalBytes = files.sumOf { if (it in patchSources) patchEstimate(it) else it.size }
 
         // Update database with all latest purchases
         downloadDao.updateFiles(download.packageName, download.fileList)
@@ -225,8 +269,24 @@ class DownloadWorker @AssistedInject constructor(
         // Fail fast (and let the system free its cache) if there isn't room for the download,
         // instead of dying mid-write with a partial file. Only the not-yet-downloaded bytes
         // need to fit.
+        // A patched file needs room for its patch and for the file rebuilt from it.
         try {
-            ensureStorageAvailable(totalBytes - downloadedBytesOnDisk(files))
+            val onDisk = downloadedBytesOnDisk(files)
+            val fullBytes = files.sumOf { it.size }
+            try {
+                ensureStorageAvailable(
+                    fullBytes + patchSources.keys.sumOf { patchEstimate(it) } - onDisk
+                )
+            } catch (exception: InsufficientStorageException) {
+                if (patchSources.isEmpty()) throw exception
+                Log.i(TAG, "No room to apply patches for ${download.packageName} -> full download")
+                patchSources.keys.forEach {
+                    deletePatchFiles(PathUtil.getLocalFile(context, it, download))
+                }
+                patchSources.clear()
+                totalBytes = fullBytes
+                ensureStorageAvailable(fullBytes - downloadedBytesOnDisk(files))
+            }
         } catch (exception: Exception) {
             return onFailure(exception)
         }
@@ -238,7 +298,10 @@ class DownloadWorker @AssistedInject constructor(
                     throw DownloadCancelledException()
                 }
 
-                downloadFile(download.packageName, file)
+                val installed = patchSources[file]
+                if (installed == null || !downloadPatched(download.packageName, file, installed)) {
+                    downloadFile(download.packageName, file)
+                }
                 download.downloadedFiles++
             }
         } catch (exception: Exception) {
@@ -264,6 +327,13 @@ class DownloadWorker @AssistedInject constructor(
             files.forEach { file ->
                 val path = PathUtil.getLocalFile(context, file, download).absolutePath
                 if (path !in verifiedFiles) require(verifyFile(file))
+            }
+            files.filter { it.type == AppFile.Type.BASE }.forEach { file ->
+                val result = withContext(Dispatchers.IO) {
+                    FrostingVerifier.verify(PathUtil.getLocalFile(context, file, download))
+                }
+                Log.i(TAG, "Play frosting of ${download.packageName} @ ${file.name}: $result")
+                require(result != FrostingVerifier.Result.INVALID)
             }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to verify ${download.packageName}", exception)
@@ -357,8 +427,23 @@ class DownloadWorker @AssistedInject constructor(
                     }
 
                     else -> {
-                        val userMessage = exception.message?.takeIf { it.isNotBlank() }
-                            ?: context.getString(R.string.download_failed)
+                        val userMessage = when (exception) {
+                            is PlayException.AppNotSupported -> context.getString(
+                                R.string.download_version_unavailable,
+                                download.versionCode
+                            )
+
+                            // Delivery is the only call this worker makes, and both session
+                            // types carry Capability.DOWNLOAD, so the only way it can demand an
+                            // account is the signing-key rotation the anonymous endpoint cannot
+                            // express. The library's own message says so, in English only.
+                            is PlayException.RequiresAccount -> context.getString(
+                                R.string.download_signing_key_rotated
+                            )
+
+                            else -> exception.message?.takeIf { it.isNotBlank() }
+                                ?: context.getString(R.string.download_failed)
+                        }
                         notifyStatus(
                             status = DownloadStatus.FAILED,
                             message = userMessage
@@ -382,58 +467,240 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     /**
-     * Builds a [PurchaseHelper] bound to the account this download should use: the app's
-     * per-app binding if any, otherwise the default account. Refreshes that account's session
-     * first if it is missing/expired/built under a stale device spoof, so the purchase isn't
-     * rejected and the delivered splits match the device the user picked.
+     * The client this download resolves its files through.
+     *
+     * An app bound to a specific account gets a client pinned to that account's session:
+     * Aurora records the account an app was installed with ([AccountRepository.bindApp]), and
+     * a paid app bought on a second account has to be resolved as that account. Propagates a
+     * refresh failure instead of falling back, which would acquire a bound app under an
+     * identity the user did not pick.
+     *
+     * Everything else goes out on [noAuthPlayClient], with no account at all. A dispensed
+     * account is shared by every Aurora user it was handed to, and its Play quota is consumed
+     * by *downloads* far faster than by browsing - HTTP 429 on delivery is the failure users
+     * actually hit. The account-less delivery endpoint has no such shared quota, so the
+     * account's budget is spent only where an account is genuinely required. [resolveFiles]
+     * falls back to the account when Play refuses an account-less resolve.
+     *
+     * Whether a session reaches the authenticated acquire/purchase/delivery flow or the
+     * account-less delivery endpoint is gplayapi's call, made per request from the session's
+     * own type.
      */
-    private suspend fun resolvePurchaseHelper(packageName: String): PurchaseHelper {
-        val accountId = accountRepository.resolveAccountId(packageName)
-        var authData = authProvider.getAuthData(accountId)
-        if (authData == null ||
-            !authProvider.matchesActiveSpoof(authData) ||
-            !AuthHelper.using(httpClient).isValid(authData)
-        ) {
-            // Refresh the resolved account; propagate failure instead of silently falling back to
-            // a different account, which would purchase a bound app under the wrong identity.
-            authData = authProvider.refresh(accountId).getOrElse { error ->
-                throw IllegalStateException(
-                    "Could not refresh session for account $accountId; re-authentication required",
-                    error
-                )
-            }
-        }
-        return PurchaseHelper(authData).using(httpClient)
+    private suspend fun playClientFor(packageName: String): PlayClient {
+        val boundAccountId = accountRepository.boundAccountId(packageName)
+            ?: return noAuthPlayClient
+        val session = authProvider.sessionFor(boundAccountId)
+        return PlayClient(httpEngine, PlaySessions { session }, AndroidLogger)
     }
 
     /**
-     * Purchases the app to get the download URL of the required files
-     * @param packageName The packageName of the app
-     * @param versionCode Required version of the app
-     * @param offerType Offer type of the app (free/paid)
-     * @return A list of purchased files
+     * Resolves the download URLs of the files needed to install [packageName] at
+     * [versionCode], acquiring or purchasing it first if that is what the session's protocol
+     * requires.
+     *
+     * Android 9.0+ supports signing-key rotation, so an update of an already-installed app
+     * carries the installed certificate's hash; both delivery endpoints take it as `ch`.
+     *
+     * The installed-app check reads [download]'s package rather than [packageName], so a shared
+     * library is asked for with the parent app's certificate hash. That is v3's behaviour kept
+     * as found; nothing here can establish what Play does with a hash that belongs to a
+     * different package.
+     *
+     * An update of [download]'s own app also describes the installed copy (`bvc`, `bda`, `bf`)
+     * so Play can attach a patch to each file it can patch; a shared library never does, since
+     * the installed copy described is the parent app's.
      */
-    private fun purchase(packageName: String, versionCode: Long, offerType: Int): List<PlayFile> {
-        // Android 9.0+ supports key rotation, so purchase with latest certificate's hash
-        return if (isPAndAbove && PackageUtil.isInstalled(context, download.packageName)) {
-            purchaseHelper.purchase(
-                packageName,
-                versionCode,
-                offerType,
-                CertUtil.getEncodedCertificateHashes(context, download.packageName).last()
-            )
+    private suspend fun resolveFiles(
+        packageName: String,
+        versionCode: Long,
+        offerType: Int
+    ): List<AppFile> {
+        val updatingInstalled =
+            isPAndAbove && PackageUtil.isInstalled(context, download.packageName)
+        val certificateHash = if (updatingInstalled) {
+            CertUtil.getEncodedCertificateHashes(context, download.packageName).lastOrNull()
         } else {
-            purchaseHelper.purchase(packageName, versionCode, offerType)
+            null
         }
+
+        val base = if (packageName == download.packageName) readPatchBase() else null
+        if (base != null) {
+            patchBase = base
+            Log.i(
+                TAG,
+                "Patch requested for $packageName against installed ${base.versionCode} " +
+                    "(derived APK id ${if (base.derivedApkId != null) "present" else "absent"})"
+            )
+        }
+
+        suspend fun resolveWith(client: PlayClient) = client.delivery.resolve(
+            packageName = packageName,
+            versionCode = versionCode,
+            offerType = offerType,
+            certificateHash = certificateHash,
+            installedVersionCode = base?.versionCode,
+            patchFormats = listOf(PatchFormat.GZIPPED_BSDIFF),
+            installedDerivedApkId = base?.derivedApkId,
+            installedFrostingId = base?.frostingId
+        )
+
+        // With no signed-in account the fallback below has nothing better to offer - its
+        // client would resolve to the same account-less session - so don't spend a second
+        // request re-asking Play the question it has already refused.
+        if (deliveryClient !== noAuthPlayClient || authProvider.authData == null) {
+            return resolveWith(deliveryClient)
+        }
+
+        // Two things the account-less endpoint cannot serve: a paid app, and anything Play
+        // scopes to a library. Each is a refusal, not a transport error, and each is exactly
+        // what the signed-in account is still here for - so retry once on it and pin the rest
+        // of this download to it.
+        return try {
+            resolveWith(noAuthPlayClient)
+        } catch (exception: PlayException) {
+            when (exception) {
+                is PlayException.RequiresAccount,
+                is PlayException.AppNotPurchased,
+                is PlayException.Unauthorized -> {
+                    Log.i(TAG, "Account-less delivery refused $packageName, using the account")
+                    deliveryClient = playClient
+                    resolveWith(playClient)
+                }
+                else -> throw exception
+            }
+        }
+    }
+
+    /**
+     * The installed copy of [download]'s app to ask Play for patches against, or `null` when this
+     * is not an update of it: the app is not installed, is already at or past the target
+     * version, or its signing certificate cannot be read. Hashes the whole installed base APK.
+     */
+    private suspend fun readPatchBase(): InstalledPatchBase? {
+        val packageName = download.packageName
+        if (!PackageUtil.isInstalled(context, packageName)) return null
+        if (PackageUtil.isInstalled(context, packageName, download.versionCode)) return null
+        if (CertUtil.getEncodedCertificateHashes(context, packageName).isEmpty()) return null
+        return withContext(Dispatchers.IO) {
+            try {
+                InstalledPatchBase.read(context, packageName)
+            } catch (exception: Exception) {
+                Log.w(TAG, "Failed to read the installed copy of $packageName", exception)
+                null
+            }
+        }
+    }
+
+    /**
+     * Picks which of [download]'s files to fetch as a patch, keyed to the installed file each
+     * patch applies to. A file qualifies only when Play served a `GZIPPED_BSDIFF` patch and the
+     * installed counterpart's hash is the patch's base: SHA-256 when Play sends one, else SHA-1.
+     */
+    private suspend fun planPatches(): Map<AppFile, File> = withContext(Dispatchers.IO) {
+        val plan = mutableMapOf<AppFile, File>()
+        for (file in download.fileList) {
+            val patch = file.patch ?: continue
+            if (file.type != AppFile.Type.BASE && file.type != AppFile.Type.SPLIT) continue
+            if (patch.format != PatchFormat.GZIPPED_BSDIFF.value || patch.url.isBlank()) {
+                Log.i(TAG, "Patch for ${file.name} is format ${patch.format}, using full download")
+                continue
+            }
+
+            val installed = installedCounterpart(file)
+            if (installed == null) {
+                Log.i(TAG, "Patch base missing for ${file.name} -> full download")
+                continue
+            }
+
+            val matches = try {
+                if (patch.baseSha256.isNotBlank()) {
+                    patch.baseSha256.equals(installedHash(installed, Algorithm.SHA256), true)
+                } else {
+                    patch.baseSha1.isNotBlank() &&
+                        patch.baseSha1.equals(installedHash(installed, Algorithm.SHA1), true)
+                }
+            } catch (exception: Exception) {
+                Log.w(TAG, "Failed to hash the installed ${file.name}", exception)
+                false
+            }
+
+            if (matches) {
+                plan[file] = installed
+            } else {
+                Log.i(TAG, "Patch base mismatch for ${file.name} -> full download")
+            }
+        }
+        plan
+    }
+
+    /**
+     * The installed file [file]'s patch applies to: the base APK, or the installed split of the
+     * same name. Split files are named `<split name>.apk`, and `PackageInfo.splitNames` lines up
+     * with `ApplicationInfo.splitSourceDirs` index for index; `ApplicationInfo.splitNames` is
+     * API 26, so it is not the one read.
+     */
+    private fun installedCounterpart(file: AppFile): File? {
+        val packageInfo = try {
+            PackageUtil.getPackageInfo(context, download.packageName)
+        } catch (_: Exception) {
+            null
+        } ?: return null
+        val applicationInfo = packageInfo.applicationInfo ?: return null
+
+        val path = if (file.type == AppFile.Type.BASE) {
+            applicationInfo.sourceDir
+        } else {
+            val splitName = file.name.removeSuffix(".apk")
+            // Null, not empty, when the app has no splits.
+            val splitNames: Array<String>? = packageInfo.splitNames
+            val index = splitNames?.indexOf(splitName) ?: -1
+            if (index >= 0) applicationInfo.splitSourceDirs?.getOrNull(index) else null
+        }
+        return path?.let { File(it) }?.takeIf { it.isFile }
+    }
+
+    @OptIn(ExperimentalStdlibApi::class)
+    private fun installedHash(file: File, algorithm: Algorithm): String {
+        patchBase?.takeIf { it.baseApkPath == file.absolutePath }?.let {
+            return if (algorithm == Algorithm.SHA256) it.baseApkSha256 else it.baseApkSha1
+        }
+        val digest = MessageDigest.getInstance(algorithm.value)
+        file.inputStream().use { input ->
+            val buffer = ByteArray(DEFAULT_BUFFER_SIZE)
+            while (true) {
+                val read = input.read(buffer)
+                if (read < 0) break
+                digest.update(buffer, 0, read)
+            }
+        }
+        return digest.digest().toHexString()
+    }
+
+    /** The bytes a patch is expected to take, for progress and storage before its size is known. */
+    private fun patchEstimate(file: AppFile): Long {
+        val maxSize = file.patch?.maxSize ?: 0L
+        return if (maxSize > 0) minOf(maxSize, file.size) else file.size
+    }
+
+    /**
+     * A plain GET on Aurora's own [OkHttpClient], used for the two transfers gplayapi has no
+     * place for: fetching a notification icon, and streaming an APK off the delivery URL
+     * gplayapi resolved. `HttpEngine` buffers a whole response body by design, so a multi-
+     * hundred-megabyte split with resume, byte ranges and progress cannot go through it -
+     * resolution and file transfer are separate concerns using separate tools on purpose.
+     */
+    private fun get(url: String, headers: Map<String, String> = emptyMap()): Response {
+        val request = Request(url = url.toHttpUrl(), headers = headers.toHeaders())
+        return okHttpClient.newCall(request).execute()
     }
 
     /**
      * Downloads the file from the given request.
      * Failed downloads aren't removed and persists as long as [CacheWorker] doesn't cleans them.
-     * @param gFile A [PlayFile] to download
+     * @param gFile An [AppFile] to download
      * @return A [Boolean] indicating whether the file was downloaded or not.
      */
-    private suspend fun downloadFile(packageName: String, gFile: PlayFile): Boolean {
+    private suspend fun downloadFile(packageName: String, gFile: AppFile): Boolean {
         return withContext(Dispatchers.IO) {
             Log.i(TAG, "Downloading $packageName @ ${gFile.name}")
             val file = PathUtil.getLocalFile(context, gFile, download)
@@ -446,19 +713,122 @@ class DownloadWorker @AssistedInject constructor(
                 return@withContext true
             }
 
+            transfer(gFile.url, file, gFile.size)
+            return@withContext true
+        }
+    }
+
+    /**
+     * Fetches [gFile] as its patch applied to [installed], and verifies the result against
+     * [gFile]'s own hash before it takes the path a full download would use.
+     *
+     * Returns `false`, having removed everything it wrote, when the patch cannot be fetched,
+     * applied or verified; the caller then downloads the whole file. Lost connectivity, a stop
+     * and an expired URL propagate instead, since a full download would meet them too.
+     */
+    private suspend fun downloadPatched(
+        packageName: String,
+        gFile: AppFile,
+        installed: File
+    ): Boolean {
+        val patch = gFile.patch ?: return false
+        val file = PathUtil.getLocalFile(context, gFile, download)
+        var accounted = patchEstimate(gFile)
+
+        if (file.exists() && verifyFile(gFile)) {
+            Log.i(TAG, "$file is already downloaded!")
+            downloadedBytes += accounted
+            verifiedFiles.add(file.absolutePath)
+            return true
+        }
+
+        val patchFile = File(file.absolutePath + ".patch")
+        val patchedFile = File(file.absolutePath + ".patched")
+        val countedBefore = downloadedBytes
+        Log.i(TAG, "Downloading $packageName @ ${gFile.name} as a patch")
+
+        try {
+            if (patchFile.exists() && (patch.maxSize <= 0 || patchFile.length() <= patch.maxSize)) {
+                downloadedBytes += patchFile.length()
+                totalBytes += patchFile.length() - accounted
+                accounted = patchFile.length()
+            } else {
+                transfer(patch.url, patchFile, accounted, patch.maxSize) { length ->
+                    totalBytes += length - accounted
+                    accounted = length
+                }
+            }
+
+            withContext(Dispatchers.IO) {
+                BsPatch.applyFile(installed, patchFile, patchedFile, gFile.size) {
+                    if (isStopped) throw CancellationException("Download stopped")
+                }
+            }
+
+            if (!verifyFile(gFile, patchedFile)) throw PatchVerificationException()
+            if (!patchedFile.renameTo(file)) throw IOException("Failed to rename $patchedFile")
+            verifiedFiles.add(file.absolutePath)
+            patchFile.delete()
+            File(file.absolutePath + ".tmp").delete()
+            Log.i(TAG, "Patch applied & verified for $packageName @ ${gFile.name}")
+            return true
+        } catch (exception: Exception) {
+            patchedFile.delete()
+            when (exception) {
+                is NoNetworkException,
+                is ExpiredUrlException,
+                is DownloadCancelledException -> throw exception
+
+                is CancellationException -> throw DownloadCancelledException()
+
+                else -> {}
+            }
+
+            // A stop mid-apply must stay a stop, never turn into a full download.
+            if (isStopped) throw DownloadCancelledException()
+
+            // Exception messages are left out: a transport error can carry the patch's URL.
+            val reason = if (exception is BsPatch.MalformedPatchException) {
+                exception.message
+            } else {
+                exception.javaClass.simpleName
+            }
+            Log.i(TAG, "Patch failed for $packageName @ ${gFile.name} ($reason) -> full download")
+            deletePatchFiles(file)
+            file.delete()
+            totalBytes += gFile.size - accounted + (downloadedBytes - countedBefore)
+            return false
+        }
+    }
+
+    /**
+     * Streams [url] into [file] through `<file>.tmp`, resuming a partial `.tmp` when the server
+     * honours the range, and counting every byte towards the download's progress.
+     *
+     * @param expectedSize the bytes [file] should come to, for per-file progress.
+     * @param maxSize when positive, the transfer fails with [PatchTooLargeException] past it.
+     * @param onLength called with the bytes [file] will come to, when the server says.
+     */
+    private suspend fun transfer(
+        url: String,
+        file: File,
+        expectedSize: Long,
+        maxSize: Long = 0L,
+        onLength: (Long) -> Unit = {}
+    ) {
+        withContext(Dispatchers.IO) {
             try {
                 // Download as a temporary file to avoid installing corrupted files
                 val tmpFile = File(file.absolutePath + ".tmp")
                 val existingBytes = if (tmpFile.exists()) tmpFile.length() else 0L
 
-                val okHttpClient = httpClient as HttpClient
                 val headers = mutableMapOf<String, String>()
                 if (existingBytes > 0) {
                     Log.i(TAG, "$tmpFile has an unfinished download, requesting resume!")
                     headers["Range"] = "bytes=$existingBytes-"
                 }
 
-                val response = okHttpClient.call(gFile.url, headers)
+                val response = get(url, headers)
                 if (!response.isSuccessful) {
                     val code = response.code
                     response.close()
@@ -491,12 +861,20 @@ class DownloadWorker @AssistedInject constructor(
                     )
                 }
 
+                var written = if (resuming) existingBytes else 0L
+                val contentLength = response.body.contentLength()
+                if (contentLength >= 0) onLength(written + contentLength)
+
                 response.body.byteStream().use { input ->
                     FileOutputStream(tmpFile, resuming).use {
-                        input.copyTo(it, gFile.size).collect { info ->
+                        input.copyTo(it, expectedSize.coerceAtLeast(1L)).collect { info ->
                             // Abort promptly mid-file when stopped, instead of only checking
                             // between files (a single split can be hundreds of MB).
                             if (isStopped) throw CancellationException("Download stopped")
+                            written += info.bytesCopied
+                            if (maxSize > 0 && written > maxSize) {
+                                throw PatchTooLargeException()
+                            }
                             onProgress(info)
                         }
                     }
@@ -505,8 +883,6 @@ class DownloadWorker @AssistedInject constructor(
                 if (!tmpFile.renameTo(file)) {
                     throw Exception("Failed to remove .tmp extension from $tmpFile")
                 }
-
-                return@withContext true
             } catch (exception: Exception) {
                 when (exception) {
                     is SocketException,
@@ -653,12 +1029,15 @@ class DownloadWorker @AssistedInject constructor(
     }
 
     /**
-     * Verifies integrity of a downloaded [PlayFile].
-     * @param gFile [PlayFile] to verify
+     * Verifies integrity of a downloaded [AppFile].
+     * @param gFile [AppFile] to verify
+     * @param file the bytes to check against [gFile]'s hash, by default its download path
      */
     @OptIn(ExperimentalStdlibApi::class)
-    private suspend fun verifyFile(gFile: PlayFile): Boolean {
-        val file = PathUtil.getLocalFile(context, gFile, download)
+    private suspend fun verifyFile(
+        gFile: AppFile,
+        file: File = PathUtil.getLocalFile(context, gFile, download)
+    ): Boolean {
         Log.i(TAG, "Verifying $file")
 
         val algorithm = if (gFile.sha256.isBlank()) Algorithm.SHA1 else Algorithm.SHA256
@@ -692,7 +1071,7 @@ class DownloadWorker @AssistedInject constructor(
         }
     }
 
-    private fun deleteFile(file: PlayFile) {
+    private fun deleteFile(file: AppFile) {
         val apkFile = PathUtil.getLocalFile(context, file, download)
         if (apkFile.exists()) {
             apkFile.delete()
@@ -704,18 +1083,35 @@ class DownloadWorker @AssistedInject constructor(
             tmpFile.delete()
             Log.i(TAG, "Deleted Temp: $tmpFile")
         }
+
+        deletePatchFiles(apkFile)
+    }
+
+    /** Removes the patch, its partial download and any half-applied output kept beside [file]. */
+    private fun deletePatchFiles(file: File) {
+        listOf(".patch", ".patch.tmp", ".patched").forEach { suffix ->
+            val patchFile = File(file.absolutePath + suffix)
+            if (patchFile.exists()) {
+                patchFile.delete()
+                Log.i(TAG, "Deleted patch file: $patchFile")
+            }
+        }
     }
 
     /**
-     * Bytes already present on disk (final or partial .tmp) for [files], so the storage check
-     * only requires room for what's still left to fetch.
+     * Bytes already present on disk (final or partial .tmp, or a patch's) for [files], so the
+     * storage check only requires room for what's still left to fetch.
      */
-    private fun downloadedBytesOnDisk(files: List<PlayFile>): Long = files.sumOf { gFile ->
+    private fun downloadedBytesOnDisk(files: List<AppFile>): Long = files.sumOf { gFile ->
         val file = PathUtil.getLocalFile(context, gFile, download)
         val tmpFile = File(file.absolutePath + ".tmp")
+        val patchFile = File(file.absolutePath + ".patch")
+        val patchTmpFile = File(file.absolutePath + ".patch.tmp")
         when {
             file.exists() -> file.length()
             tmpFile.exists() -> tmpFile.length()
+            patchFile.exists() -> patchFile.length()
+            patchTmpFile.exists() -> patchTmpFile.length()
             else -> 0L
         }
     }

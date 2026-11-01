@@ -29,12 +29,11 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.itemKey
 import com.aurora.extensions.adaptiveNavigationIcon
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.StreamBundle
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.data.models.details.DevStream
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.DeveloperStream
+import com.aurora.gplayapi.model.StreamBundle
+import com.aurora.gplayapi.model.StreamCluster
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.Placeholder
@@ -58,20 +57,22 @@ import kotlinx.coroutines.flow.MutableStateFlow
 fun DevProfileScreen(
     developerId: String,
     onNavigateTo: (Destination) -> Unit,
+    fallbackTitle: String = developerId,
     viewModel: DevProfileViewModel = hiltViewModel()
 ) {
     val state by viewModel.liveData.observeAsState()
 
     LaunchedEffect(developerId) { viewModel.getStreamBundle(developerId) }
 
-    val devStream = (state as? ViewState.Success<*>)?.data as? DevStream
+    val devStream = (state as? ViewState.Success<*>)?.data as? DeveloperStream
 
     DevStreamContent(
-        title = devStream?.title?.takeIf { it.isNotBlank() } ?: developerId,
+        // Play sends some device profiles the page's apps without its header
+        title = devStream?.title?.takeIf { it.isNotBlank() } ?: fallbackTitle,
         streamBundle = devStream?.streamBundle,
         isError = state is ViewState.Error,
         onRetry = { viewModel.getStreamBundle(developerId) },
-        onClusterScrolled = viewModel::observeCluster,
+        onClusterScrolled = { cluster -> viewModel.observeCluster(cluster) },
         onNavigateTo = onNavigateTo
     )
 }
@@ -176,7 +177,7 @@ private fun ScreenContent(
                         dimensionResource(R.dimen.spacing_medium)
                     )
                 ) {
-                    items(count = apps.itemCount, key = apps.itemKey { it.id }) { index ->
+                    items(count = apps.itemCount) { index ->
                         apps[index]?.let { app ->
                             LargeAppListItem(
                                 app = app,

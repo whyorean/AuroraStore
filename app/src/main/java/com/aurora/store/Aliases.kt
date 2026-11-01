@@ -5,15 +5,14 @@
 
 package com.aurora.store
 
-import com.aurora.gplayapi.data.models.Category
-import com.aurora.gplayapi.data.models.StreamBundle
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.helpers.contracts.StreamContract
-import com.aurora.gplayapi.helpers.contracts.TopChartsContract
+import com.aurora.gplayapi.api.TopChartType
+import com.aurora.gplayapi.model.Category
+import com.aurora.gplayapi.model.ContentType
+import com.aurora.gplayapi.model.StreamBundle
+import com.aurora.gplayapi.model.StreamCluster
 
 typealias MR = com.google.android.material.R.attr
 
-typealias TopChartStash =
-    MutableMap<TopChartsContract.Type, MutableMap<TopChartsContract.Chart, StreamCluster>>
-typealias HomeStash = MutableMap<StreamContract.Category, StreamBundle>
-typealias CategoryStash = MutableMap<Category.Type, List<Category>>
+typealias TopChartStash = MutableMap<ContentType, MutableMap<TopChartType, StreamCluster>>
+typealias HomeStash = MutableMap<ContentType, StreamBundle>
+typealias CategoryStash = MutableMap<ContentType, List<Category>>

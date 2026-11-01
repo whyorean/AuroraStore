@@ -12,6 +12,8 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PackageInfoFlags
 import android.content.pm.SharedLibraryInfo
+import android.content.pm.verify.domain.DomainVerificationManager
+import android.content.pm.verify.domain.DomainVerificationUserState
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -19,6 +21,7 @@ import android.provider.Settings
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.getSystemService
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
@@ -31,6 +34,7 @@ import com.aurora.extensions.isHuawei
 import com.aurora.extensions.isOAndAbove
 import com.aurora.extensions.isPAndAbove
 import com.aurora.extensions.isRAndAbove
+import com.aurora.extensions.isSAndAbove
 import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.isVAndAbove
 import com.aurora.extensions.isValidApp
@@ -42,6 +46,8 @@ import java.util.Locale
 object PackageUtil {
 
     private const val TAG = "PackageUtil"
+
+    private val PLAY_LINK_OWNERS = setOf(PACKAGE_NAME_PLAY_STORE, "com.google.android.play.games")
 
     private const val VERSION_CODE_MICRO_G: Long = 240913402
     private const val VERSION_CODE_MICRO_G_HUAWEI: Long = 240913007
@@ -144,6 +150,13 @@ object PackageUtil {
         false
     }
 
+    /**
+     * Whether the shared library [packageName] is installed at exactly [versionCode]. Exact,
+     * not at-least: a static shared library is resolved by name and exact version, several
+     * versions coexist, and a dependent app does not install against a newer one. Always false
+     * below API 26, where the installed libraries cannot be listed, and when the platform hides
+     * static libraries from a caller that cannot request installs.
+     */
     fun isSharedLibraryInstalled(
         context: Context,
         packageName: String,
@@ -290,10 +303,41 @@ object PackageUtil {
     }
 
     /** A package's own display label, or null when it is not installed. */
+    // Android won't let Aurora take over links a first-party app has verified
+    fun getPlayLinkOwner(context: Context): String? {
+        if (!isSAndAbove) return null
+        val manager = context.getSystemService<DomainVerificationManager>() ?: return null
+        return PLAY_LINK_OWNERS.firstOrNull { packageName ->
+            val state = runCatching { manager.getDomainVerificationUserState(packageName) }
+                .getOrNull() ?: return@firstOrNull false
+            state.isLinkHandlingAllowed &&
+                state.hostToStateMap["play.google.com"] in setOf(
+                    DomainVerificationUserState.DOMAIN_STATE_VERIFIED,
+                    DomainVerificationUserState.DOMAIN_STATE_SELECTED
+                )
+        }
+    }
+
     fun getPackageLabel(context: Context, packageName: String): String? = runCatching {
         context.packageManager.getApplicationInfo(packageName, 0)
             .loadLabel(context.packageManager).toString()
     }.getOrNull()
+
+    fun getNewPermissions(
+        context: Context,
+        packageName: String,
+        permissions: List<String>
+    ): List<String> {
+        val installed = try {
+            getPackageInfo(context, packageName, PackageManager.GET_PERMISSIONS)
+                .requestedPermissions
+                ?.toSet()
+                ?: emptySet()
+        } catch (_: Exception) {
+            return emptyList()
+        }
+        return permissions.filterNot { it in installed }
+    }
 
     @Throws(Exception::class)
     fun getPackageInfo(context: Context, packageName: String, flags: Int = 0): PackageInfo =

@@ -134,6 +134,10 @@ fun <T : InstalledAppMeta> List<T>.applySort(state: SortFilterState): List<T> {
         SortBy.SIZE -> compareBy { it.sizeBytes }
     }
     return sortedWith(
-        if (state.sortOrder == SortOrder.ASC) comparator else comparator.reversed()
+        if (state.sortOrder == SortOrder.ASC) {
+            comparator
+        } else {
+            Comparator { a, b -> comparator.compare(b, a) }
+        }
     )
 }

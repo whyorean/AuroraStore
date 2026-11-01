@@ -6,10 +6,10 @@
 package com.aurora.store.data.model
 
 import android.content.Context
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.Artwork
-import com.aurora.gplayapi.data.models.EncodedCertificateSet
-import com.aurora.gplayapi.data.models.PlayFile
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.AppFile
+import com.aurora.gplayapi.model.Artwork
+import com.aurora.gplayapi.model.CertificateSet
 import com.aurora.store.R
 import com.aurora.store.util.CertUtil
 import kotlinx.serialization.SerialName
@@ -69,7 +69,7 @@ data class SelfUpdate(
         developerName = "Rahul Kumar Patel",
         iconArtwork = Artwork(url = iconUrl),
         fileList = mutableListOf(
-            PlayFile(
+            AppFile(
                 name = "${context.packageName}.apk",
                 url = downloadUrl,
                 size = size,
@@ -83,7 +83,7 @@ data class SelfUpdate(
             context,
             context.packageName
         ).map {
-            EncodedCertificateSet(certificateSet = it, sha256 = String())
+            CertificateSet(certificateHash = it, sha256 = String())
         }.toMutableList()
     )
 }

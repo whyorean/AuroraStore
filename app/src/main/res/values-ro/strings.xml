@@ -136,7 +136,6 @@
     <string name="menu_disclaimer">Act de renunțare</string>
     <string name="installer_service_available">Serviciile Aurora sunt disponibile și gata de instalare.</string>
     <string name="installer_service_unavailable">Instalează serviciile Aurora 1.0.9 sau o versiune mai recentă, sau modifică programul de instalare.</string>
-    <string name="installer_status_user_action">Se așteaptă confirmarea utilizatorului</string>
     <string name="installer_status_failure_session">Nu s-a putut crea sesiunea</string>
     <string name="installer_status_failure_incompatible">Aplicație incompatibilă</string>
     <string name="installer_service_misconfigured">Configurează mai întâi serviciile Aurora și acordă toate permisiunile.</string>
@@ -171,7 +170,6 @@
     <string name="pref_install_mode_native">Instalator nativ (învechit)</string>
     <string name="pref_install_mode_root">Instalator root</string>
     <string name="pref_install_mode_services">Servicii Aurora (învechit)</string>
-    <string name="pref_install_mode_summary">Selectează modul de instalare APK</string>
     <string name="purchase_session_expired">Sesiunea a expirat, autentifică-te din nou pentru a obține o nouă sesiune.</string>
     <string name="session_login_failed_google">Nu s-a putut conecta prin Google</string>
     <string name="session_scrapped">Ultima sesiune a fost eliminată</string>
@@ -458,11 +456,8 @@
     <string name="action_filter_no_gms">Fără serviciile Play</string>
     <string name="manual_download_version_error">Codul versiunii poate conține doar cifre</string>
     <string name="preparing_to_install">Se pregătește instalarea</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permisiune necesară</item>
-        <item quantity="few">Permisiuni necesare</item>
-        <item quantity="other">Permisiuni necesare</item>
-    </plurals>
+    <string name="permission_required">Permisiune necesară</string>
+    <string name="permissions_required">Permisiuni necesare</string>
     <string name="installer_microg_misconfigured">Programul de instalare microG nu a reușit să instaleze aplicația, probabil din cauza unei configurări greșite.</string>
     <string name="pref_install_mode_microg">Instalator microG</string>
     <string name="microg_installer_subtitle">Necesită instalarea aplicației companion microG</string>

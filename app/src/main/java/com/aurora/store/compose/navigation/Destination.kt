@@ -5,8 +5,8 @@
 
 package com.aurora.store.compose.navigation
 
-import com.aurora.gplayapi.data.models.Category
-import com.aurora.gplayapi.data.models.StreamCluster
+import com.aurora.gplayapi.model.Category
+import com.aurora.gplayapi.model.StreamCluster
 import com.aurora.store.data.model.PermissionType
 import com.aurora.store.data.room.update.Update
 

@@ -7,7 +7,7 @@ package com.aurora.store.data.room.account
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.gplayapi.session.TokenType
 import com.aurora.store.data.model.AccountType
 
 @Entity(tableName = "account")
@@ -19,7 +19,7 @@ data class Account(
     val profilePicUrl: String? = null,
     val aasToken: String? = null,
     val authToken: String? = null,
-    val tokenType: AuthHelper.Token = AuthHelper.Token.AAS,
+    val tokenType: TokenType = TokenType.AAS,
     val authViaMicroG: Boolean = false,
     val authDataJson: String? = null,
     val isDefault: Boolean = false,

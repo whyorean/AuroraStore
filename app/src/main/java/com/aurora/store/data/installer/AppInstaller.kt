@@ -30,6 +30,7 @@ import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PackageUtil.hasMicroGCompanion
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_INSTALLER_ID
+import com.aurora.store.util.Preferences.PREFERENCE_PLAY_ATTRIBUTED_INSTALLS
 import com.topjohnwu.superuser.Shell
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -64,10 +65,27 @@ class AppInstaller @Inject constructor(
         fun getCurrentInstaller(context: Context): Installer =
             Installer.entries[Preferences.getInteger(context, PREFERENCE_INSTALLER_ID)]
 
-        fun getAvailableInstallersInfo(context: Context): List<InstallerInfo> = listOfNotNull(
+        fun getInstallerInfo(installer: Installer): InstallerInfo = when (installer) {
+            Installer.SESSION -> SessionInstaller.installerInfo
+            Installer.NATIVE -> NativeInstaller.installerInfo
+            Installer.ROOT -> RootInstaller.installerInfo
+            Installer.SERVICE -> ServiceInstaller.installerInfo
+            Installer.AM -> AMInstaller.installerInfo
+            Installer.SHIZUKU -> ShizukuInstaller.installerInfo
+            Installer.MICROG -> MicroGInstaller.installerInfo
+        }
+
+        /**
+         * @param rootAccess Defaults to [hasRootAccess], which blocks until the root manager
+         * answers its prompt; never evaluate it on the main thread.
+         */
+        fun getAvailableInstallersInfo(
+            context: Context,
+            rootAccess: Boolean = hasRootAccess()
+        ): List<InstallerInfo> = listOfNotNull(
             SessionInstaller.installerInfo,
             NativeInstaller.installerInfo,
-            if (hasRootAccess()) RootInstaller.installerInfo else null,
+            if (rootAccess) RootInstaller.installerInfo else null,
             if (hasAuroraService(context)) ServiceInstaller.installerInfo else null,
             if (hasAppManager(context)) AMInstaller.installerInfo else null,
             if (hasShizukuOrSui(context)) {
@@ -116,7 +134,8 @@ class AppInstaller @Inject constructor(
 
                         Build.VERSION_CODES.S -> targetSdk >= Build.VERSION_CODES.Q
 
-                        else -> false // Only Android version above 12 can silently update apps
+                        // Assumes releases after 16 keep allowing a targetSdk two behind
+                        else -> targetSdk >= Build.VERSION.SDK_INT - 2
                     }
                 }
 
@@ -137,7 +156,41 @@ class AppInstaller @Inject constructor(
             }
         }
 
-        fun hasRootAccess(): Boolean = Shell.getShell().isRoot
+        /**
+         * @param recheck Re-probe `su` if the cached shell isn't root, e.g. after root was
+         * granted in the root manager; libsu otherwise keeps the first shell for the process.
+         */
+        fun hasRootAccess(recheck: Boolean = false): Boolean {
+            if (recheck) Shell.getCachedShell()?.takeUnless { it.isRoot }?.close()
+            return Shell.getShell().isRoot
+        }
+
+        /**
+         * Records a Root/Shizuku install, which the system attributes to Play, as Aurora's.
+         * Keyed by first install time so a later reinstall by anything else no longer matches.
+         */
+        @Synchronized
+        fun recordPlayAttributedInstall(context: Context, packageName: String) {
+            val key = playAttributedKey(context, packageName) ?: return
+            val others = Preferences.getStringSet(context, PREFERENCE_PLAY_ATTRIBUTED_INSTALLS)
+                .filterNot { it.substringBeforeLast('/') == packageName }
+            Preferences.putStringSet(
+                context,
+                PREFERENCE_PLAY_ATTRIBUTED_INSTALLS,
+                (others + key).toSet()
+            )
+        }
+
+        fun isPlayAttributedInstall(context: Context, packageName: String): Boolean {
+            val key = playAttributedKey(context, packageName) ?: return false
+            return key in Preferences.getStringSet(context, PREFERENCE_PLAY_ATTRIBUTED_INSTALLS)
+        }
+
+        private fun playAttributedKey(context: Context, packageName: String): String? = try {
+            "$packageName/${PackageUtil.getPackageInfo(context, packageName).firstInstallTime}"
+        } catch (_: Exception) {
+            null
+        }
 
         fun hasAuroraService(context: Context): Boolean = try {
             val packageInfo = PackageUtil.getPackageInfo(

@@ -6,7 +6,7 @@
 package com.aurora.store.data.room.review
 
 import androidx.room.Entity
-import com.aurora.gplayapi.data.models.Review
+import com.aurora.gplayapi.model.Review
 
 /**
  * A user-authored review cached locally so it can be shown immediately after submission,

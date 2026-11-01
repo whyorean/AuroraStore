@@ -13,7 +13,7 @@ import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
@@ -60,7 +60,13 @@ private fun ScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = pluralStringResource(R.plurals.permissions_required, permissions.size),
+                title = stringResource(
+                    if (permissions.size == 1) {
+                        R.string.permission_required
+                    } else {
+                        R.string.permissions_required
+                    }
+                ),
                 navigationIcon = windowAdaptiveInfo.adaptiveNavigationIcon
             )
         }

@@ -148,7 +148,6 @@
     <string name="installer_status_failure_invalid">Etibarsız və ya nasaz APK</string>
     <string name="installer_status_success">Uğurla quraşdırıldı</string>
     <string name="installer_status_failure_storage">Çatışmayan yaddaş sahəsi</string>
-    <string name="installer_status_user_action">İstifadəçi təsdiqi gözlənilir</string>
     <string name="menu_disclaimer">İmtina etmək</string>
     <string name="menu_license">Lisenziya</string>
     <string name="menu_terms">Xidmət Şərtləri</string>
@@ -172,7 +171,6 @@
     <string name="pref_install_mode_root">Root(kök) quraşdırıcı</string>
     <string name="pref_install_mode_services">Aurora Xidmətləri (köhnəlmişdir)</string>
     <string name="pref_install_mode_session">Hesab quraşdırıcısı</string>
-    <string name="pref_install_mode_summary">APK quraşdırma rejimini seçin</string>
     <string name="pref_install_mode_title">Quraşdırma vasitəsi</string>
     <string name="pref_network_title">Şəbəkə yaratma</string>
     <string name="pref_ui_title">Fərdiləşdirmə</string>
@@ -572,10 +570,8 @@
     <string name="preparing_to_install">Quraşdırmağa hazırlaşır</string>
     <string name="preparing_to_download">Yükləməyə hazırlaşır</string>
     <string name="verifying_downloads">Yükləmələr təsdiqlənir</string>
-    <plurals name="permissions_required">
-        <item quantity="one">İcazə tələb olunur</item>
-        <item quantity="other">İcazələr tələb olunur</item>
-    </plurals>
+    <string name="permission_required">İcazə tələb olunur</string>
+    <string name="permissions_required">İcazələr tələb olunur</string>
     <plurals name="favourites_count">
         <item quantity="one">%1$d sevimli</item>
         <item quantity="other">%1$d sevimlilər</item>

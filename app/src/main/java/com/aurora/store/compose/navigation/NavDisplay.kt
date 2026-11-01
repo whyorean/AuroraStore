@@ -117,13 +117,16 @@ fun NavDisplay(startDestination: NavKey) {
             AccountProvider.getAccountType(context) == AccountType.GOOGLE &&
             !PackageUtil.hasSupportedMicroGVariant(context)
 
+    fun authProvider() =
+        EntryPointAccessors.fromApplication(context, NavDisplayEntryPoint::class.java)
+            .authProvider()
+
     fun handleMicroGRemoved() {
         context.toast(R.string.microg_removed_auth_warning)
         // Full sign-out: clears the account DB rows (incl. the now-invalid microG account) as
         // well as the legacy prefs, so the stale account can't linger as the DB is the source
         // of truth.
-        EntryPointAccessors.fromApplication(context, NavDisplayEntryPoint::class.java)
-            .authProvider().logout()
+        authProvider().logout()
         val intent = Intent(context, ComposeActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         }
@@ -150,8 +153,12 @@ fun NavDisplay(startDestination: NavKey) {
     LaunchedEffect(Unit) {
         AuroraApp.events.authEvent.collect { event ->
             if (event is AuthEvent.SessionExpired) {
+                if (backstack.lastOrNull() is Screen.Splash) return@collect
+                val authProvider = authProvider().apply { recordSessionRejection() }
+                val packageName = event.packageName
+                    .takeUnless { authProvider.isSessionRepeatedlyRejected }
                 backstack.clear()
-                backstack.add(Screen.Splash(event.packageName))
+                backstack.add(Screen.Splash(packageName))
             }
         }
     }
@@ -159,6 +166,7 @@ fun NavDisplay(startDestination: NavKey) {
     fun navigate(destination: Destination) {
         when (destination) {
             is Destination.Splash -> {
+                authProvider().clearSessionRejections()
                 // Clear the backstack when navigating to Splash to prevent going back to the previous screen when the user is sent back to the splash screen (e.g. after logout).
                 backstack.clear()
                 backstack.add(Screen.Splash(destination.packageName))
@@ -186,7 +194,10 @@ fun NavDisplay(startDestination: NavKey) {
             is Destination.DevProfile -> backstack.add(Screen.DevProfile(destination.devId))
             is Destination.AppUpdate -> Unit
             is Destination.StreamBrowse -> backstack.add(Screen.StreamBrowse(destination.cluster))
-            is Destination.GoogleLogin -> backstack.add(Screen.GoogleLogin(destination.addAccount))
+            is Destination.GoogleLogin -> {
+                authProvider().clearSessionRejections()
+                backstack.add(Screen.GoogleLogin(destination.addAccount))
+            }
 
             Destination.Search -> backstack.add(Screen.Search)
             Destination.Downloads -> backstack.add(Screen.Downloads)
@@ -311,7 +322,11 @@ fun NavDisplay(startDestination: NavKey) {
             entry<Screen.Splash> { screen ->
                 SplashScreen(
                     deepLinkPackageName = screen.packageName,
-                    onNavigateTo = ::navigate
+                    onNavigateTo = { destination ->
+                        // Navigation3 hands a leftover Splash back with its finished AuthViewModel
+                        if (destination is Destination.AppDetails) backstack.remove(screen)
+                        navigate(destination)
+                    }
                 )
             }
 

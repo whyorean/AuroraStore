@@ -215,7 +215,6 @@
     <string name="installer_status_failure_invalid">Hindi valid o korap ang APK</string>
     <string name="installer_status_failure_storage">Onti ang space ng memory</string>
     <string name="installer_status_success">Tagumpay na nag install</string>
-    <string name="installer_status_user_action">Hinihintay ang pagkumpirma ng user</string>
     <string name="menu_disclaimer">Babala</string>
     <string name="menu_license">Lisensya</string>
     <string name="menu_terms">Termino ng serbisyo</string>
@@ -243,7 +242,6 @@
     <string name="pref_install_mode_services">Aurora Services (Hindi na ginagamit)</string>
     <string name="pref_install_mode_session">Installer ng session</string>
     <string name="pref_install_mode_microg">Installer ng MicroG</string>
-    <string name="pref_install_mode_summary">Sumelekta ng paraan sa pag install ng APK</string>
     <string name="pref_install_mode_title">Method ng pag-install</string>
     <string name="pref_vending_version_title">Version ng Google Play</string>
     <string name="pref_vending_version_device">Default (galing sa config ng device)</string>

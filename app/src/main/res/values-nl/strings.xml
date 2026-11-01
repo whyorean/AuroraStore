@@ -78,7 +78,6 @@
     <string name="pref_ui_title">Aanpassing</string>
     <string name="pref_network_title">Netwerken</string>
     <string name="pref_install_mode_title">Installatiemethode</string>
-    <string name="pref_install_mode_summary">Modus van APK-installatie selecteren</string>
     <string name="pref_install_mode_session">Session installateur</string>
     <string name="pref_install_mode_services">Aurora Diensten (Verouderd)</string>
     <string name="pref_install_mode_root">Root installateur</string>
@@ -107,7 +106,6 @@
     <string name="menu_terms">Servicevoorwaarden</string>
     <string name="menu_license">Licentie</string>
     <string name="menu_disclaimer">Waarschuwing</string>
-    <string name="installer_status_user_action">Wachten op gebruikersbevestiging</string>
     <string name="installer_status_success">Succesvol geïnstalleerd</string>
     <string name="installer_status_failure_storage">Onvoldoende opslagruimte</string>
     <string name="installer_status_failure_invalid">Ongeldig of beschadigde APK</string>
@@ -458,10 +456,8 @@
     <string name="action_filter_no_gms">Geen play services</string>
     <string name="manual_download_version_error">Versiecode mag alleen cijfers bevatten</string>
     <string name="preparing_to_install">Voorbereiden om te installeren</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Recht vereist</item>
-        <item quantity="other">Rechten vereist</item>
-    </plurals>
+    <string name="permission_required">Recht vereist</string>
+    <string name="permissions_required">Rechten vereist</string>
     <string name="page">Page <xliff:g id="nummer">%1$d</xliff:g></string>
     <string name="installer_microg_misconfigured">MicroG-installateur kon de app niet installeren, waarschijnlijk vanwege een verkeerde configuratie.</string>
     <string name="pref_install_mode_microg">MicroG-installateur</string>

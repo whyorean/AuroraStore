@@ -110,7 +110,6 @@
     <string name="details_beta_delay">Записването може да отнеме известно време, можете да проверите състоянието по-късно.</string>
     <string name="details_dev_address">Адрес</string>
     <string name="details_permission">разрешение</string>
-    <string name="installer_status_user_action">Изчаква се потвърждение от потребителя</string>
     <string name="tab_editor_choice">Избор на редакторите</string>
     <string name="exodus_substring">тракер(и), намерени в</string>
     <string name="download_pause_all">Пауза на всички</string>
@@ -137,7 +136,6 @@
     <string name="pref_install_mode_am">AM инсталатор.</string>
     <string name="pref_install_mode_root">Root инсталатор</string>
     <string name="pref_install_mode_services">Услуги на Aurora</string>
-    <string name="pref_install_mode_summary">Изберете режим на инсталиране на APK</string>
     <string name="pref_ui_no_for_you_desc">Показва страници за вас на началния екран</string>
     <string name="purchase_failed">Изтеглянето се провали</string>
     <string name="purchase_unsupported">Приложението не се поддържа</string>

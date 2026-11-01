@@ -131,7 +131,6 @@
     <string name="pref_ui_title">Prilagođavanje</string>
     <string name="pref_network_title">Umrežavanje</string>
     <string name="pref_install_mode_title">Način instaliranja</string>
-    <string name="pref_install_mode_summary">Odaberi način instaliranja APK datoteka</string>
     <string name="pref_install_mode_session">Instalacija sesija</string>
     <string name="pref_install_mode_services">Aurora usluge (zastarjelo)</string>
     <string name="pref_install_mode_root">Administratorska instalacija</string>
@@ -158,7 +157,6 @@
     <string name="menu_terms">Uvjeti usluge</string>
     <string name="menu_license">Licenca</string>
     <string name="menu_disclaimer">Izjava o odricanju odgovornosti</string>
-    <string name="installer_status_user_action">Čeka se potvrda korisnika</string>
     <string name="installer_status_success">Uspješno instalirano</string>
     <string name="installer_status_failure_storage">Nedovoljno memorije</string>
     <string name="installer_status_failure_invalid">Neispravna ili oštećena APK datoteka</string>
@@ -458,9 +456,6 @@
     <string name="exodus_report_trackers"><xliff:g id="number_of_trackers">%1$d</xliff:g> pronađena programa za praćenje u <xliff:g id="app_version_name">%2$s</xliff:g></string>
     <string name="onboarding_gms_microg">microG je besplatna i otvorenog koda implementacija koja pruža sličnu funkcionalnost za pokretanje aplikacija koje ovise o Google Play uslugama na Android uređajima putem ponovne implementacije.\n\nmicroG omogućuje aplikacijama pristup Google API-jima, poboljšavajući kompatibilnost za korisnike uz dodatne prednosti po pitanju privatnosti.\n\nmicroG će se automatski pokrenuti u pozadini kada otvorite aplikacije koje ovise o Google mobilnim uslugama.</string>
     <string name="preparing_to_install">Priprema za instalaciju</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Potrebna dozvola</item>
-        <item quantity="few">Potrebne dozvole</item>
-        <item quantity="other">Potrebnih dozvola</item>
-    </plurals>
+    <string name="permission_required">Potrebna dozvola</string>
+    <string name="permissions_required">Potrebne dozvole</string>
 </resources>

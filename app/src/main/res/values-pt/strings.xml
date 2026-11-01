@@ -91,7 +91,6 @@
     <string name="pref_ui_title">Personalização</string>
     <string name="pref_network_title">Rede</string>
     <string name="pref_install_mode_title">Método de instalação</string>
-    <string name="pref_install_mode_summary">Selecione o modo de instalação de APK</string>
     <string name="pref_install_mode_session">Instalador de sessão</string>
     <string name="pref_install_mode_root">Instalador root</string>
     <string name="pref_install_mode_native">Instalador nativo (descontinuado)</string>
@@ -116,7 +115,6 @@
     <string name="menu_terms">Termos do serviço</string>
     <string name="menu_license">Licença</string>
     <string name="menu_disclaimer">Isenção de responsabilidade</string>
-    <string name="installer_status_user_action">A aguardar confirmação do utilizador</string>
     <string name="installer_status_success">Instalada com sucesso</string>
     <string name="installer_status_failure_storage">Armazenamento insuficiente</string>
     <string name="installer_status_failure_invalid">APK inválido ou corrompido</string>
@@ -463,11 +461,8 @@
     <string name="details_more_package_name">Nome do pacote</string>
     <string name="details_more_content_rating">Classificação de conteúdo</string>
     <string name="preparing_to_install">Preparando para instalar</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permissão requerida</item>
-        <item quantity="many">Permissões requeridas</item>
-        <item quantity="other">Permissãos requeridas</item>
-    </plurals>
+    <string name="permission_required">Permissão requerida</string>
+    <string name="permissions_required">Permissões requeridas</string>
     <string name="select_app_for_details">Selecione um aplicativo para obter mais detalhes</string>
     <string name="action_filter_no_ads">Sem anúncios</string>
     <string name="action_filter_no_gms">Sem serviços de reprodução</string>

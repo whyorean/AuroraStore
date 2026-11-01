@@ -56,6 +56,7 @@ import com.aurora.extensions.openInfo
 import com.aurora.extensions.toast
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
+import com.aurora.store.compose.composable.VersionChangeText
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.installer.AppInstaller
@@ -227,12 +228,11 @@ private fun AppHeader(update: Update, onShowDetails: () -> Unit) {
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            Text(
-                text = stringResource(R.string.version, update.versionName, update.versionCode),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+            VersionChangeText(
+                packageName = update.packageName,
+                versionName = update.versionName,
+                versionCode = update.versionCode,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 

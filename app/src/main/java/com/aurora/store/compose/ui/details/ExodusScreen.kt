@@ -54,7 +54,7 @@ import com.aurora.Constants.EXODUS_SUBMIT_PAGE
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.browse
 import com.aurora.extensions.isWindowCompact
-import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.model.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint

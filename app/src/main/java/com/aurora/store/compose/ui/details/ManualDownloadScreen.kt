@@ -56,7 +56,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.extensions.isWindowCompact
-import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.model.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.Info
 import com.aurora.store.compose.composable.TopAppBar
@@ -174,8 +174,13 @@ private fun ScreenContent(
                     enabled = !state.inProgress(),
                     value = versionCode,
                     onValueChange = {
-                        if (it.text.isDigitsOnly()) {
-                            versionCode = it
+                        val code = it.text.filterNot(Char::isWhitespace)
+                        if (code.isDigitsOnly()) {
+                            versionCode = if (code == it.text) {
+                                it
+                            } else {
+                                TextFieldValue(text = code, selection = TextRange(code.length))
+                            }
                         } else {
                             coroutineScope.launch { snackBarHostState.showSnackbar(errorMessage) }
                         }

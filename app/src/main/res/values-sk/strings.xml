@@ -174,7 +174,6 @@
     <string name="download_eta_calculating">Výpočitávam</string>
     <string name="download_pause_all">Pozastaviť všetko</string>
     <string name="download_paused">Pozastavené •.<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="installer_status_user_action">Čaká sa na potvrdenie používateľa</string>
     <string name="menu_license">Licencia</string>
     <string name="onboarding_welcome_select">Ako sa máš?</string>
     <string name="onboarding_permission_select">Aurora Store vyžaduje nasledujúce povolenia</string>
@@ -184,7 +183,6 @@
     <string name="pref_install_mode_native">Natívny inštalátor (zastarané)</string>
     <string name="pref_install_mode_root">Root inštalátor</string>
     <string name="pref_install_mode_services">Aurora Služby (zastarané)</string>
-    <string name="pref_install_mode_summary">Vyberte režim inštalácie APK</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
     <string name="pref_aurora_only_desc">Kontrolovať iba aktualizácie pre aplikácie nainštalované v obchode Aurora</string>
     <string name="purchase_unsupported">Aplikácia nie je podporovaná</string>
@@ -458,12 +456,8 @@
     <string name="onboarding_gms_microg">microG je bezplatná implementácia s otvoreným zdrojovým kódom, ktorá poskytuje podobné funkcie na spúšťanie aplikácií závislých od služieb Google Play pre zariadenia so systémom Android prostredníctvom reimplementácie.\n\nmicroG umožňuje aplikáciám prístup k týmto rozhraniam API spoločnosti Google, čím zvyšuje kompatibilitu pre používateľov a zároveň ponúka výhody v oblasti ochrany osobných údajov. \n\nmicroG sa automaticky spustí na pozadí pri otvorení aplikácií závislých od mobilných služieb Google.</string>
     <string name="manual_download_version_error">Kód verzie môže obsahovať iba číslice</string>
     <string name="preparing_to_install">Príprava na inštaláciu</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Potrebné povolenie</item>
-        <item quantity="few">Potrebných povolení</item>
-        <item quantity="many">Potrebné povolenia</item>
-        <item quantity="other">Potrebné povolenia</item>
-    </plurals>
+    <string name="permission_required">Potrebné povolenie</string>
+    <string name="permissions_required">Potrebné povolenia</string>
     <string name="installer_microg_misconfigured">MIcroG inštalátor zlyhal pri inštalácií aplikácie, pravdepodobne z dôvodu miskonfigurácie.</string>
     <string name="pref_install_mode_microg">MicroG inštalátor</string>
     <string name="microg_installer_subtitle">Vyžaduje doplnkovú MicroG aplikáciu na správne fungovanie</string>

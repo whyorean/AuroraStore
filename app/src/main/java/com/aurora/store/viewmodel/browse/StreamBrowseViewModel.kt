@@ -1,4 +1,5 @@
 /*
+ * SPDX-FileCopyrightText: 2026 Aurora OSS
  * SPDX-FileCopyrightText: 2021 Aurora OSS
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -11,10 +12,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.exceptions.GooglePlayException
-import com.aurora.gplayapi.helpers.web.WebStreamHelper
+import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.ClusterCursor
+import com.aurora.gplayapi.model.StreamCluster
+import com.aurora.gplayapi.web.WebPlayClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
 import com.aurora.store.data.event.AuthEvent
@@ -29,10 +31,21 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
+/**
+ * Pages a cluster whose header was clicked, always over the web lane
+ * ([WebPlayClient.streams]) - ported unchanged from v3's own `StreamBrowseViewModel`, which
+ * always used `WebStreamHelper` regardless of where [streamCluster] itself came from.
+ * `Destination.StreamBrowse` is reachable from a home/category stream header (web lane,
+ * consistent) and from a developer-profile stream header
+ * ([com.aurora.gplayapi.api.AppApi.developerStream], authenticated lane) - in the latter
+ * case [streamCluster]'s own [StreamCluster.next] cursor was minted by the authenticated
+ * lane, and handing its `nextPageUrl` to the web lane's `qnKhOb` RPC here is a pre-existing
+ * cross-lane mismatch, not one this migration introduces. See the task report.
+ */
 @HiltViewModel(assistedFactory = StreamBrowseViewModel.Factory::class)
 class StreamBrowseViewModel @AssistedInject constructor(
     @Assisted private val streamCluster: StreamCluster,
-    private val streamHelper: WebStreamHelper
+    private val webPlayClient: WebPlayClient
 ) : ViewModel() {
 
     @AssistedFactory
@@ -48,27 +61,25 @@ class StreamBrowseViewModel @AssistedInject constructor(
     }
 
     fun fetch() {
-        var nextPageUrl: String = streamCluster.clusterNextPageUrl
+        var cursor: ClusterCursor? = streamCluster.next
 
         manualPager { page ->
             val items = try {
                 when (page) {
-                    1 -> streamCluster.clusterAppList
+                    1 -> streamCluster.apps
 
                     else -> {
-                        if (nextPageUrl.isNotBlank()) {
-                            streamHelper.nextStreamCluster(
-                                nextPageUrl.hashCode(),
-                                nextPageUrl
-                            ).also {
-                                nextPageUrl = it.clusterNextPageUrl
-                            }.clusterAppList
+                        val nextCursor = cursor
+                        if (nextCursor != null) {
+                            val cluster = webPlayClient.streams.next(nextCursor)
+                            cursor = cluster.next
+                            cluster.apps
                         } else {
                             emptyList()
                         }
                     }
                 }
-            } catch (exception: GooglePlayException.AuthException) {
+            } catch (exception: PlayException.Unauthorized) {
                 Log.w(TAG, "Stream returned ${exception.code}, redirecting to Splash")
                 AuroraApp.events.send(AuthEvent.SessionExpired())
                 emptyList()

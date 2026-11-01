@@ -31,7 +31,7 @@ abstract class InstallerBase(private val context: Context) : IInstaller {
 
         fun getErrorString(context: Context, status: Int): String = when (status) {
             PackageInstaller.STATUS_FAILURE_ABORTED -> context.getString(
-                R.string.installer_status_user_action
+                R.string.installer_status_aborted
             )
 
             PackageInstaller.STATUS_FAILURE_BLOCKED -> context.getString(

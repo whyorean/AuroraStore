@@ -167,7 +167,9 @@
     <string name="download_eta_min">%1$dm %2$ds left</string>
     <string name="download_eta_sec">%1$ds left</string>
     <string name="download_failed">"Download failed"</string>
+    <string name="download_version_unavailable">Version %1$d isn\'t available for this device</string>
     <string name="download_failed_storage">Not enough storage space to download this app</string>
+    <string name="download_signing_key_rotated">Sign in with a Google account to update this app: its signing key has changed, and anonymous downloads can\'t handle that</string>
     <string name="download_force_clear_all">"Force clear all"</string>
     <string name="download_metadata">"Getting metadata"</string>
     <string name="download_none">"No downloads"</string>
@@ -223,6 +225,7 @@
     <string name="installer_service_misconfigured">Set up Aurora Services and grant all permissions first.</string>
     <string name="installer_microg_misconfigured">MicroG installer failed to install app, likely due to misconfiguration.</string>
     <string name="installer_status_failure">"Installer failed"</string>
+    <string name="installer_status_aborted">"Installation cancelled"</string>
     <string name="installer_status_failure_blocked">"Installation was blocked"</string>
     <string name="installer_status_failure_session">"Could not create session"</string>
     <string name="installer_status_failure_conflict">"Conflicting package exists"</string>
@@ -230,7 +233,6 @@
     <string name="installer_status_failure_invalid">"Invalid or corrupted APK"</string>
     <string name="installer_status_failure_storage">"Insufficient memory space"</string>
     <string name="installer_status_success">"Successfully installed"</string>
-    <string name="installer_status_user_action">"Waiting for user confirmation"</string>
     <string name="menu_disclaimer">"Disclaimer"</string>
     <string name="menu_license">"License"</string>
     <string name="menu_terms">"Terms of service"</string>
@@ -251,6 +253,8 @@
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
     <string name="pref_install_delete_summary">Downloaded APKs will be deleted immediately after installation</string>
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
+    <string name="pref_download_languages_title">Download all my languages</string>
+    <string name="pref_download_languages_summary">Also fetch language files for the other languages set on this device. Downloads will be larger</string>
     <string name="pref_install_mode_am">AM installer</string>
     <string name="pref_install_mode_shizuku">Shizuku installer</string>
     <string name="pref_install_mode_native">"Native installer (Deprecated)"</string>
@@ -258,7 +262,6 @@
     <string name="pref_install_mode_services">"Aurora Services (Deprecated)"</string>
     <string name="pref_install_mode_session">"Session installer"</string>
     <string name="pref_install_mode_microg">"MicroG installer"</string>
-    <string name="pref_install_mode_summary">"Select mode of APK installation"</string>
     <string name="pref_install_mode_title">"Installation method"</string>
     <string name="pref_vending_version_title">Google Play version</string>
     <string name="pref_vending_version_device">Default (from device config)</string>
@@ -273,6 +276,8 @@
     <string name="pref_updates_incompatible_desc">"Display updates for incompatible or disabled apps that may fail to install."</string>
     <string name="pref_updates_warn_trackers">"Warn about new trackers in app updates"</string>
     <string name="pref_updates_warn_trackers_desc">"Show a warning before updating when the new version adds trackers that were not in the installed version"</string>
+    <string name="pref_updates_warn_permissions">"Warn about new permissions in app updates"</string>
+    <string name="pref_updates_warn_permissions_desc">"Show a warning before updating when the new version requests permissions that were not in the installed version"</string>
     <string name="pref_self_update">"Self-update"</string>
     <string name="pref_self_update_desc">"Offer new Aurora Store builds in the Updates tab."</string>
     <string name="pref_aurora_only">"Filter apps from other sources."</string>
@@ -313,6 +318,12 @@
     <string name="tab_trending">"Trending"</string>
     <string name="tracker_warning_title">New trackers detected</string>
     <string name="tracker_warning_desc">This update adds trackers that weren\'t in the installed version:</string>
+    <string name="permission_warning_title">New permissions requested</string>
+    <string name="permission_warning_desc">This update requests permissions the installed version doesn\'t have:</string>
+    <plurals name="updates_skipped_new_permissions">
+        <item quantity="one">Skipped %1$d update that requests new permissions</item>
+        <item quantity="other">Skipped %1$d updates that request new permissions</item>
+    </plurals>
     <string name="title_about">About</string>
     <string name="title_account_manager">"Accounts"</string>
     <string name="title_apps">"Apps"</string>
@@ -367,11 +378,27 @@
     <string name="toast_page_unavailable">Browse page unavailable</string>
     <string name="toast_rated_success">Rated, it may take a while to show</string>
     <string name="toast_rated_failed">Could not submit rating</string>
+    <string name="permission_new">New</string>
+    <string name="details_play_listing">On Google Play</string>
+    <string name="details_top_chart">%1$s in %2$s</string>
+    <string name="action_continue">Continue</string>
+    <string name="app_links_owned_title">Play links open in %1$s</string>
+    <string name="app_links_owned_desc">Android won\'t let Aurora Store take over links %1$s has verified. Turn off \"Open supported links\" for it first, then grant this to Aurora Store.</string>
+    <string name="app_links_owned_open">Open settings</string>
+    <string name="review_developer_reply">Response from the developer</string>
+    <string name="permission_group_system">Android system</string>
+    <string name="permission_group_google">Google</string>
+    <string name="permission_group_other">Other</string>
+    <string name="toast_beta_failed">Could not update beta enrollment</string>
+    <string name="toast_beta_left">You left the beta program</string>
     <string name="toast_aas_token_failed">Could not generate AAS Token</string>
+    <string name="google_login_timeout">Google didn\'t respond in time. Please sign in again.</string>
     <string name="toast_export_success">Device config exported</string>
     <string name="toast_export_failed">Could not export device config</string>
     <string name="toast_import_success">Device config imported</string>
     <string name="toast_import_failed">"Could not import device config"</string>
+    <string name="toast_spoof_import_invalid">"Invalid device config, missing or malformed fields"</string>
+    <string name="toast_spoof_device_invalid">"Active device spoof is invalid, reverted to default"</string>
     <string name="toast_proxy_invalid">"Invalid proxy URL, check format!"</string>
     <string name="toast_proxy_success">"Proxy set successfully"</string>
     <string name="toast_proxy_failed">"Failed to set proxy"</string>
@@ -429,11 +456,13 @@
     <string name="login_rate_limited">You are rate limited</string>
     <string name="server_unreachable">Server unreachable</string>
     <string name="failed_to_generate_session">Could not generate session</string>
+    <string name="session_rejected">Google Play keeps rejecting this session. If you are using a VPN, try another server, then sign in again.</string>
     <string name="verifying_new_session">Verifying new session</string>
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Check internet connectivity</string>
     <string name="app_language">App language</string>
     <string name="pref_ui_theme">Theme</string>
+    <string name="pref_ui_appearance">Appearance</string>
     <string name="pref_theme_style_system">Follow system</string>
     <string name="pref_theme_style_light">Light</string>
     <string name="pref_theme_style_dark">Dark</string>
@@ -604,6 +633,9 @@
     <string name="authentication_required_title">Authentication required</string>
     <string name="authentication_required_unarchive">Please log in to your Google Play account to unarchive the app!</string>
 
+    <!-- UpdateWorker -->
+    <string name="authentication_required_update_check">Checking for updates needs a signed-in Google Play account; anonymous sessions can\'t check in bulk yet.</string>
+
     <!-- SpoofFragment -->
     <string name="default_spoof">Default</string>
     <string name="available_spoof">Available</string>
@@ -639,10 +671,8 @@
     <string name="preparing_to_install">Preparing to install</string>
     <string name="preparing_to_download">Preparing to download</string>
     <string name="verifying_downloads">Verifying downloads</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permission required</item>
-        <item quantity="other">Permissions required</item>
-    </plurals>
+    <string name="permission_required">Permission required</string>
+    <string name="permissions_required">Permissions required</string>
     <plurals name="insufficient_storage_desc_multiple">
         <item quantity="one">%1$d app needs %2$s, but only %3$s is available.</item>
         <item quantity="other">%1$d apps need %2$s, but only %3$s is available.</item>

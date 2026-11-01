@@ -6,6 +6,6 @@
 package com.aurora.extensions
 
 import com.aurora.Constants.PACKAGE_NAME_GMS
-import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.model.App
 
 fun App.requiresGMS() = dependencies.dependentPackages.contains(PACKAGE_NAME_GMS)

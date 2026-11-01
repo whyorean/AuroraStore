@@ -15,12 +15,13 @@ import androidx.paging.cachedIn
 import androidx.paging.filter
 import com.aurora.extensions.TAG
 import com.aurora.extensions.requiresGMS
-import com.aurora.gplayapi.SearchSuggestEntry
-import com.aurora.gplayapi.data.models.App
-import com.aurora.gplayapi.data.models.StreamCluster
-import com.aurora.gplayapi.exceptions.GooglePlayException
-import com.aurora.gplayapi.helpers.contracts.SearchContract
-import com.aurora.gplayapi.helpers.web.WebSearchHelper
+import com.aurora.gplayapi.PlayClient
+import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.api.SearchSuggestion
+import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.BundleCursor
+import com.aurora.gplayapi.model.StreamBundle
+import com.aurora.gplayapi.web.WebPlayClient
 import com.aurora.store.AuroraApp
 import com.aurora.store.data.PageResult
 import com.aurora.store.data.event.AuthEvent
@@ -43,13 +44,11 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     val authProvider: AuthProvider,
-    private val webSearchHelper: WebSearchHelper
+    private val webPlayClient: WebPlayClient,
+    private val playClient: PlayClient
 ) : ViewModel() {
 
-    private val contract: SearchContract
-        get() = webSearchHelper
-
-    private val _suggestions = MutableStateFlow<List<SearchSuggestEntry>>(emptyList())
+    private val _suggestions = MutableStateFlow<List<SearchSuggestion>>(emptyList())
     val suggestions = _suggestions.asStateFlow()
 
     private val searchFilter = MutableStateFlow(SearchFilter())
@@ -72,44 +71,26 @@ class SearchViewModel @Inject constructor(
     }
 
     fun search(query: String) {
-        var nextBundleUrl: String? = null
-        val nextStreamUrls = mutableSetOf<String>()
+        var cursor: BundleCursor? = null
 
-        fun Collection<StreamCluster>.flatClusters(): List<App> = this.flatMap { streamCluster ->
-            if (streamCluster.hasNext()) {
-                nextStreamUrls.add(streamCluster.clusterNextPageUrl)
-            }
-            streamCluster.clusterAppList
-        }.distinctBy { app -> app.packageName }
+        fun StreamBundle.flatApps(): List<App> =
+            clusters.flatMap { it.apps }.distinctBy { app -> app.packageName }
 
         manualPager { page ->
             val items = try {
-                when (page) {
-                    1 -> contract.searchResults(query)
-                        .also { nextBundleUrl = it.streamNextPageUrl }
-                        .streamClusters.values
-                        .flatClusters()
-
-                    else -> {
-                        when {
-                            nextStreamUrls.isNotEmpty() -> {
-                                nextStreamUrls.map { nextPageStreamUrl ->
-                                    contract.nextStreamCluster(query, nextPageStreamUrl)
-                                }.also { nextStreamUrls.clear() }.flatClusters()
-                            }
-
-                            !nextBundleUrl.isNullOrBlank() -> {
-                                contract.nextStreamBundle(query, nextBundleUrl!!)
-                                    .also { nextBundleUrl = it.streamNextPageUrl }
-                                    .streamClusters.values
-                                    .flatClusters()
-                            }
-
-                            else -> emptyList()
-                        }
-                    }
+                val bundle = when (page) {
+                    1 -> webPlayClient.search.results(query)
+                    else -> cursor?.let { webPlayClient.search.next(query, it) }
                 }
-            } catch (exception: GooglePlayException.AuthException) {
+                cursor = bundle?.next
+                val apps = bundle?.flatApps() ?: emptyList()
+                val exactMatch = if (page == 1) appForPackageName(query.trim()) else null
+                if (exactMatch != null) {
+                    listOf(exactMatch) + apps.filterNot { it.packageName == exactMatch.packageName }
+                } else {
+                    apps
+                }
+            } catch (exception: PlayException.Unauthorized) {
                 Log.w(TAG, "Search returned ${exception.code}, redirecting to Splash")
                 AuroraApp.events.send(AuthEvent.SessionExpired())
                 emptyList()
@@ -121,11 +102,27 @@ class SearchViewModel @Inject constructor(
             .launchIn(viewModelScope)
     }
 
+    private suspend fun appForPackageName(query: String): App? {
+        if (!PACKAGE_NAME.matches(query)) return null
+        return try {
+            playClient.apps.details(query)
+        } catch (exception: PlayException.Unauthorized) {
+            throw exception
+        } catch (exception: Exception) {
+            Log.i(TAG, "No app for package name $query", exception)
+            null
+        }
+    }
+
     fun fetchSuggestions(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _suggestions.value = contract.searchSuggestions(query)
+            _suggestions.value = webPlayClient.search.suggestions(query)
                 .filter { it.title.isNotBlank() }
                 .take(5)
         }
+    }
+
+    companion object {
+        private val PACKAGE_NAME = Regex("^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_]*)+$")
     }
 }

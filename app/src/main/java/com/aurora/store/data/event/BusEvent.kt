@@ -15,7 +15,12 @@ sealed class BusEvent : Event() {
 }
 
 sealed class AuthEvent : Event() {
-    data class GoogleLogin(val success: Boolean, val email: String, val token: String) : AuthEvent()
+    data class GoogleLogin(
+        val success: Boolean,
+        val email: String,
+        val token: String,
+        val error: String? = null
+    ) : AuthEvent()
     data class SessionExpired(val packageName: String? = null) : AuthEvent()
 }
 
@@ -33,6 +38,7 @@ open class InstallerEvent(open val packageName: String) : Event() {
     data class Failed(
         override val packageName: String,
         val error: String? = null,
-        val extra: String? = null
+        val extra: String? = null,
+        val cancelled: Boolean = false
     ) : InstallerEvent(packageName)
 }

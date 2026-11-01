@@ -22,7 +22,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.aurora.extensions.requiresGMS
-import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.model.App
 import com.aurora.store.R
 import com.aurora.store.compose.composable.AuroraListItem
 import com.aurora.store.compose.preview.AppPreviewProvider
@@ -57,7 +57,7 @@ fun LargeAppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Uni
 @Composable
 private fun buildAppExtras(app: App): String = buildList {
     add(if (app.size > 0) CommonUtil.addSiPrefix(app.size) else app.downloadString)
-    add("${app.labeledRating}★")
+    if (app.labeledRating.isNotBlank() && app.labeledRating != "0.0") add("${app.labeledRating}★")
     add(stringResource(if (app.isFree) R.string.details_free else R.string.details_paid))
     add(
         stringResource(

@@ -217,7 +217,6 @@
     <string name="installer_status_failure_invalid">APK non vàlidu o corrùmpidu</string>
     <string name="installer_status_failure_storage">Tretu in memòria chi non bastat</string>
     <string name="installer_status_success">Installatzione resèssida</string>
-    <string name="installer_status_user_action">Isetende pro sa cunfirma de s\'impreadore</string>
     <string name="menu_disclaimer">Avisu</string>
     <string name="menu_license">Lissèntzia</string>
     <string name="menu_terms">Tèrmines de impreu</string>
@@ -245,7 +244,6 @@
     <string name="pref_install_mode_services">Servìtzios de Aurora (non prus suportados)</string>
     <string name="pref_install_mode_session">Installadore de sessione</string>
     <string name="pref_install_mode_microg">Installadore MicroG</string>
-    <string name="pref_install_mode_summary">Ischerta sa manera de installatzione de sos APK</string>
     <string name="pref_install_mode_title">Manera de installatzione</string>
     <string name="pref_vending_version_title">Versione de Google Play</string>
     <string name="pref_vending_version_device">Predefinida (dae sa configuratzione de su dispositivu)</string>
@@ -575,10 +573,8 @@
     <string name="preparing_to_install">Aprontende s\'installatzione</string>
     <string name="preparing_to_download">Aprontende s\'iscarrigamentu</string>
     <string name="verifying_downloads">Verifichende sos iscarrigamentos</string>
-    <plurals name="permissions_required">
-        <item quantity="one">Permissu netzessàriu</item>
-        <item quantity="other">Permissos netzessàrios</item>
-    </plurals>
+    <string name="permission_required">Permissu netzessàriu</string>
+    <string name="permissions_required">Permissos netzessàrios</string>
     <plurals name="insufficient_storage_desc_multiple">
         <item quantity="one">%1$d aplicatzione tenet bisòngiu de %2$s, ma b\'at a disponimentu petzi %3$s.</item>
         <item quantity="other">%1$d aplicatziones tenent bisòngiu de %2$s, ma b\'at a disponimentu petzi %3$s.</item>

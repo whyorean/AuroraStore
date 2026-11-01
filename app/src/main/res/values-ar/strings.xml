@@ -144,7 +144,6 @@
     <string name="details_beta_available">الانضمام إلى البرنامج التجريبي؟</string>
     <string name="details_beta_subscribed">أنت أحد مختبري الإصدارات التجريبية</string>
     <string name="toast_anonymous_restriction">غير متوفر في الحسابات المجهولة</string>
-    <string name="pref_install_mode_summary">حدّد وضع تثبيت APK</string>
     <string name="onboarding_permission_select">متجر Aurora يتطلب الأذونات التالية</string>
     <string name="pref_install_delete_summary">سيتم حذف ملفات APK التي نُزلّت فورًا بعد التثبيت</string>
     <string name="pref_filter_fdroid_summary">لا تتحقق من تحديثات التطبيقات المثبتة من F-Droid</string>
@@ -166,7 +165,6 @@
     <string name="toast_spoof_applied">تم تطبيق المحاكاة التحايلية للجهاز .</string>
     <string name="title_apps_games">تطبيقاتي وألعابي</string>
     <string name="purchase_no_file">تعذر الحصول على الملفات</string>
-    <string name="installer_status_user_action">في انتظار تأكيد المستخدم</string>
     <string name="installer_status_failure_invalid">حزمة APK غير صالحة أو تالفة</string>
     <string name="action_export">صدِّر</string>
     <string name="action_disable">عطّل</string>
@@ -458,14 +456,8 @@
     <string name="action_filter_no_gms">لا توجد خدمات play</string>
     <string name="manual_download_version_error">يجب أن يحتوي رمز الإصدار على أرقام فقط</string>
     <string name="preparing_to_install">يجهز للتثبيت</string>
-    <plurals name="permissions_required">
-        <item quantity="zero">لا أذونات مطلوبة</item>
-        <item quantity="one">إذن مطلوب</item>
-        <item quantity="two">مطلوب إذنان</item>
-        <item quantity="few">الأذونات مطلوبة</item>
-        <item quantity="many">الأذونات مطلوبة</item>
-        <item quantity="other">إذن مطلوب</item>
-    </plurals>
+    <string name="permission_required">إذن مطلوب</string>
+    <string name="permissions_required">الأذونات مطلوبة</string>
     <string name="installer_microg_misconfigured">فشل مثبت MicroG في تثبيت التطبيق، ويرجع ذلك على الأرجح إلى سوء التضبيط.</string>
     <string name="pref_install_mode_microg">مثبت MicroG</string>
     <string name="microg_installer_subtitle">يتطلب تثبيت تطبيق microG المصاحب</string>

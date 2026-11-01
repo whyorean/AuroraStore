@@ -50,6 +50,7 @@ fun AppUpdateItem(
     val inProgress = isChecking ||
         (download != null && !download.isFinished && !download.isAwaitingInstall)
     val installing = download?.status == DownloadStatus.INSTALLING
+    val shownSize = if (update.downloadSize > 0) update.downloadSize else update.size
     val progress = if (download?.status == DownloadStatus.DOWNLOADING) {
         download.progress.toFloat()
     } else {
@@ -83,14 +84,16 @@ fun AppUpdateItem(
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = update.developerName,
+                text = listOf(update.developerName, update.updatedOn)
+                    .filter { it.isNotBlank() }
+                    .joinToString("  •  "),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "${update.versionName}  •  ${CommonUtil.addSiPrefix(update.size)}",
+                text = "${update.versionName}  •  ${CommonUtil.addSiPrefix(shownSize)}",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1,

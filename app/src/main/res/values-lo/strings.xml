@@ -164,7 +164,6 @@
     <string name="installer_status_failure_invalid">ໄຟລ໌ APK ບໍ່ຖືກຕ້ອງ ຫຼື ເສຍຫາຍ</string>
     <string name="installer_status_failure_storage">ພື້ນທີ່ຈັດເກັບຂໍ້ມູນບໍ່ພຽງພໍ</string>
     <string name="installer_status_success">ຕິດຕັ້ງສຳເລັດແລ້ວ</string>
-    <string name="installer_status_user_action">ກຳລັງລໍຖ້າການຢືນຢັນຈາກຜູ້ໃຊ້</string>
     <string name="menu_disclaimer">ຂໍ້ຄວາມປະຕິເສດຄວາມຮັບຜິດຊອບ</string>
     <string name="menu_license">ໃບອະນຸຍາດ</string>
     <string name="menu_terms">ເງື່ອນໄຂການໃຫ້ບໍລິການ</string>
@@ -189,7 +188,6 @@
     <string name="pref_install_mode_services">Aurora Services (ບໍ່ແນະນຳໃຫ້ໃຊ້ແລ້ວ)</string>
     <string name="pref_install_mode_session">ຕົວຕິດຕັ້ງ Session</string>
     <string name="pref_install_mode_microg">ຕົວຕິດຕັ້ງ MicroG</string>
-    <string name="pref_install_mode_summary">ເລືອກຮູບແບບການຕິດຕັ້ງ APK</string>
     <string name="pref_install_mode_title">ວິທີການຕິດຕັ້ງ</string>
     <string name="pref_vending_version_title">ເວີຊັນຂອງ Google Play</string>
     <string name="pref_vending_version_device">ຄ່າເລີ່ມຕົ້ນ (ຈາກການຕັ້ງຄ່າອຸປະກອນ)</string>
@@ -446,9 +444,8 @@
     <string name="details_compatibility_status_unsupported">ບໍ່ຮອງຮັບ: ບໍ່ສາມາດໃຊ້ງານໄດ້</string>
     <string name="details_compatibility_status_unknown">ບໍ່ລະບຸ: ຍັງບໍ່ໄດ້ກວດສອບ</string>
     <string name="preparing_to_install">ກຳລັງກະກຽມການຕິດຕັ້ງ</string>
-    <plurals name="permissions_required">
-        <item quantity="other">ຕ້ອງມີການອະນຸຍາດ</item>
-    </plurals>
+    <string name="permission_required">ຕ້ອງມີການອະນຸຍາດ</string>
+    <string name="permissions_required">ຕ້ອງມີການອະນຸຍາດ</string>
     <string name="installed_apps_size">ຕິດຕັ້ງແລ້ວ <xliff:g id="installed_apps_size">%1$d</xliff:g> ແອັບ</string>
     <string name="pref_network_microg_login_title">ໃຊ້ microG ເພື່ອເຂົ້າສູ່ລະບົບບັນຊີ</string>
     <string name="pref_network_microg_login_desc">ໃຊ້ microG ໃນການຢືນຢັນຕົວຕົນເມື່ອເຂົ້າສູ່ລະບົບ Google ເພື່ອໃຫ້ຂັ້ນຕອນງ່າຍຂຶ້ນ</string>

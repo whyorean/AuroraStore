@@ -29,7 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import com.aurora.gplayapi.data.models.App
+import com.aurora.gplayapi.model.App
 import com.aurora.store.R
 import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
@@ -50,6 +50,8 @@ fun Info(
     description: AnnotatedString? = null,
     painter: Painter? = null,
     titleColor: Color = Color.Unspecified,
+    titleMaxLines: Int = 1,
+    trailing: (@Composable () -> Unit)? = null,
     onClick: (() -> Unit)? = null
 ) {
     Row(
@@ -68,7 +70,7 @@ fun Info(
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodyMedium,
-                maxLines = 1,
+                maxLines = titleMaxLines,
                 overflow = TextOverflow.Ellipsis,
                 color = titleColor
             )
@@ -80,6 +82,7 @@ fun Info(
                 )
             }
         }
+        if (trailing != null) trailing()
     }
 }
 

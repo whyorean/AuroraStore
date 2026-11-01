@@ -133,7 +133,6 @@
     <string name="pref_ui_title">Tùy chỉnh</string>
     <string name="pref_network_title">Kết nối mạng</string>
     <string name="pref_install_mode_title">Phương thức cài đặt</string>
-    <string name="pref_install_mode_summary">Chọn chế độ cài đặt APK</string>
     <string name="pref_install_mode_session">Trình cài đặt phiên</string>
     <string name="pref_install_mode_services">Dịch vụ Aurora (Không dùng nữa)</string>
     <string name="pref_install_mode_root">Trình cài đặt root</string>
@@ -159,7 +158,6 @@
     <string name="menu_terms">Điều khoản dịch vụ</string>
     <string name="menu_license">Giấy phép</string>
     <string name="menu_disclaimer">Từ chối trách nhiệm</string>
-    <string name="installer_status_user_action">Đang chờ xác nhận của người dùng</string>
     <string name="installer_status_success">Cài đặt thành công</string>
     <string name="installer_status_failure_storage">Không đủ dung lượng bộ nhớ</string>
     <string name="installer_status_failure_invalid">APK không hợp lệ hoặc bị hỏng</string>
@@ -421,7 +419,6 @@
     <string name="details_more_target_api">Mục tiêu</string>
     <string name="details_more_content_rating">Xếp hạng nội dung</string>
     <string name="preparing_to_install">Chuẩn bị cài đặt</string>
-    <plurals name="permissions_required">
-        <item quantity="other">Cần có sự cho phép</item>
-    </plurals>
+    <string name="permission_required">Cần có sự cho phép</string>
+    <string name="permissions_required">Cần có sự cho phép</string>
 </resources>

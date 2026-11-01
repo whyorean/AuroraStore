@@ -49,12 +49,19 @@ fun UpdatesScreen(
     val ignoredUpdates by viewModel.ignoredUpdates.collectAsStateWithLifecycle()
     val downloads by viewModel.downloadsList.collectAsStateWithLifecycle()
     val fetchingUpdates by viewModel.fetchingUpdates.collectAsStateWithLifecycle()
+    val installing by viewModel.installing.collectAsStateWithLifecycle()
 
-    val updateMap = remember(updates, downloads) {
+    val updateMap = remember(updates, downloads, installing) {
         updates?.associateWith { update ->
             downloads.find {
                 it.packageName == update.packageName &&
                     it.versionCode == update.versionCode
+            }?.let {
+                if (it.isAwaitingInstall && it.packageName in installing) {
+                    it.copy(status = DownloadStatus.INSTALLING)
+                } else {
+                    it
+                }
             }
         }
     }
@@ -97,13 +104,18 @@ fun UpdatesScreen(
             }
 
             updateMap.isEmpty() && ignoredUpdates.isEmpty() -> {
-                Placeholder(
-                    modifier = Modifier.fillMaxSize(),
-                    painter = painterResource(R.drawable.ic_updates),
-                    message = stringResource(R.string.details_no_updates),
-                    actionLabel = stringResource(R.string.check_updates),
-                    onAction = { viewModel.fetchUpdates() }
-                )
+                // PullToRefreshBox only sees a pull through a scrollable child
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    item {
+                        Placeholder(
+                            modifier = Modifier.fillParentMaxSize(),
+                            painter = painterResource(R.drawable.ic_updates),
+                            message = stringResource(R.string.details_no_updates),
+                            actionLabel = stringResource(R.string.check_updates),
+                            onAction = { viewModel.fetchUpdates() }
+                        )
+                    }
+                }
             }
 
             else -> {

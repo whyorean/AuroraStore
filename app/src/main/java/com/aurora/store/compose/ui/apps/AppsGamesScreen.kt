@@ -22,8 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.aurora.gplayapi.helpers.contracts.StreamContract
-import com.aurora.gplayapi.helpers.contracts.TopChartsContract
+import com.aurora.gplayapi.api.TopChartType
+import com.aurora.gplayapi.model.ContentType
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Destination
 import com.aurora.store.util.Preferences
@@ -32,8 +32,8 @@ import com.aurora.store.viewmodel.homestream.StreamViewModel
 import com.aurora.store.viewmodel.topchart.TopChartViewModel
 import kotlinx.coroutines.launch
 
-internal fun category(pageType: Int): StreamContract.Category =
-    if (pageType == 1) StreamContract.Category.GAME else StreamContract.Category.APPLICATION
+internal fun category(pageType: Int): ContentType =
+    if (pageType == 1) ContentType.GAME else ContentType.APPLICATION
 
 private enum class AppsTab(@StringRes val titleRes: Int) {
     FOR_YOU(R.string.tab_for_you),
@@ -51,14 +51,8 @@ fun AppsGamesScreen(
 ) {
     val context = LocalContext.current
 
-    val chartType = if (pageType == 1) {
-        TopChartsContract.Type.GAME
-    } else {
-        TopChartsContract.Type.APPLICATION
-    }
-
     LaunchedEffect(Unit) {
-        topChartViewModel.getStreamCluster(chartType, TopChartsContract.Chart.TOP_SELLING_FREE)
+        topChartViewModel.getStreamCluster(category(pageType), TopChartType.TOP_SELLING_FREE)
     }
 
     val isForYouEnabled = Preferences.getBoolean(context, Preferences.PREFERENCE_FOR_YOU)
@@ -104,7 +98,7 @@ fun AppsGamesScreen(
                         streamViewModel.observeCluster(category(pageType), cluster)
                     },
                     onScrolledToEnd = {
-                        streamViewModel.observe(category(pageType), StreamContract.Type.HOME)
+                        streamViewModel.observe(category(pageType))
                     }
                 )
 

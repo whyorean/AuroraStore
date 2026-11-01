@@ -102,7 +102,6 @@
     <string name="installer_status_failure_invalid">Nederīgs vai bojāts APK</string>
     <string name="installer_status_failure_storage">Nepietiek atmiņas</string>
     <string name="installer_status_success">Sekmīgi uzstādīta</string>
-    <string name="installer_status_user_action">Gaida lietotāja apstiprinājumu</string>
     <string name="dialog_title_self_update">Pieejams jauns atjauninājums</string>
     <string name="onboarding_title_installer">Uzstādītājs</string>
     <string name="onboarding_title_permissions">Atļaujas</string>
@@ -221,7 +220,6 @@
     <string name="pref_install_mode_native">Iebūvētais uzstādītājs (novecojis)</string>
     <string name="pref_install_mode_root">Superlietotāja uzstādītājs</string>
     <string name="pref_install_mode_session">Sesijas uzstādītājs</string>
-    <string name="pref_install_mode_summary">Atlasīt APK uzstādīšanas veidu</string>
     <string name="pref_install_mode_title">Uzstādīšanas veids</string>
     <string name="update_available">atjauninājums</string>
     <string name="updates_available">atjauninājumi</string>
@@ -458,11 +456,8 @@
     <string name="action_filter_no_ads">Nav reklāmu</string>
     <string name="action_filter_no_gms">Nav Play pakalpojumu</string>
     <string name="preparing_to_install">Gatavojas uzstādīt</string>
-    <plurals name="permissions_required">
-        <item quantity="zero">Nepieciešamas atļaujas</item>
-        <item quantity="one">Nepieciešama atļauja</item>
-        <item quantity="other">Nepieciešamas atļaujas</item>
-    </plurals>
+    <string name="permission_required">Nepieciešama atļauja</string>
+    <string name="permissions_required">Nepieciešamas atļaujas</string>
     <string name="installer_microg_misconfigured">MicroG uzstādītājam neizdevās uzstādīt lietotni, visdrīzāk nepareizas konfigurācijas dēļ.</string>
     <string name="pref_install_mode_microg">MicroG uzstādītājs</string>
     <string name="microg_installer_subtitle">Nepieciešams uzstādīt microG pavadošo lietotni</string>

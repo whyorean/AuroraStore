@@ -25,10 +25,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.aurora.gplayapi.helpers.AuthHelper
+import com.aurora.gplayapi.session.TokenType
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
 import com.aurora.store.compose.navigation.Destination
@@ -58,6 +59,7 @@ fun GoogleLoginScreen(
     viewModel: AuthViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val resources = LocalResources.current
     val authState by viewModel.authState.collectAsStateWithLifecycle()
     var progress by remember { mutableFloatStateOf(0f) }
     var isIndeterminate by remember { mutableStateOf(true) }
@@ -73,27 +75,27 @@ fun GoogleLoginScreen(
                         viewModel.buildGoogleAuthData(
                             event.email,
                             event.token,
-                            AuthHelper.Token.AAS
+                            TokenType.AAS
                         )
                     }
                 } else {
-                    Toast.makeText(context, R.string.toast_aas_token_failed, Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(
+                        context,
+                        event.error ?: resources.getString(R.string.toast_aas_token_failed),
+                        Toast.LENGTH_LONG
+                    ).show()
                     onNavigateTo(if (addAccount) Destination.Accounts else Destination.Splash())
                 }
             }
         }
     }
 
-    // In add-account mode the user is already signed in (authState is Valid), so don't let the
-    // authState effect bounce to Main. Navigate back to the account screen once the add completes.
+    // In add-account mode the default session is left untouched, so don't let the authState
+    // effect bounce to Main. Navigate back to the account screen once the add completes.
     if (addAccount) {
         LaunchedEffect(Unit) {
-            viewModel.accountAdded.collect { ok ->
-                if (!ok) {
-                    Toast.makeText(context, R.string.toast_aas_token_failed, Toast.LENGTH_LONG)
-                        .show()
-                }
+            viewModel.accountAdded.collect { error ->
+                if (error != null) Toast.makeText(context, error, Toast.LENGTH_LONG).show()
                 onNavigateTo(Destination.Accounts)
             }
         }

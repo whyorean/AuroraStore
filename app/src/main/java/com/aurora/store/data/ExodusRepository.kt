@@ -9,7 +9,6 @@ import android.content.Context
 import android.util.Log
 import com.aurora.Constants
 import com.aurora.extensions.TAG
-import com.aurora.gplayapi.network.IHttpClient
 import com.aurora.store.BuildConfig
 import com.aurora.store.data.model.ExodusReport
 import com.aurora.store.data.model.ExodusTracker
@@ -26,11 +25,15 @@ import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import okhttp3.Headers.Companion.toHeaders
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.json.JSONObject
 
 @Singleton
 class ExodusRepository @Inject constructor(
-    private val httpClient: IHttpClient,
+    private val okHttpClient: OkHttpClient,
     private val json: Json,
     private val trackerDao: TrackerDao,
     @ApplicationContext private val context: Context
@@ -48,10 +51,17 @@ class ExodusRepository @Inject constructor(
             "Authorization" to "Token ${BuildConfig.EXODUS_API_KEY}"
         )
 
+    private fun get(url: String, headers: Map<String, String>): String {
+        val request = Request(url = url.toHttpUrl(), headers = headers.toHeaders())
+        return okHttpClient.newCall(request).execute().use { response ->
+            response.body.string()
+        }
+    }
+
     suspend fun fetchReports(packageName: String): List<Report> = withContext(Dispatchers.IO) {
         try {
-            val response = httpClient.get("${Constants.EXODUS_SEARCH_URL}$packageName", authHeaders)
-            parseReports(String(response.responseBytes), packageName)
+            val response = get("${Constants.EXODUS_SEARCH_URL}$packageName", authHeaders)
+            parseReports(response, packageName)
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to fetch exodus reports", exception)
             emptyList()
@@ -70,8 +80,8 @@ class ExodusRepository @Inject constructor(
         val isStale = System.currentTimeMillis() - lastSync > SYNC_INTERVAL_MS
         if (trackerDao.count() > 0 && !isStale) return@withContext
 
-        val response = httpClient.get(Constants.EXODUS_TRACKERS_URL, authHeaders)
-        val trackers = json.decodeFromString<TrackersResponse>(String(response.responseBytes))
+        val response = get(Constants.EXODUS_TRACKERS_URL, authHeaders)
+        val trackers = json.decodeFromString<TrackersResponse>(response)
             .trackers.values.map {
                 TrackerEntity(
                     id = it.id,
