@@ -2,7 +2,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="details_dev_website">تارنما</string>
     <string name="title_settings">تنظیمات</string>
-    <string name="title_language">زبان</string>
     <string name="title_apps_games">برنامه‌ها و بازی‌های من</string>
     <string name="title_apps">بَرنامہ‌ھا</string>
     <string name="title_account_manager">حساب ها</string>
@@ -272,7 +271,6 @@
     <string name="check_connectivity">بررسی اتصال اینترنت</string>
     <string name="failed_to_fetch_report">شکست در گزارش حریم خصوصی</string>
     <string name="access_denied_using_vpn">دسترسی انکار شده! آیا از VPN یا Tor استفاده می کنید؟</string>
-    <string name="app_language">زبان برنامه</string>
     <string name="server_unreachable">سرور غیرقابل دسترس</string>
     <string name="failed_generating_session">شکست در ایجاد جلسه، کد خطا: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="login_rate_limited">اوه، امتیاز شما محدود است</string>

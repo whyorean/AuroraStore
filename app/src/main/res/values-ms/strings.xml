@@ -268,7 +268,6 @@
     <string name="title_installation">Pemasangan</string>
     <string name="title_installed">Dipasang</string>
     <string name="title_installer">Pemasang apl</string>
-    <string name="title_language">Bahasa</string>
     <string name="title_library">Pustaka</string>
     <string name="title_no_network">Tiada rangkaian</string>
     <string name="title_purchase_history">Sejarah pembelian</string>
@@ -366,7 +365,6 @@
     <string name="verifying_new_session">Mengesahkan sesi baharu</string>
     <string name="failed_generating_session">Gagal menjana sesi, kod ralat: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Periksa sambungan rangkaian</string>
-    <string name="app_language">Bahasa apl</string>
     <string name="pref_ui_theme">Tema</string>
     <string name="pref_theme_style_system">Ikuti sistem</string>
     <string name="pref_theme_style_light">Terang</string>

@@ -78,6 +78,20 @@ private fun ScreenContent(onNavigateTo: (Destination) -> Unit = {}) {
             }
             item {
                 ListItem(
+                    modifier = Modifier.clickable {
+                        onNavigateTo(Destination.LanguagePreference)
+                    },
+                    leadingContent = {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_language),
+                            contentDescription = null
+                        )
+                    },
+                    headlineContent = { Text(stringResource(R.string.title_languages)) }
+                )
+            }
+            item {
+                ListItem(
                     modifier = Modifier.clickable { onNavigateTo(Destination.UIPreference) },
                     leadingContent = {
                         Icon(

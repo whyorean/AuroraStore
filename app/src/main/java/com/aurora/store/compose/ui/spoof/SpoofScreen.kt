@@ -55,7 +55,7 @@ fun SpoofScreen(onNavigateTo: (Destination) -> Unit, viewModel: SpoofViewModel =
 
 @Composable
 private fun ScreenContent(
-    pages: List<SpoofPage> = listOf(SpoofPage.DEVICE, SpoofPage.LOCALE),
+    pages: List<SpoofPage> = listOf(SpoofPage.DEVICE),
     onNavigateTo: (Destination) -> Unit = {},
     onDeviceSpoofImport: (uri: Uri) -> Unit = {},
     onDeviceSpoofExport: (uri: Uri) -> Unit = {}
@@ -135,22 +135,24 @@ private fun ScreenContent(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            SecondaryTabRow(
-                modifier = Modifier.fillMaxWidth(),
-                selectedTabIndex = pagerState.currentPage
-            ) {
-                pages.fastForEachIndexed { index, _ ->
-                    Tab(
-                        selected = pagerState.currentPage == index,
-                        onClick = {
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(index)
+            if (pages.size > 1) {
+                SecondaryTabRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    selectedTabIndex = pagerState.currentPage
+                ) {
+                    pages.fastForEachIndexed { index, _ ->
+                        Tab(
+                            selected = pagerState.currentPage == index,
+                            onClick = {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(index)
+                                }
+                            },
+                            text = {
+                                Text(text = stringResource(id = pages[index].localized))
                             }
-                        },
-                        text = {
-                            Text(text = stringResource(id = pages[index].localized))
-                        }
-                    )
+                        )
+                    }
                 }
             }
             HorizontalPager(
@@ -160,10 +162,6 @@ private fun ScreenContent(
             ) { page ->
                 when (pages[page]) {
                     SpoofPage.DEVICE -> DevicePage(
-                        onRequestNavigateToSplash = ::onRequestNavigateToSplash
-                    )
-
-                    SpoofPage.LOCALE -> LocalePage(
                         onRequestNavigateToSplash = ::onRequestNavigateToSplash
                     )
                 }

@@ -56,7 +56,6 @@
     <string name="title_games">遊戲</string>
     <string name="title_installation">安裝</string>
     <string name="title_installed">安裝咗</string>
-    <string name="title_language">咩文</string>
     <string name="title_updates">更新</string>
     <string name="title_advanced">進階</string>
     <string name="title_manual_download">手動下載</string>
@@ -197,7 +196,6 @@
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> 個更新出咗喇</string>
     <string name="exodus_substring">個已知追蹤器發現潛伏喺</string>
     <string name="exodus_powered">技術協力：Exodus 私隱</string>
-    <string name="app_language">個 App 用咩文</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> 個更新出咗喇</string>
     <string name="pref_common_extra">其他</string>
     <string name="details_ratings_title_hint">評論標題</string>

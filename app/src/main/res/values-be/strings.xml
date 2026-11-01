@@ -184,7 +184,6 @@
     <string name="notification_updates_available_1">Даступна <xliff:g id="apps_count">%1$d</xliff:g> абнаўленне</string>
     <string name="pref_updates_auto_desc">Канфігурацыя паводзін аўтаматычных абнаўленняў</string>
     <string name="pref_updates_check_frequency_desc">Сканфігурыруйце інтэрвал аўтаматычных абнаўленняў, у гадзінах.</string>
-    <string name="app_language">Мова праграмы</string>
     <string name="pref_ui_layout_tab">Выберыце прадвызначаную ўкладку</string>
     <string name="failed_apk_export">Не ўдалося экспартаваць APK</string>
     <string name="app_links_desc">Дазволіць Aurora Store адкрываць спасылкі, якія падтрымліваюцца</string>
@@ -307,7 +306,6 @@
     <string name="title_installation">Усталяванне</string>
     <string name="title_installed">Усталявана</string>
     <string name="title_installer">Усталёўшчык праграм</string>
-    <string name="title_language">Мова</string>
     <string name="error">Адбылася памылка!</string>
     <string name="menu">Меню</string>
     <string name="expand">Разгарнуць</string>

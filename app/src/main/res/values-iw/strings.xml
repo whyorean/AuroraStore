@@ -13,7 +13,6 @@
     <string name="about_bitcoin_btc">ביטקוין</string>
     <string name="title_games">משחקים</string>
     <string name="title_apps_games">היישומים והמשחקים שלי</string>
-    <string name="title_language">שפה</string>
     <string name="title_account_manager">חשבונות</string>
     <string name="account_logout">התנתקות מ־Aurora</string>
     <string name="account_login_using">התחברות לחשבון</string>
@@ -287,7 +286,6 @@
     <string name="about_bhim">BHIM - UPI</string>
     <string name="permissions_denied">ההרשאות הנדרשות נדחו. אנא אשר אותן בשביל המשך הפעולה</string>
     <string name="access_denied_using_vpn">הגישה נדחתה! האם נעשה שימוש ב־VPN או ב־Tor?</string>
-    <string name="app_language">שפת היישום</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> ו <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="purchase_session_expired">פג תוקף ההפעלה, התחבר מחדש כדי לקבל הפעלה חדשה.</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> עדכון נמצא</string>

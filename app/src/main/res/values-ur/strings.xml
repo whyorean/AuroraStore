@@ -270,7 +270,6 @@
     <string name="title_games">کھیل</string>
     <string name="title_installation">تنصیب</string>
     <string name="title_installed">انسٹال</string>
-    <string name="title_language">زبان</string>
     <string name="title_library">لائبریری</string>
     <string name="title_no_network">کوئی نیٹ ورک نہیں</string>
     <string name="title_purchase_history">تاریخ خریدیں</string>
@@ -333,7 +332,6 @@
     <string name="failed_to_generate_session">سیشن پیدا نہیں کرسکا</string>
     <string name="verifying_new_session">نئے سیشن کی تصدیق کرنا</string>
     <string name="check_connectivity">انٹرنیٹ کنیکٹیویٹی چیک کریں</string>
-    <string name="app_language">ایپ کی زبان</string>
     <string name="pref_ui_layout">لے آؤٹ</string>
     <string name="google_play_store_desc">گوگل پلے ، جسے گوگل پلے اسٹور اور سابقہ اینڈروئیڈ مارکیٹ کے نام سے بھی جانا جاتا ہے۔</string>
     <string name="android_market_desc">اینڈروئیڈ مارکیٹ ایک آن لائن اسٹور تھا جو سافٹ ویئر کی پیش کش کرتا تھا جو اینڈرائیڈ ڈیوائسز کے لئے ڈیزائن کیا گیا تھا ، جو 2017 میں ریٹائر ہوا تھا۔</string>

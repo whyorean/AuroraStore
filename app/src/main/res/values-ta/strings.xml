@@ -102,7 +102,6 @@
     <string name="title_installer">செயலி நிறுவி</string>
     <string name="title_library">நூலகம்</string>
     <string name="title_blacklist_manager">கரும்பட்டியல் நிர்வாகி</string>
-    <string name="title_language">மொழி</string>
     <string name="toast_rated_failed">மதிப்பீட்டைச் சமர்ப்பிக்க முடியவில்லை</string>
     <string name="toast_apk_blacklisted">கரும்பட்டியலிடப்பட்டது</string>
     <string name="toast_manual_unavailable">நீங்கள் கோரும் பதிப்புக் குறியீடு கிடைக்கவில்லை.</string>
@@ -263,7 +262,6 @@
     <string name="login_rate_limited">நீங்கள் விகிதம் வரையறுக்கப்பட்டவர்</string>
     <string name="failed_to_generate_session">அமர்வை உருவாக்க முடியவில்லை</string>
     <string name="check_connectivity">இணைய இணைப்பை சரிபார்க்கவும்</string>
-    <string name="app_language">பயன்பாட்டு மொழி</string>
     <string name="google_play_store_desc">கூகிள் பிளே கடை மற்றும் முன்னர் ஆண்ட்ராய்டு சந்தை என்றும் அழைக்கப்படுகிறது.</string>
     <string name="android_market_desc">ஆண்ட்ராய்டு சந்தை என்பது ஆண்ட்ராய்டு சாதனங்களுக்காக வடிவமைக்கப்பட்ட மென்பொருள் பயன்பாடுகளை வழங்கும் நிகழ்நிலை கடை ஆகும், இது 2017 இல் ஓய்வு பெற்றது.</string>
     <string name="failed_apk_export">APKS ஐ ஏற்றுமதி செய்யத் தவறிவிட்டது</string>

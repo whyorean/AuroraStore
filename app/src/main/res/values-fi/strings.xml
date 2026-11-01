@@ -83,7 +83,6 @@
     <string name="title_installed">Asennettu</string>
     <string name="title_installation">Asennus</string>
     <string name="title_library">Kirjasto</string>
-    <string name="title_language">Kieli</string>
     <string name="title_settings">Asetukset</string>
     <string name="title_purchase_history">Ostohistoria</string>
     <string name="title_no_network">Ei verkkoa</string>
@@ -274,7 +273,6 @@
     <string name="login_rate_limited">Käyttöäsi on rajoitettu</string>
     <string name="server_unreachable">Palvelimeen ei saada yhteyttä</string>
     <string name="check_connectivity">Tarkista verkkoyhteys</string>
-    <string name="app_language">Sovelluksen kieli</string>
     <string name="failed_to_generate_session">Ei voi luoda istuntoa</string>
     <string name="app_links_title">Sovelluslinkit</string>
     <string name="verifying_new_session">Vahvistetaan uutta istuntoa</string>

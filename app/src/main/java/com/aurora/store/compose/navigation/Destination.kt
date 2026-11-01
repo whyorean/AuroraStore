@@ -41,6 +41,7 @@ sealed class Destination {
 
     data object Settings : Destination()
     data object InstallationPreference : Destination()
+    data object LanguagePreference : Destination()
     data object Installer : Destination()
     data object NetworkPreference : Destination()
     data object Dispenser : Destination()

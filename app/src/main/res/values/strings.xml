@@ -253,8 +253,6 @@
     <string name="pref_filter_fdroid_title">"Filter F-Droid apps"</string>
     <string name="pref_install_delete_summary">Downloaded APKs will be deleted immediately after installation</string>
     <string name="pref_install_delete_title">"Delete APK post-install"</string>
-    <string name="pref_download_languages_title">Download all my languages</string>
-    <string name="pref_download_languages_summary">Also fetch language files for the other languages set on this device. Downloads will be larger</string>
     <string name="pref_install_mode_am">AM installer</string>
     <string name="pref_install_mode_shizuku">Shizuku installer</string>
     <string name="pref_install_mode_native">"Native installer (Deprecated)"</string>
@@ -345,7 +343,6 @@
     <string name="title_install_favourites">"Install favourites?"</string>
     <string name="install_favourites_summary">"This will download and install %1$d apps."</string>
     <string name="install_favourites_warning">"You may see a separate installation prompt for each app."</string>
-    <string name="title_language">"Language"</string>
     <string name="title_library">"Library"</string>
     <string name="title_no_network">"No network"</string>
     <string name="title_purchase_history">"Purchase history"</string>
@@ -379,6 +376,14 @@
     <string name="toast_rated_success">Rated, it may take a while to show</string>
     <string name="toast_rated_failed">Could not submit rating</string>
     <string name="permission_new">New</string>
+    <string name="title_languages">Languages</string>
+    <string name="language_selected">Your languages</string>
+    <string name="language_primary">Primary · app and Google Play language</string>
+    <string name="language_secondary">Extra language files</string>
+    <string name="language_add">Add a language</string>
+    <string name="language_remove">Remove language</string>
+    <string name="language_search_hint">Search language or region</string>
+    <string name="language_no_results">No matching language or region found</string>
     <string name="details_play_listing">On Google Play</string>
     <string name="details_top_chart">%1$s in %2$s</string>
     <string name="action_continue">Continue</string>
@@ -460,7 +465,6 @@
     <string name="verifying_new_session">Verifying new session</string>
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Check internet connectivity</string>
-    <string name="app_language">App language</string>
     <string name="pref_ui_theme">Theme</string>
     <string name="pref_ui_appearance">Appearance</string>
     <string name="pref_theme_style_system">Follow system</string>

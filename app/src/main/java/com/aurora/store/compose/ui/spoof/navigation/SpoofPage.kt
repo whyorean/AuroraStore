@@ -12,6 +12,5 @@ import com.aurora.store.R
  * Pages that are shown in SpoofScreen
  */
 enum class SpoofPage(@StringRes val localized: Int) {
-    DEVICE(R.string.title_device),
-    LOCALE(R.string.title_language)
+    DEVICE(R.string.title_device)
 }

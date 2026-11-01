@@ -134,7 +134,6 @@
     <string name="title_installation">Uzstādīšana</string>
     <string name="title_installed">Uzstādītas</string>
     <string name="title_installer">Lietotņu uzstādītājs</string>
-    <string name="title_language">Valodas</string>
     <string name="title_library">Bibliotēka</string>
     <string name="title_no_network">Nav interneta</string>
     <string name="title_purchase_history">Pirkumu vēsture</string>
@@ -274,7 +273,6 @@
     <string name="login_rate_limited">Tev ir piemērots piekļuves ierobežojums</string>
     <string name="server_unreachable">Serveris nav sasniedzams</string>
     <string name="check_connectivity">Pārbaudīt interneta savienojumu</string>
-    <string name="app_language">Lietotnes valoda</string>
     <string name="failed_to_generate_session">Neizdevās izveidot sesiju</string>
     <string name="app_links_desc">Atļaut Aurora Store atvērt atbalstītās saites</string>
     <string name="app_links_title">Lietotņu saites</string>

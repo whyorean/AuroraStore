@@ -11,7 +11,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.aurora.extensions.TAG
 import com.aurora.extensions.toast
-import com.aurora.extensions.withPlayRegion
 import com.aurora.gplayapi.android.NativeDeviceProperties
 import com.aurora.gplayapi.device.DeviceRegistry
 import com.aurora.store.R
@@ -19,7 +18,6 @@ import com.aurora.store.data.providers.SpoofProvider
 import com.aurora.store.util.PathUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.util.Locale
 import java.util.Properties
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,14 +29,7 @@ class SpoofViewModel @Inject constructor(
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
-    val defaultLocale: Locale = Locale.getDefault().withPlayRegion()
     val defaultProperties = spoofProvider.nativeDeviceProperties
-
-    private val _currentLocale = MutableStateFlow(spoofProvider.locale)
-    val currentLocale = _currentLocale.asStateFlow()
-
-    private val _availableLocales = MutableStateFlow(spoofProvider.availableSpoofLocales)
-    val availableLocales = _availableLocales.asStateFlow()
 
     private val _currentDevice = MutableStateFlow(spoofProvider.deviceProperties)
     val currentDevice = _currentDevice.asStateFlow()
@@ -53,16 +44,6 @@ class SpoofViewModel @Inject constructor(
             spoofProvider.removeSpoofDeviceProperties()
         } else {
             spoofProvider.setSpoofDeviceProperties(properties)
-        }
-    }
-
-    fun onLocaleSelected(locale: Locale) {
-        _currentLocale.value = locale
-
-        if (locale == defaultLocale) {
-            spoofProvider.removeSpoofLocale()
-        } else {
-            spoofProvider.setSpoofLocale(locale)
         }
     }
 

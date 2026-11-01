@@ -26,7 +26,6 @@
     <string name="title_purchase_history">ਖਰੀਦ ਸੂਚੀ</string>
     <string name="title_no_network">ਨੈਟਵਰਕ ਉਪਲਬੱਧ ਨਹੀਂ ਹੈ</string>
     <string name="title_library">ਲਾਇਬ੍ਰੇਰੀ</string>
-    <string name="title_language">ਭਾਸ਼ਾ</string>
     <string name="title_installer">ਐਪ ਇੰਸਟਾਲਰ</string>
     <string name="title_installed">ਇੰਸਟਾਲ ਕੀਤੇ</string>
     <string name="title_installation">ਇੰਸਟਾਲੇਸ਼ਨ</string>
@@ -274,7 +273,6 @@
     <string name="bad_request">ਅੰਦਰੂਨੀ ਗਲਤੀ! ਕਿਰਪਾ ਕਰਕੇ ਕੁਝ ਸਮੇਂ ਬਾਅਦ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ</string>
     <string name="failed_generating_session">ਸੈਸ਼ਨ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ, ਗਲਤੀ ਕੋਡ: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">ਇੰਟਰਨੈੱਟ ਕਨੈਕਟੀਵਿਟੀ ਦੀ ਜਾਂਚ ਕਰੋ</string>
-    <string name="app_language">ਐਪ ਦੀ ਭਾਸ਼ਾ</string>
     <string name="failed_to_generate_session">ਸੈਸ਼ਨ ਨਹੀਂ ਬਣਾਇਆ ਜਾ ਸਕਿਆ</string>
     <string name="app_links_title">ਐਪ ਲਿੰਕ</string>
     <string name="app_links_desc">ਔਰੋਰਾ ਸਟੋਰ ਨੂੰ ਸਮਰਥਿਤ ਲਿੰਕ ਖੋਲ੍ਹਣ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ</string>

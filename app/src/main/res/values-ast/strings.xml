@@ -19,7 +19,6 @@
     <string name="title_device">Preséu</string>
     <string name="title_games">Xuegos</string>
     <string name="title_installation">Instalación</string>
-    <string name="title_language">Llingua</string>
     <string name="title_library">Biblioteca</string>
     <string name="title_settings">Configuración</string>
     <string name="title_manual_download">Descarga manual</string>
@@ -253,7 +252,6 @@
     <string name="login_rate_limited">Oops, You are rate limited</string>
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="failed_to_fetch_report">Failed to fetch privacy report</string>
-    <string name="app_language">Llingua de l\'aplicación</string>
     <string name="failed_apk_export">Failed to export APKs</string>
     <string name="manual_download_hint">Enter version code you wish to download</string>
     <string name="source_code_subtitle">Descubri qué hai dientro</string>

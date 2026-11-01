@@ -20,7 +20,6 @@
     <string name="title_purchase_history">Köp-historik</string>
     <string name="title_no_network">Inget nätverk</string>
     <string name="title_library">Bibliotek</string>
-    <string name="title_language">Språk</string>
     <string name="title_installed">Installerade</string>
     <string name="title_installation">Installation</string>
     <string name="title_games">Spel</string>
@@ -271,7 +270,6 @@
     <string name="download_progress">Hämtar • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="onboarding_permission_notifications_desc">Skicka aviseringar gällande installationens status</string>
     <string name="access_denied_using_vpn">Åtkomsten nekades! Använder du VPN eller Tor\?</string>
-    <string name="app_language">Appens språk</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> och <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> uppdatering tillgänglig</string>
     <string name="check_connectivity">Kolla anslutbarheten mot internet</string>

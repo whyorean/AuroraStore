@@ -96,6 +96,9 @@ sealed class Screen : NavKey, Parcelable {
     data object InstallationPreference : Screen()
 
     @Serializable
+    data object LanguagePreference : Screen()
+
+    @Serializable
     data object NetworkPreference : Screen()
 
     @Serializable

@@ -16,7 +16,6 @@
     <string name="title_purchase_history">Историја куповине</string>
     <string name="title_no_network">Нема мреже</string>
     <string name="title_library">Збирка</string>
-    <string name="title_language">Језик</string>
     <string name="title_installer">Програм за инсталацију апликација</string>
     <string name="title_installed">Инсталирано</string>
     <string name="title_installation">Инсталација</string>
@@ -231,7 +230,6 @@
     <string name="title_search_results">Резултати претраге</string>
     <string name="bad_request">Интерна грешка! Покушајте поново касније</string>
     <string name="login_rate_limited">Ваш налог је ограничен</string>
-    <string name="app_language">Језик апликације</string>
     <string name="requesting_new_session">Захтевање нове сесије</string>
     <string name="action_import">Увези</string>
     <string name="download_eta_sec">Преостало: %1$d</string>
