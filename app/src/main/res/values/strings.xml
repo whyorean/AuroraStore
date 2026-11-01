@@ -370,6 +370,7 @@
     <string name="toast_page_unavailable">Browse page unavailable</string>
     <string name="toast_rated_success">Rated, it may take a while to show</string>
     <string name="toast_rated_failed">Could not submit rating</string>
+    <string name="permission_new">New</string>
     <string name="toast_beta_failed">Could not update beta enrollment</string>
     <string name="toast_beta_left">You left the beta program</string>
     <string name="toast_aas_token_failed">Could not generate AAS Token</string>

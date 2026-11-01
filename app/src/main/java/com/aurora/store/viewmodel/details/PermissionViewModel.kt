@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
 import androidx.lifecycle.ViewModel
+import com.aurora.store.util.PackageUtil
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -19,17 +20,21 @@ import kotlinx.coroutines.flow.asStateFlow
 
 @HiltViewModel(assistedFactory = PermissionViewModel.Factory::class)
 class PermissionViewModel @AssistedInject constructor(
+    @Assisted private val packageName: String,
     @Assisted private val permissions: List<String>,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     @AssistedFactory
     interface Factory {
-        fun create(permissions: List<String>): PermissionViewModel
+        fun create(packageName: String, permissions: List<String>): PermissionViewModel
     }
 
     private val _permissionsInfo = MutableStateFlow<Map<String, PermissionInfo>>(emptyMap())
     val permissionsInfo = _permissionsInfo.asStateFlow()
+
+    private val _newPermissions = MutableStateFlow<Set<String>>(emptySet())
+    val newPermissions = _newPermissions.asStateFlow()
 
     init {
         fetchPermissions()
@@ -40,6 +45,17 @@ class PermissionViewModel @AssistedInject constructor(
         _permissionsInfo.value = permissions.mapNotNull { permission ->
             getPermissionInfo(permission)?.let { info -> permission to info }
         }.toMap()
+
+        val installed = try {
+            PackageUtil.getPackageInfo(context, packageName, PackageManager.GET_PERMISSIONS)
+                .requestedPermissions
+                ?.toSet()
+        } catch (_: PackageManager.NameNotFoundException) {
+            null
+        }
+        if (installed != null) {
+            _newPermissions.value = _permissionsInfo.value.keys - installed
+        }
     }
 
     private fun getPermissionInfo(permissionName: String): PermissionInfo? = try {

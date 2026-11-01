@@ -50,6 +50,8 @@ fun Info(
     description: AnnotatedString? = null,
     painter: Painter? = null,
     titleColor: Color = Color.Unspecified,
+    titleMaxLines: Int = 1,
+    trailing: (@Composable () -> Unit)? = null,
     onClick: (() -> Unit)? = null
 ) {
     Row(
@@ -68,7 +70,7 @@ fun Info(
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodyMedium,
-                maxLines = 1,
+                maxLines = titleMaxLines,
                 overflow = TextOverflow.Ellipsis,
                 color = titleColor
             )
@@ -80,6 +82,7 @@ fun Info(
                 )
             }
         }
+        if (trailing != null) trailing()
     }
 }
 
