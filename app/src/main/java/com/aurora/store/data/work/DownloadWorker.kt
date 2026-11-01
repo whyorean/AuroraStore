@@ -52,6 +52,7 @@ import com.aurora.store.data.room.download.DownloadDao
 import com.aurora.store.module.NoAuth
 import com.aurora.store.util.BsPatch
 import com.aurora.store.util.CertUtil
+import com.aurora.store.util.FrostingVerifier
 import com.aurora.store.util.NotificationUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.PathUtil
@@ -326,6 +327,13 @@ class DownloadWorker @AssistedInject constructor(
             files.forEach { file ->
                 val path = PathUtil.getLocalFile(context, file, download).absolutePath
                 if (path !in verifiedFiles) require(verifyFile(file))
+            }
+            files.filter { it.type == AppFile.Type.BASE }.forEach { file ->
+                val result = withContext(Dispatchers.IO) {
+                    FrostingVerifier.verify(PathUtil.getLocalFile(context, file, download))
+                }
+                Log.i(TAG, "Play frosting of ${download.packageName} @ ${file.name}: $result")
+                require(result != FrostingVerifier.Result.INVALID)
             }
         } catch (exception: Exception) {
             Log.e(TAG, "Failed to verify ${download.packageName}", exception)
