@@ -54,7 +54,6 @@
     <string name="installer_status_success">Asennus onnistui</string>
     <string name="installer_status_failure_storage">Riittämätön muistitila</string>
     <string name="installer_status_failure_invalid">Virheellinen tai vioittunut APK</string>
-    <string name="installer_status_user_action">Käyttäjän vahvistusta odotetaan</string>
     <string name="menu_terms">Käyttöehdot</string>
     <string name="menu_license">Lisenssi</string>
     <string name="dialog_title_self_update">Uusi päivitys saatavilla</string>

@@ -182,7 +182,6 @@
     <string name="menu_terms">Termini di servizio</string>
     <string name="menu_license">Licenza</string>
     <string name="menu_disclaimer">Avvertenza</string>
-    <string name="installer_status_user_action">In attesa della conferma dell\'utente</string>
     <string name="installer_status_success">Installata con successo</string>
     <string name="installer_status_failure_storage">Spazio di memoria insufficiente</string>
     <string name="installer_status_failure_invalid">APK non valido o corrotto</string>

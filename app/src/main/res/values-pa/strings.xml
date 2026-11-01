@@ -95,7 +95,6 @@
     <string name="menu_terms">ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ</string>
     <string name="menu_license">ਲਾਈਸੈਂਸ</string>
     <string name="menu_disclaimer">ਬੇਦਾਅਵਾ</string>
-    <string name="installer_status_user_action">ਯੂਜ਼ਰ ਵਲੋਂ ਪੁਸ਼ਟੀ ਦੀ ਉਡੀਕ \'ਚ</string>
     <string name="installer_status_success">ਇੰਸਟਾਲੇਸ਼ਨ ਸਫਲ</string>
     <string name="installer_status_failure_storage">ਨਾਕਾਫ਼ੀ ਫੋਨ ਮੈਮੋਰੀ</string>
     <string name="installer_status_failure_invalid">APK ਪੈਕੇਜ ਖਰਾਬ ਜਾਂ ਬੇਮੇਲ</string>

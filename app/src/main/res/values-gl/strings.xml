@@ -53,7 +53,6 @@
     <string name="menu_terms">Condicións do servizo</string>
     <string name="menu_license">Licenza</string>
     <string name="menu_disclaimer">Aviso</string>
-    <string name="installer_status_user_action">A esperar pola confirmación do usuario</string>
     <string name="installer_status_success">Instalación existosa</string>
     <string name="installer_status_failure_storage">Almacenamento insuficiente</string>
     <string name="installer_status_failure_invalid">APK inválido ou corrompido</string>

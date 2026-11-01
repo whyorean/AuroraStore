@@ -399,7 +399,7 @@ class AppDetailsViewModel @Inject constructor(
         AuroraApp.events.installerEvent
             .filter { it.packageName == app.value?.packageName }
             .onEach { event ->
-                if (event is InstallerEvent.Failed) {
+                if (event is InstallerEvent.Failed && !event.cancelled) {
                     _installError.value = InstallError(event.error, event.extra)
                 }
                 _state.value = when {

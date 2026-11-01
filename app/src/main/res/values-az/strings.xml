@@ -148,7 +148,6 @@
     <string name="installer_status_failure_invalid">Etibarsız və ya nasaz APK</string>
     <string name="installer_status_success">Uğurla quraşdırıldı</string>
     <string name="installer_status_failure_storage">Çatışmayan yaddaş sahəsi</string>
-    <string name="installer_status_user_action">İstifadəçi təsdiqi gözlənilir</string>
     <string name="menu_disclaimer">İmtina etmək</string>
     <string name="menu_license">Lisenziya</string>
     <string name="menu_terms">Xidmət Şərtləri</string>

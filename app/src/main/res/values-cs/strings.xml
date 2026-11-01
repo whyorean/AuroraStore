@@ -86,7 +86,6 @@
     <string name="menu_terms">Smluvní podmínky</string>
     <string name="menu_license">Licence</string>
     <string name="menu_disclaimer">Odmítnutí odpovědnosti</string>
-    <string name="installer_status_user_action">Čeká na potvrzení uživatelem</string>
     <string name="installer_status_success">Úspěšně nainstalováno</string>
     <string name="installer_status_failure_storage">Nedostatek paměti</string>
     <string name="installer_status_failure_invalid">Neplatný nebo poškozený soubor APK</string>

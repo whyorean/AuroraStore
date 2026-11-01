@@ -558,7 +558,7 @@ private fun ScreenContentApp(
                         primaryActionDisplayName = stringResource(R.string.action_open),
                         secondaryActionDisplayName = stringResource(R.string.action_cancel),
                         isPrimaryActionEnabled = false,
-                        isSecondaryActionEnabled = false
+                        onSecondaryAction = onCancelDownload
                     )
                 }
 

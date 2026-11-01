@@ -136,7 +136,6 @@
     <string name="installer_status_failure_storage">Hapësirë e pamjaftueshme në kujtesë</string>
     <string name="installer_status_success">U instalua me sukses</string>
     <string name="device_miui_extra">Në daçi, mund të zgjidhni instaluesin e vetë pajisjes, por në këtë rast s’mund të instaloni APK-ra të paketuara (ta ndara), vendosni vetë.</string>
-    <string name="installer_status_user_action">Po pritet për ripohim nga përdoruesi</string>
     <string name="menu_disclaimer">Klauzolë</string>
     <string name="menu_license">Licencë</string>
     <string name="menu_terms">Kushte shërbimi</string>

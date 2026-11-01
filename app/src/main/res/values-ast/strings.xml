@@ -208,7 +208,6 @@
     <string name="installer_status_failure_invalid">L\'APK ye inválidu o ta toyíu</string>
     <string name="installer_status_failure_storage">Nun hai abondu espaciu na memoria</string>
     <string name="installer_status_success">Instalóse correutamente</string>
-    <string name="installer_status_user_action">Esperando pola confirmación del usuariu</string>
     <string name="menu_disclaimer">Disclaimer</string>
     <string name="menu_terms">Términos del serviciu</string>
     <string name="device_miui_title">¡Detectóse MIUI!</string>

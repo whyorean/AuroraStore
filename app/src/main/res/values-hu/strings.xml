@@ -91,7 +91,6 @@
     <string name="menu_terms">Felhasználási feltételek</string>
     <string name="menu_license">Licenc</string>
     <string name="menu_disclaimer">Közlemény</string>
-    <string name="installer_status_user_action">Várakozás felhasználói megerősítésére</string>
     <string name="installer_status_success">Sikeresen telepítve</string>
     <string name="installer_status_failure_storage">Nincs elég memória</string>
     <string name="installer_status_failure_invalid">Érvénytelen vagy sérült APK</string>

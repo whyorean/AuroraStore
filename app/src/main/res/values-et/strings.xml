@@ -177,7 +177,6 @@
     <string name="filter_review_five">Viis</string>
     <string name="installer_service_available">Aurora teenused on saadaval ja paigaldamiseks valmis.</string>
     <string name="installer_service_misconfigured">Seadista esmalt Aurora teenused ja anna kõik load.</string>
-    <string name="installer_status_user_action">Kasutaja kinnituse ootel</string>
     <string name="onboarding_title_welcome">Tere tulemast</string>
     <string name="onboarding_permission_esa">Juurdepääs välisele salvestusruumile</string>
     <string name="onboarding_permission_esa_desc">APK laiendusfailide (OBB) salvestamiseks suurte rakenduste ja mängude jaoks.</string>

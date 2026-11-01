@@ -225,6 +225,7 @@
     <string name="installer_service_misconfigured">Set up Aurora Services and grant all permissions first.</string>
     <string name="installer_microg_misconfigured">MicroG installer failed to install app, likely due to misconfiguration.</string>
     <string name="installer_status_failure">"Installer failed"</string>
+    <string name="installer_status_aborted">"Installation cancelled"</string>
     <string name="installer_status_failure_blocked">"Installation was blocked"</string>
     <string name="installer_status_failure_session">"Could not create session"</string>
     <string name="installer_status_failure_conflict">"Conflicting package exists"</string>
@@ -232,7 +233,6 @@
     <string name="installer_status_failure_invalid">"Invalid or corrupted APK"</string>
     <string name="installer_status_failure_storage">"Insufficient memory space"</string>
     <string name="installer_status_success">"Successfully installed"</string>
-    <string name="installer_status_user_action">"Waiting for user confirmation"</string>
     <string name="menu_disclaimer">"Disclaimer"</string>
     <string name="menu_license">"License"</string>
     <string name="menu_terms">"Terms of service"</string>

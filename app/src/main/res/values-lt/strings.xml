@@ -29,7 +29,6 @@
     <string name="download_queued">Eilėje</string>
     <string name="installer_status_failure_invalid">Netinkamas arba pažeistas APK paketas</string>
     <string name="installer_status_success">Sėkmingai įdiegta</string>
-    <string name="installer_status_user_action">Laukiama naudotojo patvirtinimo</string>
     <string name="menu_disclaimer">Atsakomybės ribojimas</string>
     <string name="menu_license">Licencija</string>
     <string name="menu_terms">Paslaugų teikimo sąlygos</string>

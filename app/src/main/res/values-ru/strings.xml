@@ -193,7 +193,6 @@
     <string name="device_miui_title">Обнаружен MIUI!</string>
     <string name="menu_license">Лицензия</string>
     <string name="menu_disclaimer">Отказ от ответственности</string>
-    <string name="installer_status_user_action">Ожидание подтверждения пользователя</string>
     <string name="installer_status_success">Успешно установлено</string>
     <string name="installer_status_failure_storage">Недостаточно памяти</string>
     <string name="installer_status_failure_invalid">Неправильный или поврежденный APK</string>

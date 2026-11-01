@@ -157,7 +157,6 @@
     <string name="menu_terms">Uvjeti usluge</string>
     <string name="menu_license">Licenca</string>
     <string name="menu_disclaimer">Izjava o odricanju odgovornosti</string>
-    <string name="installer_status_user_action">Čeka se potvrda korisnika</string>
     <string name="installer_status_success">Uspješno instalirano</string>
     <string name="installer_status_failure_storage">Nedovoljno memorije</string>
     <string name="installer_status_failure_invalid">Neispravna ili oštećena APK datoteka</string>

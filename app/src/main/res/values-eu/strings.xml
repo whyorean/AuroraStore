@@ -73,7 +73,6 @@
     <string name="menu_terms">Zerbitzuaren baldintzak</string>
     <string name="menu_license">Lizentzia</string>
     <string name="menu_disclaimer">Abisua</string>
-    <string name="installer_status_user_action">Erabiltzailearen konfirmazioaren zai</string>
     <string name="installer_status_success">Ondo instalatuta</string>
     <string name="installer_status_failure_storage">Es dago nahikoa memoria</string>
     <string name="installer_status_failure_invalid">APK baliogabe edo hondatuta</string>

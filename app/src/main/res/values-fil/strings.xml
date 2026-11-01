@@ -215,7 +215,6 @@
     <string name="installer_status_failure_invalid">Hindi valid o korap ang APK</string>
     <string name="installer_status_failure_storage">Onti ang space ng memory</string>
     <string name="installer_status_success">Tagumpay na nag install</string>
-    <string name="installer_status_user_action">Hinihintay ang pagkumpirma ng user</string>
     <string name="menu_disclaimer">Babala</string>
     <string name="menu_license">Lisensya</string>
     <string name="menu_terms">Termino ng serbisyo</string>

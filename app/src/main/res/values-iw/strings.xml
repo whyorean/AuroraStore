@@ -40,7 +40,6 @@
     <string name="toast_anonymous_restriction">לא זמין בחשבונות אנונימיים</string>
     <string name="account_anonymous">בעילום שם</string>
     <string name="action_search">חיפוש</string>
-    <string name="installer_status_user_action">כעת בהמתנה לאישור המשתמש/ת</string>
     <string name="installer_status_success">ההתקנה צלחה</string>
     <string name="installer_status_failure_invalid">קובץ APK פגום</string>
     <string name="installer_status_failure_incompatible">היישום אינו תואם</string>

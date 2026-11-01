@@ -24,7 +24,6 @@
     <string name="menu_terms">සේවාවේ නියම</string>
     <string name="menu_license">බලපත්‍රය</string>
     <string name="menu_disclaimer">වියාචනය</string>
-    <string name="installer_status_user_action">පරිශීලක තහවුරු කරන තෙක් රැඳෙමින්</string>
     <string name="installer_status_success">සාර්ථකව ස්ථාපනය කරන ලදි</string>
     <string name="installer_status_failure">ස්ථාපකය අසාර්ථක විය</string>
     <string name="filter_review_two">දෙක</string>

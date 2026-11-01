@@ -150,7 +150,6 @@
     <string name="menu_terms">服務條款</string>
     <string name="menu_license">授權執照</string>
     <string name="menu_disclaimer">免責聲明</string>
-    <string name="installer_status_user_action">等待用戶確認</string>
     <string name="installer_status_success">已成功安裝</string>
     <string name="installer_status_failure_storage">儲存空間不足</string>
     <string name="installer_status_failure_invalid">APK 無效或已損壞</string>

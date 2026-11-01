@@ -168,7 +168,6 @@
     <string name="installer_status_failure_session">جلسه ایجاد نشد</string>
     <string name="exodus_substring">ردیاب(های) موجود در</string>
     <string name="filter_review_positive">مثبت</string>
-    <string name="installer_status_user_action">در انتظار تایید کاربر</string>
     <string name="pref_install_delete_summary">فایل های APKs به طور پیش فرض حذف خواهند شد</string>
     <string name="exodus_view_report">مشاهده گزارش</string>
     <string name="dialog_title_self_update">بروزرسانی جدید در دسترس</string>

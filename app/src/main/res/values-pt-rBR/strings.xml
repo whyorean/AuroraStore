@@ -67,7 +67,6 @@
     <string name="menu_terms">Termos de serviço</string>
     <string name="menu_license">Licença</string>
     <string name="menu_disclaimer">Isenção de responsabilidade</string>
-    <string name="installer_status_user_action">Aguardando confirmação do usuário</string>
     <string name="installer_status_success">Instalado com sucesso</string>
     <string name="installer_status_failure_storage">Espaço de armazenamento insuficiente</string>
     <string name="installer_status_failure_invalid">APK inválido ou corrompido</string>

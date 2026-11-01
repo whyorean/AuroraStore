@@ -159,7 +159,6 @@
     <string name="menu_terms">Warunki świadczenia usługi</string>
     <string name="menu_license">Licencja</string>
     <string name="menu_disclaimer">Zrzeczenie się odpowiedzialności</string>
-    <string name="installer_status_user_action">Czekam na potwierdzenie użytkownika</string>
     <string name="installer_status_success">Zainstalowano pomyślnie</string>
     <string name="installer_status_failure_storage">Za mało pamięci</string>
     <string name="installer_status_failure_invalid">Nieprawidłowy lub uszkodzony APK</string>

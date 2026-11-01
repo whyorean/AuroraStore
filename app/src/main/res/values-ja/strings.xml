@@ -39,7 +39,6 @@
     <string name="menu_terms">利用規約</string>
     <string name="menu_license">ライセンス</string>
     <string name="menu_disclaimer">免責</string>
-    <string name="installer_status_user_action">ユーザーの確認待ち</string>
     <string name="installer_status_success">インストール成功</string>
     <string name="installer_status_failure_storage">メモリが不足しています</string>
     <string name="installer_status_failure_invalid">APK が無効か破損しています</string>

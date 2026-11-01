@@ -195,7 +195,6 @@
     <string name="menu_terms">Умови використання</string>
     <string name="menu_license">Ліцензія</string>
     <string name="menu_disclaimer">Застереження</string>
-    <string name="installer_status_user_action">Очікується підтвердження</string>
     <string name="installer_status_success">Успішно встановлено</string>
     <string name="installer_status_failure_storage">Недостатньо вільної пам\'яті</string>
     <string name="installer_status_failure_invalid">Недійсний або пошкоджений APK</string>

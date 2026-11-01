@@ -91,7 +91,6 @@
     <string name="installer_status_failure_incompatible">Несумяшчальная праграма</string>
     <string name="installer_status_failure_invalid">Памылковы або пашкоджаны APK</string>
     <string name="installer_status_failure_storage">Недастаткова месца на прыладзе</string>
-    <string name="installer_status_user_action">Чаканне пацвярджэння карыстальнікам</string>
     <string name="menu_license">Ліцэнзія</string>
     <string name="device_miui_title">Выяўлены MIUI!</string>
     <string name="device_miui_subtitle">Усталёўшчык сеанса не можа ўсталёўваць праграмы з прычыны аптымізацыі MIUI.</string>

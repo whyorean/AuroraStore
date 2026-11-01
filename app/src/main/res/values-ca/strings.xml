@@ -141,7 +141,6 @@
     <string name="installer_status_failure_incompatible">Aplicació incompatible</string>
     <string name="installer_status_failure_invalid">APK no vàlid o corrupte</string>
     <string name="installer_status_failure_storage">Espai de memòria insuficient</string>
-    <string name="installer_status_user_action">S\'està esperant la confirmació de l\'usuari</string>
     <string name="menu_disclaimer">Avís</string>
     <string name="menu_license">Llicència</string>
     <string name="menu_terms">Termes del servei</string>

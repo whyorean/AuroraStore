@@ -136,7 +136,6 @@
     <string name="menu_disclaimer">Act de renunțare</string>
     <string name="installer_service_available">Serviciile Aurora sunt disponibile și gata de instalare.</string>
     <string name="installer_service_unavailable">Instalează serviciile Aurora 1.0.9 sau o versiune mai recentă, sau modifică programul de instalare.</string>
-    <string name="installer_status_user_action">Se așteaptă confirmarea utilizatorului</string>
     <string name="installer_status_failure_session">Nu s-a putut crea sesiunea</string>
     <string name="installer_status_failure_incompatible">Aplicație incompatibilă</string>
     <string name="installer_service_misconfigured">Configurează mai întâi serviciile Aurora și acordă toate permisiunile.</string>

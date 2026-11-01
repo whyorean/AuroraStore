@@ -160,7 +160,6 @@
     <string name="installer_status_failure_conflict">முரண்பட்ட தொகுப்பு உள்ளது</string>
     <string name="installer_status_failure_incompatible">பொருந்தாத பயன்பாடு</string>
     <string name="installer_status_failure_storage">போதிய நினைவக இடம் இல்லை</string>
-    <string name="installer_status_user_action">பயனர் உறுதிப்படுத்தலுக்காகக் காத்திருக்கிறது</string>
     <string name="menu_license">உரிமம்</string>
     <string name="menu_terms">சேவை விதிமுறைகள்</string>
     <string name="device_miui_title">MIUI கண்டறியப்பட்டது!</string>

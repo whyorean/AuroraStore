@@ -102,7 +102,6 @@
     <string name="installer_status_failure_invalid">Nederīgs vai bojāts APK</string>
     <string name="installer_status_failure_storage">Nepietiek atmiņas</string>
     <string name="installer_status_success">Sekmīgi uzstādīta</string>
-    <string name="installer_status_user_action">Gaida lietotāja apstiprinājumu</string>
     <string name="dialog_title_self_update">Pieejams jauns atjauninājums</string>
     <string name="onboarding_title_installer">Uzstādītājs</string>
     <string name="onboarding_title_permissions">Atļaujas</string>

@@ -176,7 +176,6 @@
     <string name="installer_status_failure_invalid">APK tidak sah atau rosak</string>
     <string name="installer_status_failure_storage">Memori tidak mencukupi</string>
     <string name="installer_status_success">Pemasangan berjaya</string>
-    <string name="installer_status_user_action">Menunggu pengesahan pengguna</string>
     <string name="menu_disclaimer">Penafian</string>
     <string name="menu_license">Lesen</string>
     <string name="menu_terms">Terma perkhidmatan</string>

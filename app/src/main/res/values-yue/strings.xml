@@ -111,7 +111,6 @@
     <string name="download_progress">下載緊 • <xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g> • <xliff:g id="speed">%3$s</xliff:g></string>
     <string name="filter_review_one">一星</string>
     <string name="menu_disclaimer">免責聲明</string>
-    <string name="installer_status_user_action">等緊使用者確認</string>
     <string name="installer_status_failure_incompatible">個 app 唔兼容</string>
     <string name="purchase_failed">下載失敗</string>
     <string name="title_settings">設定</string>

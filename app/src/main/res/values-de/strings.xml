@@ -117,7 +117,6 @@
     <string name="menu_terms">Nutzungsbedingungen</string>
     <string name="menu_license">Lizenz</string>
     <string name="menu_disclaimer">Haftungsausschluss</string>
-    <string name="installer_status_user_action">Es wird auf eine Benutzerbestätigung gewartet</string>
     <string name="installer_status_success">Erfolgreich installiert</string>
     <string name="installer_status_failure_storage">Zu wenig Speicherplatz</string>
     <string name="installer_status_failure_invalid">Ungültige oder beschädigte APK-Datei</string>

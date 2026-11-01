@@ -79,7 +79,9 @@ abstract class BaseInstallerStatusReceiver : BroadcastReceiver() {
                 doAppropriatePrompt(context, intent, sessionId)
             } else {
                 AuroraApp.enqueuedInstalls.remove(packageName)
-                notifyUser(context, packageName, displayName, status)
+                if (status != PackageInstaller.STATUS_FAILURE_ABORTED) {
+                    notifyUser(context, packageName, displayName, status)
+                }
 
                 postStatus(status, packageName, extra, context)
             }
@@ -167,7 +169,8 @@ abstract class BaseInstallerStatusReceiver : BroadcastReceiver() {
             else -> InstallerEvent.Failed(
                 packageName = packageName,
                 error = InstallerBase.getErrorString(context, status),
-                extra = extra
+                extra = extra,
+                cancelled = status == PackageInstaller.STATUS_FAILURE_ABORTED
             )
         }
 

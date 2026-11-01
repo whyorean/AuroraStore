@@ -194,7 +194,6 @@
     <string name="menu_terms">服务条款</string>
     <string name="menu_license">许可证</string>
     <string name="menu_disclaimer">免责声明</string>
-    <string name="installer_status_user_action">正等待用户确认</string>
     <string name="installer_status_success">安装成功</string>
     <string name="installer_status_failure_storage">存储空间不足</string>
     <string name="installer_status_failure_invalid">无效或损坏的 APK</string>

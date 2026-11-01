@@ -16,7 +16,6 @@
     <string name="installer_status_failure_conflict">Conflit avec les paquets existants</string>
     <string name="installer_status_success">Installation réussie</string>
     <string name="menu_disclaimer">Avis</string>
-    <string name="installer_status_user_action">Attente de la confirmation de l’utilisateur</string>
     <string name="device_miui_title">MIUI a été détecté !</string>
     <string name="menu_terms">Conditions générales d’utilisation</string>
     <string name="menu_license">Licence</string>

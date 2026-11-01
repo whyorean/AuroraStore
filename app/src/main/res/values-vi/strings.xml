@@ -158,7 +158,6 @@
     <string name="menu_terms">Điều khoản dịch vụ</string>
     <string name="menu_license">Giấy phép</string>
     <string name="menu_disclaimer">Từ chối trách nhiệm</string>
-    <string name="installer_status_user_action">Đang chờ xác nhận của người dùng</string>
     <string name="installer_status_success">Cài đặt thành công</string>
     <string name="installer_status_failure_storage">Không đủ dung lượng bộ nhớ</string>
     <string name="installer_status_failure_invalid">APK không hợp lệ hoặc bị hỏng</string>

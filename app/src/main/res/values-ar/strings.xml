@@ -165,7 +165,6 @@
     <string name="toast_spoof_applied">تم تطبيق المحاكاة التحايلية للجهاز .</string>
     <string name="title_apps_games">تطبيقاتي وألعابي</string>
     <string name="purchase_no_file">تعذر الحصول على الملفات</string>
-    <string name="installer_status_user_action">في انتظار تأكيد المستخدم</string>
     <string name="installer_status_failure_invalid">حزمة APK غير صالحة أو تالفة</string>
     <string name="action_export">صدِّر</string>
     <string name="action_disable">عطّل</string>

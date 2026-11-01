@@ -174,7 +174,6 @@
     <string name="download_eta_calculating">Výpočitávam</string>
     <string name="download_pause_all">Pozastaviť všetko</string>
     <string name="download_paused">Pozastavené •.<xliff:g id="completed_downloads">%1$d</xliff:g> / <xliff:g id="all_downloads">%2$d</xliff:g></string>
-    <string name="installer_status_user_action">Čaká sa na potvrdenie používateľa</string>
     <string name="menu_license">Licencia</string>
     <string name="onboarding_welcome_select">Ako sa máš?</string>
     <string name="onboarding_permission_select">Aurora Store vyžaduje nasledujúce povolenia</string>

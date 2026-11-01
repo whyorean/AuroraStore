@@ -73,7 +73,6 @@
     <string name="menu_terms">Услови коришћења</string>
     <string name="menu_license">Лиценца</string>
     <string name="menu_disclaimer">Изјава о одрицању одговорности</string>
-    <string name="installer_status_user_action">Чека се потврда корисника</string>
     <string name="installer_status_success">Успешно инсталирано</string>
     <string name="installer_status_failure_storage">Недовољно меморијског простора</string>
     <string name="installer_status_failure_invalid">Неважећи или оштећени APK</string>

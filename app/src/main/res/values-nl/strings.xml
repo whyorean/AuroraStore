@@ -106,7 +106,6 @@
     <string name="menu_terms">Servicevoorwaarden</string>
     <string name="menu_license">Licentie</string>
     <string name="menu_disclaimer">Waarschuwing</string>
-    <string name="installer_status_user_action">Wachten op gebruikersbevestiging</string>
     <string name="installer_status_success">Succesvol geïnstalleerd</string>
     <string name="installer_status_failure_storage">Onvoldoende opslagruimte</string>
     <string name="installer_status_failure_invalid">Ongeldig of beschadigde APK</string>

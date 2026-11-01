@@ -113,7 +113,6 @@
     <string name="menu_terms">Hizmet koşulları</string>
     <string name="menu_license">Lisans</string>
     <string name="menu_disclaimer">Sorumluluk reddi</string>
-    <string name="installer_status_user_action">Kullanıcı onayı bekleniyor</string>
     <string name="installer_status_success">Başarıyla kuruldu</string>
     <string name="installer_status_failure_storage">Yetersiz bellek alanı</string>
     <string name="installer_status_failure_invalid">Geçersiz veya bozuk APK</string>

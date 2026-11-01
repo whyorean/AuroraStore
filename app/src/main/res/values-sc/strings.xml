@@ -217,7 +217,6 @@
     <string name="installer_status_failure_invalid">APK non vàlidu o corrùmpidu</string>
     <string name="installer_status_failure_storage">Tretu in memòria chi non bastat</string>
     <string name="installer_status_success">Installatzione resèssida</string>
-    <string name="installer_status_user_action">Isetende pro sa cunfirma de s\'impreadore</string>
     <string name="menu_disclaimer">Avisu</string>
     <string name="menu_license">Lissèntzia</string>
     <string name="menu_terms">Tèrmines de impreu</string>
