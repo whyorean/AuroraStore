@@ -379,6 +379,10 @@
     <string name="toast_rated_success">Rated, it may take a while to show</string>
     <string name="toast_rated_failed">Could not submit rating</string>
     <string name="permission_new">New</string>
+    <string name="action_continue">Continue</string>
+    <string name="app_links_owned_title">Play links open in %1$s</string>
+    <string name="app_links_owned_desc">Android won\'t let Aurora Store take over links %1$s has verified. Turn off \"Open supported links\" for it first, then grant this to Aurora Store.</string>
+    <string name="app_links_owned_open">Open settings</string>
     <string name="review_developer_reply">Response from the developer</string>
     <string name="permission_group_system">Android system</string>
     <string name="permission_group_google">Google</string>
