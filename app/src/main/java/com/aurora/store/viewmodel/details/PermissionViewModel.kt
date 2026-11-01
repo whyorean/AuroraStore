@@ -46,16 +46,11 @@ class PermissionViewModel @AssistedInject constructor(
             getPermissionInfo(permission)?.let { info -> permission to info }
         }.toMap()
 
-        val installed = try {
-            PackageUtil.getPackageInfo(context, packageName, PackageManager.GET_PERMISSIONS)
-                .requestedPermissions
-                ?.toSet()
-        } catch (_: PackageManager.NameNotFoundException) {
-            null
-        }
-        if (installed != null) {
-            _newPermissions.value = _permissionsInfo.value.keys - installed
-        }
+        _newPermissions.value = PackageUtil.getNewPermissions(
+            context,
+            packageName,
+            _permissionsInfo.value.keys.toList()
+        ).toSet()
     }
 
     private fun getPermissionInfo(permissionName: String): PermissionInfo? = try {

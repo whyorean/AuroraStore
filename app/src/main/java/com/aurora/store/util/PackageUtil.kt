@@ -302,6 +302,22 @@ object PackageUtil {
             .loadLabel(context.packageManager).toString()
     }.getOrNull()
 
+    fun getNewPermissions(
+        context: Context,
+        packageName: String,
+        permissions: List<String>
+    ): List<String> {
+        val installed = try {
+            getPackageInfo(context, packageName, PackageManager.GET_PERMISSIONS)
+                .requestedPermissions
+                ?.toSet()
+                ?: emptySet()
+        } catch (_: Exception) {
+            return emptyList()
+        }
+        return permissions.filterNot { it in installed }
+    }
+
     @Throws(Exception::class)
     fun getPackageInfo(context: Context, packageName: String, flags: Int = 0): PackageInfo =
         if (isTAndAbove) {

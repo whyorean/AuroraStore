@@ -276,6 +276,8 @@
     <string name="pref_updates_incompatible_desc">"Display updates for incompatible or disabled apps that may fail to install."</string>
     <string name="pref_updates_warn_trackers">"Warn about new trackers in app updates"</string>
     <string name="pref_updates_warn_trackers_desc">"Show a warning before updating when the new version adds trackers that were not in the installed version"</string>
+    <string name="pref_updates_warn_permissions">"Warn about new permissions in app updates"</string>
+    <string name="pref_updates_warn_permissions_desc">"Show a warning before updating when the new version requests permissions that were not in the installed version"</string>
     <string name="pref_self_update">"Self-update"</string>
     <string name="pref_self_update_desc">"Offer new Aurora Store builds in the Updates tab."</string>
     <string name="pref_aurora_only">"Filter apps from other sources."</string>
@@ -316,6 +318,12 @@
     <string name="tab_trending">"Trending"</string>
     <string name="tracker_warning_title">New trackers detected</string>
     <string name="tracker_warning_desc">This update adds trackers that weren\'t in the installed version:</string>
+    <string name="permission_warning_title">New permissions requested</string>
+    <string name="permission_warning_desc">This update requests permissions the installed version doesn\'t have:</string>
+    <plurals name="updates_skipped_new_permissions">
+        <item quantity="one">Skipped %1$d update that requests new permissions</item>
+        <item quantity="other">Skipped %1$d updates that request new permissions</item>
+    </plurals>
     <string name="title_about">About</string>
     <string name="title_account_manager">"Accounts"</string>
     <string name="title_apps">"Apps"</string>

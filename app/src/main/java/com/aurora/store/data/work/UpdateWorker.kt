@@ -99,6 +99,13 @@ class UpdateWorker @AssistedInject constructor(
     private val isAuroraOnlyFilterEnabled: Boolean
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_AURORA_ONLY, false)
 
+    private val isWarnPermissionsEnabled: Boolean
+        get() = Preferences.getBoolean(
+            context,
+            Preferences.PREFERENCE_UPDATES_WARN_PERMISSIONS,
+            false
+        )
+
     private val isFDroidFilterEnabled: Boolean
         get() = Preferences.getBoolean(context, Preferences.PREFERENCE_FILTER_FDROID)
 
@@ -176,7 +183,8 @@ class UpdateWorker @AssistedInject constructor(
                 .filter { it.hasValidCert }
                 .filterNot { it.isSelfUpdate(context) }
                 .partition {
-                    AppInstaller.canInstallSilently(context, it.packageName, it.targetSdk)
+                    AppInstaller.canInstallSilently(context, it.packageName, it.targetSdk) &&
+                        !(isWarnPermissionsEnabled && it.newPermissions.isNotEmpty())
                 }
 
             // Notify about apps that cannot be auto-updated

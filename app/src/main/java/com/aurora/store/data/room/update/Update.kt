@@ -47,7 +47,8 @@ data class Update(
      * What updating is expected to download, from [estimateDownloadSize]. `0` when Play sent no
      * file sizes; [size] stays the full install size for storage checks.
      */
-    val downloadSize: Long = 0
+    val downloadSize: Long = 0,
+    val newPermissions: List<String> = emptyList()
 ) : Parcelable {
 
     companion object {
@@ -74,7 +75,8 @@ data class Update(
                     app.fileList,
                     installedVersionCode(context, app.packageName),
                     certificateHashes.isNotEmpty()
-                ) + estimateLibrariesSize(context, app.dependencies.dependentLibraries)
+                ) + estimateLibrariesSize(context, app.dependencies.dependentLibraries),
+                PackageUtil.getNewPermissions(context, app.packageName, app.permissions)
             )
         }
 

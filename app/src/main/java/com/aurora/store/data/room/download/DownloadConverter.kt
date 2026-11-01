@@ -29,4 +29,10 @@ class DownloadConverter @Inject constructor(private val json: Json) {
 
     @TypeConverter
     fun fromGPlayFileList(list: List<AppFile>): String = json.encodeToString(list)
+
+    @TypeConverter
+    fun toStringList(string: String): List<String> = json.decodeFromString<List<String>>(string)
+
+    @TypeConverter
+    fun fromStringList(list: List<String>): String = json.encodeToString(list)
 }

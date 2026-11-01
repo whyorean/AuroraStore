@@ -70,6 +70,7 @@ import com.aurora.store.R
 import com.aurora.store.compose.composable.ClusterRow
 import com.aurora.store.compose.composable.ContainedLoadingIndicator
 import com.aurora.store.compose.composable.InsufficientStorageDialog
+import com.aurora.store.compose.composable.PermissionUpdateWarningDialog
 import com.aurora.store.compose.composable.Placeholder
 import com.aurora.store.compose.composable.ScrollHint
 import com.aurora.store.compose.composable.SectionHeader
@@ -114,6 +115,7 @@ import com.aurora.store.data.room.account.Account
 import com.aurora.store.util.FlavouredUtil
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
+import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_WARN_PERMISSIONS
 import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_WARN_TRACKERS
 import com.aurora.store.util.ShortcutManagerUtil
 import com.aurora.store.util.StorageUtil
@@ -384,6 +386,10 @@ private fun ScreenContentApp(
         Preferences.getBoolean(context, PREFERENCE_UPDATES_WARN_TRACKERS, false)
     }
     var trackerWarning by remember { mutableStateOf<List<ExodusTracker>?>(null) }
+    val warnPermissions = remember {
+        Preferences.getBoolean(context, PREFERENCE_UPDATES_WARN_PERMISSIONS, false)
+    }
+    var permissionWarning by remember { mutableStateOf<List<String>?>(null) }
     var isChecking by remember { mutableStateOf(false) }
     var checkJob by remember { mutableStateOf<Job?>(null) }
 
@@ -457,7 +463,7 @@ private fun ScreenContentApp(
         isChecking = false
     }
 
-    fun onUpdateClicked() {
+    fun checkTrackersThenInstall() {
         if (!warnTrackers) {
             onInstall()
             return
@@ -473,6 +479,30 @@ private fun ScreenContentApp(
                 trackerWarning = trackers
             }
         }
+    }
+
+    fun onUpdateClicked() {
+        val newPermissions = if (warnPermissions) {
+            PackageUtil.getNewPermissions(context, app.packageName, app.permissions)
+        } else {
+            emptyList()
+        }
+        if (newPermissions.isEmpty()) {
+            checkTrackersThenInstall()
+        } else {
+            permissionWarning = newPermissions
+        }
+    }
+
+    permissionWarning?.let { permissions ->
+        PermissionUpdateWarningDialog(
+            permissions = permissions,
+            onConfirm = {
+                permissionWarning = null
+                checkTrackersThenInstall()
+            },
+            onDismiss = { permissionWarning = null }
+        )
     }
 
     trackerWarning?.let { trackers ->
