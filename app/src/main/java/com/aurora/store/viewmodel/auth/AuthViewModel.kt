@@ -5,6 +5,7 @@
 
 package com.aurora.store.viewmodel.auth
 
+import android.app.Activity
 import android.content.Context
 import android.util.Log
 import androidx.annotation.StringRes
@@ -21,6 +22,7 @@ import com.aurora.store.data.model.AccountType
 import com.aurora.store.data.model.AuthState
 import com.aurora.store.data.providers.AccountProvider
 import com.aurora.store.data.providers.AuthProvider
+import com.aurora.store.data.providers.GoogleAccountTokenProvider
 import com.aurora.store.util.AC2DMTask
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
@@ -43,7 +45,8 @@ import kotlinx.coroutines.launch
 class AuthViewModel @Inject constructor(
     val authProvider: AuthProvider,
     @ApplicationContext private val context: Context,
-    private val aC2DMTask: AC2DMTask
+    private val aC2DMTask: AC2DMTask,
+    private val tokenProvider: GoogleAccountTokenProvider
 ) : ViewModel() {
 
     private val _authState: MutableStateFlow<AuthState> = MutableStateFlow(AuthState.Init)
@@ -62,6 +65,25 @@ class AuthViewModel @Inject constructor(
         updateAuthState()
         viewModelScope.launch {
             authProvider.sessionRejections.drop(1).collect { updateAuthState() }
+        }
+    }
+
+    fun buildMicroGAuthData(
+        email: String,
+        oldToken: String?,
+        activity: Activity?,
+        onError: () -> Unit
+    ) {
+        viewModelScope.launch {
+            try {
+                val token = tokenProvider.fetchAuthToken(email, oldToken, activity)
+                buildGoogleAuthData(email, token, TokenType.AUTH)
+            } catch (exception: Exception) {
+                Log.e(TAG, "Failed to get authToken for Google login", exception)
+                _authState.value =
+                    AuthState.Failed(context.getString(R.string.failed_to_generate_session))
+                onError()
+            }
         }
     }
 
