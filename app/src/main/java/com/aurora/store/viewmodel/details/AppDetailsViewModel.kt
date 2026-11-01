@@ -17,11 +17,15 @@ import com.aurora.extensions.requiresGMS
 import com.aurora.extensions.toast
 import com.aurora.gplayapi.PlayClient
 import com.aurora.gplayapi.PlayException
+import com.aurora.gplayapi.api.TopChartType
 import com.aurora.gplayapi.model.App
+import com.aurora.gplayapi.model.Category
+import com.aurora.gplayapi.model.ContentType
 import com.aurora.gplayapi.model.DataSafetyReport
 import com.aurora.gplayapi.model.Review
 import com.aurora.gplayapi.model.StreamBundle
 import com.aurora.gplayapi.model.StreamCluster
+import com.aurora.gplayapi.model.TopChart
 import com.aurora.gplayapi.session.Capability
 import com.aurora.gplayapi.web.WebPlayClient
 import com.aurora.store.AuroraApp
@@ -51,6 +55,7 @@ import com.aurora.store.util.Preferences.PREFERENCE_UPDATES_EXTENDED
 import com.aurora.store.util.StorageUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -69,6 +74,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
@@ -119,6 +125,9 @@ class AppDetailsViewModel @Inject constructor(
     // One-shot signal carrying whether the latest review submission succeeded
     private val _reviewPosted = MutableSharedFlow<Boolean>(extraBufferCapacity = 1)
     val reviewPosted = _reviewPosted.asSharedFlow()
+
+    private val _categoryIconUrl = MutableStateFlow<String?>(null)
+    val categoryIconUrl = _categoryIconUrl.asStateFlow()
 
     private val _dataSafetyReport = MutableStateFlow<DataSafetyReport?>(null)
     val dataSafetyReport = _dataSafetyReport.asStateFlow()
@@ -259,9 +268,33 @@ class AppDetailsViewModel @Inject constructor(
                 fetchUserAppReview(app.value!!)
             }
             fetchDataSafetyReport(packageName)
+            fetchCategoryIcon(app.value!!.categoryStreamUrl.orEmpty())
             fetchSuggestions()
             fetchExodusPrivacyReport(packageName)
             if (app.value!!.requiresGMS()) fetchPlexusReport(packageName)
+        }
+    }
+
+    suspend fun topChartCluster(chart: TopChart, title: String): StreamCluster? {
+        val type = TopChartType.entries.firstOrNull { it.value == chart.chartId } ?: return null
+        return withContext(Dispatchers.IO) {
+            runCatching { webPlayClient.charts.cluster(chart.category, type) }
+                .onFailure { Log.e(TAG, "Failed to fetch top chart", it) }
+                .getOrNull()
+                ?.takeIf { it.apps.isNotEmpty() }
+                ?.copy(title = title)
+        }
+    }
+
+    private fun fetchCategoryIcon(browseUrl: String) {
+        if (browseUrl.isBlank()) return
+        viewModelScope.launch(Dispatchers.IO) {
+            _categoryIconUrl.value = ContentType.entries.firstNotNullOfOrNull { type ->
+                val categories = categoryCache.getOrPut(type) {
+                    runCatching { playClient.categories.all(type) }.getOrDefault(emptyList())
+                }
+                categories.firstOrNull { it.browseUrl == browseUrl }?.imageUrl
+            }
         }
     }
 
@@ -576,5 +609,9 @@ class AppDetailsViewModel @Inject constructor(
             response.body.string()
         }
         return json.decodeFromString<PlexusReport>(body)
+    }
+
+    private companion object {
+        val categoryCache = ConcurrentHashMap<ContentType, List<Category>>()
     }
 }

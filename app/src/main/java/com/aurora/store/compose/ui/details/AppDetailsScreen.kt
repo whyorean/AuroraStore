@@ -65,6 +65,7 @@ import com.aurora.gplayapi.model.DataSafetyReport
 import com.aurora.gplayapi.model.Review
 import com.aurora.gplayapi.model.StreamBundle
 import com.aurora.gplayapi.model.StreamCluster
+import com.aurora.gplayapi.model.TopChart
 import com.aurora.store.ComposeActivity
 import com.aurora.store.R
 import com.aurora.store.compose.composable.ClusterRow
@@ -90,6 +91,7 @@ import com.aurora.store.compose.ui.details.composable.Compatibility
 import com.aurora.store.compose.ui.details.composable.DataSafety
 import com.aurora.store.compose.ui.details.composable.Details
 import com.aurora.store.compose.ui.details.composable.DeveloperDetails
+import com.aurora.store.compose.ui.details.composable.PlayListing
 import com.aurora.store.compose.ui.details.composable.Privacy
 import com.aurora.store.compose.ui.details.composable.RatingAndReviews
 import com.aurora.store.compose.ui.details.composable.Screenshots
@@ -140,6 +142,7 @@ fun AppDetailsScreen(
     val favorite by viewModel.favourite.collectAsStateWithLifecycle()
     val exodusReport by viewModel.exodusReport.collectAsStateWithLifecycle()
     val dataSafetyReport by viewModel.dataSafetyReport.collectAsStateWithLifecycle()
+    val categoryIconUrl by viewModel.categoryIconUrl.collectAsStateWithLifecycle()
     val plexusScores by viewModel.plexusScores.collectAsStateWithLifecycle()
     val installError by viewModel.installError.collectAsStateWithLifecycle()
     val suggestionsBundle by viewModel.suggestionsBundle.collectAsStateWithLifecycle()
@@ -208,6 +211,7 @@ fun AppDetailsScreen(
                     state = currentState,
                     plexusScores = plexusScores,
                     dataSafetyReport = dataSafetyReport,
+                    categoryIconUrl = categoryIconUrl,
                     exodusReport = exodusReport,
                     onNavigateTo = onNavigateTo,
                     onLoadMoreCluster = { cluster -> viewModel.loadMoreCluster(cluster) },
@@ -247,6 +251,7 @@ fun AppDetailsScreen(
                     onCheckNewTrackers = { pkg, installedVc ->
                         viewModel.getNewTrackers(pkg, installedVc)
                     },
+                    onFetchTopChart = viewModel::topChartCluster,
                     onForceRestart = {
                         val intent = Intent(context, ComposeActivity::class.java)
                             .putExtra("packageName", packageName)
@@ -327,6 +332,7 @@ private fun ScreenContentApp(
     state: AppState = AppState.Unavailable,
     plexusScores: Scores? = null,
     dataSafetyReport: DataSafetyReport? = null,
+    categoryIconUrl: String? = null,
     exodusReport: Report? = null,
     onNavigateTo: (Destination) -> Unit = {},
     onLoadMoreCluster: (cluster: StreamCluster) -> Unit = {},
@@ -344,6 +350,7 @@ private fun ScreenContentApp(
     onDeleteReview: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2(),
     forceSinglePane: Boolean = false,
+    onFetchTopChart: suspend (chart: TopChart, title: String) -> StreamCluster? = { _, _ -> null },
     onCheckNewTrackers: suspend (
         packageName: String,
         installedVersionCode: Long
@@ -378,6 +385,17 @@ private fun ScreenContentApp(
         scaffoldNavigator.currentDestination?.contentKey is ExtraScreen.Screenshot
     LaunchedEffect(showsScreenshot) { if (!showsScreenshot) isScreenshotOpen = false }
     val coroutineScope = rememberCoroutineScope()
+
+    fun onTopChartClick(chart: TopChart, title: String) {
+        coroutineScope.launch {
+            val cluster = onFetchTopChart(chart, title)
+            if (cluster != null) {
+                onNavigateTo(Destination.StreamBrowse(cluster))
+            } else {
+                context.toast(R.string.no_apps_available)
+            }
+        }
+    }
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
     var showRestartDialog by remember { mutableStateOf(false) }
@@ -693,6 +711,18 @@ private fun ScreenContentApp(
 
                     item {
                         Tags(app = app)
+                    }
+
+                    item {
+                        PlayListing(
+                            app = app,
+                            categoryIconUrl = categoryIconUrl,
+                            onCategoryClick = { onNavigateTo(Destination.CategoryBrowse(it)) },
+                            onTopChartClick = ::onTopChartClick,
+                            onBrowse = { title, browseUrl ->
+                                onNavigateTo(Destination.ExpandedStreamBrowse(title, browseUrl))
+                            }
+                        )
                     }
 
                     item {
