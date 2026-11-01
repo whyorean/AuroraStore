@@ -84,7 +84,9 @@ fun AppUpdateItem(
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = update.developerName,
+                text = listOf(update.developerName, update.updatedOn)
+                    .filter { it.isNotBlank() }
+                    .joinToString("  •  "),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1,
