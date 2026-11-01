@@ -355,7 +355,7 @@ class AuthProvider @Inject constructor(
                             account.authToken,
                             activity
                         )
-                        buildGoogleAuthData(account.email, token, TokenType.AAS).getOrThrow()
+                        buildGoogleAuthData(account.email, token, TokenType.AUTH).getOrThrow()
                     }
                 }
             }
