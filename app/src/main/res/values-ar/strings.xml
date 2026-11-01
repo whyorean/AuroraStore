@@ -650,4 +650,22 @@
     <string name="manual_download_no_versions">لم يُعثر على أي إصدارات معروفة</string>
     <string name="manual_download_availability_warning">قد تكون بعض الإصدارات غير متاحة للتنزيل أو غير متوافقة مع جهازك.</string>
     <string name="details_more_certificate_hash">تجزئة الشهادة</string>
+    <string name="action_free_up_space">فرغ بعض المساحة</string>
+    <string name="installer_provider">%1$s · مقدم من %2$s</string>
+    <string name="insufficient_storage_title">المساحة غير كافية</string>
+    <string name="insufficient_storage_desc">يحتاج %1$s إلى %2$s، لكن %3$s هو المتاح فقط.</string>
+    <string name="insufficient_storage_hint">أفرغ مساحة تبلغ %1$s ثم حاول مرة أخرى.</string>
+    <string name="status_awaiting_install">في انتظار التأكيد</string>
+    <string name="notification_install_prompt_pending">انقر لإنهاء التثبيت</string>
+    <string name="notification_none">لا يوجد شيء يستحق المشاهدة هنا</string>
+    <string name="details_more_files">الملفات</string>
+    <string name="download_sort_date_downloaded">البيانات المُنزلة</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="zero">يحتاج %1$d إلى %2$s، لكن المتاح هو %3$s فقط.</item>
+        <item quantity="one">يحتاج تطبيق واحد إلى %2$s، لكن المتاح هو %3$s فقط.</item>
+        <item quantity="two">يحتاج تطبيقان إلى %2$s، لكن المتاح هو %3$s فقط.</item>
+        <item quantity="few">تحتاج %1$d تطبيقات إلى %2$s، لكن المتاح هو %3$s فقط.</item>
+        <item quantity="many">تحتاج %1$d تطبيقًا إلى %2$s، لكن المتاح هو %3$s فقط.</item>
+        <item quantity="other">تحتاج %1$d تطبيق إلى %2$s، لكن المتاح هو %3$s فقط.</item>
+    </plurals>
 </resources>

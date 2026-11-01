@@ -482,7 +482,7 @@
     <string name="action_ignore_all">Ignoruj wszystkie aktualizacje</string>
     <string name="updates_app_details">Szczegóły</string>
     <string name="updates_ignored_header">Ignorowane</string>
-    <string name="updates_ignored_desc">Te aktualizacje są ukryte, dopóki ich nie przestaniesz ignorować</string>
+    <string name="updates_ignored_desc">Te aktualizacje są ukryte, dopóki nie przestaniesz ich ignorować</string>
     <string name="action_ignore_version">Pomiń wersję <xliff:g id="version_name">%1$s</xliff:g></string>
     <string name="action_unignore">Nie ignoruj</string>
     <string name="pref_updates_check_frequency_3h">Co 3 godziny</string>

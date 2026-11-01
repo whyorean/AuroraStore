@@ -48,9 +48,9 @@
     <string name="installer_status_failure_session">セッションを作成できませんでした</string>
     <string name="installer_status_failure_blocked">インストールがブロックされました</string>
     <string name="installer_status_failure">インストーラー失敗</string>
-    <string name="installer_service_misconfigured">Aurora Services をセットアップし、すべての権限を許可してください。</string>
+    <string name="installer_service_misconfigured">Aurora Servicesをセットアップし、すべての権限を許可してください。</string>
     <string name="installer_service_unavailable">Aurora Services 1.0.9以上をインストールするか、インストーラーを変更してください。</string>
-    <string name="installer_service_available">Aurora Services が使用可能でインストール準備ができました。</string>
+    <string name="installer_service_available">Aurora Servicesのインストール準備ができています。</string>
     <string name="installer_root_unavailable">Root 権限がありません。権限を与えるかインストーラーを変更してください。</string>
     <string name="filter_review_two">2つ星</string>
     <string name="filter_review_three">3つ星</string>
@@ -150,7 +150,7 @@
     <string name="account_logout">Aurora からログアウトする</string>
     <string name="title_device">デバイス</string>
     <string name="onboarding_permission_esa_desc">大容量アプリやゲームの APK 拡張ファイル (OBB) を保存します。</string>
-    <string name="toast_purchase_blocked">匿名アカウントではアプリ購入はできません。</string>
+    <string name="toast_purchase_blocked">匿名アカウントではアプリ購入ができません。</string>
     <string name="toast_spoof_applied">デバイス偽装を適用しました。</string>
     <string name="toast_permission_granted">承認済み</string>
     <string name="toast_developer_setting_failed">デバイス設定で開発者設定を有効化してください。</string>
@@ -202,7 +202,7 @@
     <string name="pref_install_delete_title">インストール後に APK を削除</string>
     <string name="pref_install_delete_summary">ダウンロードしたAPKをインストール後すぐに削除</string>
     <string name="pref_filter_fdroid_title">F-Droid アプリを除外</string>
-    <string name="pref_filter_fdroid_summary">アップデートとインストール済みアプリで F-Droid アプリを無視する</string>
+    <string name="pref_filter_fdroid_summary">F-Droidからインストールしたアプリのアップデートを無視する</string>
     <string name="onboarding_permission_installer_desc">Aurora Store からのアプリのインストールを許可</string>
     <string name="onboarding_permission_installer">インストーラー権限</string>
     <string name="onboarding_permission_esm">外部ストレージマネージャー</string>
@@ -249,7 +249,7 @@
     <string name="session_scrapped">セッションを破棄しました</string>
     <string name="session_verifying">セッションを認証中</string>
     <string name="title_advanced">高度な設定</string>
-    <string name="session_good">おお！すべて順調。</string>
+    <string name="session_good">すべて順調。</string>
     <string name="error">エラーが発生しました！</string>
     <string name="menu">メニュー</string>
     <string name="expand">展開する</string>
@@ -261,7 +261,7 @@
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g> 及び <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g> と <xliff:g id="app_two_name">%2$s</xliff:g> ､ <xliff:g id="app_three_name">%3$s</xliff:g> 及び <xliff:g id="apps_count">%4$d</xliff:g> 個のアプリ</string>
     <string name="action_import">インポート</string>
-    <string name="notification_channel_updates">通知の更新</string>
+    <string name="notification_channel_updates">更新の通知</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g>個の更新があります</string>
     <string name="notification_updates_available_desc_1">新しいバージョンがあります: <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="toast_import_success">デバイス設定をインポートしました</string>
@@ -281,31 +281,31 @@
     <string name="app_links_title">アプリのリンク</string>
     <string name="google_play_store_desc">Google Play は Google Play ストアとしても知られ、以前は Android マーケットと呼ばれていました。</string>
     <string name="verifying_new_session">新しいセッションを検証中</string>
-    <string name="app_language">アプリの言語</string>
+    <string name="app_language">アプリの表語</string>
     <string name="title_app_settings">アプリ設定</string>
     <string name="android_market_desc">Android マーケットは、Android デバイス用にデザインされたソフトウェアアプリケーションを提供するオンラインストアでしたが、2017年に廃止されました。</string>
     <string name="details_ratings_title_hint">評価タイトル</string>
     <string name="pref_network_proxy_url">プロキシ URL</string>
-    <string name="pref_updates_check_frequency_desc">自動/自己更新の間隔を時間単位で構成します。</string>
+    <string name="pref_updates_check_frequency_desc">アプリ更新の確認周期</string>
     <string name="pref_aurora_only">Aurora Store アプリのみ</string>
     <string name="toast_proxy_invalid">プロキシ URL が無効です。形式を確認してください！</string>
     <string name="pref_aurora_only_desc">Aurora Store でインストールしたアプリのみを更新とインストール済みアプリに表示</string>
     <string name="toast_proxy_success">プロキシの設定に成功しました</string>
     <string name="pref_updates_check_frequency">自動更新周期</string>
     <string name="toast_proxy_failed">プロキシの設定に失敗しました</string>
-    <string name="pref_updates_auto">アプリの自動更新</string>
+    <string name="pref_updates_auto">自動更新</string>
     <string name="onboarding_permission_doze">バックグラウンドダウンロード</string>
     <string name="pref_updates_auto_desc">自動更新の動作を設定する</string>
     <string name="action_request_analysis">分析を要求</string>
-    <string name="pref_vending_version_title">Google Play バージョン</string>
+    <string name="pref_vending_version_title">Google Playのバージョン</string>
     <string name="pref_vending_version_device">デフォルト (端末設定による)</string>
     <string name="pref_updates_auto_install">更新を確認して自動でインストールする</string>
     <string name="pref_updates_auto_notify">更新を確認して通知する</string>
     <string name="pref_updates_auto_off">自動更新しない</string>
     <string name="onboarding_permission_doze_desc">Aurora Storeがバックグラウンドでダウンロード、更新することを許可する</string>
     <string name="failed_apk_export">APKのエクスポートに失敗しました</string>
-    <string name="pref_updates_incompatible">互換性のない更新</string>
-    <string name="pref_updates_incompatible_desc">インストールに失敗する可能性がある非互換、または無効化したアプリの更新を表示する</string>
+    <string name="pref_updates_incompatible">互換性のない更新を表示する</string>
+    <string name="pref_updates_incompatible_desc">インストールに失敗する可能性がある非互換、や無効化したアプリの更新を表示する</string>
     <string name="pref_clear_device_owner_title">端末所有者を解除</string>
     <string name="pref_clear_device_owner_summary">Aurora Store を端末所有者から解除します</string>
     <string name="pref_clear_device_owner_desc">これにより、アプリをサイレントインストールするための権限が取り消されます。端末所有者の解除を続行しますか？</string>
@@ -358,14 +358,14 @@
     <string name="export_app_summary">お待ちください。ファイルをエクスポートしています</string>
     <string name="action_favourite">お気に入り</string>
     <string name="details_no_favourites">お気に入りのアプリがありません</string>
-    <string name="title_favourites_manager">お気に入りのアプリ</string>
+    <string name="title_favourites_manager">お気に入りアプリ</string>
     <string name="toast_fav_export_failed">お気に入りのエクスポートに失敗しました！</string>
     <string name="toast_fav_import_success">お気に入りをインポートしました！</string>
     <string name="toast_fav_export_success">お気に入りをエクスポートしました！</string>
     <string name="details_data_safety_title">データの安全性</string>
     <string name="details_data_safety_subtitle">開発者が宣言したデータのプライバシーと安全対策</string>
     <string name="onboarding_permission_installer_legacy_desc">不明なソースからのアプリのインストールを許可</string>
-    <string name="toast_permission_installer_required">まずインストーラーの権限を付与する必要があります</string>
+    <string name="toast_permission_installer_required">インストーラーの権限を付与する必要があります</string>
     <string name="action_uninstall_success">アンインストールに成功しました</string>
     <string name="pref_network_proxy_url_message">すべてのデータを Proxy 経由で渡すには、有効な Proxy の URL を入力します。</string>
     <string name="item_required">必須</string>
@@ -496,4 +496,51 @@
     <string name="account_switch_failed">アカウントの更新が失敗しましたため、デフォルトの設定が変更されませんでした。</string>
     <string name="account_exists">アカウントはすでに追加されています</string>
     <string name="action_update_anyway">とにかく更新する</string>
+    <string name="action_free_up_space">空き容量を増してください</string>
+    <string name="download_failed_storage">アプリをダウンロードするには、十分な空き容量がありません</string>
+    <string name="exodus_report_history">バージョン履歴</string>
+    <string name="exodus_history_version">%1$s (%2$s)</string>
+    <string name="exodus_latest">最新</string>
+    <string name="insufficient_storage_title">空き容量が足りていません</string>
+    <string name="pref_updates_check_frequency_3h">3時間毎</string>
+    <string name="pref_updates_check_frequency_6h">6時間毎</string>
+    <string name="pref_updates_check_frequency_12h">12時間毎</string>
+    <string name="pref_updates_check_frequency_24h">24時間毎</string>
+    <string name="pref_updates_check_frequency_3d">3日毎</string>
+    <string name="pref_updates_check_frequency_7d">7日毎</string>
+    <string name="pref_updates_check_frequency_15d">15日毎</string>
+    <string name="pref_theme_style_light">ライト</string>
+    <string name="pref_theme_style_dark">ダーク</string>
+    <string name="pref_theme_style_system">システムに合わせる</string>
+    <string name="pref_ui_theme">テーマ</string>
+    <string name="pref_ui_dynamic_color">ダイナミックカラー</string>
+    <string name="manual_download_select_version">バージョンを選択してください</string>
+    <string name="toast_fav_install_enqueued">%1$dつのアプリをインストールしています</string>
+    <string name="status_installing">インストール中</string>
+    <string name="status_installed">インストール済</string>
+    <string name="installed_sort_size">サイズ</string>
+    <string name="installed_filter_system_apps">システムアプリ</string>
+    <string name="installed_filter_all">全て</string>
+    <string name="installed_filter">絞り込む</string>
+    <string name="download_sort_date_downloaded">ダウンロード日付</string>
+    <string name="installed_sort_descending">降順</string>
+    <string name="installed_sort_ascending">昇順</string>
+    <string name="installed_sort_package_name">パッケージ名</string>
+    <string name="installed_sort_date_updated">更新日付</string>
+    <string name="installed_sort_date_installed">インストール日付</string>
+    <string name="installed_sort_name">アプリ名</string>
+    <string name="installed_sort_by">並び替え</string>
+    <string name="installed_sort_filter">絞り込む</string>
+    <plurals name="notification_failed_summary">
+        <item quantity="other">%dアプリが失敗しました</item>
+    </plurals>
+    <plurals name="notification_installed_summary">
+        <item quantity="other">%dアプリをインストールしました</item>
+    </plurals>
+    <string name="pref_notification_progress">ダウンロードの進捗状況を表示する</string>
+    <string name="pref_notification_progress_desc">アプリをダウンロードしたりアップデートしたりしている間、詳細な進捗状況を表示します。オフの場合、目立たない通知によってバックグラウンドでダウンロードを続行します。</string>
+    <string name="pref_notification_disabled">通知はオフになっています</string>
+    <string name="pref_notification_disabled_desc">タップしてAurora Storeからの通知を許可</string>
+    <string name="pref_updates_warn_trackers">アップデートの際に新しいトラッカーについて警告する</string>
+    <string name="pref_updates_warn_trackers_desc">インストールされたバージョンのアプリになかったトラッカーが新しいバージョンで追加された場合、アップデートの前に警告する</string>
 </resources>

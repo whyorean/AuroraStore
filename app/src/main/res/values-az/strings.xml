@@ -626,4 +626,18 @@
     <string name="manual_download_no_versions">Məlum versiya tapılmadı</string>
     <string name="manual_download_availability_warning">Bəzi versiyaların yüklənilməsi əlçatmaz ola bilər və ya cihazınızla uyuşmaz ola bilər.</string>
     <string name="details_more_certificate_hash">Sertifikat hash-i</string>
+    <string name="action_free_up_space">Yer boşaltın</string>
+    <string name="installer_provider">%1$s · %2$s tərəfindən təqdim olunur</string>
+    <string name="insufficient_storage_title">Kifayət qədər yer yoxdur</string>
+    <string name="insufficient_storage_desc">%1$s-ə %2$s lazımdır, lakin yalnız %3$s mövcuddur.</string>
+    <string name="insufficient_storage_hint">%1$s qədər yer boşaldın və yenidən cəhd edin.</string>
+    <string name="status_awaiting_install">Təsdiq gözlənilir</string>
+    <string name="notification_install_prompt_pending">Quraşdırmanı tamamlamaq üçün toxunun</string>
+    <string name="notification_none">Burada görəcək bir şey yoxdur</string>
+    <string name="details_more_files">Fayllar</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">%1$d tətbiqi %2$s tələb edir, lakin yalnız %3$s mövcuddurlar.</item>
+        <item quantity="other">%1$d tətbiqi %2$s tələb edir, lakin yalnız %3$s mövcuddur.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Yüklənmə tarixi</string>
 </resources>

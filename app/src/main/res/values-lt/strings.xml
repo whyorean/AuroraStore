@@ -325,4 +325,5 @@
     <string name="details_data_safety_share_none">Plėtotojas teigia, jog ši programėlė nebendrina naudotojo duomenų su kitomis kompanijomis ar organizacijomis.</string>
     <string name="pref_install_mode_shizuku">Shizuku diegimo programa</string>
     <string name="pref_install_mode_native">Sava diegimo programa (pasenusi)</string>
+    <string name="account_remove_title">Pašalinti paskyrą?</string>
 </resources>
