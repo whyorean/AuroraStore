@@ -872,7 +872,7 @@ private fun LazyListScope.suggestionClusterItems(
         return
     }
 
-    val clusters = suggestionsBundle.clusters.filter {
+    val clusters = suggestionsBundle.clusters.distinctBy { it.id }.filter {
         it.title.isNotBlank() && it.apps.isNotEmpty()
     }
 

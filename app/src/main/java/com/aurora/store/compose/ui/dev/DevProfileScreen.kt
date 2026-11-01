@@ -29,7 +29,6 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.itemKey
 import com.aurora.extensions.adaptiveNavigationIcon
 import com.aurora.gplayapi.model.App
 import com.aurora.gplayapi.model.DeveloperStream
@@ -178,7 +177,7 @@ private fun ScreenContent(
                         dimensionResource(R.dimen.spacing_medium)
                     )
                 ) {
-                    items(count = apps.itemCount, key = apps.itemKey { it.id }) { index ->
+                    items(count = apps.itemCount) { index ->
                         apps[index]?.let { app ->
                             LargeAppListItem(
                                 app = app,

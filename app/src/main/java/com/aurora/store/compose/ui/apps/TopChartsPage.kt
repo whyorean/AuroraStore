@@ -128,7 +128,7 @@ private fun TopChartsBody(
             )
 
             cluster != null -> {
-                val apps = cluster.apps
+                val apps = cluster.apps.distinctBy { it.id }
                 LazyColumn(
                     modifier = Modifier
                         .weight(1f)

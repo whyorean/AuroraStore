@@ -70,6 +70,7 @@ fun StreamCarousel(
     }
 
     val clusters = streamBundle.clusters
+        .distinctBy { it.id }
         .map { cluster -> cluster.copy(apps = cluster.apps.distinctBy { it.packageName }) }
         .filter { cluster ->
             cluster.apps.isNotEmpty() &&
@@ -160,7 +161,7 @@ internal fun ClusterRow(
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
     ) {
         itemsIndexed(
-            items = cluster.apps,
+            items = cluster.apps.distinctBy { it.packageName },
             key = { _, app -> app.packageName }
         ) { _, app ->
             AppListItem(
