@@ -39,6 +39,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -350,8 +351,9 @@ private fun ScreenContentApp(
     val canAcquire = app.isFree || canDownload
 
     var scaffoldDirective = calculatePaneScaffoldDirective(windowAdaptiveInfo)
+    var isScreenshotOpen by remember { mutableStateOf(false) }
 
-    if (forceSinglePane) {
+    if (forceSinglePane || isScreenshotOpen) {
         scaffoldDirective = scaffoldDirective.copy(maxHorizontalPartitions = 1)
     }
 
@@ -361,6 +363,9 @@ private fun ScreenContentApp(
             supportingPaneAdaptStrategy = AdaptStrategy.Hide
         )
     )
+    val showsScreenshot =
+        scaffoldNavigator.currentDestination?.contentKey is ExtraScreen.Screenshot
+    LaunchedEffect(showsScreenshot) { if (!showsScreenshot) isScreenshotOpen = false }
     val coroutineScope = rememberCoroutineScope()
     val shouldShowMenuOnMainPane = scaffoldNavigator
         .scaffoldValue[SupportingPaneScaffoldRole.Supporting] == PaneAdaptedValue.Hidden
@@ -396,6 +401,12 @@ private fun ScreenContentApp(
 
     fun showExtraPane(screen: NavKey) {
         coroutineScope.launch {
+            if (screen is ExtraScreen.Screenshot) {
+                isScreenshotOpen = true
+                // The scaffold only re-lays out on navigation; let the directive land first
+                withFrameNanos { }
+                withFrameNanos { }
+            }
             scaffoldNavigator.navigateTo(SupportingPaneScaffoldRole.Extra, screen)
         }
     }
