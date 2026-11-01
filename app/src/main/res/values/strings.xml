@@ -435,6 +435,7 @@
     <string name="login_rate_limited">You are rate limited</string>
     <string name="server_unreachable">Server unreachable</string>
     <string name="failed_to_generate_session">Could not generate session</string>
+    <string name="session_rejected">Google Play keeps rejecting this session. If you are using a VPN, try another server, then sign in again.</string>
     <string name="verifying_new_session">Verifying new session</string>
     <string name="failed_generating_session">Failed to generate session, error code: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Check internet connectivity</string>

@@ -35,6 +35,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -62,6 +65,15 @@ class AuthProvider @Inject constructor(
 
     @Volatile
     private var cachedDefault: Account? = null
+
+    private val _sessionRejections = MutableStateFlow(0)
+    val sessionRejections = _sessionRejections.asStateFlow()
+
+    @Volatile
+    private var lastSessionRejectionAt = 0L
+
+    @Volatile
+    private var previousSessionRejectionAt = 0L
 
     @Volatile
     private var cachedAuthData: AuthenticatedSession? = null
@@ -158,6 +170,22 @@ class AuthProvider @Inject constructor(
                 null
             }
         }
+
+    fun recordSessionRejection() {
+        previousSessionRejectionAt = lastSessionRejectionAt
+        lastSessionRejectionAt = System.currentTimeMillis()
+        _sessionRejections.update { it + 1 }
+    }
+
+    fun clearSessionRejections() {
+        previousSessionRejectionAt = 0L
+        lastSessionRejectionAt = 0L
+    }
+
+    val isSessionRepeatedlyRejected: Boolean
+        get() = previousSessionRejectionAt != 0L &&
+            lastSessionRejectionAt - previousSessionRejectionAt < SESSION_REJECTION_WINDOW_MS &&
+            System.currentTimeMillis() - lastSessionRejectionAt < SESSION_REJECTION_WINDOW_MS
 
     /**
      * Checks whether saved session is valid or not
@@ -486,5 +514,9 @@ class AuthProvider @Inject constructor(
                 }
             }
         }
+    }
+
+    companion object {
+        const val SESSION_REJECTION_WINDOW_MS = 60_000L
     }
 }

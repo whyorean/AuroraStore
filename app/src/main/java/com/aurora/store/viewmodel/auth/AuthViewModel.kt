@@ -36,6 +36,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -52,12 +53,16 @@ class AuthViewModel @Inject constructor(
     private val _accountAdded = MutableSharedFlow<String?>()
     val accountAdded = _accountAdded.asSharedFlow()
 
-    /**
-     * Validates the saved session, once per ViewModel. Only the splash screen should call this:
-     * validation rebuilds the default account's session when it fails.
-     */
+    private var sessionChecked = false
+
+    /** Only the splash screen should call this: a failed check rebuilds the default session. */
     fun checkSession() {
-        if (_authState.value == AuthState.Init) updateAuthState()
+        if (sessionChecked) return
+        sessionChecked = true
+        updateAuthState()
+        viewModelScope.launch {
+            authProvider.sessionRejections.drop(1).collect { updateAuthState() }
+        }
     }
 
     fun buildGoogleAuthData(email: String, token: String, tokenType: TokenType) {
@@ -173,7 +178,10 @@ class AuthViewModel @Inject constructor(
 
     private fun updateAuthState() {
         if (_authState.value != AuthState.Fetching) {
-            if (AccountProvider.isLoggedIn(context)) {
+            if (authProvider.isSessionRepeatedlyRejected) {
+                Log.w(TAG, "Session rejected again right after re-validation, not retrying")
+                _authState.value = AuthState.Failed(context.getString(R.string.session_rejected))
+            } else if (AccountProvider.isLoggedIn(context)) {
                 _authState.value = AuthState.Available
                 buildSavedAuthData()
             } else {
