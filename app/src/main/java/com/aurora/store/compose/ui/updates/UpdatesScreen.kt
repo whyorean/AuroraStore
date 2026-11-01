@@ -104,13 +104,18 @@ fun UpdatesScreen(
             }
 
             updateMap.isEmpty() && ignoredUpdates.isEmpty() -> {
-                Placeholder(
-                    modifier = Modifier.fillMaxSize(),
-                    painter = painterResource(R.drawable.ic_updates),
-                    message = stringResource(R.string.details_no_updates),
-                    actionLabel = stringResource(R.string.check_updates),
-                    onAction = { viewModel.fetchUpdates() }
-                )
+                // PullToRefreshBox only sees a pull through a scrollable child
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    item {
+                        Placeholder(
+                            modifier = Modifier.fillParentMaxSize(),
+                            painter = painterResource(R.drawable.ic_updates),
+                            message = stringResource(R.string.details_no_updates),
+                            actionLabel = stringResource(R.string.check_updates),
+                            onAction = { viewModel.fetchUpdates() }
+                        )
+                    }
+                }
             }
 
             else -> {
