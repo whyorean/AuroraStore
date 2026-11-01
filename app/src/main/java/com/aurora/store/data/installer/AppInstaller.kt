@@ -134,7 +134,8 @@ class AppInstaller @Inject constructor(
 
                         Build.VERSION_CODES.S -> targetSdk >= Build.VERSION_CODES.Q
 
-                        else -> false // Only Android version above 12 can silently update apps
+                        // Assumes releases after 16 keep allowing a targetSdk two behind
+                        else -> targetSdk >= Build.VERSION.SDK_INT - 2
                     }
                 }
 
