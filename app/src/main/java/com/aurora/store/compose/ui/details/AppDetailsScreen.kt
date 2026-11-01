@@ -142,6 +142,9 @@ fun AppDetailsScreen(
     val installError by viewModel.installError.collectAsStateWithLifecycle()
     val suggestionsBundle by viewModel.suggestionsBundle.collectAsStateWithLifecycle()
     val canDownload by viewModel.canDownload.collectAsStateWithLifecycle()
+    val testingProgramUpdating by viewModel.testingProgramUpdating.collectAsStateWithLifecycle()
+    val testingProgramSubscribed by
+        viewModel.testingProgramSubscribed.collectAsStateWithLifecycle()
     val accounts by viewModel.accounts.collectAsStateWithLifecycle()
     var storageWarning by remember { mutableStateOf<StorageRequirement?>(null) }
 
@@ -198,6 +201,8 @@ fun AppDetailsScreen(
                     isFavorite = favorite,
                     isAnonymous = viewModel.authProvider.isAnonymous,
                     canDownload = canDownload,
+                    testingProgramUpdating = testingProgramUpdating,
+                    testingProgramSubscribed = testingProgramSubscribed,
                     state = currentState,
                     plexusScores = plexusScores,
                     dataSafetyReport = dataSafetyReport,
@@ -230,7 +235,9 @@ fun AppDetailsScreen(
                         viewModel.postAppReview(
                             loadedApp.packageName,
                             Review(title = title, comment = comment, rating = rating),
-                            loadedApp.testingProgram?.isSubscribed ?: false
+                            testingProgramSubscribed
+                                ?: loadedApp.testingProgram?.isSubscribed
+                                ?: false
                         )
                     },
                     onDeleteReview = { viewModel.deleteAppReview(loadedApp) },
@@ -313,6 +320,8 @@ private fun ScreenContentApp(
     isFavorite: Boolean = false,
     isAnonymous: Boolean = true,
     canDownload: Boolean = false,
+    testingProgramUpdating: Boolean = false,
+    testingProgramSubscribed: Boolean? = null,
     state: AppState = AppState.Unavailable,
     plexusScores: Scores? = null,
     dataSafetyReport: DataSafetyReport? = null,
@@ -697,7 +706,9 @@ private fun ScreenContentApp(
                     item {
                         if (!isAnonymous && app.testingProgram?.isAvailable == true) {
                             Testing(
-                                isSubscribed = app.testingProgram!!.isSubscribed,
+                                isSubscribed = testingProgramSubscribed
+                                    ?: app.testingProgram!!.isSubscribed,
+                                isUpdating = testingProgramUpdating,
                                 onTestingSubscriptionChange = onTestingSubscriptionChange
                             )
                         }

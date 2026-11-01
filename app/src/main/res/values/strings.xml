@@ -370,6 +370,8 @@
     <string name="toast_page_unavailable">Browse page unavailable</string>
     <string name="toast_rated_success">Rated, it may take a while to show</string>
     <string name="toast_rated_failed">Could not submit rating</string>
+    <string name="toast_beta_failed">Could not update beta enrollment</string>
+    <string name="toast_beta_left">You left the beta program</string>
     <string name="toast_aas_token_failed">Could not generate AAS Token</string>
     <string name="google_login_timeout">Google didn\'t respond in time. Please sign in again.</string>
     <string name="toast_export_success">Device config exported</string>

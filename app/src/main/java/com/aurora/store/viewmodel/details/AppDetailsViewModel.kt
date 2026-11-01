@@ -14,6 +14,7 @@ import androidx.lifecycle.viewModelScope
 import com.aurora.Constants
 import com.aurora.extensions.TAG
 import com.aurora.extensions.requiresGMS
+import com.aurora.extensions.toast
 import com.aurora.gplayapi.PlayClient
 import com.aurora.gplayapi.PlayException
 import com.aurora.gplayapi.model.App
@@ -21,10 +22,10 @@ import com.aurora.gplayapi.model.DataSafetyReport
 import com.aurora.gplayapi.model.Review
 import com.aurora.gplayapi.model.StreamBundle
 import com.aurora.gplayapi.model.StreamCluster
-import com.aurora.gplayapi.model.TestingProgramStatus
 import com.aurora.gplayapi.session.Capability
 import com.aurora.gplayapi.web.WebPlayClient
 import com.aurora.store.AuroraApp
+import com.aurora.store.R
 import com.aurora.store.data.AccountRepository
 import com.aurora.store.data.ExodusRepository
 import com.aurora.store.data.event.AuthEvent
@@ -134,8 +135,12 @@ class AppDetailsViewModel @Inject constructor(
     private val _plexusScores = MutableStateFlow<Scores?>(Scores())
     val plexusScores = _plexusScores.asStateFlow()
 
-    private val _testingProgramStatus = MutableStateFlow<TestingProgramStatus?>(null)
-    val testingProgramStatus = _testingProgramStatus.asStateFlow()
+    private val _testingProgramUpdating = MutableStateFlow(false)
+    val testingProgramUpdating = _testingProgramUpdating.asStateFlow()
+
+    // Kept apart from app: App.equals compares only the package name
+    private val _testingProgramSubscribed = MutableStateFlow<Boolean?>(null)
+    val testingProgramSubscribed = _testingProgramSubscribed.asStateFlow()
 
     private val _favourite = MutableStateFlow(false)
     val favourite = _favourite.asStateFlow()
@@ -211,6 +216,7 @@ class AppDetailsViewModel @Inject constructor(
     fun fetchAppDetails(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                _testingProgramSubscribed.value = null
                 _app.value = playClient.apps.details(packageName).copy(
                     isInstalled = PackageUtil.isInstalled(context, packageName)
                 )
@@ -261,12 +267,23 @@ class AppDetailsViewModel @Inject constructor(
 
     fun updateTestingProgramStatus(packageName: String, subscribe: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            try {
-                _testingProgramStatus.value =
-                    playClient.apps.testingProgram(packageName, subscribe)
+            _testingProgramUpdating.value = true
+            val enrolled = try {
+                val status = playClient.apps.testingProgram(packageName, subscribe)
+                if (subscribe) status.subscribed else !status.unsubscribed
             } catch (exception: Exception) {
-                Log.e(TAG, "Failed to fetch testing program status", exception)
+                Log.e(TAG, "Failed to update testing program status", exception)
+                !subscribe
             }
+            _testingProgramSubscribed.value = enrolled
+            context.toast(
+                when {
+                    enrolled != subscribe -> R.string.toast_beta_failed
+                    subscribe -> R.string.details_beta_delay
+                    else -> R.string.toast_beta_left
+                }
+            )
+            _testingProgramUpdating.value = false
         }
     }
 
