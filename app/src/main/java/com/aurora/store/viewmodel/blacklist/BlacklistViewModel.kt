@@ -180,19 +180,19 @@ class BlacklistViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 context.contentResolver.openInputStream(uri)?.use {
-                    val importedSet = json.decodeFromString<MutableSet<String>>(
+                    val importedSet = json.decodeFromString<Set<String>>(
                         it.bufferedReader().readText()
                     )
 
-                    val validImportedSet = importedSet
-                        .filter { pkgName ->
-                            packages.value?.any { it.packageName == pkgName } ==
-                                true
-                        }
-                    blacklistProvider.blacklist.addAll(validImportedSet)
+                    blacklistProvider.blacklist = blacklistProvider.blacklist.apply {
+                        addAll(importedSet)
+                    }
                     blacklist.apply {
                         clear()
                         addAll(blacklistProvider.blacklist)
+                    }
+                    importedSet.forEach { packageName ->
+                        AuroraApp.events.send(BusEvent.Blacklisted(packageName))
                     }
                 }
             } catch (exception: Exception) {
