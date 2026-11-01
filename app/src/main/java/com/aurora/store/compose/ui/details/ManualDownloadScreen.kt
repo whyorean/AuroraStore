@@ -174,8 +174,13 @@ private fun ScreenContent(
                     enabled = !state.inProgress(),
                     value = versionCode,
                     onValueChange = {
-                        if (it.text.isDigitsOnly()) {
-                            versionCode = it
+                        val code = it.text.filterNot(Char::isWhitespace)
+                        if (code.isDigitsOnly()) {
+                            versionCode = if (code == it.text) {
+                                it
+                            } else {
+                                TextFieldValue(text = code, selection = TextRange(code.length))
+                            }
                         } else {
                             coroutineScope.launch { snackBarHostState.showSnackbar(errorMessage) }
                         }
