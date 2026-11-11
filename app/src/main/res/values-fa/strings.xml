@@ -323,4 +323,16 @@
     <string name="pref_ui_theme">پوسته</string>
     <string name="pref_theme_style_light">روشن</string>
     <string name="exodus_report_history">تاریخچهٔ نسخه‌ها</string>
+    <string name="action_free_up_space">آزادسازی فضا</string>
+    <string name="title_notifications">اعلان‌ها</string>
+    <string name="details_more_files">پرونده‌ها</string>
+    <string name="permission_group_google">گوگل</string>
+    <string name="permission_group_other">سایر</string>
+    <string name="toast_beta_failed">نتوانستیم وضعیت ثبت‌نام در برنامهٔ آزمایشی را به‌روزرسانی کنیم</string>
+    <string name="toast_beta_left">از برنامهٔ آزمایشی خارج شدید</string>
+    <string name="google_login_timeout">گوگل به‌موقع پاسخ نداد. لطفاً دوباره وارد حساب شوید.</string>
+    <string name="toast_spoof_import_invalid">پیکربندی دستگاه نامعتبر است، برخی فیلدها وجود ندارند یا قالب آن‌ها نادرست است</string>
+    <string name="toast_spoof_device_invalid">تنظیم جعل مشخصات دستگاهِ فعال نامعتبر است، به حالت پیش‌فرض بازگردانده شد</string>
+    <string name="toast_proxy_invalid">نشانی اینترنتی پراکسی نامعتبر است، قالب آن را بررسی کنید!</string>
+    <string name="toast_proxy_success">پراکسی با موفقیت تنظیم شد</string>
 </resources>
