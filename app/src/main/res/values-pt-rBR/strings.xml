@@ -652,13 +652,13 @@
     <string name="permission_warning_title">Novas permissões solicitadas</string>
     <string name="permission_warning_desc">Esta atualização solicita permissões que a versão instalada não tem:</string>
     <plurals name="updates_skipped_new_permissions">
-        <item quantity="one">Pulada %1$d atualização que solicita novas permissões</item>
-        <item quantity="many">Puladas %1$d atualizações que solicitam novas permissões</item>
-        <item quantity="other">Puladas %1$d atualizações que solicitam novas permissões</item>
+        <item quantity="one">%1$d atualização que solicita novas permissões foi ignorada</item>
+        <item quantity="many">%1$d de atualizações que solicitam novas permissões foram ignoradas</item>
+        <item quantity="other">%1$d atualizações que solicitam novas permissões foram ignoradas</item>
     </plurals>
     <string name="permission_new">Nova</string>
     <string name="details_play_listing">No Google Play</string>
-    <string name="details_top_chart">%1$s em %2$s</string>
+    <string name="details_top_chart">%1$s de %2$s</string>
     <string name="action_continue">Continuar</string>
     <string name="app_links_owned_title">Links do Play abrem em %1$s</string>
     <string name="app_links_owned_desc">O Android não permite que a Aurora Store lide com links verificados por %1$s. Desative “Abrir links suportados” para ele antes e então permita a Aurora Store.</string>
