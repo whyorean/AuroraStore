@@ -250,10 +250,7 @@ private fun ScreenContent(
                             Box(modifier = Modifier.fillMaxSize()) {
                                 LazyColumn(
                                     state = listState,
-                                    modifier = Modifier.fillMaxSize(),
-                                    verticalArrangement = Arrangement.spacedBy(
-                                        dimensionResource(R.dimen.spacing_medium)
-                                    )
+                                    modifier = Modifier.fillMaxSize()
                                 ) {
                                     items(
                                         count = results.itemCount,

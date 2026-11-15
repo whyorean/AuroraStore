@@ -57,6 +57,7 @@ fun InstalledAppListItem(
         onClick = onClick,
         onLongClick = onLongClick,
         selected = selected,
+        verticalPadding = dimensionResource(R.dimen.spacing_small),
         leading = {
             AsyncImage(
                 modifier = Modifier

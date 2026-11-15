@@ -22,6 +22,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
+import androidx.compose.ui.unit.Dp
 import com.aurora.store.R
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -42,6 +43,7 @@ fun AuroraListItem(
     onClick: (() -> Unit)? = null,
     onLongClick: (() -> Unit)? = null,
     selected: Boolean = false,
+    verticalPadding: Dp = dimensionResource(R.dimen.spacing_xsmall),
     enabled: Boolean = true,
     leading: (@Composable () -> Unit)? = null,
     trailing: (@Composable () -> Unit)? = null,
@@ -71,7 +73,7 @@ fun AuroraListItem(
             )
             .padding(
                 horizontal = dimensionResource(R.dimen.spacing_medium),
-                vertical = dimensionResource(R.dimen.spacing_xsmall)
+                vertical = verticalPadding
             ),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small)),
         verticalAlignment = Alignment.CenterVertically

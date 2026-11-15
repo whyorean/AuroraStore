@@ -100,6 +100,7 @@ fun FavouriteListItem(
             tertiary = statusText,
             headlineStyle = MaterialTheme.typography.bodyMedium,
             onClick = onClick,
+            verticalPadding = dimensionResource(R.dimen.spacing_small),
             leading = {
                 if (inProgress) {
                     AnimatedAppIcon(

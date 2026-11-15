@@ -7,7 +7,6 @@
 package com.aurora.store.compose.ui.installed
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,7 +28,6 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -201,12 +199,7 @@ private fun ScreenContent(
                     } else {
                         val listState = rememberLazyListState()
                         Box(modifier = Modifier.fillMaxSize()) {
-                            LazyColumn(
-                                state = listState,
-                                verticalArrangement = Arrangement.spacedBy(
-                                    dimensionResource(R.dimen.spacing_medium)
-                                )
-                            ) {
+                            LazyColumn(state = listState) {
                                 items(
                                     count = apps.itemCount,
                                     key = apps.itemKey { it.packageName }
