@@ -630,4 +630,35 @@
     <plurals name="insufficient_storage_desc_multiple">
         <item quantity="other">%1$d 個應用程式需要 %2$s，但只有 %3$s 可用。</item>
     </plurals>
+    <string name="download_version_unavailable">版本 %1$d 不適用於此裝置</string>
+    <string name="download_signing_key_rotated">請使用 Google 帳號登入以更新此應用程式：其簽署金鑰已變更，匿名下載無法處理</string>
+    <string name="installer_status_aborted">安裝已取消</string>
+    <string name="pref_download_languages_title">下載我所有的語言</string>
+    <string name="pref_download_languages_summary">同時擷取此裝置上設定的其他語言的語言檔案。下載量會較大</string>
+    <string name="pref_updates_warn_permissions">在應用程式更新時警告新權限</string>
+    <string name="pref_updates_warn_permissions_desc">當新版本要求已安裝版本沒有的權限時，在更新前顯示警告</string>
+    <string name="permission_warning_title">要求新權限</string>
+    <string name="permission_warning_desc">此更新要求已安裝版本沒有的權限：</string>
+    <plurals name="updates_skipped_new_permissions">
+        <item quantity="other">已略過 %1$d 個要求新權限的更新</item>
+    </plurals>
+    <string name="permission_new">新增</string>
+    <string name="details_play_listing">在 Google Play 上</string>
+    <string name="details_top_chart">%1$s 於 %2$s</string>
+    <string name="action_continue">繼續</string>
+    <string name="app_links_owned_title">Play 連結在 %1$s 中開啟</string>
+    <string name="app_links_owned_desc">Android 不會讓 Aurora Store 接管 %1$s 已驗證的連結。請先為其關閉「開啟支援的連結」，然後再授予 Aurora Store。</string>
+    <string name="app_links_owned_open">開啟設定</string>
+    <string name="review_developer_reply">開發者的回應</string>
+    <string name="permission_group_system">Android 系統</string>
+    <string name="permission_group_google">Google</string>
+    <string name="permission_group_other">其他</string>
+    <string name="toast_beta_failed">無法更新測試版註冊</string>
+    <string name="toast_beta_left">您已退出測試計畫</string>
+    <string name="google_login_timeout">Google 未及時回應。請重新登入。</string>
+    <string name="toast_spoof_import_invalid">無效的裝置設定，缺少或格式錯誤的欄位</string>
+    <string name="toast_spoof_device_invalid">作用中的裝置偽裝無效，已還原為預設值</string>
+    <string name="session_rejected">Google Play 持續拒絕此工作階段。如果您正在使用 VPN，請嘗試其他伺服器，然後重新登入。</string>
+    <string name="pref_ui_appearance">外觀</string>
+    <string name="authentication_required_update_check">檢查更新需要已登入的 Google Play 帳號；匿名工作階段目前無法批次檢查。</string>
 </resources>

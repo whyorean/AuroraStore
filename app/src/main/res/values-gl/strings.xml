@@ -225,7 +225,7 @@
     <string name="title_spoof_manager">Xestionar disfrace</string>
     <string name="spoof_apply">Asegúrese de volver a iniciar sesión para aplicar o disfrace</string>
     <string name="tab_top_charts">Top da clasificación</string>
-    <string name="pref_install_mode_am">Instalador AM.</string>
+    <string name="pref_install_mode_am">Instalador AM</string>
     <string name="installer_am_unavailable">Instale o Xestor de Aplicacións ou mude o instalador.</string>
     <string name="action_import">Importar</string>
     <string name="session_enjoy">Inicie sesión e desfrute.</string>
@@ -324,7 +324,7 @@
     <string name="app_language">Idioma da aplicación</string>
     <string name="app_links_title">Enlaces da aplicación</string>
     <string name="app_links_desc">Permitir que Aurora Store abra enlaces compatibles</string>
-    <string name="google_play_store_desc">Google Play, tamén coñecido como Google Play Store e anteriormente Android Market</string>
+    <string name="google_play_store_desc">Google Play, tamén coñecido como Google Play Store e anteriormente Android Market.</string>
     <string name="android_market_desc">Android Market era unha tenda online que ofrecía aplicacións de software diseñadas para dispositivos Android, retirada en 2017.</string>
     <string name="failed_apk_export">Erro ao exportar os APKs</string>
     <string name="no_apps_available">Non hai aplicacións dispoñibles</string>
@@ -341,7 +341,7 @@
     <string name="services_installer_subtitle">Instalador para instalacións en segundo plano</string>
     <string name="services_installer_desc">Require que os servicios de Aurora se instalen como unha aplicación con privilexios de sistema</string>
     <string name="am_installer_subtitle">Xestor de paquetes completo de código aberto</string>
-    <string name="am_installer_desc">Require App Manager, necesita modo ADB/root para instalar cando a optimización de MIUI está activada</string>
+    <string name="am_installer_desc">Require App Manager, precisa o modo ADB/root para instalar cando a optimización de MIUI está activada</string>
     <string name="shizuku_installer_subtitle">Uso directo das API do sistema con privilexios ADB/root</string>
     <string name="shizuku_installer_desc">Require que primeiro se configure e se lle concedan permisos a aplicación Shizuku ou Sui</string>
     <string name="manual_download_hint">Introduce o código da versión que desexas descargar</string>
@@ -636,4 +636,36 @@
     <string name="loading">Carga en curso</string>
     <string name="page">Páxina <xliff:g id="number">%1$d</xliff:g></string>
     <string name="action_check">Comprobar</string>
+    <string name="download_version_unavailable">A versión %1$d non está dispoñible para este dispositivo</string>
+    <string name="download_signing_key_rotated">Inicia sesión cunha conta de Google para actualizar esta aplicación: a súa clave de sinatura cambiou e as descargas anónimas non a poden xestionar</string>
+    <string name="installer_status_aborted">Instalación cancelada</string>
+    <string name="pref_download_languages_title">Descarga todos os meus idiomas</string>
+    <string name="pref_download_languages_summary">Obtén tamén ficheiros de idioma para os outros idiomas configurados neste dispositivo. As descargas serán de maior tamaño</string>
+    <string name="pref_updates_warn_permissions">Avisa sobre novos permisos nas actualizacións das aplicacións</string>
+    <string name="pref_updates_warn_permissions_desc">Amosar un aviso antes de actualizar cando a nova versión solicite permisos que non estaban na versión instalada</string>
+    <string name="permission_warning_title">Solicitáronse novos permisos</string>
+    <string name="permission_warning_desc">Esta actualización solicita permisos que a versión instalada non ten:</string>
+    <plurals name="updates_skipped_new_permissions">
+        <item quantity="one">Omitiuse %1$d actualización que solicita novos permisos</item>
+        <item quantity="other">Omitíronse %1$d actualizacións que solicitan novos permisos</item>
+    </plurals>
+    <string name="permission_new">Novo</string>
+    <string name="details_play_listing">Na Google Play</string>
+    <string name="details_top_chart">%1$s en %2$s</string>
+    <string name="action_continue">Proseguir</string>
+    <string name="app_links_owned_title">As ligazóns de reprodución ábrense en %1$s</string>
+    <string name="app_links_owned_desc">Android non permitirá que Aurora Store se faga cargo das ligazóns que %1$s comprobou. Desactiva primeiro a opción \"Abrir ligazóns compatibles\" e, a continuación, concédelle este permiso a Aurora Store.</string>
+    <string name="app_links_owned_open">Abrir a configuración</string>
+    <string name="review_developer_reply">Resposta do desenvolvedor</string>
+    <string name="permission_group_system">Sistema Android</string>
+    <string name="permission_group_google">Google</string>
+    <string name="permission_group_other">Outro</string>
+    <string name="toast_beta_failed">Non se puido actualizar a inscrición na versión beta</string>
+    <string name="toast_beta_left">Abandonaches o programa beta</string>
+    <string name="google_login_timeout">Google non respondeu a tempo. Inicia sesión de novo.</string>
+    <string name="toast_spoof_import_invalid">A configuración do dispositivo non é válida, faltan campos ou están mal formados</string>
+    <string name="toast_spoof_device_invalid">A suplantación do dispositivo activo non é válida, volveuse ao valor predeterminado</string>
+    <string name="session_rejected">Google Play segue rexeitando esta sesión. Se estás a usar unha VPN, proba con outro servidor e inicia sesión de novo.</string>
+    <string name="pref_ui_appearance">Aparencia</string>
+    <string name="authentication_required_update_check">Para comprobar se hai actualizacións, é necesario ter unha conta de Google Play iniciada; as sesións anónimas aínda non se poden rexistrar en bloque.</string>
 </resources>

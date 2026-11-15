@@ -660,4 +660,6 @@
         <item quantity="many">تحتاج %1$d تطبيقًا إلى %2$s، لكن المتاح هو %3$s فقط.</item>
         <item quantity="other">تحتاج %1$d تطبيق إلى %2$s، لكن المتاح هو %3$s فقط.</item>
     </plurals>
+    <string name="authentication_required_update_check">البحث عن المستجدات يحتاج إلى حساب موقّع في \"غوغل بلاي\"، جلسات مجهولة لا يمكن التحقق منها بعد.</string>
+    <string name="pref_ui_appearance">المظهر</string>
 </resources>

@@ -1,0 +1,9 @@
+• Reconstruíuse a interface co moderno Jetpack Compose
+• Soporte para varias contas de Google
+• Comentarios dos usuarios na pantalla de detalles da aplicación
+• Bloqueo de aplicacións opcional mediante datos biométricos ou credenciais do dispositivo
+• Instalación cun só clic para os favoritos e un fluxo de compra para aplicacións de pago
+• Notificacións reelaboradas con resumos e configuracións agrupadas
+• Pantalla de actualizacións renovada; as actualizacións propias agora aparecen na lista
+• Descargas/instalacións máis fiables e soporte do instalador de microG
+• Correccións de erros e actualizacións de tradución
