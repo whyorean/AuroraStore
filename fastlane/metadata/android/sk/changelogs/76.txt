@@ -1,0 +1,9 @@
+• Prepracované používateľské rozhranie s využitím moderného Jetpack Compose
+• Podpora viacerých účtov Google
+• Recenzie používateľov na obrazovke s podrobnosťami o aplikácii
+• Voliteľné uzamknutie aplikácie pomocou biometrických údajov alebo prihlasovacích údajov zariadenia
+• Inštalácia obľúbených aplikácií jedným kliknutím a proces nákupu platených aplikácií
+• Prepracované oznámenia so zoskupenými súhrnmi a nastaveniami
+• Prepracovaná obrazovka aktualizácií; automatické aktualizácie sa teraz zobrazujú v zozname
+• Spoľahlivejšie sťahovanie a inštalácia a podpora inštalátora microG
+• Opravy chýb a aktualizácie prekladov
