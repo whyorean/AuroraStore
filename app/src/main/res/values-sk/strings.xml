@@ -141,8 +141,8 @@
     <string name="pref_install_mode_session">Inštalátor relácie</string>
     <string name="pref_vending_version_device">Predvolené (z konfigurácie zariadenia)</string>
     <string name="pref_updates_incompatible">Nekompatibilné aktualizácie</string>
-    <string name="pref_updates_incompatible_desc">Zobraziť aktualizácie pre nekompatibilné alebo zakázané aplikácie, ktoré môžu zlyhať pri nštalovaní</string>
-    <string name="pref_aurora_only">Iba aplikácie Aurora obchod</string>
+    <string name="pref_updates_incompatible_desc">Zobraziť aktualizácie pre nekompatibilné alebo zakázané aplikácie, ktoré môžu zlyhať pri nštalovaní.</string>
+    <string name="pref_aurora_only">Filtrovať aplikácie z iných zdrojov.</string>
     <string name="session_verifying_google">Overujem reláciu Google</string>
     <string name="insecure_anonymous_apply">Uistite sa, že sa znova prihlásite a reštartujete aplikáciu, aby ste použili zmeny.</string>
     <string name="title_installed">Nainštalované</string>
@@ -184,7 +184,7 @@
     <string name="pref_install_mode_root">Root inštalátor</string>
     <string name="pref_install_mode_services">Aurora Služby (zastarané)</string>
     <string name="pref_network_proxy_url">Adresa URL proxy</string>
-    <string name="pref_aurora_only_desc">Kontrolovať iba aktualizácie pre aplikácie nainštalované v obchode Aurora</string>
+    <string name="pref_aurora_only_desc">Nekontrolovať dostupnosť aktualizácií pre aplikácie nainštalované zo zdrojov mimo Aurora Store</string>
     <string name="purchase_unsupported">Aplikácia nie je podporovaná</string>
     <string name="session_login">Prosím prihláste sa do svojho účtu Google obchod</string>
     <string name="session_verifying">Overujem reláciu</string>
@@ -214,7 +214,7 @@
     <string name="pref_updates_auto_notify">Skontrolovať dostupné aktualizácie a informovať o nich</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="aplikácia_jedna_názov">%1$s</xliff:g>, <xliff:g id="aplikácia_dva_názov">%2$s</xliff:g>, <xliff:g id="aplikácia_tri_názov">%3$s</xliff:g> a <xliff:g id="počet_aplikácií">%4$d</xliff:g> viac</string>
     <string name="pref_updates_auto_off">Neaktualizovať aplikácie automaticky</string>
-    <string name="pref_updates_check_frequency_desc">Nastaviť interval pre vlastné automatické aktualizácie v hodinách.</string>
+    <string name="pref_updates_check_frequency_desc">Ako často Aurora kontroluje, či sú k dispozícii aktualizácie aplikácií.</string>
     <string name="login_rate_limited">Ups, váš účet je obmedzený</string>
     <string name="failed_to_generate_session">Nepodarilo sa vygenerovať reláciu</string>
     <string name="verifying_new_session">Overuje sa nová relácia</string>
@@ -225,7 +225,7 @@
     <string name="session_installer_subtitle">Inštalátor balíkov/rozdelených súborov APK založený na relácii</string>
     <string name="session_installer_desc">Odporúčané, vstavané a podporuje všetky verzie systému Android</string>
     <string name="native_installer_subtitle">Inštalátor založený, dostupný na všetkých zariadeniach</string>
-    <string name="about_aurora_store_summary">Aurora vám umožňuje vyhľadávať a sťahovať aplikácie z oficiálneho obchodu Google Play. Môžete skontrolovať popisy aplikácií, snímky obrazovky, aktualizácie, komentáre ostatných používateľov a stiahnuť si súbor APK priamo zo služby Google Play do svojho zariadenia. Ak chcete používať Aurora Store, musíte mať účet Google Play a prihlásiť sa do svojho účtu Google Play pri prvom otvorení a konfigurácii obchodu Aurora. \n \nNa rozdiel od tradičného obchodu s aplikáciami Aurora Store nevlastní, nelicencuje ani nedistribuuje žiadne aplikácie. Všetky aplikácie, popisy aplikácií, snímky obrazovky a ďalší obsah v obchode Aurora sú priamo prístupné, stiahnuté a/alebo zobrazené z Google Play. Aurora Store funguje presne ako dvere alebo prehliadač, vďaka čomu sa môžete prihlásiť do svojho účtu Google Play a nájsť aplikácie zo služby Google Play. \n \nUpozorňujeme, že Aurora nemá žiadne schválenie, sponzorstvo ani autorizáciu od spoločnosti Google, Google Play, žiadnych aplikácií stiahnutých cez Aurora ani žiadnych vývojárov aplikácií; ani Aurora Store s nimi nemá žiadne spojenie, spoluprácu alebo spojenie.</string>
+    <string name="about_aurora_store_summary">Aurora Store vám umožňuje vyhľadávať a sťahovať aplikácie z oficiálneho obchodu Google Play. Môžete si prezrieť popisy aplikácií, snímky obrazovky, aktualizácie, komentáre ostatných používateľov a stiahnuť súbor APK priamo z Google Play do svojho zariadenia. Ak chcete používať Aurora Store, pri prvom spustení a konfigurácii aplikácie sa prihláste pomocou účtu Google Play.\n\nNa rozdiel od tradičného obchodu s aplikáciami Aurora Store nevlastní, nelicencuje ani nedistribuuje žiadne aplikácie. Všetky aplikácie, popisy aplikácií, snímky obrazovky a ďalší obsah v Aurora Store sú priamo dostupné, stiahnuteľné a/alebo zobrazené z Google Play. Aurora Store funguje presne ako brána alebo prehliadač, ktorý vám umožňuje prihlásiť sa do vášho účtu Google Play a vyhľadávať aplikácie z Google Play.\n\nUpozorňujeme, že Aurora Store nemá žiadne schválenie, sponzorstvo ani autorizáciu od spoločnosti Google, služby Google Play, žiadnych aplikácií stiahnutých prostredníctvom Aurora Store ani žiadnych vývojárov aplikácií; Aurora Store tiež nemá s nimi žiadnu afiliáciu, spoluprácu ani spojitosť.</string>
     <string name="export_app_summary_success">Balík aplikácie bol úspešne exportovaný</string>
     <string name="details_no_favourites">Nenašli sa žiadne obľúbené aplikácie</string>
     <string name="details_no_dependencies">Žiadne závislosti</string>
@@ -259,7 +259,7 @@
     <string name="remove">Odstrániť</string>
     <string name="toast_fav_import_failed">Nepodarilo sa importovať obľúbené položky!</string>
     <string name="remove_dispenser_summary">Chcete odstrániť dávkovač \"<xliff:g id="url">%1$s</xliff:g>\"?</string>
-    <string name="session_good">Wau! Všetko funguje.</string>
+    <string name="session_good">Všetko je v poriadku.</string>
     <string name="pref_updates_auto">Automatické aktualizácie</string>
     <string name="manual_download_hint">Zadajte kód verzie, ktorú chcete stiahnuť</string>
     <string name="action_ignore">Ignorovať</string>
@@ -617,4 +617,69 @@
         <item quantity="many">Nepodarilo sa aktualizovať %1$d účtov</item>
         <item quantity="other">Nepodarilo sa aktualizovať %1$d účtov</item>
     </plurals>
+    <string name="account_exists">Účet už bol pridaný</string>
+    <string name="action_free_up_space">Uvoľniť miesto</string>
+    <string name="action_update_anyway">Aktualizovať aj tak</string>
+    <string name="download_version_unavailable">Verzia %1$d nie je pre toto zariadenie k dispozícii</string>
+    <string name="download_signing_key_rotated">Prihláste sa pomocou účtu Google, aby ste aktualizovali túto aplikáciu: zmenil sa jej podpisový kľúč a anonymné stiahnutia to nedokážu spracovať</string>
+    <string name="exodus_report_history">História verzie</string>
+    <string name="exodus_history_version">%1$s (%2$s)</string>
+    <string name="exodus_history_subtitle">%1$s • %2$d sledovače</string>
+    <string name="exodus_latest">Najnovšie</string>
+    <string name="installer_provider">%1$s · Poskytuje %2$s</string>
+    <string name="installer_status_aborted">Inštalácia bola zrušená</string>
+    <string name="pref_download_languages_title">Stiahnuť všetky moje jazyky</string>
+    <string name="pref_download_languages_summary">Stiahnite si tiež jazykové súbory pre ostatné jazyky nastavené na tomto zariadení. Objem stiahnutých súborov bude väčší</string>
+    <string name="pref_updates_warn_trackers">Upozorniť na nové sledovače v aktualizáciách aplikácií</string>
+    <string name="pref_updates_warn_trackers_desc">Pred aktualizáciou zobraziť varovanie, ak nová verzia obsahuje sledovacie prvky, ktoré neboli súčasťou nainštalovanej verzie</string>
+    <string name="pref_updates_warn_permissions">Upozorniť na nové oprávnenia pri aktualizáciách aplikácií</string>
+    <string name="pref_updates_warn_permissions_desc">Pred aktualizáciou zobraziť varovanie, ak nová verzia vyžaduje oprávnenia, ktoré neboli súčasťou nainštalovanej verzie</string>
+    <string name="tracker_warning_title">Zistené nové sledovače</string>
+    <string name="tracker_warning_desc">Táto aktualizácia pridáva sledovacie prvky, ktoré neboli súčasťou nainštalovanej verzie:</string>
+    <string name="permission_warning_title">Požiadavka na nové oprávnenia</string>
+    <string name="permission_warning_desc">Táto aktualizácia vyžaduje oprávnenia, ktoré nainštalovaná verzia nemá:</string>
+    <plurals name="updates_skipped_new_permissions">
+        <item quantity="one">Bola preskočená aktualizácia %1$d, ktorá vyžaduje nové oprávnenia</item>
+        <item quantity="few">Bolo preskočených %1$d aktualizácií, ktoré vyžadujú nové oprávnenia</item>
+        <item quantity="many">Bolo preskočených %1$d aktualizácií, ktoré vyžadujú nové oprávnenia</item>
+        <item quantity="other">Bolo preskočených %1$d aktualizácií, ktoré vyžadujú nové oprávnenia</item>
+    </plurals>
+    <string name="insufficient_storage_title">Nedostatok miesta</string>
+    <string name="insufficient_storage_desc">%1$s potrebuje %2$s, ale k dispozícii je len %3$s.</string>
+    <string name="insufficient_storage_hint">Uvoľnite %1$s a skúste to znova.</string>
+    <string name="permission_new">Nové</string>
+    <string name="details_play_listing">Na Google Play</string>
+    <string name="details_top_chart">%1$s v %2$s</string>
+    <string name="action_continue">Pokračovať</string>
+    <string name="app_links_owned_title">Odkazy na hry sa otvárajú v %1$s</string>
+    <string name="app_links_owned_desc">Systém Android neumožňuje aplikácii Aurora Store otvárať odkazy, ktoré overil %1$s. Najprv v nej vypnite funkciu „Otvoriť podporované odkazy“ a potom túto funkciu povolte pre aplikáciu Aurora Store.</string>
+    <string name="app_links_owned_open">Otvoriť nastavenia</string>
+    <string name="review_developer_reply">Odpoveď od vývojára</string>
+    <string name="permission_group_system">Systém Android</string>
+    <string name="permission_group_google">Google</string>
+    <string name="permission_group_other">Ostatné</string>
+    <string name="toast_beta_failed">Nepodarilo sa aktualizovať registráciu do beta verzie</string>
+    <string name="toast_beta_left">Opustili ste beta program</string>
+    <string name="google_login_timeout">Spoločnosť Google neodpovedala včas. Prihláste sa, prosím, znovu.</string>
+    <string name="toast_spoof_import_invalid">Neplatná konfigurácia zariadenia, chýbajúce alebo nesprávne formátované polia</string>
+    <string name="toast_spoof_device_invalid">Falošné nastavenie aktívneho zariadenia je neplatné, bolo obnovené na predvolené nastavenie</string>
+    <string name="session_rejected">Služba Google Play túto reláciu neustále odmieta. Ak používate VPN, vyskúšajte iný server a potom sa prihláste znova.</string>
+    <string name="pref_ui_appearance">Vzhľad</string>
+    <string name="manual_download_lookup">Zobraziť verzie</string>
+    <string name="manual_download_select_version">Vyberte verziu</string>
+    <string name="manual_download_no_versions">Nenašli sa žiadne známe verzie</string>
+    <string name="manual_download_availability_warning">Niektoré verzie môžu byť nedostupné na stiahnutie alebo nekompatibilné s vaším zariadením.</string>
+    <string name="status_awaiting_install">Čakám na potvrdenie</string>
+    <string name="notification_install_prompt_pending">Kliknite na tlačidlo na dokončenie inštalácie</string>
+    <string name="notification_none">Tu nie je čo vidieť</string>
+    <string name="authentication_required_update_check">Na kontrolu dostupnosti aktualizácií je potrebné mať prihlásený účet Google Play; v anonymných reláciách zatiaľ nie je možné vykonávať hromadnú kontrolu.</string>
+    <string name="details_more_files">Súbory</string>
+    <string name="details_more_certificate_hash">Hash certifikátu</string>
+    <plurals name="insufficient_storage_desc_multiple">
+        <item quantity="one">Aplikácia %1$d potrebuje %2$s, ale k dispozícii je len %3$s.</item>
+        <item quantity="few">%1$d aplikácií potrebuje %2$s, ale k dispozícii je len %3$s.</item>
+        <item quantity="many">%1$d aplikácií potrebuje %2$s, ale k dispozícii je len %3$s.</item>
+        <item quantity="other">%1$d aplikácií potrebuje %2$s, ale k dispozícii je len %3$s.</item>
+    </plurals>
+    <string name="download_sort_date_downloaded">Dátum stiahnutia</string>
 </resources>
