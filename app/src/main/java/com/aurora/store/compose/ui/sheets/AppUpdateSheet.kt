@@ -52,7 +52,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.aurora.Constants
 import com.aurora.extensions.openInfo
+import com.aurora.extensions.openPlayStore
 import com.aurora.extensions.toast
 import com.aurora.store.AuroraApp
 import com.aurora.store.R
@@ -62,6 +64,7 @@ import com.aurora.store.data.event.BusEvent
 import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.data.room.account.Account
 import com.aurora.store.data.room.update.Update
+import com.aurora.store.util.PackageUtil
 import com.aurora.store.viewmodel.sheets.AppUpdateViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -76,6 +79,9 @@ fun AppUpdateSheet(
     val isBlacklisted = viewModel.blacklistProvider.isBlacklisted(update.packageName)
     val accounts by viewModel.accounts.collectAsStateWithLifecycle()
     var showAccounts by remember { mutableStateOf(false) }
+    val isPlayStoreInstalled = remember {
+        PackageUtil.isInstalled(context, Constants.PACKAGE_NAME_PLAY_STORE)
+    }
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -185,6 +191,16 @@ fun AppUpdateSheet(
                     onDismiss()
                 }
             )
+
+            if (isPlayStoreInstalled) {
+                Item(
+                    label = stringResource(R.string.action_view_on_play),
+                    onClick = {
+                        context.openPlayStore(update.packageName)
+                        onDismiss()
+                    }
+                )
+            }
 
             Spacer(Modifier.navigationBarsPadding())
         }
