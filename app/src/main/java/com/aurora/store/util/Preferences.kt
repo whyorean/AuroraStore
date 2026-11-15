@@ -87,8 +87,6 @@ object Preferences {
 
     const val PREFERENCE_CONFIRM_EXTERNAL_DEEPLINK = "PREFERENCE_CONFIRM_EXTERNAL_DEEPLINK"
 
-    const val PREFERENCE_LAST_TRACKER_SYNC = "PREFERENCE_LAST_TRACKER_SYNC"
-
     private var prefs: SharedPreferences? = null
 
     fun getPrefs(context: Context): SharedPreferences = when (BuildConfig.FLAVOR) {

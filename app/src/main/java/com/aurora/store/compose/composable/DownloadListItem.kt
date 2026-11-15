@@ -52,6 +52,7 @@ fun DownloadListItem(modifier: Modifier = Modifier, download: Download, onClick:
         tertiary = tertiaryLine,
         headlineStyle = MaterialTheme.typography.bodyMedium,
         onClick = onClick,
+        verticalPadding = dimensionResource(R.dimen.spacing_small),
         leading = {
             AnimatedAppIcon(
                 modifier = Modifier.requiredSize(dimensionResource(R.dimen.icon_size_medium)),

@@ -37,10 +37,13 @@ import com.aurora.store.data.event.InstallerEvent
 import com.aurora.store.data.helper.DownloadHelper
 import com.aurora.store.data.model.AppState
 import com.aurora.store.data.model.DownloadStatus
+import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.PlexusReport
 import com.aurora.store.data.model.Report
+import com.aurora.store.data.model.ReportsResult
 import com.aurora.store.data.model.Scores
 import com.aurora.store.data.model.StorageRequirement
+import com.aurora.store.data.model.VersionEntry
 import com.aurora.store.data.providers.AuthProvider
 import com.aurora.store.data.room.download.Download
 import com.aurora.store.data.room.favourite.Favourite
@@ -137,6 +140,12 @@ class AppDetailsViewModel @Inject constructor(
 
     private val _exodusReports = MutableStateFlow<List<Report>>(emptyList())
     val exodusReports = _exodusReports.asStateFlow()
+
+    private val _exodusTrackers = MutableStateFlow<Map<Int, ExodusTracker>>(emptyMap())
+    val exodusTrackers = _exodusTrackers.asStateFlow()
+
+    private val _exodusVersions = MutableStateFlow<List<VersionEntry>>(emptyList())
+    val exodusVersions = _exodusVersions.asStateFlow()
 
     private val _versionLookupInProgress = MutableStateFlow(false)
     val versionLookupInProgress = _versionLookupInProgress.asStateFlow()
@@ -562,27 +571,22 @@ class AppDetailsViewModel @Inject constructor(
 
     private fun fetchExodusPrivacyReport(packageName: String) {
         viewModelScope.launch {
-            val reports = exodusRepository.fetchReports(packageName)
-                .sortedByDescending { it.versionCode.toLongOrNull() ?: -1L }
-            _exodusReport.value = reports.firstOrNull()
-            _exodusReports.value = reports
+            // NotFound and Failed both leave a null report: the "failed to fetch report" state
+            val result = exodusRepository.fetchReports(packageName) as? ReportsResult.Reports
+            _exodusReport.value = result?.reports?.firstOrNull()
+            _exodusReports.value = result?.reports.orEmpty()
+            _exodusTrackers.value = result?.trackers.orEmpty()
         }
     }
 
-    /**
-     * Loads the list of known versions from Exodus for the version picker on the manual download
-     * screen. Reuses the reports already fetched for the privacy report when available, and only
-     * hits the network when nothing has been loaded yet.
-     */
     fun lookupVersions() {
         val packageName = app.value?.packageName ?: return
-        if (_exodusReports.value.isNotEmpty() || _versionLookupInProgress.value) return
+        if (_exodusVersions.value.isNotEmpty() || _versionLookupInProgress.value) return
 
         viewModelScope.launch {
             _versionLookupInProgress.value = true
             try {
-                _exodusReports.value = exodusRepository.fetchReports(packageName)
-                    .sortedByDescending { it.versionCode.toLongOrNull() ?: -1L }
+                _exodusVersions.value = exodusRepository.fetchVersions(packageName)
             } finally {
                 _versionLookupInProgress.value = false
             }
@@ -590,7 +594,7 @@ class AppDetailsViewModel @Inject constructor(
     }
 
     suspend fun getNewTrackers(packageName: String, installedVersionCode: Long) =
-        exodusRepository.getNewTrackers(packageName, installedVersionCode)
+        exodusRepository.newTrackers(packageName, installedVersionCode)
 
     private fun fetchPlexusReport(packageName: String) {
         viewModelScope.launch(Dispatchers.IO) {

@@ -6,7 +6,6 @@
 
 package com.aurora.store.compose.ui.dev
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -172,10 +171,7 @@ private fun ScreenContent(
                     modifier = Modifier
                         .padding(paddingValues)
                         .fillMaxSize()
-                        .padding(vertical = dimensionResource(R.dimen.spacing_medium)),
-                    verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.spacing_medium)
-                    )
+                        .padding(vertical = dimensionResource(R.dimen.spacing_medium))
                 ) {
                     items(count = apps.itemCount) { index ->
                         apps[index]?.let { app ->

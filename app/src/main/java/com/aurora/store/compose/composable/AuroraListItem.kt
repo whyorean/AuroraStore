@@ -5,7 +5,9 @@
 
 package com.aurora.store.compose.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,6 +22,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
+import androidx.compose.ui.unit.Dp
 import com.aurora.store.R
 import com.aurora.store.compose.preview.ThemePreviewProvider
 
@@ -38,6 +41,9 @@ fun AuroraListItem(
     supporting: String? = null,
     tertiary: String? = null,
     onClick: (() -> Unit)? = null,
+    onLongClick: (() -> Unit)? = null,
+    selected: Boolean = false,
+    verticalPadding: Dp = dimensionResource(R.dimen.spacing_xsmall),
     enabled: Boolean = true,
     leading: (@Composable () -> Unit)? = null,
     trailing: (@Composable () -> Unit)? = null,
@@ -47,15 +53,27 @@ fun AuroraListItem(
         modifier = modifier
             .fillMaxWidth()
             .then(
-                if (onClick != null) {
-                    Modifier.clickable(enabled = enabled, onClick = onClick)
+                when {
+                    onLongClick != null -> Modifier.combinedClickable(
+                        enabled = enabled,
+                        onClick = { onClick?.invoke() },
+                        onLongClick = onLongClick
+                    )
+
+                    onClick != null -> Modifier.clickable(enabled = enabled, onClick = onClick)
+                    else -> Modifier
+                }
+            )
+            .then(
+                if (selected) {
+                    Modifier.background(MaterialTheme.colorScheme.secondaryContainer)
                 } else {
                     Modifier
                 }
             )
             .padding(
                 horizontal = dimensionResource(R.dimen.spacing_medium),
-                vertical = dimensionResource(R.dimen.spacing_xsmall)
+                vertical = verticalPadding
             ),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small)),
         verticalAlignment = Alignment.CenterVertically

@@ -46,6 +46,7 @@ fun BlackListItem(
         headlineStyle = MaterialTheme.typography.bodyMedium,
         onClick = onClick,
         enabled = isEnabled,
+        verticalPadding = dimensionResource(R.dimen.spacing_small),
         leading = {
             Image(
                 bitmap = icon.asImageBitmap(),

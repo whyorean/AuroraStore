@@ -95,8 +95,8 @@ private fun ShimmerListRow(showTrailing: Boolean) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                horizontal = dimensionResource(R.dimen.spacing_small),
-                vertical = dimensionResource(R.dimen.spacing_xsmall)
+                horizontal = dimensionResource(R.dimen.spacing_medium),
+                vertical = dimensionResource(R.dimen.spacing_small)
             ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))

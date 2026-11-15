@@ -69,6 +69,7 @@
     <string name="action_export">"Export"</string>
     <string name="action_import">"Import"</string>
     <string name="action_favourite">"Favourite"</string>
+    <string name="action_unfavourite">Remove from favourites</string>
     <string name="action_filter">"Filters"</string>
     <string name="action_filter_all">"All"</string>
     <string name="action_filter_apply">"Apply"</string>
@@ -376,6 +377,10 @@
     <string name="toast_rated_success">Rated, it may take a while to show</string>
     <string name="toast_rated_failed">Could not submit rating</string>
     <string name="permission_new">New</string>
+    <plurals name="installed_selected">
+        <item quantity="one">%1$d selected</item>
+        <item quantity="other">%1$d selected</item>
+    </plurals>
     <string name="title_languages">Languages</string>
     <string name="language_selected">Your languages</string>
     <string name="language_primary">Primary · app and Google Play language</string>

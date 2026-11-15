@@ -58,8 +58,8 @@ fun TrackerUpdateWarningDialog(
 private fun TrackerUpdateWarningDialogPreview() {
     TrackerUpdateWarningDialog(
         trackers = listOf(
-            ExodusTracker(id = 312, name = "Google AdMob"),
-            ExodusTracker(id = 49, name = "Google Firebase Analytics")
+            ExodusTracker(name = "Google AdMob"),
+            ExodusTracker(name = "Google Firebase Analytics")
         )
     )
 }

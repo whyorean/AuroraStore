@@ -25,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
+import androidx.compose.ui.unit.dp
 import com.aurora.gplayapi.model.App
 import com.aurora.gplayapi.model.StreamBundle
 import com.aurora.gplayapi.model.StreamCluster
@@ -91,13 +92,7 @@ fun StreamCarousel(
         modifier = modifier.fillMaxSize(),
         state = lazyListState,
         verticalArrangement = Arrangement.spacedBy(
-            dimensionResource(
-                if (clusters.size == 1) {
-                    R.dimen.spacing_medium
-                } else {
-                    R.dimen.spacing_xsmall
-                }
-            )
+            if (clusters.size == 1) 0.dp else dimensionResource(R.dimen.spacing_xsmall)
         )
     ) {
         if (clusters.size == 1) {

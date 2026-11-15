@@ -87,7 +87,10 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Composable
-fun SearchScreen(viewModel: SearchViewModel = hiltViewModel()) {
+fun SearchScreen(
+    viewModel: SearchViewModel = hiltViewModel(),
+    onNavigateTo: (Destination) -> Unit = {}
+) {
     val suggestions by viewModel.suggestions.collectAsStateWithLifecycle()
     val results = viewModel.apps.collectAsLazyPagingItems()
 
@@ -101,7 +104,8 @@ fun SearchScreen(viewModel: SearchViewModel = hiltViewModel()) {
         onSearch = onSearchCallback,
         onFetchSuggestions = onFetchSuggestionsCallback,
         onFilter = { filter -> viewModel.filterResults(filter) },
-        isAnonymous = viewModel.authProvider.isAnonymous
+        isAnonymous = viewModel.authProvider.isAnonymous,
+        onNavigateTo = onNavigateTo
     )
 }
 
@@ -112,7 +116,8 @@ private fun ScreenContent(
     onFetchSuggestions: (String) -> Unit = {},
     onSearch: (String) -> Unit = {},
     onFilter: (filter: SearchFilter) -> Unit = {},
-    isAnonymous: Boolean = true
+    isAnonymous: Boolean = true,
+    onNavigateTo: (Destination) -> Unit = {}
 ) {
     val activity = LocalActivity.current as? ComponentActivity
     val textFieldState = rememberTextFieldState()
@@ -245,10 +250,7 @@ private fun ScreenContent(
                             Box(modifier = Modifier.fillMaxSize()) {
                                 LazyColumn(
                                     state = listState,
-                                    modifier = Modifier.fillMaxSize(),
-                                    verticalArrangement = Arrangement.spacedBy(
-                                        dimensionResource(R.dimen.spacing_medium)
-                                    )
+                                    modifier = Modifier.fillMaxSize()
                                 ) {
                                     items(
                                         count = results.itemCount,
@@ -284,6 +286,8 @@ private fun ScreenContent(
                         onNavigateTo = { destination ->
                             if (destination is Destination.AppDetails) {
                                 showDetailPane(destination.packageName)
+                            } else {
+                                onNavigateTo(destination)
                             }
                         },
                         forceSinglePane = true

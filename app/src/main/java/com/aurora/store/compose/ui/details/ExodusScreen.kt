@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -20,7 +19,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -34,7 +32,6 @@ import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -66,14 +63,13 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.data.model.ExodusTracker
 import com.aurora.store.data.model.Report
 import com.aurora.store.data.model.formatExodusDate
+import com.aurora.store.data.model.resolveTrackers
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
-import com.aurora.store.viewmodel.details.ExodusViewModel
 
 @Composable
 fun ExodusScreen(
     packageName: String,
     appDetailsViewModel: AppDetailsViewModel = hiltViewModel(key = packageName),
-    exodusViewModel: ExodusViewModel = hiltViewModel(key = "$packageName/exodus"),
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 ) {
     val context = LocalContext.current
@@ -81,6 +77,7 @@ fun ExodusScreen(
     val app by appDetailsViewModel.app.collectAsStateWithLifecycle()
     val report by appDetailsViewModel.exodusReport.collectAsStateWithLifecycle()
     val reports by appDetailsViewModel.exodusReports.collectAsStateWithLifecycle()
+    val trackers by appDetailsViewModel.exodusTrackers.collectAsStateWithLifecycle()
 
     val topAppBarTitle = when {
         windowAdaptiveInfo.isWindowCompact -> app!!.displayName
@@ -99,7 +96,7 @@ fun ExodusScreen(
             ScreenContentReport(
                 topAppBarTitle = topAppBarTitle,
                 reports = reports,
-                onResolveTrackers = { selected -> exodusViewModel.resolveTrackers(selected) },
+                trackers = trackers,
                 onViewReport = { selected -> context.browse(EXODUS_REPORT_URL + selected.id) },
                 onRequestAnalysis = { context.browse("${EXODUS_SUBMIT_PAGE}${app!!.packageName}") }
             )
@@ -111,7 +108,7 @@ fun ExodusScreen(
 private fun ScreenContentReport(
     topAppBarTitle: String? = null,
     reports: List<Report> = emptyList(),
-    onResolveTrackers: suspend (Report) -> List<ExodusTracker> = { emptyList() },
+    trackers: Map<Int, ExodusTracker> = emptyMap(),
     onViewReport: (Report) -> Unit = {},
     onRequestAnalysis: () -> Unit = {},
     windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfoV2()
@@ -121,7 +118,7 @@ private fun ScreenContentReport(
     selectedReport?.let { selected ->
         ExodusReportDialog(
             report = selected,
-            onResolveTrackers = onResolveTrackers,
+            trackers = selected.resolveTrackers(trackers),
             onViewReport = { onViewReport(selected) },
             onDismiss = { selectedReport = null }
         )
@@ -216,7 +213,7 @@ private fun VersionRow(report: Report, isLatest: Boolean, onClick: () -> Unit) {
             Text(
                 stringResource(
                     R.string.exodus_history_subtitle,
-                    formatExodusDate(report.creationDate),
+                    formatExodusDate(report.date),
                     report.trackers.size
                 )
             )
@@ -227,32 +224,19 @@ private fun VersionRow(report: Report, isLatest: Boolean, onClick: () -> Unit) {
 @Composable
 private fun ExodusReportDialog(
     report: Report,
-    onResolveTrackers: suspend (Report) -> List<ExodusTracker>,
+    trackers: List<ExodusTracker>,
     onViewReport: () -> Unit,
     onDismiss: () -> Unit
 ) {
-    val trackers by produceState<List<ExodusTracker>?>(initialValue = null, report) {
-        value = onResolveTrackers(report)
-    }
-
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(report.version) },
         text = {
-            val resolved = trackers
-            when {
-                resolved == null -> {
-                    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                        CircularProgressIndicator()
-                    }
-                }
-
-                resolved.isEmpty() -> Text(stringResource(R.string.exodus_no_tracker))
-
-                else -> {
-                    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                        resolved.forEach { tracker -> ExodusListItem(tracker = tracker) }
-                    }
+            if (trackers.isEmpty()) {
+                Text(stringResource(R.string.exodus_no_tracker))
+            } else {
+                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                    trackers.forEach { tracker -> ExodusListItem(tracker = tracker) }
                 }
             }
         },
@@ -303,8 +287,8 @@ private fun ExodusScreenPreviewReport(@PreviewParameter(AppPreviewProvider::clas
     ScreenContentReport(
         topAppBarTitle = app.displayName,
         reports = listOf(
-            Report(id = 2, version = "5.2.0", creationDate = "2024-03-11", trackers = listOf(1, 2)),
-            Report(id = 1, version = "5.1.0", creationDate = "2023-11-02", trackers = listOf(1))
+            Report(id = 2, version = "5.2.0", date = "2024-03-11", trackers = listOf(1, 2)),
+            Report(id = 1, version = "5.1.0", date = "2023-11-02", trackers = listOf(1))
         )
     )
 }

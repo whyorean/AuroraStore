@@ -65,6 +65,18 @@ fun Context.appInfo(packageName: String) {
     }
 }
 
+/** Opens the app's Play listing in the Play Store, or in any other handler when it is missing. */
+fun Context.openPlayStore(packageName: String) {
+    val intent = Intent(Intent.ACTION_VIEW, "${Constants.SHARE_URL}$packageName".toUri())
+    val playIntent = Intent(intent).setPackage(Constants.PACKAGE_NAME_PLAY_STORE)
+    val hasPlayStore = playIntent.resolveActivity(packageManager) != null
+    try {
+        startActivity(if (hasPlayStore) playIntent else intent)
+    } catch (exception: Exception) {
+        Log.e(TAG, "Failed to open Play Store listing", exception)
+    }
+}
+
 fun Context.share(displayName: String, packageName: String) {
     try {
         val sendIntent = Intent().apply {

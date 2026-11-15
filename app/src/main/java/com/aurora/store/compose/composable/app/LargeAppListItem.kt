@@ -38,6 +38,7 @@ fun LargeAppListItem(modifier: Modifier = Modifier, app: App, onClick: () -> Uni
         tertiary = buildAppExtras(app),
         headlineStyle = MaterialTheme.typography.bodyMedium,
         onClick = onClick,
+        verticalPadding = dimensionResource(R.dimen.spacing_small),
         leading = {
             AsyncImage(
                 modifier = Modifier

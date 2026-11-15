@@ -5,7 +5,6 @@
 
 package com.aurora.store.compose.ui.apps
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -136,9 +135,6 @@ private fun TopChartsBody(
                     state = listState,
                     contentPadding = PaddingValues(
                         vertical = dimensionResource(R.dimen.spacing_small)
-                    ),
-                    verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.spacing_xsmall)
                     )
                 ) {
                     items(count = apps.size, key = { apps[it].id }) { index ->
@@ -154,10 +150,7 @@ private fun TopChartsBody(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth(),
-                contentPadding = PaddingValues(vertical = dimensionResource(R.dimen.spacing_small)),
-                verticalArrangement = Arrangement.spacedBy(
-                    dimensionResource(R.dimen.spacing_xsmall)
-                )
+                contentPadding = PaddingValues(vertical = dimensionResource(R.dimen.spacing_small))
             ) {
                 items(8) { ShimmerAppRow() }
             }

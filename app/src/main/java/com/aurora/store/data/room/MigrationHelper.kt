@@ -71,6 +71,10 @@ object MigrationHelper {
         override fun migrate(db: SupportSQLiteDatabase) = migrateFrom14To15(db)
     }
 
+    val MIGRATION_15_16 = object : Migration(15, 16) {
+        override fun migrate(db: SupportSQLiteDatabase) = migrateFrom15To16(db)
+    }
+
     private const val TAG = "MigrationHelper"
 
     private fun migrateFrom1To2(database: SupportSQLiteDatabase) {
@@ -368,6 +372,18 @@ object MigrationHelper {
             database.setTransactionSuccessful()
         } catch (exception: Exception) {
             Log.e(TAG, "Failed while migrating from database version 14 to 15", exception)
+        } finally {
+            database.endTransaction()
+        }
+    }
+
+    private fun migrateFrom15To16(database: SupportSQLiteDatabase) {
+        database.beginTransaction()
+        try {
+            database.execSQL("DROP TABLE IF EXISTS `exodus_tracker`")
+            database.setTransactionSuccessful()
+        } catch (exception: Exception) {
+            Log.e(TAG, "Failed while migrating from database version 15 to 16", exception)
         } finally {
             database.endTransaction()
         }

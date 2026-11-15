@@ -12,7 +12,6 @@ import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -305,10 +304,7 @@ private fun ScreenContent(
 
                 LazyColumn(
                     modifier = Modifier.fillMaxWidth(),
-                    state = listState,
-                    verticalArrangement = Arrangement.spacedBy(
-                        dimensionResource(R.dimen.spacing_xsmall)
-                    )
+                    state = listState
                 ) {
                     if (selectedPackages.isNotEmpty()) {
                         stickyHeader(key = "header_selected") {

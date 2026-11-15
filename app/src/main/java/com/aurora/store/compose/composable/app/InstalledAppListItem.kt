@@ -44,7 +44,9 @@ fun InstalledAppListItem(
     sizeBytes: Long = 0L,
     lastUpdateTime: Long = 0L,
     installerLabel: String? = null,
-    onClick: () -> Unit = {}
+    selected: Boolean = false,
+    onClick: () -> Unit = {},
+    onLongClick: (() -> Unit)? = null
 ) {
     AuroraListItem(
         modifier = modifier,
@@ -53,6 +55,9 @@ fun InstalledAppListItem(
         tertiary = buildInstalledExtras(sizeBytes, lastUpdateTime, installerLabel),
         headlineStyle = MaterialTheme.typography.bodyMedium,
         onClick = onClick,
+        onLongClick = onLongClick,
+        selected = selected,
+        verticalPadding = dimensionResource(R.dimen.spacing_small),
         leading = {
             AsyncImage(
                 modifier = Modifier

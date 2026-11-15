@@ -10,7 +10,6 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
 import kotlinx.parcelize.Parcelize
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
@@ -28,56 +27,56 @@ fun formatExodusDate(date: String): String {
 }
 
 @Serializable
-data class ExodusReport(
-    val creator: String = String(),
-    val name: String = String(),
-    val reports: List<Report> = listOf()
-)
-
-@Serializable
 @Parcelize
 data class Report(
     val id: Int = -1,
-    val downloads: String = String(),
     val version: String = String(),
-    @SerialName("creation_date") val creationDate: String = String(),
-    @SerialName("updated_at") val updatedAt: String = String(),
-    @SerialName("version_code") val versionCode: String = String(),
+    val versionCode: Long = 0L,
+    val date: String = String(),
     val trackers: List<Int> = listOf()
 ) : Parcelable
 
 @Serializable
 data class ExodusTracker(
-    val id: Int = 0,
     val name: String = String(),
     val url: String = String(),
     val signature: String = String(),
-    val date: String = String(),
-    val description: String = String(),
-    val networkSignature: String = String(),
-    val documentation: List<String> = emptyList(),
     val categories: List<String> = emptyList()
-) {
+)
 
-    override fun hashCode(): Int = id
+@Serializable
+data class VersionEntry(
+    val versionCode: Long = 0L,
+    val version: String = String(),
+    val date: String = String()
+)
 
-    override fun equals(other: Any?): Boolean = when (other) {
-        is ExodusTracker -> other.id == id
-        else -> false
-    }
+sealed interface ReportsResult {
+    data class Reports(
+        val reports: List<Report>,
+        val trackers: Map<Int, ExodusTracker>
+    ) : ReportsResult
+
+    data object NotFound : ReportsResult
+
+    data object Failed : ReportsResult
 }
 
+/**
+ * Resolves the tracker ids of this report against [catalogue], best-effort: ids missing from it
+ * resolve to a `Tracker #<id>` placeholder.
+ */
+fun Report.resolveTrackers(catalogue: Map<Int, ExodusTracker>): List<ExodusTracker> =
+    trackers.map { id -> catalogue[id] ?: ExodusTracker(name = "Tracker #$id") }
+
 @Serializable
-data class TrackersResponse(
-    val trackers: Map<String, TrackerDto> = emptyMap()
+data class ReportsResponse(
+    val reports: List<Report> = emptyList(),
+    val trackers: Map<String, ExodusTracker> = emptyMap()
 )
 
 @Serializable
-data class TrackerDto(
-    val id: Int = 0,
-    val name: String = String(),
-    @SerialName("website") val website: String = String(),
-    @SerialName("code_signature") val codeSignature: String = String(),
-    @SerialName("creation_date") val creationDate: String = String(),
-    val categories: List<String> = emptyList()
-)
+data class VersionsResponse(val versions: List<VersionEntry> = emptyList())
+
+@Serializable
+data class NewTrackersResponse(val trackers: List<ExodusTracker> = emptyList())
