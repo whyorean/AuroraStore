@@ -64,7 +64,7 @@ import com.aurora.store.compose.preview.AppPreviewProvider
 import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.sheets.VersionPickerSheet
 import com.aurora.store.data.model.AppState
-import com.aurora.store.data.model.Report
+import com.aurora.store.data.model.VersionEntry
 import com.aurora.store.viewmodel.details.AppDetailsViewModel
 import kotlinx.coroutines.launch
 
@@ -77,7 +77,7 @@ fun ManualDownloadScreen(
 ) {
     val app by viewModel.app.collectAsStateWithLifecycle()
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val reports by viewModel.exodusReports.collectAsStateWithLifecycle()
+    val versions by viewModel.exodusVersions.collectAsStateWithLifecycle()
     val lookupInProgress by viewModel.versionLookupInProgress.collectAsStateWithLifecycle()
     val topAppBarTitle = when {
         windowAdaptiveInfo.isWindowCompact -> app!!.displayName
@@ -88,7 +88,7 @@ fun ManualDownloadScreen(
         state = state,
         topAppBarTitle = topAppBarTitle,
         currentVersionCode = app!!.versionCode,
-        reports = reports,
+        versions = versions,
         lookupInProgress = lookupInProgress,
         onLookup = viewModel::lookupVersions,
         onRequestInstall = { versionCode ->
@@ -110,7 +110,7 @@ private fun ScreenContent(
     state: AppState = AppState.Unavailable,
     topAppBarTitle: String? = null,
     currentVersionCode: Long = 0L,
-    reports: List<Report> = emptyList(),
+    versions: List<VersionEntry> = emptyList(),
     lookupInProgress: Boolean = false,
     onLookup: () -> Unit = {},
     onRequestInstall: (versionCode: Long) -> Unit = {},
@@ -131,10 +131,10 @@ private fun ScreenContent(
 
     if (showVersionPicker) {
         VersionPickerSheet(
-            reports = reports,
+            versions = versions,
             loading = lookupInProgress,
-            onSelect = { report ->
-                val code = report.versionCode
+            onSelect = { entry ->
+                val code = entry.versionCode.toString()
                 versionCode = TextFieldValue(text = code, selection = TextRange(code.length))
                 showVersionPicker = false
             },
@@ -265,10 +265,10 @@ private fun ManualDownloadScreenPreview(@PreviewParameter(AppPreviewProvider::cl
     ScreenContent(
         topAppBarTitle = app.displayName,
         currentVersionCode = app.versionCode,
-        reports = listOf(
-            Report(version = "8.5.1", versionCode = "85100"),
-            Report(version = "8.4.0", versionCode = "84000"),
-            Report(version = "8.3.2", versionCode = "83200")
+        versions = listOf(
+            VersionEntry(version = "8.5.1", versionCode = 85100),
+            VersionEntry(version = "8.4.0", versionCode = 84000),
+            VersionEntry(version = "8.3.2", versionCode = 83200)
         )
     )
 }
