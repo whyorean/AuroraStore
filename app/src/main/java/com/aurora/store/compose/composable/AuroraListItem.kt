@@ -5,7 +5,9 @@
 
 package com.aurora.store.compose.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -38,6 +40,8 @@ fun AuroraListItem(
     supporting: String? = null,
     tertiary: String? = null,
     onClick: (() -> Unit)? = null,
+    onLongClick: (() -> Unit)? = null,
+    selected: Boolean = false,
     enabled: Boolean = true,
     leading: (@Composable () -> Unit)? = null,
     trailing: (@Composable () -> Unit)? = null,
@@ -47,8 +51,20 @@ fun AuroraListItem(
         modifier = modifier
             .fillMaxWidth()
             .then(
-                if (onClick != null) {
-                    Modifier.clickable(enabled = enabled, onClick = onClick)
+                when {
+                    onLongClick != null -> Modifier.combinedClickable(
+                        enabled = enabled,
+                        onClick = { onClick?.invoke() },
+                        onLongClick = onLongClick
+                    )
+
+                    onClick != null -> Modifier.clickable(enabled = enabled, onClick = onClick)
+                    else -> Modifier
+                }
+            )
+            .then(
+                if (selected) {
+                    Modifier.background(MaterialTheme.colorScheme.secondaryContainer)
                 } else {
                     Modifier
                 }

@@ -27,6 +27,8 @@ import com.aurora.store.data.PageResult
 import com.aurora.store.data.paging.GenericPagingSource
 import com.aurora.store.data.paging.GenericPagingSource.Companion.manualPager
 import com.aurora.store.data.providers.BlacklistProvider
+import com.aurora.store.data.room.favourite.Favourite
+import com.aurora.store.data.room.favourite.FavouriteDao
 import com.aurora.store.util.PackageUtil
 import com.aurora.store.util.Preferences
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -46,7 +48,8 @@ import kotlinx.coroutines.launch
 class InstalledViewModel @Inject constructor(
     blacklistProvider: BlacklistProvider,
     @ApplicationContext private val context: Context,
-    private val webPlayClient: WebPlayClient
+    private val webPlayClient: WebPlayClient,
+    private val favouriteDao: FavouriteDao
 ) : ViewModel() {
 
     private val blacklist = blacklistProvider.blacklist
@@ -114,6 +117,18 @@ class InstalledViewModel @Inject constructor(
                     .cachedIn(viewModelScope)
                     .collect { _apps.value = it }
             }
+        }
+    }
+
+    fun favourite(apps: List<App>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            favouriteDao.insertAll(apps.map { Favourite.fromApp(it, Favourite.Mode.MANUAL) })
+        }
+    }
+
+    fun unfavourite(packageNames: Collection<String>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            favouriteDao.deleteAll(packageNames)
         }
     }
 

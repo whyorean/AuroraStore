@@ -6,6 +6,7 @@
 
 package com.aurora.store.compose.ui.installed
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,14 +19,19 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -51,6 +57,7 @@ import com.aurora.store.compose.preview.ThemePreviewProvider
 import com.aurora.store.compose.ui.commons.InstalledAppMeta
 import com.aurora.store.compose.ui.commons.SortFilterSheet
 import com.aurora.store.compose.ui.commons.SortFilterState
+import com.aurora.store.data.installer.AppInstaller
 import com.aurora.store.viewmodel.all.InstalledViewModel
 import kotlin.random.Random
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -71,6 +78,8 @@ fun InstalledScreen(
         installers = installers,
         metadata = metadata,
         onStateChange = viewModel::updateState,
+        onFavourite = viewModel::favourite,
+        onUnfavourite = viewModel::unfavourite,
         onNavigateTo = onNavigateTo
     )
 }
@@ -82,8 +91,21 @@ private fun ScreenContent(
     installers: Map<String, String> = emptyMap(),
     metadata: Map<String, InstalledAppMeta> = emptyMap(),
     onStateChange: (SortFilterState) -> Unit = {},
+    onFavourite: (List<App>) -> Unit = {},
+    onUnfavourite: (Collection<String>) -> Unit = {},
     onNavigateTo: (Destination) -> Unit = {}
 ) {
+    val context = LocalContext.current
+    val selected = rememberSaveable(
+        saver = listSaver(save = { it.toList() }, restore = { it.toMutableStateList() })
+    ) { mutableStateListOf<String>() }
+
+    BackHandler(enabled = selected.isNotEmpty()) { selected.clear() }
+
+    fun toggle(app: App) {
+        if (!selected.remove(app.packageName)) selected.add(app.packageName)
+    }
+
     /*
      * For some reason paging3 frequently out-of-nowhere invalidates the list which causes
      * the loading animation to play again even if the keys are same causing a glitching effect.
@@ -95,17 +117,66 @@ private fun ScreenContent(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = stringResource(R.string.title_apps_games),
-                actions = {
-                    IconButton(onClick = { sheetVisible = true }) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_tune),
-                            contentDescription = stringResource(R.string.installed_sort_filter)
-                        )
+            if (selected.isEmpty()) {
+                TopAppBar(
+                    title = stringResource(R.string.title_apps_games),
+                    actions = {
+                        IconButton(onClick = { sheetVisible = true }) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_tune),
+                                contentDescription = stringResource(R.string.installed_sort_filter)
+                            )
+                        }
                     }
-                }
-            )
+                )
+            } else {
+                TopAppBar(
+                    title = pluralStringResource(
+                        R.plurals.installed_selected,
+                        selected.size,
+                        selected.size
+                    ),
+                    navigationIcon = painterResource(R.drawable.ic_cancel),
+                    actions = {
+                        IconButton(
+                            onClick = {
+                                onFavourite(
+                                    apps.itemSnapshotList.items
+                                        .filter { it.packageName in selected }
+                                )
+                                selected.clear()
+                            }
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_favorite_checked),
+                                contentDescription = stringResource(R.string.action_favourite)
+                            )
+                        }
+                        IconButton(
+                            onClick = {
+                                onUnfavourite(selected.toList())
+                                selected.clear()
+                            }
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_favorite_unchecked),
+                                contentDescription = stringResource(R.string.action_unfavourite)
+                            )
+                        }
+                        IconButton(
+                            onClick = {
+                                selected.forEach { AppInstaller.uninstall(context, it) }
+                                selected.clear()
+                            }
+                        ) {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_delete),
+                                contentDescription = stringResource(R.string.action_uninstall)
+                            )
+                        }
+                    }
+                )
+            }
         }
     ) { paddingValues ->
         Column(
@@ -148,11 +219,17 @@ private fun ScreenContent(
                                             lastUpdateTime = meta?.lastUpdateTime ?: 0L,
                                             installerLabel = meta?.installer
                                                 ?.let { installers[it] },
+                                            selected = app.packageName in selected,
                                             onClick = {
-                                                onNavigateTo(
-                                                    Destination.AppDetails(app.packageName)
-                                                )
-                                            }
+                                                if (selected.isNotEmpty()) {
+                                                    toggle(app)
+                                                } else {
+                                                    onNavigateTo(
+                                                        Destination.AppDetails(app.packageName)
+                                                    )
+                                                }
+                                            },
+                                            onLongClick = { toggle(app) }
                                         )
                                     }
                                 }

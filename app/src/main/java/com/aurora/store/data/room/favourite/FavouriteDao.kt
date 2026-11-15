@@ -33,6 +33,9 @@ interface FavouriteDao {
     @Query("DELETE FROM favourite WHERE packageName = :packageName")
     suspend fun delete(packageName: String)
 
+    @Query("DELETE FROM favourite WHERE packageName IN (:packageNames)")
+    suspend fun deleteAll(packageNames: Collection<String>)
+
     @Query("DELETE FROM favourite")
     suspend fun deleteAll()
 
