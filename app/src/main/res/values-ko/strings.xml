@@ -631,8 +631,6 @@
     <string name="download_version_unavailable">이 기기에서는 %1$d 버전을 이용할 수 없습니다</string>
     <string name="download_signing_key_rotated">이 앱을 업데이트하려면 Google 계정으로 로그인하세요. 서명 키가 변경되었으며, 익명 다운로드로는 처리할 수 없습니다</string>
     <string name="installer_status_aborted">설치 취소</string>
-    <string name="pref_download_languages_title">내 언어 모두 다운로드</string>
-    <string name="pref_download_languages_summary">이 기기에 설정한 다른 언어의 언어 파일도 가져옵니다. 다운로드 크기가 커집니다</string>
     <string name="pref_updates_warn_permissions">앱 업데이트 시 새 권한 경고</string>
     <string name="pref_updates_warn_permissions_desc">설치한 버전에서는 없었던 권한을 신규 버전에서 요청하면 업데이트하기 전에 경고 표시</string>
     <string name="permission_warning_title">새 권한 요청됨</string>

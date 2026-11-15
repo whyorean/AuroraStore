@@ -636,8 +636,6 @@
     <string name="download_sort_date_downloaded">İndirme tarihi</string>
     <string name="download_signing_key_rotated">Bu uygulamayı güncellemek için bir Google hesabıyla oturum açın: imzalama anahtarı değişti ve anonim indirmeler bunu desteklemiyor</string>
     <string name="installer_status_aborted">Kurulum iptal edildi</string>
-    <string name="pref_download_languages_title">Tüm dillerimi indir</string>
-    <string name="pref_download_languages_summary">Ayrıca bu cihazda ayarlanmış diğer diller için dil dosyalarını da indirin. İndirilen dosyalar daha büyük olacaktır</string>
     <string name="pref_updates_warn_permissions">Uygulama güncellemelerindeki yeni izinler hakkında uyarı verin</string>
     <string name="pref_updates_warn_permissions_desc">Yeni sürüm, yüklü sürümde bulunmayan izinler istediğinde güncellemeden önce bir uyarı göster</string>
     <string name="permission_warning_title">Yeni izinler talep edildi</string>

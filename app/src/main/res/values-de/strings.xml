@@ -637,8 +637,6 @@
     <string name="download_version_unavailable">Die Version %1$d ist für dieses Gerät nicht verfügbar</string>
     <string name="download_signing_key_rotated">Melde dich mit einem Google-Konto an, um diese App zu aktualisieren: Der Signaturschlüssel hat sich geändert, und anonyme Downloads können damit nicht umgehen</string>
     <string name="installer_status_aborted">Installation abgebrochen</string>
-    <string name="pref_download_languages_title">Alle meine Sprachen herunterladen</string>
-    <string name="pref_download_languages_summary">Außerdem werden Sprachdateien für die anderen auf diesem Gerät eingestellten Sprachen abgerufen. Die Downloads sind dann umfangreicher</string>
     <string name="pref_updates_warn_permissions">Bei App-Updates vor neuen Berechtigungen warnen</string>
     <string name="pref_updates_warn_permissions_desc">Vor dem Update eine Warnung anzeigen, wenn die neue Version Berechtigungen anfordert, die in der installierten Version nicht vorhanden waren</string>
     <string name="permission_warning_title">Neue Berechtigungen angefordert</string>

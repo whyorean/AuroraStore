@@ -648,7 +648,6 @@
     </plurals>
     <string name="download_version_unavailable">Wersja %1$d nie jest dostępna dla tego urządzenia</string>
     <string name="installer_status_aborted">Instalacja anulowana</string>
-    <string name="pref_download_languages_title">Pobierz wszystkie moje języki</string>
     <string name="pref_updates_warn_permissions">Ostrzegaj o nowych uprawnieniach w aktualizowanych aplikacjach</string>
     <string name="pref_updates_warn_permissions_desc">Pokaż ostrzeżenie przed aktualizacją, gdy nowa wersja wymaga uprawnień, których nie było w zainstalowanej wersji</string>
     <string name="permission_warning_title">Wymagane są nowe uprawnienia</string>
@@ -673,7 +672,6 @@
     <string name="toast_beta_left">Opuściłeś program beta</string>
     <string name="toast_beta_failed">Nie udało się zaktualizować rejestracji w programie beta</string>
     <string name="app_links_owned_title">Linki do Google Play są otwierane w %1$s</string>
-    <string name="pref_download_languages_summary">Pobierz również pliki językowe dla innych języków używanych na tym urządzeniu. Rozmiar pliku do pobrania będzie większy</string>
     <string name="authentication_required_update_check">Sprawdzanie aktualizacji wymaga zalogowanie się na konto Google Play. Sesje anonimowe nie obsługują jeszcze zbiorczego sprawdzania aktualizacji.</string>
     <string name="session_rejected">Google Play odrzucił bieżącą sesję. Jeśli korzystasz z VPN, spróbuj zmienić serwer i zaloguj się ponownie.</string>
     <string name="toast_spoof_device_invalid">Aktywna emulacja urządzenia jest nieprawidłowa. Przywrócono ustawienia domyślne</string>

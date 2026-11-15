@@ -643,8 +643,6 @@
     <string name="download_version_unavailable">A versão %1$d não está disponível para este dispositivo</string>
     <string name="download_signing_key_rotated">Entre com uma conta Google para atualizar este app: a chave de assinatura mudou, e downloads anônimos não admitem isso</string>
     <string name="installer_status_aborted">Instalação cancelada</string>
-    <string name="pref_download_languages_title">Baixar todos os meus idiomas</string>
-    <string name="pref_download_languages_summary">Também buscar arquivos de idioma para outros idiomas definidos neste dispositivos. Downloads serão maiores</string>
     <string name="pref_updates_warn_permissions">Avisar sobre permissões novas em atualizações de apps</string>
     <string name="pref_updates_warn_permissions_desc">Mostrar um aviso antes de atualizar quando a nova versão solicita novas permissões que não estavam na versão instalada</string>
     <string name="permission_warning_title">Novas permissões solicitadas</string>

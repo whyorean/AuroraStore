@@ -637,8 +637,6 @@
     <string name="download_version_unavailable">A(z) %1$d verzió nem érhető el ezen az eszközön</string>
     <string name="download_signing_key_rotated">Jelentkezzen be Google-fiókjával az alkalmazás frissítéséhez: az alkalmazás aláírókulcsa megváltozott, a névtelen letöltések pedig nem tudják kezelni ezt a változást</string>
     <string name="installer_status_aborted">Telepítés megszakítva</string>
-    <string name="pref_download_languages_title">Összes saját nyelv letöltése</string>
-    <string name="pref_download_languages_summary">A többi beállított nyelv nyelvi fájljainak letöltése is. A letöltés nagyobb méretű lesz</string>
     <string name="pref_updates_warn_permissions">Figyelmeztetés az alkalmazásfrissítésekben megjelenő új engedélyekre</string>
     <string name="pref_updates_warn_permissions_desc">Figyelmeztetés megjelenítése frissítés előtt, ha az új verzió olyan engedélyeket kér, amelyek a telepített verzióban még nem szerepeltek</string>
     <string name="permission_warning_title">Új engedélyekre vonatkozó figyelmeztetés</string>

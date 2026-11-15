@@ -649,8 +649,6 @@
     <string name="download_version_unavailable">Версия %1$d недоступна для этого устройства</string>
     <string name="download_signing_key_rotated">Чтобы обновить это приложение, авторзуйтесь с помощью аккаунта Google: ключ подписи изменился, поэтому анонимные загрузки не могут его обработать</string>
     <string name="installer_status_aborted">Установка отменена</string>
-    <string name="pref_download_languages_title">Скачать все мои языки</string>
-    <string name="pref_download_languages_summary">Также скачать языковые файлы для других языков, настроенных на этом устройстве. Объем загружаемых файлов будет больше</string>
     <string name="pref_updates_warn_permissions">Предупреждать о новых разрешениях в обновлениях приложения</string>
     <string name="pref_updates_warn_permissions_desc">Перед обновлением выводить предупреждение, если новая версия запрашивает разрешения, которых не было в установленной версии</string>
     <string name="permission_warning_title">Запрошены новые разрешения</string>

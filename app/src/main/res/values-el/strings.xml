@@ -508,8 +508,6 @@
     <string name="notification_channel_alerts">Σφάλματα και ειδοποιήσεις</string>
     <string name="notification_group_activity">Λήψεις και ενημερώσεις</string>
     <string name="notification_group_alerts">Ειδοποιήσεις</string>
-    <string name="pref_download_languages_title">Λήψη όλων των γλωσσών μου</string>
-    <string name="pref_download_languages_summary">Επίσης, κατεβάζει αρχεία γλώσσας για τις άλλες γλώσσες που έχουν ρυθμιστεί σε αυτή τη συσκευή. Τα αρχεία που θα κατεβάσετε θα είναι μεγαλύτερα</string>
     <string name="pref_updates_warn_trackers">Προειδοποίηση για νέους μηχανισμούς παρακολούθησης στις ενημερώσεις εφαρμογών</string>
     <string name="pref_updates_warn_trackers_desc">Να εμφανίζεται προειδοποίηση πριν από την ενημέρωση, όταν η νέα έκδοση περιλαμβάνει προγράμματα παρακολούθησης που δεν υπήρχαν στην εγκατεστημένη έκδοση</string>
     <string name="pref_updates_warn_permissions">Προειδοποίηση σχετικά με νέα δικαιώματα κατά τις ενημερώσεις της εφαρμογής</string>

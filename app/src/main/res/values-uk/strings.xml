@@ -649,8 +649,6 @@
     <string name="download_version_unavailable">Версія %1$d недоступна для цього пристрою</string>
     <string name="download_signing_key_rotated">Увійдіть за допомогою облікового запису Google, щоб оновити цей застосунок: його ключ підпису змінився, і анонімні завантаження не можуть впоратися з цим</string>
     <string name="installer_status_aborted">Встановлення скасовано</string>
-    <string name="pref_download_languages_title">Завантажити всі мої мови</string>
-    <string name="pref_download_languages_summary">Також отримайте мовні файли для інших мов, встановлених на цьому пристрої. Завантаження будуть більшими</string>
     <string name="pref_updates_warn_permissions">Попереджати про нові дозволи в оновлених застосунках</string>
     <string name="pref_updates_warn_permissions_desc">Показувати попередження перед оновленням, коли нова версія запитує дозволи, яких не було у встановленій версії</string>
     <string name="permission_warning_title">Запитані нові дозволи</string>

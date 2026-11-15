@@ -615,8 +615,6 @@
     <string name="installer_fallback_session">L\'installatore scelto non è disponibile. L\'installatore predefinito sarà usato invece.</string>
     <string name="installer_provider">%1$s · Servito da %2$s</string>
     <string name="installer_status_aborted">Installazione annullata</string>
-    <string name="pref_download_languages_title">Scarica tutte le mie lingue</string>
-    <string name="pref_download_languages_summary">Recupera anche i file di lingua per le altre lingue impostato su questo dispositivo. Gli scaricamenti saranno più grandi</string>
     <string name="pref_updates_warn_permissions">Segnala le nuove autorizzazioni negli aggiornamenti delle app</string>
     <string name="pref_updates_warn_permissions_desc">Mostra un avviso prima di aggiornare quando la nuova versione richiede autorizzazioni che non erano nella versione installata</string>
     <string name="pref_self_update_desc">Proponi nuove versioni di Aurora Store nella scheda Aggiornamenti.</string>

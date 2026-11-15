@@ -631,8 +631,6 @@
     <string name="download_version_unavailable">%1$d 版对这台设备不可用</string>
     <string name="download_signing_key_rotated">用 Google 账户登录来更新此应用：其签名密钥已更改，匿名下载无法处理此情况</string>
     <string name="installer_status_aborted">取消了安装</string>
-    <string name="pref_download_languages_title">下载全部我的语言</string>
-    <string name="pref_download_languages_summary">同样获取这台设备上设置的其他语言的语言文件。会增加下载大小</string>
     <string name="pref_updates_warn_permissions">警告应用更新中的新权限</string>
     <string name="pref_updates_warn_permissions_desc">新版本请求已安装版本中没有的权限时在更新前显示警告</string>
     <string name="permission_warning_title">请求了新权限</string>

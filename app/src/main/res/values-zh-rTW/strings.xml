@@ -631,8 +631,6 @@
     <string name="download_version_unavailable">版本 %1$d 不適用於此裝置</string>
     <string name="download_signing_key_rotated">請使用 Google 帳號登入以更新此應用程式：其簽署金鑰已變更，匿名下載無法處理</string>
     <string name="installer_status_aborted">安裝已取消</string>
-    <string name="pref_download_languages_title">下載我所有的語言</string>
-    <string name="pref_download_languages_summary">同時擷取此裝置上設定的其他語言的語言檔案。下載量會較大</string>
     <string name="pref_updates_warn_permissions">在應用程式更新時警告新權限</string>
     <string name="pref_updates_warn_permissions_desc">當新版本要求已安裝版本沒有的權限時，在更新前顯示警告</string>
     <string name="permission_warning_title">要求新權限</string>

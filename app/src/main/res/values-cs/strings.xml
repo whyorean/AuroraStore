@@ -649,8 +649,6 @@
     <string name="download_version_unavailable">Verze %1$d není pro toto zařízení dostupná</string>
     <string name="download_signing_key_rotated">Pro aktualizaci této aplikace se přihlaste pomocí účtu Google: její podpisový klíč byl změněn a anonymní účty to nedokáží vyřešit</string>
     <string name="installer_status_aborted">Instalace zrušena</string>
-    <string name="pref_download_languages_title">Stáhnout všechny mé jazyky</string>
-    <string name="pref_download_languages_summary">Také stáhnout jazykové soubory pro ostatní jazyky nastavené na tomto zařízení. Stahování budou větší</string>
     <string name="pref_updates_warn_permissions">Varovat o nových oprávněních při aktualizacích aplikací</string>
     <string name="pref_updates_warn_permissions_desc">Zobrazit varování před aktualizací, pokud nová verze vyžaduje oprávnění, která se nenacházela v nainstalované verzi</string>
     <string name="permission_warning_title">Požadována nová oprávnění</string>

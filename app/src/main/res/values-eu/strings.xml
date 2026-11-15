@@ -637,8 +637,6 @@
     <string name="download_version_unavailable">%1$d bertsioa ez dago erabilgarri gailu honetarako</string>
     <string name="download_signing_key_rotated">Hasi saioa Google kontu batekin aplikazio hau eguneratzeko: haren sinadura-gakoa aldatu da, eta deskarga anonimoek ezin dute hori kudeatu</string>
     <string name="installer_status_aborted">Instalazioa bertan behera utzi da</string>
-    <string name="pref_download_languages_title">Deskargatu nire hizkuntza guztiak</string>
-    <string name="pref_download_languages_summary">Eskuratu gailu honetan ezarritako beste hizkuntzen fitxategiak ere. Deskargak handiagoak izango dira</string>
     <string name="pref_updates_warn_permissions">Ohartarazi aplikazioen eguneratzeetako baimen berriez</string>
     <string name="pref_updates_warn_permissions_desc">Erakutsi abisu bat eguneratu aurretik, bertsio berriak instalatutako bertsioan ez zeuden baimenak eskatzen dituenean</string>
     <string name="permission_warning_title">Baimen berriak eskatu dira</string>

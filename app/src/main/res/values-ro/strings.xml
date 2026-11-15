@@ -643,8 +643,6 @@
     <string name="download_version_unavailable">Versiunea %1$d nu este disponibilă pentru acest dispozitiv</string>
     <string name="download_signing_key_rotated">Conectează-te cu un cont Google pentru a actualiza această aplicație: cheia de semnare a acesteia s-a schimbat, iar descărcările anonime nu pot gestiona această modificare</string>
     <string name="installer_status_aborted">Instalarea a fost anulată</string>
-    <string name="pref_download_languages_title">Descarcă toate limbile pe care le cunosc</string>
-    <string name="pref_download_languages_summary">Descarcă de asemenea, fișierele de limbă pentru celelalte limbi configurate pe acest dispozitiv. Fișierele descărcate vor fi mai mari</string>
     <string name="pref_updates_warn_permissions">Avertizare privind noile permisiuni din actualizările aplicației</string>
     <string name="pref_updates_warn_permissions_desc">Afișează un mesaj de avertizare înainte de actualizare, în cazul în care noua versiune solicită permisiuni care nu existau în versiunea instalată</string>
     <string name="permission_warning_title">S-au solicitat noi permisiuni</string>
