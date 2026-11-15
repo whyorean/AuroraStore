@@ -98,7 +98,6 @@
     <string name="title_purchase_history">Povijest kupovanja</string>
     <string name="title_no_network">Nema mrežne veze</string>
     <string name="title_library">Biblioteka</string>
-    <string name="title_language">Jezik</string>
     <string name="title_installer">Program za instaliranje aplikacija</string>
     <string name="title_installed">Instalirano</string>
     <string name="title_installation">Instaliranje</string>
@@ -392,7 +391,6 @@
     <string name="pref_updates_check_frequency">Učestalost automatkog aktualiziranja</string>
     <string name="access_denied_using_vpn">Pristup je odbijen! Koristiš li VPN ili Tor?</string>
     <string name="details_ratings_title_hint">Naslov recenzije</string>
-    <string name="app_language">Jezik aplikacije</string>
     <string name="root_installer_subtitle">Instalacijski program koji koristi administratorske dozvole</string>
     <string name="native_installer_subtitle">Instalacijski program za sve svrhe, dostupan na svim uređajima</string>
     <string name="root_installer_desc">Zahtijeva administratorske dozvole, podržava sve verzije Androida.</string>

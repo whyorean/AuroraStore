@@ -163,7 +163,6 @@
     <string name="title_purchase_history">購入履歴</string>
     <string name="title_no_network">ネットワーク接続がありません</string>
     <string name="title_library">ライブラリ</string>
-    <string name="title_language">言語</string>
     <string name="title_installer">アプリインストーラー</string>
     <string name="title_installed">インストール済み</string>
     <string name="title_installation">インストール</string>
@@ -279,7 +278,6 @@
     <string name="app_links_title">アプリのリンク</string>
     <string name="google_play_store_desc">Google Play は Google Play ストアとしても知られ、以前は Android マーケットと呼ばれていました。</string>
     <string name="verifying_new_session">新しいセッションを検証中</string>
-    <string name="app_language">アプリの表語</string>
     <string name="title_app_settings">アプリ設定</string>
     <string name="android_market_desc">Android マーケットは、Android デバイス用にデザインされたソフトウェアアプリケーションを提供するオンラインストアでしたが、2017年に廃止されました。</string>
     <string name="details_ratings_title_hint">評価タイトル</string>

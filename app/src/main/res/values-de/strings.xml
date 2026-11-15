@@ -48,7 +48,6 @@
     <string name="details_no_permission">Keine Berechtigungen</string>
     <string name="details_no_ads">Keine Werbung</string>
     <string name="details_free">Kostenlos</string>
-    <string name="title_language">Sprache</string>
     <string name="toast_clipboard_copied">In die Zwischenablage kopiert</string>
     <string name="toast_apk_whitelisted">Auf der Erlaubnisliste</string>
     <string name="title_installer">Installationsmethode</string>
@@ -274,7 +273,6 @@
     <string name="failed_generating_session">Sitzung konnte nicht erstellt werden, Fehlercode: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="server_unreachable">Server nicht erreichbar</string>
     <string name="check_connectivity">Überprüfe die Internetverbindung</string>
-    <string name="app_language">App-Sprache</string>
     <string name="failed_to_generate_session">Sitzung konnte nicht erstellt werden</string>
     <string name="app_links_title">App-Links</string>
     <string name="verifying_new_session">Neue Sitzung wird überprüft</string>

@@ -241,7 +241,6 @@
     <string name="title_installation">ການຕິດຕັ້ງ</string>
     <string name="title_installed">ຕິດຕັ້ງແລ້ວ</string>
     <string name="title_installer">ຕົວຕິດຕັ້ງແອັບ</string>
-    <string name="title_language">ພາສາ</string>
     <string name="title_library">ຄັງຮູບ</string>
     <string name="title_no_network">ບໍ່ມີເຄືອຂ່າຍ</string>
     <string name="title_purchase_history">ປະຫວັດການຊື້</string>
@@ -313,7 +312,6 @@
     <string name="verifying_new_session">ກຳລັງກວດສອບ Session ໃໝ່</string>
     <string name="failed_generating_session">ສ້າງ Session ບໍ່ສຳເລັດ, ລະຫັດຂໍ້ຜິດພາດ: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">ກວດສອບການເຊື່ອມຕໍ່ອິນເຕີເນັດ</string>
-    <string name="app_language">ພາສາຂອງແອັບ</string>
     <string name="pref_ui_layout">ຮູບແບບການສະແດງຜົນ</string>
     <string name="pref_ui_layout_tab">ເລືອກແຖບເລີ່ມຕົ້ນ</string>
     <string name="app_links_title">ລິ້ງຂອງແອັບ</string>

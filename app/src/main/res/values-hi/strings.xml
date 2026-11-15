@@ -106,7 +106,6 @@
     <string name="details_permission">अनुमति</string>
     <string name="title_apps_games">मेरे ऐप्स और गेम्स</string>
     <string name="title_library">लाईब्रेरी</string>
-    <string name="title_language">भाषा</string>
     <string name="pref_ui_layout">अभिन्यास</string>
     <string name="action_update">अपडेट करें</string>
     <string name="filter_review_one">एक</string>
@@ -273,7 +272,6 @@
     <string name="login_rate_limited">आपकी दर सीमित है</string>
     <string name="server_unreachable">सर्वर पहुंच योग्य नहीं है</string>
     <string name="failed_generating_session">सत्र उत्पन्न करने में विफल, त्रुटि कोड: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="app_language">ऐप भाषा</string>
     <string name="check_connectivity">इंटरनेट संयोजकता जांचें</string>
     <string name="failed_to_generate_session">सत्र उत्पन्न नहीं किया जा सका</string>
     <string name="verifying_new_session">नये सत्र का सत्यापन किया जा रहा है</string>

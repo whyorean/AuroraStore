@@ -17,7 +17,6 @@
     <string name="toast_developer_setting_failed">شغِّل إعدادات المطور من إعدادات الجهاز لفتحها.</string>
     <string name="toast_clipboard_copied">نُسخ الى الحافظة</string>
     <string name="toast_apk_whitelisted">مدرج في القائمة البيضاء</string>
-    <string name="title_language">اللغة</string>
     <string name="title_installer">مثبت التطبيق</string>
     <string name="title_installed">المثبتة</string>
     <string name="title_installation">التثبيتات</string>
@@ -273,7 +272,6 @@
     <string name="access_denied_using_vpn">رُفض الوصول! هل تستخدم VPN أو تور؟</string>
     <string name="server_unreachable">لا يمكن الوصول إلى الخادم</string>
     <string name="failed_generating_session">فشل توليد جلسة عمل، رمز الخطأ: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="app_language">لغة التطبيق</string>
     <string name="check_connectivity">التحقق من اتصال الإنترنت</string>
     <string name="failed_to_generate_session">تعذّر توليد الجلسة</string>
     <string name="verifying_new_session">جارِ التحقق من جلسة جديدة</string>

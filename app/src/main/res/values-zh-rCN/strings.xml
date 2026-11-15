@@ -138,7 +138,6 @@
     <string name="title_purchase_history">交易记录</string>
     <string name="title_no_network">无网络</string>
     <string name="title_library">库</string>
-    <string name="title_language">语言</string>
     <string name="title_installer">应用安装器</string>
     <string name="title_installed">已安装</string>
     <string name="title_installation">安装</string>
@@ -274,7 +273,6 @@
     <string name="server_unreachable">服务器不可达</string>
     <string name="failed_generating_session">未能生成会话，错误码：<xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">检查互联网连接</string>
-    <string name="app_language">语言</string>
     <string name="failed_to_generate_session">无法生成会话</string>
     <string name="verifying_new_session">正在验证新会话</string>
     <string name="app_links_title">链接</string>

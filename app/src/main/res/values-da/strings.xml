@@ -176,7 +176,6 @@
     <string name="tab_editor_choice">Redaktørens udvalgte apps</string>
     <string name="title_installed">Installeret</string>
     <string name="title_installer">App-installationsprogram</string>
-    <string name="title_language">Sprog</string>
     <string name="title_library">Bibliotek</string>
     <string name="title_no_network">Intet netværk</string>
     <string name="title_purchase_history">Købshistorik</string>
@@ -319,7 +318,6 @@
     <string name="pref_install_mode_shizuku">Shizuku-installationsprogram</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> opdatering tilgængelig</string>
     <string name="faqs_subtitle">Har du spørgsmål? Find ud af svarene</string>
-    <string name="app_language">Appsprog</string>
     <string name="server_maintenance">Serveren er nede grundet vedligeholdelse</string>
     <string name="menu">Menu</string>
     <string name="error">En fejl opstod!</string>

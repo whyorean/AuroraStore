@@ -17,7 +17,6 @@
     <string name="title_purchase_history">Erosketak</string>
     <string name="title_no_network">Konexiorik gabe</string>
     <string name="title_library">Biblioteka</string>
-    <string name="title_language">Hizkuntza</string>
     <string name="title_installer">Aplikazioen instalatzailea</string>
     <string name="title_installed">Instalatuta</string>
     <string name="title_installation">Instalazioa</string>
@@ -299,7 +298,6 @@
     <string name="made_with_love">Indian egina honekin: <xliff:g id="heart_emoji">%1$s</xliff:g></string>
     <string name="force_restart_summary">Aurora Store berrabiarazi behar da aldatu berri diren ezarpenak aplikatzeko</string>
     <string name="item_optional">Hautazkoa</string>
-    <string name="app_language">Aplikazioaren hizkuntza</string>
     <string name="session_installer_desc">Gomendatua, eraikia eta Android bertsio guztiak onartzen dituena</string>
     <string name="privacy_policy_subtitle">Ikasi Aurora dendak zure datuak nola erabiltzen dituen</string>
     <string name="disclaimer_subtitle">Erantzukizuna eta azalpenak</string>

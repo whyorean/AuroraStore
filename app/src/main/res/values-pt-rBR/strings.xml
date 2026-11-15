@@ -44,7 +44,6 @@
     <string name="title_purchase_history">Histórico de compras</string>
     <string name="title_no_network">Sem rede</string>
     <string name="title_library">Biblioteca</string>
-    <string name="title_language">Idioma</string>
     <string name="title_installer">Instalador de apps</string>
     <string name="title_installed">Instalados</string>
     <string name="title_installation">Instalação</string>
@@ -273,7 +272,6 @@
     <string name="login_rate_limited">Você foi limitado</string>
     <string name="server_unreachable">Servidor inacessível</string>
     <string name="failed_generating_session">Falha ao gerar a sessão, código de erro: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="app_language">Idioma do app</string>
     <string name="check_connectivity">Conferir a conexão à internet</string>
     <string name="verifying_new_session">Verificando a sessão nova</string>
     <string name="app_links_title">Links do app</string>

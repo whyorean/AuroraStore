@@ -18,6 +18,7 @@ import com.aurora.gplayapi.device.DeviceRegistry
 import com.aurora.store.R
 import com.aurora.store.util.Preferences
 import com.aurora.store.util.Preferences.PREFERENCE_DOWNLOAD_SYSTEM_LANGUAGES
+import com.aurora.store.util.Preferences.PREFERENCE_LANGUAGES
 import com.aurora.store.util.Preferences.PREFERENCE_VENDING_VERSION
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.Locale
@@ -59,14 +60,11 @@ class SpoofProvider @Inject constructor(
     }
 
     val availableSpoofDeviceProperties get() = availableDeviceProperties
-    val availableSpoofLocales = Locale.getAvailableLocales()
+    val availableLocales: List<Locale> = Locale.getAvailableLocales()
         .map { it.withPlayRegion() }
+        .filter { it.language.isNotBlank() }
         .distinct()
-        .toMutableList()
-        .apply {
-            remove(Locale.getDefault().withPlayRegion())
-            sortBy { it.displayName }
-        }
+        .sortedBy { it.displayName }
 
     val deviceProperties: Properties
         get() {
@@ -112,45 +110,54 @@ class SpoofProvider @Inject constructor(
         if (isHuawei) stripHuaweiProperties(properties) else properties
     }
 
-    val locale: Locale
-        get() = if (isLocaleSpoofEnabled) {
+    /** Play request languages, primary first; the rest are fetched as extra language splits. */
+    val languages: List<Locale>
+        get() {
+            val stored = Preferences.getString(context, PREFERENCE_LANGUAGES)
+            if (stored.isNotBlank()) {
+                val tags = runCatching { json.decodeFromString<List<String>>(stored) }
+                    .getOrDefault(emptyList())
+                val locales = tags.map { Locale.forLanguageTag(it).withPlayRegion() }
+                    .filter { it.language.isNotBlank() }
+                if (locales.isNotEmpty()) return locales.distinct()
+            }
+            return defaultLanguages()
+        }
+
+    fun setLanguages(locales: List<Locale>) {
+        Preferences.putString(
+            context,
+            PREFERENCE_LANGUAGES,
+            json.encodeToString(locales.map { it.toLanguageTag() })
+        )
+    }
+
+    // What the user had before the language list existed: a spoofed locale, else the device
+    // language, plus every system language when "Download all my languages" was on
+    private fun defaultLanguages(): List<Locale> {
+        val primary = if (Preferences.getBoolean(context, LOCALE_SPOOF_ENABLED)) {
             spoofLocale
         } else {
             Locale.getDefault()
         }.withPlayRegion()
-
-    /**
-     * The languages to fetch split APKs for beyond [locale], which gplayapi sends as
-     * `X-DFE-UserLanguages` - Play answers with one `config.<lang>.apk` per entry.
-     *
-     * Sourced from the languages the user has actually configured in Android settings
-     * rather than a picker of our own: someone who reads English and German has already
-     * said so there, and the Play Store itself reads the same list. [locale] is dropped
-     * from it, since Play always sends that one and naming it twice would ask for a
-     * duplicate split.
-     *
-     * [LocaleManagerCompat.getSystemLocales], not the app's own
-     * `resources.configuration.locales`: that one is resolved against the languages Aurora
-     * itself ships translations for, so a user who reads a language Aurora has not been
-     * translated into would never be offered its split.
-     *
-     * Off by default, and a toggle rather than always-on, because every extra language is
-     * a bigger download - Google Maps grows about 5 MB across four of them - and that is
-     * the user's call to make, not ours.
-     */
-    val additionalLocales: List<Locale>
-        get() {
-            if (!Preferences.getBoolean(context, PREFERENCE_DOWNLOAD_SYSTEM_LANGUAGES)) {
-                return emptyList()
-            }
-
-            val primary = locale.language
-            val configured = LocaleManagerCompat.getSystemLocales(context)
-            return (0 until configured.size())
-                .mapNotNull { configured[it] }
-                .filter { it.language.isNotBlank() && it.language != primary }
-                .distinctBy { it.language }
+        if (!Preferences.getBoolean(context, PREFERENCE_DOWNLOAD_SYSTEM_LANGUAGES)) {
+            return listOf(primary)
         }
+        val configured = LocaleManagerCompat.getSystemLocales(context)
+        val system = (0 until configured.size())
+            .mapNotNull { configured[it] }
+            .filter { it.language.isNotBlank() }
+            .map { it.withPlayRegion() }
+        return (listOf(primary) + system).distinctBy { it.language }
+    }
+
+    val locale: Locale
+        get() = languages.first()
+
+    val additionalLocales: List<Locale>
+        get() = languages.drop(1).filter {
+            it.language != locale.language
+        }.distinctBy { it.language }
 
     /**
      * [deviceProperties] as a v4 [DeviceProfile] - what `PlayClientModule`'s `PlaySessions`
@@ -176,9 +183,6 @@ class SpoofProvider @Inject constructor(
         }
     }
 
-    val isLocaleSpoofEnabled: Boolean
-        get() = Preferences.getBoolean(context, LOCALE_SPOOF_ENABLED)
-
     val isDeviceSpoofEnabled: Boolean
         get() = Preferences.getBoolean(context, DEVICE_SPOOF_ENABLED)
 
@@ -193,21 +197,9 @@ class SpoofProvider @Inject constructor(
             Preferences.getString(context, DEVICE_SPOOF_PROPERTIES)
         )
 
-    fun setSpoofLocale(locale: Locale) {
-        Preferences.putBoolean(context, LOCALE_SPOOF_ENABLED, true)
-        Preferences.putString(context, LOCALE_SPOOF_LANG, locale.language)
-        Preferences.putString(context, LOCALE_SPOOF_COUNTRY, locale.country)
-    }
-
     fun setSpoofDeviceProperties(properties: Properties) {
         Preferences.putBoolean(context, DEVICE_SPOOF_ENABLED, true)
         Preferences.putString(context, DEVICE_SPOOF_PROPERTIES, json.encodeToString(properties))
-    }
-
-    fun removeSpoofLocale() {
-        Preferences.remove(context, LOCALE_SPOOF_ENABLED)
-        Preferences.remove(context, LOCALE_SPOOF_LANG)
-        Preferences.remove(context, LOCALE_SPOOF_COUNTRY)
     }
 
     fun removeSpoofDeviceProperties() {

@@ -226,7 +226,6 @@
     <string name="tab_editor_choice">Toimetaja valik</string>
     <string name="tab_top_grossing">Kõige tulusamad</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> uuendust on saadaval</string>
-    <string name="title_language">Keel</string>
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> ja <xliff:g id="apps_count">%4$d</xliff:g> veel</string>
     <string name="title_account_manager">Kontod</string>
     <string name="title_apps">Rakendused</string>
@@ -343,7 +342,6 @@
     <string name="server_unreachable">Serveriga ei saa ühendust</string>
     <string name="check_connectivity">Kontrolli internetiühendust</string>
     <string name="google_play_store_desc">Google Play, tuntud ka kui Google Play pood ja varem Android Market.</string>
-    <string name="app_language">Rakenduse keel</string>
     <string name="pref_updates_restrictions_battery">Kui aku tase ei ole madal</string>
     <string name="pref_updates_auto_install">Otsi ja paigalda saadaolevaid uuendusi automaatselt</string>
     <string name="manual_download_hint">Sisesta versioonikood, mille soovid alla laadida</string>

@@ -194,7 +194,6 @@
     <string name="title_games">Jocs</string>
     <string name="title_installation">Instal·lació</string>
     <string name="title_installer">Instal·lador d\'aplicacions</string>
-    <string name="title_language">Idioma</string>
     <string name="title_library">Biblioteca</string>
     <string name="title_no_network">Sense xarxa</string>
     <string name="title_purchase_history">Historial de compres</string>
@@ -314,7 +313,6 @@
     <string name="verifying_new_session">Verificant nova sessió</string>
     <string name="failed_generating_session">No s\'ha pogut generar la sessió, codi d\'error: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Comprovant connexió a internet</string>
-    <string name="app_language">Idioma de l\'aplicació</string>
     <string name="app_links_title">Enllaços d\'aplicació</string>
     <string name="app_links_desc">Permet a l\'Aurora Store obrir enllaços admesos</string>
     <string name="google_play_store_desc">Google Play, també coneguda com la Google Play Store i anteriorment Android Market.</string>

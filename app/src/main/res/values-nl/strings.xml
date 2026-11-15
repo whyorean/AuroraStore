@@ -44,7 +44,6 @@
     <string name="title_purchase_history">Aankoop geschiedenis</string>
     <string name="title_no_network">Geen netwerk</string>
     <string name="title_library">Bibliotheek</string>
-    <string name="title_language">Taal</string>
     <string name="title_installer">App-installatiemethode</string>
     <string name="title_installed">Geïnstalleerd</string>
     <string name="title_installation">Installatie</string>
@@ -266,7 +265,6 @@
     <string name="notification_updates_available_desc_1">Een nieuwere versie van <xliff:g id="app_one_name">%1$s</xliff:g> is beschikbaar</string>
     <string name="notification_updates_available_desc_2"><xliff:g id="app_one_name">%1$s</xliff:g> en <xliff:g id="app_two_name">%2$s</xliff:g></string>
     <string name="check_connectivity">Controleer internetconnectiviteit</string>
-    <string name="app_language">App-taal</string>
     <string name="app_links_desc">Aurora Store toestaan om ondersteunde links te openen</string>
     <string name="title_search_suggestion">Zoeksuggestie</string>
     <string name="title_search_results">Zoekresultaten</string>

@@ -100,7 +100,6 @@
     <string name="title_purchase_history">Lịch sử giao dịch</string>
     <string name="title_no_network">Không có mạng</string>
     <string name="title_library">Thư viện</string>
-    <string name="title_language">Ngôn ngữ</string>
     <string name="title_installer">Trình cài đặt ứng dụng</string>
     <string name="title_installed">Đã cài đặt</string>
     <string name="title_installation">Cài đặt</string>
@@ -296,7 +295,6 @@
     <string name="failed_to_generate_session">Không thể tạo phiên</string>
     <string name="verifying_new_session">Xác minh phiên mới</string>
     <string name="google_play_store_desc">Google Play, còn được gọi là Cửa hàng Google Play và trước đây là Android Market.</string>
-    <string name="app_language">Ngôn ngữ ứng dụng</string>
     <string name="action_request_analysis">Yêu cầu phân tích mới</string>
     <string name="pref_aurora_only_desc">Chỉ kiểm tra cập nhật cho các ứng dụng được cài đặt từ Aurora Store</string>
     <string name="pref_updates_incompatible">Cập nhật không tương thích</string>

@@ -13,7 +13,6 @@
     <string name="title_purchase_history">Historial de compras</string>
     <string name="title_no_network">Sin conexión</string>
     <string name="title_library">Biblioteca</string>
-    <string name="title_language">Idioma</string>
     <string name="title_installer">Instalador de apps</string>
     <string name="title_installed">Instalado</string>
     <string name="title_installation">Instalación</string>
@@ -273,7 +272,6 @@
     <string name="failed_to_fetch_report">No se ha podido obtener el informe de privacidad</string>
     <string name="access_denied_using_vpn">¡Acceso denegado! ¿Estás usando una VPN o Tor\?</string>
     <string name="failed_generating_session">Fallo al generar la sesión, código de error: <xliff:g id="status_code">%1$d</xliff:g></string>
-    <string name="app_language">Idioma de la aplicación</string>
     <string name="check_connectivity">Comprobar la conexión</string>
     <string name="app_links_desc">Permitir que Aurora Store abra enlaces compatibles</string>
     <string name="failed_to_generate_session">No se ha podido generar la sesión</string>

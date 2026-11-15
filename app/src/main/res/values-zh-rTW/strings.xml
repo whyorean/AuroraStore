@@ -87,7 +87,6 @@
     <string name="title_no_network">無網路</string>
     <string name="title_apps_library">媒體庫中的應用程式</string>
     <string name="title_library">媒體庫</string>
-    <string name="title_language">語言</string>
     <string name="title_installer">應用程式安裝器</string>
     <string name="title_installed">已安裝</string>
     <string name="title_installation">安裝</string>
@@ -277,7 +276,6 @@
     <string name="server_unreachable">無法連接伺服器</string>
     <string name="failed_to_generate_session">無法產生工作階段</string>
     <string name="verifying_new_session">驗證新的工作階段</string>
-    <string name="app_language">應用程式語言</string>
     <string name="failed_apk_export">匯出 APK 失敗</string>
     <string name="pref_vending_version_device">預設（來自裝置配置）</string>
     <string name="pref_network_proxy_url">代理伺服器網址</string>

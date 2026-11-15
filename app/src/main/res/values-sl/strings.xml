@@ -233,7 +233,6 @@
     <string name="title_installation">Namestitev</string>
     <string name="title_installed">Nameščeno</string>
     <string name="title_installer">Namestitveni program aplikacije</string>
-    <string name="title_language">Jezik</string>
     <string name="title_library">Knjižnica</string>
     <string name="title_no_network">Brez omrežja</string>
     <string name="title_purchase_history">Zgodovina nakupov</string>
@@ -300,7 +299,6 @@
     <string name="pref_updates_auto_install">Preveri in namesti razpoložljive posodobitve samodejno</string>
     <string name="pref_network_proxy_url_message">Vnesite veljaven URL posrednika za prenos vseh podatkov skozi posrednika.</string>
     <string name="pref_updates_auto_off">Ne posodobi aplikacij samodejno</string>
-    <string name="app_language">Jezik aplikacije</string>
     <string name="app_links_title">Povezave aplikacij</string>
     <string name="pref_ui_layout">Razporeditev</string>
     <string name="pref_network_proxy_url">URL posrednika</string>

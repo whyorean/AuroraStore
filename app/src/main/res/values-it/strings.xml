@@ -17,7 +17,6 @@
     <string name="title_purchase_history">Cronologia degli acquisti</string>
     <string name="title_no_network">Nessuna connessione</string>
     <string name="title_library">Raccolta</string>
-    <string name="title_language">Lingua</string>
     <string name="title_installed">Installate</string>
     <string name="title_installation">Installazione</string>
     <string name="title_games">Giochi</string>
@@ -274,7 +273,6 @@
     <string name="bad_request">Errore interno! Riprova più tardi</string>
     <string name="failed_generating_session">Errore nella generazione della sessione, codice: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="check_connectivity">Controlla la tua connessione ad internet</string>
-    <string name="app_language">Lingua dell\'app</string>
     <string name="app_links_desc">Consenti a Aurora Store di aprire i collegamenti supportati</string>
     <string name="failed_to_generate_session">Impossibile generare la sessione</string>
     <string name="verifying_new_session">Verifica della nuova sessione</string>

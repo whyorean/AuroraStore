@@ -23,7 +23,6 @@
     <string name="title_purchase_history">Historie nákupů</string>
     <string name="title_no_network">Žádná síť</string>
     <string name="title_library">Knihovna</string>
-    <string name="title_language">Jazyk</string>
     <string name="title_installer">Instalační program aplikace</string>
     <string name="title_installed">Nainstalováno</string>
     <string name="title_installation">Instalace</string>
@@ -274,7 +273,6 @@
     <string name="failed_to_fetch_report">Nepodařilo se načíst hlášení o soukromí</string>
     <string name="bad_request">Interní chyba! Zkuste to prosím znovu za chvíli</string>
     <string name="check_connectivity">Zkontrolujte připojení k internetu</string>
-    <string name="app_language">Jazyk aplikace</string>
     <string name="app_links_desc">Povolit Obchodu Aurora otevírat podporované odkazy</string>
     <string name="failed_to_generate_session">Nepodařilo se vygenerovat relaci</string>
     <string name="verifying_new_session">Ověřování nové relace</string>

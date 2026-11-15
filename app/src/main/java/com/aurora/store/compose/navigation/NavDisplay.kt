@@ -57,6 +57,7 @@ import com.aurora.store.compose.ui.preferences.SettingsScreen
 import com.aurora.store.compose.ui.preferences.UIPreferenceScreen
 import com.aurora.store.compose.ui.preferences.installation.InstallationPreferenceScreen
 import com.aurora.store.compose.ui.preferences.installation.InstallerScreen
+import com.aurora.store.compose.ui.preferences.language.LanguagePreferenceScreen
 import com.aurora.store.compose.ui.preferences.network.NetworkPreferenceScreen
 import com.aurora.store.compose.ui.preferences.security.SecurityPreferenceScreen
 import com.aurora.store.compose.ui.preferences.updates.SourceFiltersScreen
@@ -210,6 +211,7 @@ fun NavDisplay(startDestination: NavKey) {
             Destination.Blacklist -> backstack.add(Screen.Blacklist)
             Destination.Settings -> backstack.add(Screen.Settings)
             Destination.InstallationPreference -> backstack.add(Screen.InstallationPreference)
+            Destination.LanguagePreference -> backstack.add(Screen.LanguagePreference)
             Destination.Installer -> backstack.add(Screen.Installer)
             Destination.NetworkPreference -> backstack.add(Screen.NetworkPreference)
             Destination.Dispenser -> backstack.add(Screen.Dispenser)
@@ -300,6 +302,10 @@ fun NavDisplay(startDestination: NavKey) {
 
             entry<Screen.InstallationPreference> {
                 InstallationPreferenceScreen(onNavigateTo = ::navigate)
+            }
+
+            entry<Screen.LanguagePreference> {
+                LanguagePreferenceScreen(onNavigateTo = ::navigate)
             }
 
             entry<Screen.Search>(

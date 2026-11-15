@@ -189,7 +189,6 @@
     <string name="pref_filter_fdroid_title">Φιλτράρετε εφαρμογές F-Droid</string>
     <string name="pref_ui_layout">Διάταξη</string>
     <string name="pref_install_mode_title">Μέθοδος εγκατάστασης</string>
-    <string name="title_language">Γλώσσα</string>
     <string name="title_apps">Εφαρμογές</string>
     <string name="tab_top_free">Κορυφαίες δωρεάν</string>
     <string name="onboarding_permission_installer">Δικαίωμα εγκατάστασης</string>
@@ -307,7 +306,6 @@
     <string name="privacy_policy_title">Πολιτική απορρήτου</string>
     <string name="privacy_policy_subtitle">Μάθετε πώς χρησιμοποιεί το Aurora Store τα δεδομένα σας</string>
     <string name="native_installer_desc">Κατάλληλο για συσκευές που τρέχουν κάτω από Android 4.4</string>
-    <string name="app_language">Γλώσσα εφαρμογής</string>
     <string name="failed_generating_session">Αποτυχία δημιουργίας συνεδρίας, κώδικας σφάλματος: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="login_rate_limited">Έχετε περιορισμένο τιμολόγιο</string>
     <string name="google_play_store_desc">Google Play, ή αλλιώς Google Play Store και πρώην Android Market.</string>

@@ -201,7 +201,6 @@
     <string name="title_installation">Quraşdırma</string>
     <string name="title_installed">Quraşdırıldı</string>
     <string name="title_installer">Tətbiq quraşdırıcısı</string>
-    <string name="title_language">Dil</string>
     <string name="title_library">Kitabxana</string>
     <string name="title_purchase_history">Alış tarixi</string>
     <string name="title_spoof_manager">Saxtalaşdırma meneceri</string>
@@ -300,7 +299,6 @@
     <string name="permissions_denied">Tələb olunan icazələr ləğv edildi. Fəaliyyəti davam etdirmək üçün onlara icazə ver</string>
     <string name="notification_updates_available_1"><xliff:g id="apps_count">%1$d</xliff:g> yeniləmə var</string>
     <string name="notification_updates_available_desc_1"><xliff:g id="app_one_name"> %1$s</xliff:g> üçün yeni versiya var</string>
-    <string name="app_language">Tətbiq dili</string>
     <string name="google_play_store_desc">Google Play, eləcə də Google Play Store və keçmişdə Android Market kimi bilinir.</string>
     <string name="toast_permission_installer_required">Əvvəlcə quraşdırıcı icazəsi verməlisiniz</string>
     <string name="toast_import_failed">Cihaz quruluşun idxal etmək olmadı</string>

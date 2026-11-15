@@ -33,7 +33,6 @@
     <string name="title_settings">Paramètres</string>
     <string name="title_purchase_history">Historique des achats</string>
     <string name="title_library">Logithèque</string>
-    <string name="title_language">Langue</string>
     <string name="title_installer">Programme d’installation d’applis</string>
     <string name="title_installed">Installée</string>
     <string name="title_installation">Installation</string>
@@ -275,7 +274,6 @@
     <string name="server_unreachable">Impossible d’accéder au serveur</string>
     <string name="app_links_desc">Autoriser Aurora Store à ouvrir les liens pris en charge</string>
     <string name="check_connectivity">Vérifiez votre connexion Internet</string>
-    <string name="app_language">Langue de l’appli</string>
     <string name="failed_to_generate_session">Impossible de générer la session</string>
     <string name="verifying_new_session">Vérification de la nouvelle session</string>
     <string name="app_links_title">Liens de l’appli</string>

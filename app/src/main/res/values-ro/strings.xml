@@ -227,7 +227,6 @@
     <string name="title_settings">Setări</string>
     <string name="session_verifying_google">Se verifică sesiunea Google</string>
     <string name="title_installer">Instalator de aplicații</string>
-    <string name="title_language">Limbă</string>
     <string name="title_installed">Instalat</string>
     <string name="toast_apk_blacklisted">În lista neagră</string>
     <string name="title_download_manager">Descărcări</string>
@@ -266,7 +265,6 @@
     <string name="notification_updates_available_desc_4"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g>, <xliff:g id="app_three_name">%3$s</xliff:g> și încă <xliff:g id="apps_count">%4$d</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="app_one_name">%1$s</xliff:g>, <xliff:g id="app_two_name">%2$s</xliff:g> și <xliff:g id="app_three_name">%3$s</xliff:g></string>
     <string name="check_connectivity">Verifică conectivitatea la internet</string>
-    <string name="app_language">Limba aplicației</string>
     <string name="title_search_suggestion">Sugestie de căutare</string>
     <string name="title_search_results">Rezultatul căutării</string>
     <string name="failed_to_fetch_report">Nu s-a reușit preluarea raportului de confidențialitate</string>

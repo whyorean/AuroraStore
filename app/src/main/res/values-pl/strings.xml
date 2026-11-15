@@ -105,7 +105,6 @@
     <string name="title_purchase_history">Historia zakupów</string>
     <string name="title_no_network">Brak internetu</string>
     <string name="title_library">Biblioteka</string>
-    <string name="title_language">Język</string>
     <string name="title_installer">Instalator aplikacji</string>
     <string name="title_games">Gry</string>
     <string name="title_download_playstore">Play Store</string>
@@ -273,7 +272,6 @@
     <string name="failed_generating_session">Nie udało się wygenerować sesji, kod błędu: <xliff:g id="status_code">%1$d</xliff:g></string>
     <string name="title_search_results">Wyniki wyszukiwania</string>
     <string name="failed_to_fetch_report">Nie udało się pobrać raportu prywatności</string>
-    <string name="app_language">Język aplikacji</string>
     <string name="check_connectivity">Sprawdź połączenie internetowe</string>
     <string name="failed_to_generate_session">Nie można wygenerować sesji</string>
     <string name="google_play_store_desc">Google Play, znany również jako Google Play Store, dawniej Android Market.</string>

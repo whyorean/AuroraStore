@@ -5,8 +5,6 @@
 
 package com.aurora.store.compose.ui.preferences
 
-import android.content.Intent
-import android.provider.Settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -24,14 +22,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import androidx.core.net.toUri
 import com.aurora.extensions.isSAndAbove
-import com.aurora.extensions.isTAndAbove
 import com.aurora.extensions.setAppTheme
 import com.aurora.store.R
 import com.aurora.store.compose.composable.TopAppBar
@@ -117,22 +112,6 @@ private fun ScreenContent() {
                 .padding(paddingValues)
                 .fillMaxSize()
         ) {
-            if (isTAndAbove) {
-                item {
-                    ListItem(
-                        modifier = Modifier.clickable {
-                            context.startActivity(
-                                Intent(Settings.ACTION_APP_LOCALE_SETTINGS).apply {
-                                    data = ("package:" + context.packageName).toUri()
-                                }
-                            )
-                        },
-                        headlineContent = { Text(stringResource(R.string.app_language)) },
-                        supportingContent = { Text(LocalLocale.current.platformLocale.displayName) }
-                    )
-                }
-            }
-            item { HorizontalDivider() }
             item {
                 ListItem(headlineContent = { Text(stringResource(R.string.pref_ui_appearance)) })
             }

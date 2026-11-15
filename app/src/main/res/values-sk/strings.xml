@@ -207,7 +207,6 @@
     <string name="server_maintenance">Server je mimo prevádzky z dôvodu údržby</string>
     <string name="title_games">Hry</string>
     <string name="notification_updates_available"><xliff:g id="apps_count">%1$d</xliff:g> dostupných aktualizácií</string>
-    <string name="app_language">Jazyk aplikácie</string>
     <string name="title_installation">Inštalácia</string>
     <string name="notification_updates_available_desc_1">Je dostupná nová verzia aplikácie <xliff:g id="app_one_name">%1$s</xliff:g></string>
     <string name="notification_updates_available_desc_3"><xliff:g id="aplikácia_jedna_názov">%1$s</xliff:g>, <xliff:g id="aplikácia_dva_názov">%2$s</xliff:g> and <xliff:g id="aplikácia_tri_názov">%3$s</xliff:g></string>
@@ -320,7 +319,6 @@
     <string name="tab_top_grossing">Najlepšie zarábajúce</string>
     <string name="tab_top_paid">Najlepšie platené</string>
     <string name="title_favourites_manager">Obľúbené aplikácie</string>
-    <string name="title_language">Jazyk</string>
     <string name="title_library">Knižnica</string>
     <string name="title_no_network">Žiadna sieť</string>
     <string name="title_purchase_history">História nákupov</string>
