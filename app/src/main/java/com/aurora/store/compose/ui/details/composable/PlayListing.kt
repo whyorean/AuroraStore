@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.aurora.gplayapi.model.App
 import com.aurora.gplayapi.model.Category
@@ -30,6 +32,7 @@ import com.aurora.store.compose.composable.SectionHeader
 fun PlayListing(
     app: App,
     categoryIconUrl: String? = null,
+    isTopChartLoading: Boolean = false,
     onCategoryClick: (Category) -> Unit = {},
     onTopChartClick: (chart: TopChart, title: String) -> Unit = { _, _ -> },
     onBrowse: (title: String, browseUrl: String) -> Unit = { _, _ -> }
@@ -73,7 +76,17 @@ fun PlayListing(
             }
             ListingChip(
                 label = label,
-                onClick = { onTopChartClick(chart, label) }
+                leadingIcon = if (isTopChartLoading) {
+                    {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(AssistChipDefaults.IconSize),
+                            strokeWidth = 2.dp
+                        )
+                    }
+                } else {
+                    null
+                },
+                onClick = { if (!isTopChartLoading) onTopChartClick(chart, label) }
             )
         }
         app.deviceSurfaces.filter { it.name.isNotBlank() }.forEach { surface ->

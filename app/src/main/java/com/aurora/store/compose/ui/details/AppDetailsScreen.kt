@@ -386,9 +386,17 @@ private fun ScreenContentApp(
     LaunchedEffect(showsScreenshot) { if (!showsScreenshot) isScreenshotOpen = false }
     val coroutineScope = rememberCoroutineScope()
 
+    var isTopChartLoading by remember { mutableStateOf(false) }
+
     fun onTopChartClick(chart: TopChart, title: String) {
+        if (isTopChartLoading) return
+        isTopChartLoading = true
         coroutineScope.launch {
-            val cluster = onFetchTopChart(chart, title)
+            val cluster = try {
+                onFetchTopChart(chart, title)
+            } finally {
+                isTopChartLoading = false
+            }
             if (cluster != null) {
                 onNavigateTo(Destination.StreamBrowse(cluster))
             } else {
@@ -717,6 +725,7 @@ private fun ScreenContentApp(
                         PlayListing(
                             app = app,
                             categoryIconUrl = categoryIconUrl,
+                            isTopChartLoading = isTopChartLoading,
                             onCategoryClick = { onNavigateTo(Destination.CategoryBrowse(it)) },
                             onTopChartClick = ::onTopChartClick,
                             onBrowse = { title, browseUrl ->
